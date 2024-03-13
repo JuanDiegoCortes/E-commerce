@@ -6,18 +6,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="Usuario")
+@Table(name="CiudDepto")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsuarioModel {
+public class CiudDeptoModel {
     @Id
-    private Integer cedula;
-    private String nombre;
-    private String correo;
-    private String contraseña;
+    @ManyToOne
+    @JoinColumn(name = "idCiudad")
+    private CiudadModel idCiudad;
 
     @ManyToOne
-    @JoinColumn(name = "idRol")
-    private RolModel idRol;
+    @JoinColumn(name = "idDepartamento")
+    private DepartamentoModel idDepartamento;
 }

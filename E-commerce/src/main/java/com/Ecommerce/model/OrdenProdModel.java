@@ -6,20 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="DiseñoP")
+@Table(name="OrdenProdModel")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DiseñoPModel {
+public class OrdenProdModel {
     @Id
-    private Integer idDiseñoP;
-    private String image_url;
-
     @ManyToOne
     @JoinColumn(name = "idOrden")
     private OrdenModel idOrden;
 
     @ManyToOne
-    @JoinColumn(name = "cedula")
-    private UsuarioModel cedula;
+    @JoinColumn(name = "idProducto")
+    private ProductoModel idProducto;
+
+    private String cantidad;
+    private String ordenPersonalizacion;
 }
