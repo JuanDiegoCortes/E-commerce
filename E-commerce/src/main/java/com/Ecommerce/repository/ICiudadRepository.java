@@ -1,4 +1,7 @@
 package com.Ecommerce.repository;
 
-public interface ICiudadRepository {
+import com.Ecommerce.model.CiudadModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ICiudadRepository extends JpaRepository<CiudadModel, Integer> {
 }

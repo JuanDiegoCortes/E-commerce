@@ -1,4 +1,7 @@
 package com.Ecommerce.repository;
 
-public interface IOrdenRepository {
+import com.Ecommerce.model.OrdenModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IOrdenRepository extends JpaRepository<OrdenModel, Integer> {
 }

@@ -1,4 +1,7 @@
 package com.Ecommerce.repository;
 
-public interface IEnvioRepository {
+import com.Ecommerce.model.EnvioModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IEnvioRepository extends JpaRepository<EnvioModel, Integer> {
 }

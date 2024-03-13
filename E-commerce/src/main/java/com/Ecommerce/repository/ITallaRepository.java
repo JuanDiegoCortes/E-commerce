@@ -1,4 +1,7 @@
 package com.Ecommerce.repository;
 
-public interface ITallaRepository {
+import com.Ecommerce.model.TallaModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ITallaRepository extends JpaRepository<TallaModel, Integer> {
 }

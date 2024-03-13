@@ -1,4 +1,7 @@
 package com.Ecommerce.repository;
 
-public interface IComentarioRepository {
+import com.Ecommerce.model.ComentarioModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IComentarioRepository extends JpaRepository<ComentarioModel, Integer> {
 }
