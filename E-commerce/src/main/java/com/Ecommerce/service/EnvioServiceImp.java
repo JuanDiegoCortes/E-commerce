@@ -1,4 +1,13 @@
 package com.Ecommerce.service;
 
-public class EnvioServiceImp {
+import com.Ecommerce.repository.IEnvioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+@Service
+@Primary
+public class EnvioServiceImp implements IEnvioService{
+    @Autowired
+    IEnvioRepository envioRepository;
 }
