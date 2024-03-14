@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductoModel {
     @Id
-    private Integer idProdcuto;
+    private Integer idProducto;
     private String nombre;
     private String descripcion;
     private Float precio;
