@@ -1,17 +1,15 @@
 package com.Ecommerce.controller;
 
-import com.Ecommerce.model.EnvioModel;
+import com.Ecommerce.exception.CamposInvalidosException;
+import com.Ecommerce.exception.RecursoNoEncontradoException;
 import com.Ecommerce.model.OrdenModel;
-import com.Ecommerce.service.IEnvioService;
+import com.Ecommerce.model.enums.Estado;
 import com.Ecommerce.service.IOrdenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,4 +38,36 @@ public class OrdenController {
         return new ResponseEntity<>(ordenes, HttpStatus.OK);
     }
 
+    //consultar una orden por Id
+    @GetMapping("/{ordenId}")
+    public ResponseEntity<OrdenModel> obtenerOrdenPorId(@PathVariable Integer ordenId) {
+        OrdenModel orden = this.ordenService.obtenerOrdenPorId(ordenId)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la orden con el id " + ordenId));
+        return ResponseEntity.ok(orden);
+    }
+
+    //actualizar la información básica del envío
+    @PutMapping ("/{ordenId}")
+    public ResponseEntity<String> actualizarOrdenPorId(@PathVariable Integer ordenId, @RequestBody OrdenModel detallesOrden) {
+        OrdenModel orden = this.ordenService.obtenerOrdenPorId(ordenId)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la orden con el id " + ordenId));
+        //obtenemos los datos que se van actualizar del envío y que son enviados del json
+        Estado nombreActualizar = detallesOrden.getEstado();
+        String nombreAtualizar2 = detallesOrden.getMetodoPago();
+        Float nombreAtualizar3= detallesOrden.getPrecioTotal();
+
+
+        //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
+        if (nombreActualizar !=null && nombreAtualizar2 != null && !nombreAtualizar2.isEmpty() && nombreAtualizar3 != null){
+            //asignamos los valores que vamos actualizar del envio
+            orden.setEstado(nombreActualizar);
+            orden.setMetodoPago(nombreAtualizar2);
+            orden.setPrecioTotal(nombreAtualizar3);
+            //guardamos los cambios
+            return new ResponseEntity<String>(ordenService.actualizarOrdenPorId(orden),HttpStatus.OK);
+        }
+        else{
+            throw new CamposInvalidosException("Error! El estado, el método de pago  y el precio total de la orden no pueden estar vacios");
+        }
+    }
 }

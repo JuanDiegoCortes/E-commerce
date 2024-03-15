@@ -21,10 +21,8 @@ public class OrdenModel {
     @Column(name="Estado")
     @Enumerated(EnumType.STRING)
     private Estado estado;
-
     private String metodoPago;
     private Float precioTotal;
-    private Integer cantidad;
 
     @ManyToOne
     @JoinColumn(name = "idEnvio")

@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.CategoriaModel;
 import com.Ecommerce.model.EnvioModel;
 import com.Ecommerce.service.IEnvioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +57,7 @@ public class EnvioController {
 
 
         //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && !nombreActualizar.isEmpty() && nombreAtualizar2 != null && !nombreAtualizar2.isEmpty()){
+        if (nombreActualizar !=null && !nombreActualizar.isEmpty() && nombreAtualizar2 != null && !nombreAtualizar2.isEmpty() && nombreAtualizar3 != null && !nombreAtualizar3.isEmpty()){
             //asignamos los valores que vamos actualizar del envio
             envio.setDireccion(nombreActualizar);
             envio.setTelefono(nombreAtualizar2);
@@ -67,7 +66,7 @@ public class EnvioController {
             return new ResponseEntity<String>(envioService.actualizarEnvioPorId(envio),HttpStatus.OK);
         }
         else{
-            throw new CamposInvalidosException("Error! La dirección, el teléfono y la modalidad de entrega del envío no pueden estar vacios");
+            throw new CamposInvalidosException("Error! La dirección, el teléfono y la modalidad del envío no pueden estar vacios");
         }
     }
 }
