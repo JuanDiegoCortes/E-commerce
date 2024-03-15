@@ -1,6 +1,5 @@
 package com.Ecommerce.service;
 
-import com.Ecommerce.model.EnvioModel;
 import com.Ecommerce.model.UsuarioModel;
 import com.Ecommerce.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;

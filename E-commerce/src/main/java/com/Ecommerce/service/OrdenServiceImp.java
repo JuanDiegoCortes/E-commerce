@@ -1,6 +1,5 @@
 package com.Ecommerce.service;
 
-import com.Ecommerce.model.EnvioModel;
 import com.Ecommerce.model.OrdenModel;
 import com.Ecommerce.repository.IOrdenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +41,6 @@ public class OrdenServiceImp implements IOrdenService{
     @Override
     public String actualizarOrdenPorId(OrdenModel orden) {
         this.ordenRepository.save(orden);
-        return "La orden con id " + orden.getIdEnvio() + " fue actualizada con exito.";
+        return "La orden con id " + orden.getIdOrden() + " fue actualizada con exito.";
     }
 }

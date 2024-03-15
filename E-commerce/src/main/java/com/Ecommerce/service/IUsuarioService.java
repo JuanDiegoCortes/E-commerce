@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface IUsuarioService {
     //funcionalidades /logica que  realizara esta entidad
-    String crearUsuario(UsuarioModel envio);
+    String crearUsuario(UsuarioModel eusuario);
     List<UsuarioModel> listarUsuarios();
     Optional<UsuarioModel> obtenerUsuarioPorId(int usuarioId);
     String eliminarUsuarioPorId(int usuarioId);

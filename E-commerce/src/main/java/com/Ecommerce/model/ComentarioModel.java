@@ -25,6 +25,6 @@ public class ComentarioModel {
 
     @ManyToOne
     @JoinColumn(name = "idDiseñoP")
-    private DiseñoPModel idDiseñoP;
+    private DisenoPModel idDiseñoP;
 
 }

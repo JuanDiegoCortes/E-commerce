@@ -6,13 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="DiseñoP")
+@Table(name="DisenoP")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DiseñoPModel {
+public class DisenoPModel {
     @Id
-    private Integer idDiseñoP;
+    private Integer idDisenoP;
     private String image_url;
 
     @ManyToOne
