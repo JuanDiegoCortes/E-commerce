@@ -55,16 +55,16 @@ public class UsuarioController {
         //obtenemos los datos que se van actualizar de el usuario y que son enviados del json
         Integer nombreActualizar = detallesUsuario.getCedula();
         String nombreActualizar2 = detallesUsuario.getNombre();
-        String nombreAtualizar3 = detallesUsuario.getCorreo();
-        String nombreAtualizar4 = detallesUsuario.getContraseña();
+        String nombreActualizar3 = detallesUsuario.getCorreo();
+        String nombreActualizar4 = detallesUsuario.getContraseña();
 
         //Verificamos que estos campos actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreAtualizar3 != null && !nombreAtualizar3.isEmpty() && nombreAtualizar4 != null && !nombreAtualizar4.isEmpty()){
+        if (nombreActualizar !=null && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar3 != null && !nombreActualizar3.isEmpty() && nombreActualizar4 != null && !nombreActualizar4.isEmpty()){
             //asignamos los valores que vamos actualizar de el usuario
             usuario.setCedula(nombreActualizar);
             usuario.setNombre(nombreActualizar2);
-            usuario.setCorreo(nombreAtualizar3);
-            usuario.setContraseña(nombreAtualizar4);
+            usuario.setCorreo(nombreActualizar3);
+            usuario.setContraseña(nombreActualizar4);
             //guardamos los cambios
             return new ResponseEntity<String>(usuarioService.actualizarUsuarioPorId(usuario),HttpStatus.OK);
         }

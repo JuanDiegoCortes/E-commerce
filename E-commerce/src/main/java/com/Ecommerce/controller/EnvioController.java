@@ -52,16 +52,16 @@ public class EnvioController {
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el envío con el id " + envioId));
         //obtenemos los datos que se van actualizar del envío y que son enviados del json
         String nombreActualizar = detallesEnvio.getDireccion();
-        String nombreAtualizar2 = detallesEnvio.getTelefono();
-        String nombreAtualizar3= detallesEnvio.getModalidadEntrega();
+        String nombreActualizar2 = detallesEnvio.getTelefono();
+        String nombreActualizar3= detallesEnvio.getModalidadEntrega();
 
 
         //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && !nombreActualizar.isEmpty() && nombreAtualizar2 != null && !nombreAtualizar2.isEmpty() && nombreAtualizar3 != null && !nombreAtualizar3.isEmpty()){
+        if (nombreActualizar !=null && !nombreActualizar.isEmpty() && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar3 != null && !nombreActualizar3.isEmpty()){
             //asignamos los valores que vamos actualizar del envio
             envio.setDireccion(nombreActualizar);
-            envio.setTelefono(nombreAtualizar2);
-            envio.setModalidadEntrega(nombreAtualizar3);
+            envio.setTelefono(nombreActualizar2);
+            envio.setModalidadEntrega(nombreActualizar3);
             //guardamos los cambios
             return new ResponseEntity<String>(envioService.actualizarEnvioPorId(envio),HttpStatus.OK);
         }
