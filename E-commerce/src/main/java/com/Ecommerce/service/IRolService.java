@@ -12,6 +12,4 @@ public interface IRolService {
     Optional<RolModel> obtenerRolPorId(int rolId);
     String eliminarRolPorId(int rolId);
     String actualizarRolPorId(RolModel rol);
-
-    List<RolModel> listarRoles();
 }
