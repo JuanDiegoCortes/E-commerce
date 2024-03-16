@@ -58,13 +58,13 @@ public class CategoriaController {
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la categoria con el id " + categoriaId));
         //obtenemos los datos que se van actualizar de la categoria y que son enviados del json
         String nombreActualizar = detallesCategoria.getNombre();
-        String nombreAtualizar2 = detallesCategoria.getDescripcion();
+        String nombreActualizar2 = detallesCategoria.getDescripcion();
 
         //Verificamos que estos campos actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && !nombreActualizar.isEmpty() && nombreAtualizar2 != null && !nombreAtualizar2.isEmpty()){
+        if (nombreActualizar !=null && !nombreActualizar.isEmpty() && nombreActualizar2 != null && !nombreActualizar2.isEmpty()){
             //asignamos los valores que vamos actualizar de el ingrediente
             categoria.setNombre(nombreActualizar);
-            categoria.setDescripcion(nombreAtualizar2);
+            categoria.setDescripcion(nombreActualizar2);
             //guardamos los cambios
             return new ResponseEntity<String>(categoriaService.actualizarCategoriaPorId(categoria),HttpStatus.OK);
         }

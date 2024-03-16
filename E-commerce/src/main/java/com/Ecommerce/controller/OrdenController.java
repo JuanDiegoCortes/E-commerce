@@ -53,16 +53,16 @@ public class OrdenController {
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la orden con el id " + ordenId));
         //obtenemos los datos que se van actualizar del envío y que son enviados del json
         Estado nombreActualizar = detallesOrden.getEstado();
-        String nombreAtualizar2 = detallesOrden.getMetodoPago();
-        Float nombreAtualizar3= detallesOrden.getPrecioTotal();
+        String nombreActualizar2 = detallesOrden.getMetodoPago();
+        Float nombreActualizar3= detallesOrden.getPrecioTotal();
 
 
         //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && nombreAtualizar2 != null && !nombreAtualizar2.isEmpty() && nombreAtualizar3 != null){
+        if (nombreActualizar !=null && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar3 != null){
             //asignamos los valores que vamos actualizar del envio
             orden.setEstado(nombreActualizar);
-            orden.setMetodoPago(nombreAtualizar2);
-            orden.setPrecioTotal(nombreAtualizar3);
+            orden.setMetodoPago(nombreActualizar2);
+            orden.setPrecioTotal(nombreActualizar3);
             //guardamos los cambios
             return new ResponseEntity<String>(ordenService.actualizarOrdenPorId(orden),HttpStatus.OK);
         }
