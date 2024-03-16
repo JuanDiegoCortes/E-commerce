@@ -2,9 +2,13 @@ package com.Ecommerce.controller;
 
 import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
+import com.Ecommerce.model.EnvioModel;
 import com.Ecommerce.model.OrdenModel;
+import com.Ecommerce.model.UsuarioModel;
 import com.Ecommerce.model.enums.Estado;
+import com.Ecommerce.service.IEnvioService;
 import com.Ecommerce.service.IOrdenService;
+import com.Ecommerce.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +23,19 @@ import java.util.Optional;
 public class OrdenController {
     @Autowired
     private IOrdenService ordenService;
+    @Autowired
+    private IEnvioService envioService;
+    @Autowired
+    private IUsuarioService usuarioService;
 
     @PostMapping("/")
     public ResponseEntity<String> crearOrden(@RequestBody OrdenModel orden) {
         //Verificar si la orden ya existe
+        EnvioModel envio = envioService.obtenerEnvioPorId(orden.getIdEnvio().getIdEnvio())
+                .orElseThrow(()-> new RecursoNoEncontradoException("El envio no existe."));
+        UsuarioModel usuario = usuarioService.obtenerUsuarioPorId(orden.getCedula().getCedula())
+                .orElseThrow(()-> new RecursoNoEncontradoException("El usuario no existe."));
+
         Optional<OrdenModel> verificacion = ordenService.obtenerOrdenPorId(orden.getIdOrden());
         if (verificacion.isPresent()){
             String mensaje = "Esta orden ya existe.";

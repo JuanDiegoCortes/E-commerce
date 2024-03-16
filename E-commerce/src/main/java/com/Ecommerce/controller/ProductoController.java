@@ -2,7 +2,9 @@ package com.Ecommerce.controller;
 
 import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
+import com.Ecommerce.model.CategoriaModel;
 import com.Ecommerce.model.ProductoModel;
+import com.Ecommerce.service.ICategoriaService;
 import com.Ecommerce.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,10 +20,15 @@ import java.util.Optional;
 public class ProductoController {
     @Autowired
     private IProductoService productoService;
+    @Autowired
+    private ICategoriaService categoriaService;
 
     @PostMapping("/")
     public ResponseEntity<String> crearProducto(@RequestBody ProductoModel producto) {
         //Verificar si el producto ya existe
+        CategoriaModel categoria = categoriaService.obtenerCategoriaPorId(producto.getIdCategoria().getIdCategoria())
+                .orElseThrow(()-> new RecursoNoEncontradoException("La categoria no existe."));
+
         Optional<ProductoModel> verificacion = productoService.obtenerProductoPorId(producto.getIdProducto());
         if (verificacion.isPresent()){
             String mensaje = "Este producto ya existe.";

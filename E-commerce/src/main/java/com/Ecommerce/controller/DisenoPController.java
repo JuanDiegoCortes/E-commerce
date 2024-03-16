@@ -1,7 +1,11 @@
 package com.Ecommerce.controller;
 
 import com.Ecommerce.model.DisenoPModel;
+import com.Ecommerce.model.OrdenModel;
+import com.Ecommerce.model.UsuarioModel;
 import com.Ecommerce.service.IDisenoPService;
+import com.Ecommerce.service.IOrdenService;
+import com.Ecommerce.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +28,19 @@ import java.util.Optional;
 public class DisenoPController {
     @Autowired
     private IDisenoPService disenoPService;
+    @Autowired
+    private IOrdenService ordenService;
+    @Autowired
+    private IUsuarioService usuarioService;
     
     @PostMapping("/")
     public ResponseEntity<String> crearDisenoP(@RequestBody DisenoPModel disenoP) {
         //Verificar si el envio ya existe
+        OrdenModel orden = ordenService.obtenerOrdenPorId(disenoP.getIdOrden().getIdOrden())
+                .orElseThrow(()-> new RecursoNoEncontradoException("La orden no existe."));
+        UsuarioModel usuario = usuarioService.obtenerUsuarioPorId(disenoP.getCedula().getCedula())
+                .orElseThrow(()-> new RecursoNoEncontradoException("El usuario no existe."));
+
         Optional<DisenoPModel> verificacion = disenoPService.obtenerDisenoPPorId(disenoP.getIdDisenoP());
         if (verificacion.isPresent()){
             String mensaje = "Este diseñoP ya existe.";

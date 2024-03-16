@@ -28,6 +28,9 @@ public class CategoriaController {
     @PostMapping("/")
     public ResponseEntity<String> crearCategoria(@RequestBody CategoriaModel categoria) {
         //Verificar si la categoria ya existe
+        CategoriaModel subCategoria = categoriaService.obtenerCategoriaPorId(categoria.getIdCategoria())
+                .orElseThrow(()-> new RecursoNoEncontradoException("La categoria no existe."));
+
         Optional<CategoriaModel> verificacion = categoriaService.obtenerCategoriaPorId(categoria.getIdCategoria());
         if (verificacion.isPresent()){
             String mensaje = "Esta categoria ya existe.";
