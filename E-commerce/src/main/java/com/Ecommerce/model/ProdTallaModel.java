@@ -13,6 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProdTallaModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idProdTalla;
+
     @ManyToOne
     @JoinColumn(name = "idProducto")
     private ProductoModel idProducto;
