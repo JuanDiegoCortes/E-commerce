@@ -2,7 +2,11 @@ package com.Ecommerce.controller;
 
 import com.Ecommerce.exception.RecursoNoEncontradoException;
 import com.Ecommerce.model.ProdTallaModel;
+import com.Ecommerce.model.ProductoModel;
+import com.Ecommerce.model.TallaModel;
 import com.Ecommerce.service.IProdTallaService;
+import com.Ecommerce.service.IProductoService;
+import com.Ecommerce.service.ITallaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +21,19 @@ import java.util.Optional;
 public class ProdTallaController {
     @Autowired
     private IProdTallaService prodTallaService;
+    @Autowired
+    private IProductoService productoService;
+    @Autowired
+    private ITallaService tallaService;
+
     @PostMapping("/")
     public ResponseEntity<String> crearProdTalla(@RequestBody ProdTallaModel prodTalla) {
         //Verificar si la prodTalla ya existe
+        ProductoModel producto = productoService.obtenerProductoPorId(prodTalla.getIdProducto().getIdProducto())
+                .orElseThrow(()-> new RecursoNoEncontradoException("El producto no existe."));
+        TallaModel talla = tallaService.obtenerTallaPorId(prodTalla.getIdTalla().getIdTalla())
+                .orElseThrow(()-> new RecursoNoEncontradoException("La talla no existe."));
+
         Optional<ProdTallaModel> verificacion = prodTallaService.obtenerProdTallaPorId(prodTalla.getIdProdTalla());
         if (verificacion.isPresent()){
             String mensaje = "Esta prodTalla ya existe.";

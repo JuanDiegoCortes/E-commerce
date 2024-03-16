@@ -1,10 +1,13 @@
 package com.Ecommerce.controller;
 
-import com.Ecommerce.exception.CamposInvalidosException;
+
 import com.Ecommerce.exception.RecursoNoEncontradoException;
 import com.Ecommerce.model.CiudDeptoModel;
 import com.Ecommerce.model.CiudadModel;
+import com.Ecommerce.model.DepartamentoModel;
 import com.Ecommerce.service.ICiudDeptoService;
+import com.Ecommerce.service.ICiudadService;
+import com.Ecommerce.service.IDepartamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +22,19 @@ import java.util.Optional;
 public class CiudDeptoController {
     @Autowired
     private ICiudDeptoService ciudDeptoService;
+    @Autowired
+    private ICiudadService ciudadService;
+    @Autowired
+    private IDepartamentoService departamentoService;
 
     @PostMapping("/")
     public ResponseEntity<String> crearCiudDepto(@RequestBody CiudDeptoModel ciudDepto) {
         //Verificar si la ciudDepto ya existe
+        CiudadModel ciudad = ciudadService.obtenerCiudadPorId(ciudDepto.getIdCiudad().getIdCiudad())
+                .orElseThrow(()-> new RecursoNoEncontradoException("La ciudad no existe."));
+        DepartamentoModel departamento = departamentoService.obtenerDepartamentoPorId(ciudDepto.getIdDepartamento().getIdDepartamento())
+                .orElseThrow(()-> new RecursoNoEncontradoException("El departamento no existe."));
+
         Optional<CiudDeptoModel> verificacion = ciudDeptoService.obtenerCiudDeptoPorId(ciudDepto.getIdCiudDepto());
         if (verificacion.isPresent()){
             String mensaje = "Esta ciudDepto ya existe.";
