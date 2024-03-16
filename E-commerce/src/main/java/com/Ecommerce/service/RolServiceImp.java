@@ -22,7 +22,7 @@ public class RolServiceImp implements IRolService{
     }
 
     @Override
-    public List<RolModel> listarRol() {
+    public List<RolModel> listarRoles() {
         return this.rolRepository.findAll();
     }
 
