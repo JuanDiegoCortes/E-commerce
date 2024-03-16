@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ComentarioModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idComentario;
     private String texto;
 

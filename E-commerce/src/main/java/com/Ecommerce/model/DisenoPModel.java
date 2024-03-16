@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DisenoPModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDisenoP;
     private String image_url;
 

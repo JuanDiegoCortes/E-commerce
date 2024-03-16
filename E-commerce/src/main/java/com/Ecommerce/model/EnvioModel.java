@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EnvioModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEnvio;
     private String direccion;
     private String modalidadEntrega;
