@@ -12,6 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrdenProdModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idOrdenProd;
+
     @ManyToOne
     @JoinColumn(name = "idOrden")
     private OrdenModel idOrden;

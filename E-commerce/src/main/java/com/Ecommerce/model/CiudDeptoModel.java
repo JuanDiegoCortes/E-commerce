@@ -12,6 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CiudDeptoModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idCiudDepto;
+
     @ManyToOne
     @JoinColumn(name = "idCiudad")
     private CiudadModel idCiudad;
