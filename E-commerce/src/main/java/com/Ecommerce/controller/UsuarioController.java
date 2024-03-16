@@ -56,7 +56,7 @@ public class UsuarioController {
         Integer nombreActualizar = detallesUsuario.getCedula();
         String nombreActualizar2 = detallesUsuario.getNombre();
         String nombreActualizar3 = detallesUsuario.getCorreo();
-        String nombreActualizar4 = detallesUsuario.getContraseña();
+        String nombreActualizar4 = detallesUsuario.getContrasena();
 
         //Verificamos que estos campos actualizar no sean nulos o vacios y controlamos la excepcion
         if (nombreActualizar !=null && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar3 != null && !nombreActualizar3.isEmpty() && nombreActualizar4 != null && !nombreActualizar4.isEmpty()){
@@ -64,7 +64,7 @@ public class UsuarioController {
             usuario.setCedula(nombreActualizar);
             usuario.setNombre(nombreActualizar2);
             usuario.setCorreo(nombreActualizar3);
-            usuario.setContraseña(nombreActualizar4);
+            usuario.setContrasena(nombreActualizar4);
             //guardamos los cambios
             return new ResponseEntity<String>(usuarioService.actualizarUsuarioPorId(usuario),HttpStatus.OK);
         }
