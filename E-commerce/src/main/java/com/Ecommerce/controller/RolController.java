@@ -2,11 +2,7 @@ package com.Ecommerce.controller;
 
 import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.CategoriaModel;
-import com.Ecommerce.model.EnvioModel;
-import com.Ecommerce.model.ProductoModel;
 import com.Ecommerce.model.RolModel;
-import com.Ecommerce.service.IProductoService;
 import com.Ecommerce.service.IRolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
