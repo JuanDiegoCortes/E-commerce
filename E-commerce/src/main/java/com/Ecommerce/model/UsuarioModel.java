@@ -15,7 +15,7 @@ public class UsuarioModel {
     private Integer cedula;
     private String nombre;
     private String correo;
-    private String contraseña;
+    private String contrasena;
 
     @ManyToOne
     @JoinColumn(name = "idRol")

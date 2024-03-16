@@ -15,6 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class OrdenModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idOrden;
     private Date fecha;
 
