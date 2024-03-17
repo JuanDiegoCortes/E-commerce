@@ -78,6 +78,7 @@ public class ProductoController {
                     TallaModel talla = tallaService.obtenerTallaPorId(idTalla).get();
                     prodTalla.setIdProducto(producto);
                     prodTalla.setIdTalla(talla);
+                    prodTalla.setCantidad(prodTalla.getCantidad());
                     this.prodTallaService.crearProdTalla(prodTalla);
                 }
                 return new ResponseEntity<String>(productoService.crearProducto(producto), HttpStatus.OK);

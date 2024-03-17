@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -49,9 +50,12 @@ public class OrdenController {
 
         //Crear instancia de un ordenModel
         OrdenModel orden = new OrdenModel();
+        orden.setFecha(ordenDTO.getFecha());
+        orden.setEstado(ordenDTO.getEstado());
+        orden.setMetodoPago(ordenDTO.getMetodoPago());
+        orden.setPrecioTotal(ordenDTO.getPrecioTotal());
+        orden.setIdEnvio(envio);
         orden.setCedula(usuario);
-        //No se como poner los sets de esta clase ya que son dependientes de otros factores
-        //////////////////////////////////////////////////////////////
 
         //Capturar los productos y verificar que existan
         if (ordenDTO.getProductos() != null) {
@@ -74,6 +78,8 @@ public class OrdenController {
                 ProductoModel producto = productoService.obtenerProductoPorId(idProducto).get();
                 ordenProd.setIdProducto(producto);
                 ordenProd.setIdOrden(orden);
+                ordenProd.setCantidad(ordenProd.getCantidad());
+                ordenProd.setOrdenPersonalizacion(ordenProd.getOrdenPersonalizacion());
                 this.ordenProdService.crearOrdenProd(ordenProd);
             }
             return new ResponseEntity<String>(ordenService.crearOrden(orden), HttpStatus.OK);
@@ -107,17 +113,19 @@ public class OrdenController {
         OrdenModel orden = this.ordenService.obtenerOrdenPorId(ordenId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la orden con el id " + ordenId));
         //obtenemos los datos que se van actualizar del envío y que son enviados del json
-        Estado nombreActualizar = detallesOrden.getEstado();
-        MetodoPago nombreActualizar2 = detallesOrden.getMetodoPago();
-        Float nombreActualizar3= detallesOrden.getPrecioTotal();
+        Date nombreActualizar = detallesOrden.getFecha();
+        Estado nombreActualizar2 = detallesOrden.getEstado();
+        MetodoPago nombreActualizar3 = detallesOrden.getMetodoPago();
+        Float nombreActualizar4 = detallesOrden.getPrecioTotal();
 
 
         //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && nombreActualizar2 != null && nombreActualizar3 != null){
+        if (nombreActualizar !=null && nombreActualizar2 != null && nombreActualizar3 != null && nombreActualizar4 != null){
             //asignamos los valores que vamos actualizar del envio
-            orden.setEstado(nombreActualizar);
-            orden.setMetodoPago(nombreActualizar2);
-            orden.setPrecioTotal(nombreActualizar3);
+            orden.setFecha(nombreActualizar);
+            orden.setEstado(nombreActualizar2);
+            orden.setMetodoPago(nombreActualizar3);
+            orden.setPrecioTotal(nombreActualizar4);
             //guardamos los cambios
             return new ResponseEntity<String>(ordenService.actualizarOrdenPorId(orden),HttpStatus.OK);
         }

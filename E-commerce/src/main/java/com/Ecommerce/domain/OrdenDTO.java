@@ -3,6 +3,7 @@ package com.Ecommerce.domain;
 import com.Ecommerce.model.EnvioModel;
 import com.Ecommerce.model.UsuarioModel;
 import com.Ecommerce.model.enums.Estado;
+import com.Ecommerce.model.enums.MetodoPago;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +20,7 @@ public class OrdenDTO {
     private Integer idOrden;
     private Date fecha;
     private Estado estado;
-    private String metodoPago;
+    private MetodoPago metodoPago;
     private Float precioTotal;
     private EnvioModel idEnvio;
     private UsuarioModel cedula;

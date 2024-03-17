@@ -1,5 +1,6 @@
 package com.Ecommerce.model;
 
+import com.Ecommerce.model.enums.ModalidadEntrega;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,8 +16,11 @@ public class EnvioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEnvio;
     private String direccion;
-    private String modalidadEntrega;
     private String telefono;
+
+    @Column(name = "ModalidadEntrega")
+    @Enumerated(EnumType.STRING)
+    private ModalidadEntrega modalidadEntrega;
 
     @ManyToOne
     @JoinColumn(name = "idCiudad")
