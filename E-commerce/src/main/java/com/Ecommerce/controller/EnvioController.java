@@ -7,6 +7,7 @@ import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
 import com.Ecommerce.model.CiudadModel;
 import com.Ecommerce.model.EnvioModel;
+import com.Ecommerce.model.enums.ModalidadEntrega;
 import com.Ecommerce.service.ICiudadService;
 import com.Ecommerce.service.IEnvioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,11 +61,11 @@ public class EnvioController {
         //obtenemos los datos que se van actualizar del envío y que son enviados del json
         String nombreActualizar = detallesEnvio.getDireccion();
         String nombreActualizar2 = detallesEnvio.getTelefono();
-        String nombreActualizar3= detallesEnvio.getModalidadEntrega();
+        ModalidadEntrega nombreActualizar3= detallesEnvio.getModalidadEntrega();
 
 
         //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && !nombreActualizar.isEmpty() && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar3 != null && !nombreActualizar3.isEmpty()){
+        if (nombreActualizar !=null && !nombreActualizar.isEmpty() && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar3 != null){
             //asignamos los valores que vamos actualizar del envio
             envio.setDireccion(nombreActualizar);
             envio.setTelefono(nombreActualizar2);
