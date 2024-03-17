@@ -20,7 +20,7 @@ import com.Ecommerce.model.DepartamentoModel;
 import com.Ecommerce.service.IDepartamentoService;
 
 @Controller
-@RequestMapping("/Ecommerce/v1/deopartamento")
+@RequestMapping("/Ecommerce/v1/departamento")
 public class DepartamentoController {
     @Autowired
     private IDepartamentoService departamentoService;
