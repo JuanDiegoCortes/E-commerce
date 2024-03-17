@@ -1,8 +1,13 @@
 package com.Ecommerce.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import com.Ecommerce.domain.CiudadDTO;
+import com.Ecommerce.model.*;
+import com.Ecommerce.service.ICiudDeptoService;
+import com.Ecommerce.service.IDepartamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.CiudadModel;
 import com.Ecommerce.service.ICiudadService;
 
 @Controller
@@ -24,17 +28,54 @@ import com.Ecommerce.service.ICiudadService;
 public class CiudadController {
     @Autowired
     private ICiudadService ciudadService;
+    @Autowired
+    private IDepartamentoService departamentoService;
+    @Autowired
+    private ICiudDeptoService ciudDeptoService;
 
     @PostMapping("/")
-    public ResponseEntity<String> crearCiudad(@RequestBody CiudadModel ciudad) {
+    public ResponseEntity<String> crearCiudad(@RequestBody CiudadDTO ciudadDTO) {
         //Verificar si la categoria ya existe
-        Optional<CiudadModel> verificacion = ciudadService.obtenerCiudadPorId(ciudad.getIdCiudad());
-        if (verificacion.isPresent()){
+        boolean bandera = true;
+        Optional<CiudadModel> verificacion = ciudadService.obtenerCiudadPorId(ciudadDTO.getIdCiudad());
+        if (verificacion.isPresent()) {
             String mensaje = "Esta ciudad ya existe.";
             return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
         }
-        ciudadService.crearCiudad(ciudad);
-        return new ResponseEntity<String>(ciudadService.crearCiudad(ciudad), HttpStatus.OK);
+
+        //Crear instancia de un ciudadModel
+        CiudadModel ciudad = new CiudadModel();
+        ciudad.setNombre(ciudadDTO.getNombre());
+
+        //Capturar el departamento y verificar que existan
+        if (ciudadDTO.getIdDepartamento() != null) {
+            Map<String, Integer> departamentoLiF = ciudadDTO.getIdDepartamento();
+            Integer idDepartamento = departamentoLiF.get("idDepartamento");
+            DepartamentoModel departamento = this.departamentoService.obtenerDepartamentoPorId(idDepartamento)
+                    .orElseThrow(() -> new RecursoNoEncontradoException("No esta el departamento con id: " + idDepartamento));
+            if (departamento == null) {
+                bandera = false;
+                throw new RecursoNoEncontradoException("No se encontró el departamento con ID: " + idDepartamento);
+            }
+
+            if (bandera) {
+                System.out.println("Bandera: "+ bandera);
+                ciudadService.crearCiudad(ciudad);
+
+                CiudDeptoModel ciudDepto = new CiudDeptoModel();
+                DepartamentoModel departamentoR = departamentoService.obtenerDepartamentoPorId(idDepartamento).get();
+                ciudDepto.setIdCiudad(ciudad);
+                ciudDepto.setIdDepartamento(departamentoR);
+                this.ciudDeptoService.crearCiudDepto(ciudDepto);
+                return new ResponseEntity<String>(ciudadService.crearCiudad(ciudad), HttpStatus.OK);
+            } else{
+                String mensaje = "Verifica que los datos ingresados sean correctos.";
+                return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST); //Envia esto cuando no existe el departamento
+            }
+        }else{
+            String mensaje = "Verifica que hayas ingresado el departamento de la ciudad.";
+            return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/")
