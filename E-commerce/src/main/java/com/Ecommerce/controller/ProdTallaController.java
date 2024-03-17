@@ -28,17 +28,6 @@ public class ProdTallaController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearProdTalla(@RequestBody ProdTallaModel prodTalla) {
-        //Verificar si la prodTalla ya existe
-        ProductoModel producto = productoService.obtenerProductoPorId(prodTalla.getIdProducto().getIdProducto())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El producto no existe."));
-        TallaModel talla = tallaService.obtenerTallaPorId(prodTalla.getIdTalla().getIdTalla())
-                .orElseThrow(()-> new RecursoNoEncontradoException("La talla no existe."));
-
-        Optional<ProdTallaModel> verificacion = prodTallaService.obtenerProdTallaPorId(prodTalla.getIdProdTalla());
-        if (verificacion.isPresent()){
-            String mensaje = "Esta prodTalla ya existe.";
-            return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
-        }
         prodTallaService.crearProdTalla(prodTalla);
         return new ResponseEntity<String>(prodTallaService.crearProdTalla(prodTalla), HttpStatus.OK);
     }

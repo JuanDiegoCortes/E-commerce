@@ -28,17 +28,6 @@ public class OrdenProdController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearOrdenProd(@RequestBody OrdenProdModel ordenProd) {
-        //Verificar si la ordenProd ya existe
-        OrdenModel orden = ordenService.obtenerOrdenPorId(ordenProd.getIdOrden().getIdOrden())
-                .orElseThrow(()-> new RecursoNoEncontradoException("La orden no existe."));
-        ProductoModel producto = productoService.obtenerProductoPorId(ordenProd.getIdProducto().getIdProducto())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El producto no existe."));
-
-        Optional<OrdenProdModel> verificacion = ordenProdService.obtenerOrdenProdPorId(ordenProd.getIdOrdenProd());
-        if (verificacion.isPresent()){
-            String mensaje = "Esta ordenProd ya existe.";
-            return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
-        }
         ordenProdService.crearOrdenProd(ordenProd);
         return new ResponseEntity<String>(ordenProdService.crearOrdenProd(ordenProd), HttpStatus.OK);
     }

@@ -29,17 +29,6 @@ public class CiudDeptoController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearCiudDepto(@RequestBody CiudDeptoModel ciudDepto) {
-        //Verificar si la ciudDepto ya existe
-        CiudadModel ciudad = ciudadService.obtenerCiudadPorId(ciudDepto.getIdCiudad().getIdCiudad())
-                .orElseThrow(()-> new RecursoNoEncontradoException("La ciudad no existe."));
-        DepartamentoModel departamento = departamentoService.obtenerDepartamentoPorId(ciudDepto.getIdDepartamento().getIdDepartamento())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El departamento no existe."));
-
-        Optional<CiudDeptoModel> verificacion = ciudDeptoService.obtenerCiudDeptoPorId(ciudDepto.getIdCiudDepto());
-        if (verificacion.isPresent()){
-            String mensaje = "Esta ciudDepto ya existe.";
-            return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
-        }
         ciudDeptoService.crearCiudDepto(ciudDepto);
         return new ResponseEntity<String>(ciudDeptoService.crearCiudDepto(ciudDepto), HttpStatus.OK);
     }
