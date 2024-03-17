@@ -16,6 +16,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/Ecommerce/v1/talla")
+@CrossOrigin
 public class TallaController {
     @Autowired
     private ITallaService tallaService;

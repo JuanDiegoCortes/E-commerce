@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/Ecommerce/v1/envio")
+@CrossOrigin
 public class EnvioController {
     @Autowired
     private IEnvioService envioService;

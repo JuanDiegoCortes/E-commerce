@@ -20,6 +20,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/Ecommerce/v1/orden")
+@CrossOrigin
 public class OrdenController {
     @Autowired
     private IOrdenService ordenService;

@@ -19,6 +19,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/Ecommerce/v1/ciudDepto")
+@CrossOrigin
 public class CiudDeptoController {
     @Autowired
     private ICiudDeptoService ciudDeptoService;

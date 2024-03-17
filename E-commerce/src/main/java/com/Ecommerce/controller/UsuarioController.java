@@ -19,6 +19,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/Ecommerce/v1/usuario")
+@CrossOrigin
 public class UsuarioController {
     @Autowired
     private IUsuarioService usuarioService;

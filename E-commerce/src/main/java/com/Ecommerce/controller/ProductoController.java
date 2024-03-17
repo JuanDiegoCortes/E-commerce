@@ -23,6 +23,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/Ecommerce/v1/producto")
+@CrossOrigin
 public class ProductoController {
     @Autowired
     private IProductoService productoService;

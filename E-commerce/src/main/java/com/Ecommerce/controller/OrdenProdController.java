@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/Ecommerce/v1/ordenProd")
+@CrossOrigin
 public class OrdenProdController {
     @Autowired
     private IOrdenProdService ordenProdService;

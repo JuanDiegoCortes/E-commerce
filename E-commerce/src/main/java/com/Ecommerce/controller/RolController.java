@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/Ecommerce/v1/rol")
+@CrossOrigin
 public class RolController {
     @Autowired
     private IRolService rolService;
