@@ -37,7 +37,6 @@ public class ProductoController {
     public ResponseEntity<String> crearProducto(@RequestBody ProductoDTO productoDTO) {
         //Verificar si el producto ya existe
         boolean bandera = true;
-
         Optional<ProductoModel> verificacion = productoService.obtenerProductoPorId(productoDTO.getIdProducto());
         if (verificacion.isPresent()){
             String mensaje = "Este producto ya existe.";

@@ -1,10 +1,10 @@
 package com.Ecommerce.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
-import com.Ecommerce.model.DisenoPModel;
-import com.Ecommerce.model.UsuarioModel;
+import com.Ecommerce.model.*;
 import com.Ecommerce.service.IDisenoPService;
 import com.Ecommerce.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.ComentarioModel;
 import com.Ecommerce.service.IComentarioService;
 
 @Controller
@@ -37,14 +36,14 @@ public class ComentarioController {
     public ResponseEntity<String> crearComentario(@RequestBody ComentarioModel comentario) {
         //Verificar si el comentario ya existe
         UsuarioModel usuario = usuarioService.obtenerUsuarioPorId(comentario.getCedula().getCedula())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El usuario no existe."));
+                .orElseThrow(() -> new RecursoNoEncontradoException("El usuario no existe."));
         DisenoPModel disenoP = disenoPService.obtenerDisenoPPorId(comentario.getIdDisenoP().getIdDisenoP())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El disenoP no existe."));
+                .orElseThrow(() -> new RecursoNoEncontradoException("El disenoP no existe."));
         ComentarioModel subComentario = comentarioService.obtenerComentarioPorId(comentario.getIdComentario())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El comentario no existe."));
+                .orElseThrow(() -> new RecursoNoEncontradoException("El comentario no existe."));
 
         Optional<ComentarioModel> verificacion = comentarioService.obtenerComentarioPorId(comentario.getIdComentario());
-        if (verificacion.isPresent()){
+        if (verificacion.isPresent()) {
             String mensaje = "Este comentario ya existe.";
             return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
         }
