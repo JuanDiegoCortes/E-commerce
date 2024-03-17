@@ -38,8 +38,6 @@ public class ComentarioController {
                 .orElseThrow(() -> new RecursoNoEncontradoException("El usuario no existe."));
         DisenoPModel disenoP = disenoPService.obtenerDisenoPPorId(comentario.getIdDisenoP().getIdDisenoP())
                 .orElseThrow(() -> new RecursoNoEncontradoException("El disenoP no existe."));
-        ComentarioModel subComentario = comentarioService.obtenerComentarioPorId(comentario.getIdComentario())
-                .orElseThrow(() -> new RecursoNoEncontradoException("El comentario no existe."));
 
         Optional<ComentarioModel> verificacion = comentarioService.obtenerComentarioPorId(comentario.getIdComentario());
         if (verificacion.isPresent()) {
