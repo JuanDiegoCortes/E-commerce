@@ -1,5 +1,6 @@
 package com.Ecommerce.model;
 
+import com.Ecommerce.model.enums.Genero;
 import com.Ecommerce.model.enums.TipoProducto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,10 @@ public class ProductoModel {
     private Float precio;
     private Boolean isActive;
     private String image_Url;
+
+    @Column(name = "Genero")
+    @Enumerated(EnumType.STRING)
+    private Genero genero;
 
     @Column(name = "tipoProducto")
     @Enumerated(EnumType.STRING)

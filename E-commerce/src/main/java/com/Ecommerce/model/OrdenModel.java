@@ -1,6 +1,7 @@
 package com.Ecommerce.model;
 
 import com.Ecommerce.model.enums.Estado;
+import com.Ecommerce.model.enums.MetodoPago;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,8 +23,12 @@ public class OrdenModel {
     @Column(name="Estado")
     @Enumerated(EnumType.STRING)
     private Estado estado;
-    private String metodoPago;
+
     private Float precioTotal;
+
+    @Column(name = "MetodoPago")
+    @Enumerated(EnumType.STRING)
+    private MetodoPago metodoPago;
 
     @ManyToOne
     @JoinColumn(name = "idEnvio")

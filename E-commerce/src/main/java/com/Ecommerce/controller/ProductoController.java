@@ -53,6 +53,7 @@ public class ProductoController {
         producto.setPrecio(productoDTO.getPrecio());
         producto.setIsActive(productoDTO.getIsActive());
         producto.setImage_Url(productoDTO.getImage_Url());
+        producto.setGenero(productoDTO.getGenero());
         producto.setTipoProducto(productoDTO.getTipoProducto());
         producto.setIdCategoria(categoria);
 
