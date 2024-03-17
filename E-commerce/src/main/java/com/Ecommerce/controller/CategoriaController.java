@@ -1,8 +1,11 @@
 package com.Ecommerce.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import com.Ecommerce.domain.CategoriaDTO;
+import com.Ecommerce.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.CategoriaModel;
 import com.Ecommerce.service.ICategoriaService;
 
 @Controller
@@ -26,18 +28,48 @@ public class CategoriaController {
     private ICategoriaService categoriaService;
 
     @PostMapping("/")
-    public ResponseEntity<String> crearCategoria(@RequestBody CategoriaModel categoria) {
+    public ResponseEntity<String> crearCategoria(@RequestBody CategoriaDTO categoriaDTO) {
         //Verificar si la categoria ya existe
-        CategoriaModel subCategoria = categoriaService.obtenerCategoriaPorId(categoria.getIdCategoria())
-                .orElseThrow(()-> new RecursoNoEncontradoException("La categoria no existe."));
-
-        Optional<CategoriaModel> verificacion = categoriaService.obtenerCategoriaPorId(categoria.getIdCategoria());
+        boolean bandera = true;
+        Optional<CategoriaModel> verificacion = categoriaService.obtenerCategoriaPorId(categoriaDTO.getIdCategoria());
         if (verificacion.isPresent()){
             String mensaje = "Esta categoria ya existe.";
             return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
         }
-        categoriaService.crearCategoria(categoria);
-        return new ResponseEntity<String>(categoriaService.crearCategoria(categoria), HttpStatus.OK);
+
+        CategoriaModel subCategoria = categoriaService.obtenerCategoriaPorId(categoriaDTO.getIdCategoria())
+                .orElseThrow(()-> new RecursoNoEncontradoException("La categoria no existe."));
+
+        //Crear instancia de un categoriaModel
+        CategoriaModel categoria = new CategoriaModel();
+        categoria.setDescripcion(categoriaDTO.getDescripcion());
+        categoria.setNombre(categoriaDTO.getNombre());
+        categoria.setSubIdCategoria(subCategoria);
+
+        //Capturar lasa subCategorias y verificar que existan
+        if (categoriaDTO.getIdCategoria() != null) {
+            List<Map<String, Integer>> listarCategorias = categoriaDTO.getSubCategorias();
+            for (Map<String, Integer> Categorias : listarCategorias) {
+                Integer idCategoria = Categorias.get("idCategoria");
+                CategoriaModel Categoria = this.categoriaService.obtenerCategoriaPorId(idCategoria)
+                        .orElseThrow(() -> new RecursoNoEncontradoException("No esta la categoria con id: " + idCategoria));
+                if (Categoria == null) {
+                    bandera = false;
+                    throw new RecursoNoEncontradoException("No se encontró la categoria con ID: " + idCategoria);
+                }
+            }
+            if (bandera) {
+                System.out.println("Bandera: "+ bandera);
+                categoriaService.crearCategoria(categoria);
+                return new ResponseEntity<String>(categoriaService.crearCategoria(categoria), HttpStatus.OK);
+            } else{
+                String mensaje = "Verifica que los datos ingresados sean correctos.";
+                return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST); //Envia esto cuando no existen las categorias
+            }
+        }else{
+            String mensaje = "Verifica que hayas ingresado las categorias de la categoria.";
+            return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/")

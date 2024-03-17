@@ -20,6 +20,6 @@ public class CategoriaDTO {
     private String descripcion;
     private CategoriaModel subIdCategoria;
 
-    @JsonProperty("subCategoria")
+    @JsonProperty("subCategorias")
     List<Map<String, Integer>> subCategorias;
 }
