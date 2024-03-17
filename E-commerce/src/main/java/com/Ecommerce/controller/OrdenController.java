@@ -1,5 +1,6 @@
 package com.Ecommerce.controller;
 
+import com.Ecommerce.domain.OrdenDTO;
 import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
 import com.Ecommerce.model.EnvioModel;
@@ -29,18 +30,26 @@ public class OrdenController {
     private IUsuarioService usuarioService;
 
     @PostMapping("/")
-    public ResponseEntity<String> crearOrden(@RequestBody OrdenModel orden) {
+    public ResponseEntity<String> crearOrden(@RequestBody OrdenDTO ordenDTO) {
         //Verificar si la orden ya existe
-        EnvioModel envio = envioService.obtenerEnvioPorId(orden.getIdEnvio().getIdEnvio())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El envio no existe."));
-        UsuarioModel usuario = usuarioService.obtenerUsuarioPorId(orden.getCedula().getCedula())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El usuario no existe."));
+        boolean bandera = true;
 
-        Optional<OrdenModel> verificacion = ordenService.obtenerOrdenPorId(orden.getIdOrden());
+        Optional<OrdenModel> verificacion = ordenService.obtenerOrdenPorId(ordenDTO.getIdOrden());
         if (verificacion.isPresent()){
             String mensaje = "Esta orden ya existe.";
             return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
         }
+
+        EnvioModel envio = envioService.obtenerEnvioPorId(ordenDTO.getIdEnvio().getIdEnvio())
+                .orElseThrow(()-> new RecursoNoEncontradoException("El envio no existe."));
+        UsuarioModel usuario = usuarioService.obtenerUsuarioPorId(ordenDTO.getCedula().getCedula())
+                .orElseThrow(()-> new RecursoNoEncontradoException("El usuario no existe."));
+
+        //Crear instancia de un ordenModel
+        OrdenModel orden = new OrdenModel();
+        orden.setCedula(usuario);
+        //No se como poner los sets de esta clase ya que son dependientes de otors factores
+
         ordenService.crearOrden(orden);
         return new ResponseEntity<String>(ordenService.crearOrden(orden), HttpStatus.OK);
     }
