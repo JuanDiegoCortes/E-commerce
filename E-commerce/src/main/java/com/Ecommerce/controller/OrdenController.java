@@ -5,6 +5,7 @@ import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
 import com.Ecommerce.model.*;
 import com.Ecommerce.model.enums.Estado;
+import com.Ecommerce.model.enums.MetodoPago;
 import com.Ecommerce.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -107,12 +108,12 @@ public class OrdenController {
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la orden con el id " + ordenId));
         //obtenemos los datos que se van actualizar del envío y que son enviados del json
         Estado nombreActualizar = detallesOrden.getEstado();
-        String nombreActualizar2 = detallesOrden.getMetodoPago();
+        MetodoPago nombreActualizar2 = detallesOrden.getMetodoPago();
         Float nombreActualizar3= detallesOrden.getPrecioTotal();
 
 
         //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar3 != null){
+        if (nombreActualizar !=null && nombreActualizar2 != null && nombreActualizar3 != null){
             //asignamos los valores que vamos actualizar del envio
             orden.setEstado(nombreActualizar);
             orden.setMetodoPago(nombreActualizar2);
