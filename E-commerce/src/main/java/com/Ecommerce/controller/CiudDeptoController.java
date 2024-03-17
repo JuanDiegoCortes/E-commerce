@@ -41,7 +41,7 @@ public class CiudDeptoController {
 
     //consultar una ciudDepto por Id
     @GetMapping("/{ciudDeptoId}")
-    public ResponseEntity<CiudDeptoModel> buscarCiudDepto(@PathVariable Integer ciudDeptoId) {
+    public ResponseEntity<CiudDeptoModel> buscarCiudDeptoPorId(@PathVariable Integer ciudDeptoId) {
         CiudDeptoModel ciudDepto = this.ciudDeptoService.obtenerCiudDeptoPorId(ciudDeptoId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la ciudDepto con el id " + ciudDeptoId));
         return ResponseEntity.ok(ciudDepto);
