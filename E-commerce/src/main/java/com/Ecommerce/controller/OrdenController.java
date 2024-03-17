@@ -3,13 +3,9 @@ package com.Ecommerce.controller;
 import com.Ecommerce.domain.OrdenDTO;
 import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.EnvioModel;
-import com.Ecommerce.model.OrdenModel;
-import com.Ecommerce.model.UsuarioModel;
+import com.Ecommerce.model.*;
 import com.Ecommerce.model.enums.Estado;
-import com.Ecommerce.service.IEnvioService;
-import com.Ecommerce.service.IOrdenService;
-import com.Ecommerce.service.IUsuarioService;
+import com.Ecommerce.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -28,6 +25,10 @@ public class OrdenController {
     private IEnvioService envioService;
     @Autowired
     private IUsuarioService usuarioService;
+    @Autowired
+    private IProductoService productoService;
+    @Autowired
+    private IOrdenProdService ordenProdService;
 
     @PostMapping("/")
     public ResponseEntity<String> crearOrden(@RequestBody OrdenDTO ordenDTO) {
@@ -48,10 +49,41 @@ public class OrdenController {
         //Crear instancia de un ordenModel
         OrdenModel orden = new OrdenModel();
         orden.setCedula(usuario);
-        //No se como poner los sets de esta clase ya que son dependientes de otors factores
+        //No se como poner los sets de esta clase ya que son dependientes de otros factores
+        //////////////////////////////////////////////////////////////
 
-        ordenService.crearOrden(orden);
-        return new ResponseEntity<String>(ordenService.crearOrden(orden), HttpStatus.OK);
+        //Capturar los productos y verificar que existan
+        if (ordenDTO.getProductos() != null) {
+            List<Map<String, Integer>> listarProductos = ordenDTO.getProductos();
+            for (Map<String, Integer> Productos : listarProductos) {
+                Integer idProducto = Productos.get("idProducto");
+                ProductoModel producto = this.productoService.obtenerProductoPorId(idProducto)
+                        .orElseThrow(() -> new RecursoNoEncontradoException("No esta el producto con id: " + idProducto));
+                if (producto == null) {
+                    bandera = false;
+                    throw new RecursoNoEncontradoException("No se encontró el producto con ID: " + idProducto);
+                }
+            }
+        if (bandera) {
+            System.out.println("Bandera: "+ bandera);
+            ordenService.crearOrden(orden);
+            for (Map<String, Integer> Productos : listarProductos) {
+                Integer idProducto = Productos.get("idProducto");
+                OrdenProdModel ordenProd = new OrdenProdModel();
+                ProductoModel producto = productoService.obtenerProductoPorId(idProducto).get();
+                ordenProd.setIdProducto(producto);
+                ordenProd.setIdOrden(orden);
+                this.ordenProdService.crearOrdenProd(ordenProd);
+            }
+            return new ResponseEntity<String>(ordenService.crearOrden(orden), HttpStatus.OK);
+        } else{
+            String mensaje = "Verifica que los datos ingresados sean correctos.";
+            return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST); //Envia esto cuando no existen las tallas
+            }
+        }else{
+            String mensaje = "Verifica que hayas ingresado las tallas del producto.";
+            return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/")
