@@ -1,7 +1,7 @@
 package com.example.Apiweb.service;
 
 import com.example.Apiweb.model.OrdenProdModel;
-import com.Ecommerce.repository.IOrdenProdRepository;
+import com.example.Apiweb.repository.IOrdenProdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
