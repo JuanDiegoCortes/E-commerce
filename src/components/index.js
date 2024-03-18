@@ -1,4 +1,4 @@
-fetch('/api/productos')
+fetch('/Apiweb/productos')
   .then(response => response.json())
   .then(datos => {
     const productGrid = document.querySelector('.product-grid');

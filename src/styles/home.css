@@ -24,6 +24,11 @@ main {
     align-items: center;
 }
 
+.search-bar img {
+    width: 30px;
+    height: auto;
+}
+
 .logo img {
     width: 80px;
     height: auto;
