@@ -1,0 +1,174 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+main {
+    display: flex;
+}
+
+/* Estilos para el nav principal */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-bottom: 4px solid #ff6600;
+}
+
+.logo-search {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+
+.search-bar button {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    margin-left: 20px;
+}
+
+.nav-menu li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.nav-menu li a:hover {
+    background-color: #ff6600;
+}
+
+.login-container {
+    margin-left: 20px;
+}
+
+.login-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #ff6600;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.login-link:hover {
+    background-color: #e65c00;
+}
+
+/* Estilos para la barra lateral */
+aside {
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+}
+
+/* Estilos para el filtro de categorías */
+.category-filter {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown-btn:hover {
+    background-color: #ff6600;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #ff6600;
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilos para la sección de productos */
+.product-section {
+    flex: 1;
+    padding: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
