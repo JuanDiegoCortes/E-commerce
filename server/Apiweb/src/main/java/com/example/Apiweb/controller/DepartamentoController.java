@@ -14,7 +14,7 @@ import com.example.Apiweb.model.DepartamentoModel;
 import com.example.Apiweb.service.IDepartamentoService;
 
 @RestController
-@RequestMapping("/Ecommerce/v1/departamento")
+@RequestMapping("/Apiweb/v1/departamento")
 @CrossOrigin
 public class DepartamentoController {
     @Autowired

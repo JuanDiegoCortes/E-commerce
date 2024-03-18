@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Ecommerce/v1/usuario")
+@RequestMapping("/Apiweb/v1/usuario")
 @CrossOrigin
 public class UsuarioController {
     @Autowired

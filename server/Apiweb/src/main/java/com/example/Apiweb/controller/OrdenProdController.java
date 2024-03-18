@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Ecommerce/v1/ordenProd")
+@RequestMapping("/Apiweb/v1/ordenProd")
 @CrossOrigin
 public class OrdenProdController {
     @Autowired

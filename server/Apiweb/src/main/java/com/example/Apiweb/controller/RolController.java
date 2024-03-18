@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Ecommerce/v1/rol")
+@RequestMapping("/Apiweb/v1/rol")
 @CrossOrigin
 public class RolController {
     @Autowired

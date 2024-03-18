@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/Ecommerce/v1/envio")
+@RequestMapping("/Apiweb/v1/envio")
 @CrossOrigin
 public class EnvioController {
     @Autowired

@@ -16,7 +16,7 @@ import com.example.Apiweb.exception.RecursoNoEncontradoException;
 import com.example.Apiweb.service.IComentarioService;
 
 @RestController
-@RequestMapping("/Ecommerce/v1/comentario")
+@RequestMapping("/Apiweb/v1/comentario")
 @CrossOrigin
 public class ComentarioController {
     @Autowired

@@ -15,7 +15,7 @@ import com.example.Apiweb.exception.RecursoNoEncontradoException;
 import com.example.Apiweb.service.ICiudadService;
 
 @RestController
-@RequestMapping("/Ecommerce/v1/ciudad")
+@RequestMapping("/Apiweb/v1/ciudad")
 @CrossOrigin
 public class CiudadController {
     @Autowired

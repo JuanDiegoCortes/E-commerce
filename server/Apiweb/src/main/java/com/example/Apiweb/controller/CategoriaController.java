@@ -16,7 +16,7 @@ import com.example.Apiweb.exception.RecursoNoEncontradoException;
 import com.example.Apiweb.service.ICategoriaService;
 
 @RestController
-@RequestMapping("/Ecommerce/v1/categoria")
+@RequestMapping("/Apiweb/v1/categoria")
 @CrossOrigin
 public class CategoriaController {
     @Autowired

@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Ecommerce/v1/orden")
+@RequestMapping("/Apiweb/v1/orden")
 @CrossOrigin
 public class OrdenController {
     @Autowired

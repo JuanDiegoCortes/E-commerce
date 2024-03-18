@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Ecommerce/v1/disenoP")
+@RequestMapping("/Apiweb/v1/disenoP")
 @CrossOrigin
 public class DisenoPController {
     @Autowired
