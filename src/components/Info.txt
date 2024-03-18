@@ -1,0 +1,5 @@
+En este caso presentaron este components para crear la pagina por partes.
+Tipo aqui podria ir una carpeta Header.js, Footer.js.
+Para que se una en Home.js que va a estar en pages.
+No lo veo necesario pero lo pongo por si acaso, la pagina completa puede estar en pages y lo del carrito o inicios de sesion y asi, puedan estar aqui.
+Digo yo que directamente los js del funcionamiento, me la pela
