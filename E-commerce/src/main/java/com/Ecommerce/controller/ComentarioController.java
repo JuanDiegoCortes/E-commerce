@@ -9,7 +9,6 @@ import com.Ecommerce.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.Ecommerce.exception.CamposInvalidosException;
@@ -30,9 +29,9 @@ public class ComentarioController {
     @PostMapping("/")
     public ResponseEntity<String> crearComentario(@RequestBody ComentarioModel comentario) {
         //Verificar si el comentario ya existe
-        UsuarioModel usuario = usuarioService.obtenerUsuarioPorId(comentario.getCedula().getCedula())
+        usuarioService.obtenerUsuarioPorId(comentario.getCedula().getCedula())
                 .orElseThrow(() -> new RecursoNoEncontradoException("El usuario no existe."));
-        DisenoPModel disenoP = disenoPService.obtenerDisenoPPorId(comentario.getIdDisenoP().getIdDisenoP())
+        disenoPService.obtenerDisenoPPorId(comentario.getIdDisenoP().getIdDisenoP())
                 .orElseThrow(() -> new RecursoNoEncontradoException("El disenoP no existe."));
 
         Optional<ComentarioModel> verificacion = comentarioService.obtenerComentarioPorId(comentario.getIdComentario());

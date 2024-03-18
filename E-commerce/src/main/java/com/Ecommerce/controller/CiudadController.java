@@ -1,16 +1,13 @@
 package com.Ecommerce.controller;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import com.Ecommerce.model.*;
-import com.Ecommerce.service.ICiudDeptoService;
 import com.Ecommerce.service.IDepartamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.Ecommerce.exception.CamposInvalidosException;
@@ -29,7 +26,7 @@ public class CiudadController {
     @PostMapping("/")
     public ResponseEntity<String> crearCiudad(@RequestBody CiudadModel ciudad) {
         //Verificar si la ciudad y el departamento ya existe
-        DepartamentoModel departamento = departamentoService.obtenerDepartamentoPorId(ciudad.getIdDepartamento().getIdDepartamento())
+        departamentoService.obtenerDepartamentoPorId(ciudad.getIdDepartamento().getIdDepartamento())
                 .orElseThrow(()-> new RecursoNoEncontradoException("El departamento no existe."));
 
         Optional<CiudadModel> verificacion = ciudadService.obtenerCiudadPorId(ciudad.getIdCiudad());

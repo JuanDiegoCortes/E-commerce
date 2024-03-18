@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.CiudadModel;
 import com.Ecommerce.model.EnvioModel;
 import com.Ecommerce.model.enums.ModalidadEntrega;
 import com.Ecommerce.service.ICiudadService;
@@ -13,7 +12,6 @@ import com.Ecommerce.service.IEnvioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,7 +26,7 @@ public class EnvioController {
     @PostMapping("/")
     public ResponseEntity<String> crearEnvio(@RequestBody EnvioModel envio) {
         //Verificar si el envio ya existe
-        CiudadModel ciudad = ciudadService.obtenerCiudadPorId(envio.getIdCiudad().getIdCiudad())
+        ciudadService.obtenerCiudadPorId(envio.getIdCiudad().getIdCiudad())
                 .orElseThrow(()-> new RecursoNoEncontradoException("La ciudad no existe."));
 
         Optional<EnvioModel> verificacion = envioService.obtenerEnvioPorId(envio.getIdEnvio());

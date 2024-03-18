@@ -1,20 +1,14 @@
 package com.Ecommerce.controller;
 
 import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.OrdenModel;
 import com.Ecommerce.model.OrdenProdModel;
-import com.Ecommerce.model.ProductoModel;
 import com.Ecommerce.service.IOrdenProdService;
-import com.Ecommerce.service.IOrdenService;
-import com.Ecommerce.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/Ecommerce/v1/ordenProd")
@@ -22,10 +16,6 @@ import java.util.Optional;
 public class OrdenProdController {
     @Autowired
     private IOrdenProdService ordenProdService;
-    @Autowired
-    private IOrdenService ordenService;
-    @Autowired
-    private IProductoService productoService;
 
     @PostMapping("/")
     public ResponseEntity<String> crearOrdenProd(@RequestBody OrdenProdModel ordenProd) {

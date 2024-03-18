@@ -3,15 +3,12 @@ package com.Ecommerce.controller;
 
 import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.CategoriaModel;
-import com.Ecommerce.model.RolModel;
 import com.Ecommerce.model.UsuarioModel;
 import com.Ecommerce.service.IRolService;
 import com.Ecommerce.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +26,7 @@ public class UsuarioController {
     @PostMapping("/")
     public ResponseEntity<String> crearUsuario(@RequestBody UsuarioModel usuario) {
         //Verificar si el usuario ya existe
-        RolModel rol = rolService.obtenerRolPorId(usuario.getIdRol().getIdRol())
+        rolService.obtenerRolPorId(usuario.getIdRol().getIdRol())
                 .orElseThrow(()-> new RecursoNoEncontradoException("El rol no existe."));
 
         Optional<UsuarioModel> verificacion = usuarioService.obtenerUsuarioPorId(usuario.getCedula());

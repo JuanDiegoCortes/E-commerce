@@ -4,7 +4,6 @@ import com.Ecommerce.model.CategoriaModel;
 import com.Ecommerce.model.enums.Genero;
 import com.Ecommerce.model.enums.TipoProducto;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

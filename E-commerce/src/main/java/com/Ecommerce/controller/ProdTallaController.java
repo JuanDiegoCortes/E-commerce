@@ -2,19 +2,13 @@ package com.Ecommerce.controller;
 
 import com.Ecommerce.exception.RecursoNoEncontradoException;
 import com.Ecommerce.model.ProdTallaModel;
-import com.Ecommerce.model.ProductoModel;
-import com.Ecommerce.model.TallaModel;
 import com.Ecommerce.service.IProdTallaService;
-import com.Ecommerce.service.IProductoService;
-import com.Ecommerce.service.ITallaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/Ecommerce/v1/prodTalla")
@@ -22,10 +16,6 @@ import java.util.Optional;
 public class ProdTallaController {
     @Autowired
     private IProdTallaService prodTallaService;
-    @Autowired
-    private IProductoService productoService;
-    @Autowired
-    private ITallaService tallaService;
 
     @PostMapping("/")
     public ResponseEntity<String> crearProdTalla(@RequestBody ProdTallaModel prodTalla) {
