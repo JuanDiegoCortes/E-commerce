@@ -14,7 +14,7 @@ import com.Ecommerce.exception.RecursoNoEncontradoException;
 import com.Ecommerce.model.DepartamentoModel;
 import com.Ecommerce.service.IDepartamentoService;
 
-@Controller
+@RestController
 @RequestMapping("/Ecommerce/v1/departamento")
 @CrossOrigin
 public class DepartamentoController {

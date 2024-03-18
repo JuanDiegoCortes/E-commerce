@@ -16,7 +16,7 @@ import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
 import com.Ecommerce.service.IComentarioService;
 
-@Controller
+@RestController
 @RequestMapping("/Ecommerce/v1/comentario")
 @CrossOrigin
 public class ComentarioController {

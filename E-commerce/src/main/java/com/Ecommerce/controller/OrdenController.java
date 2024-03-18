@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/Ecommerce/v1/orden")
 @CrossOrigin
 public class OrdenController {

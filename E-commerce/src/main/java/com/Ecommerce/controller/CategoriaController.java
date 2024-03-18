@@ -16,7 +16,7 @@ import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
 import com.Ecommerce.service.ICategoriaService;
 
-@Controller
+@RestController
 @RequestMapping("/Ecommerce/v1/categoria")
 @CrossOrigin
 public class CategoriaController {

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/Ecommerce/v1/ciudDepto")
 @CrossOrigin
 public class CiudDeptoController {

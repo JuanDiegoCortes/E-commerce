@@ -18,7 +18,7 @@ import com.Ecommerce.exception.RecursoNoEncontradoException;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/Ecommerce/v1/disenoP")
 @CrossOrigin
 public class DisenoPController {

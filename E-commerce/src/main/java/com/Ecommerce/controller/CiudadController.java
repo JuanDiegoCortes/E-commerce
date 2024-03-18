@@ -17,7 +17,7 @@ import com.Ecommerce.exception.CamposInvalidosException;
 import com.Ecommerce.exception.RecursoNoEncontradoException;
 import com.Ecommerce.service.ICiudadService;
 
-@Controller
+@RestController
 @RequestMapping("/Ecommerce/v1/ciudad")
 @CrossOrigin
 public class CiudadController {

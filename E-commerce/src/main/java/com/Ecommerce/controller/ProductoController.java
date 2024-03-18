@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/Ecommerce/v1/producto")
 @CrossOrigin
 public class ProductoController {
