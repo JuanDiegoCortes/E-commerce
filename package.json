@@ -1,0 +1,12 @@
+{
+  "name": "computer_engineering_project_1",
+  "version": "1.0.0",
+  "description": "This is the space to save all files than I need to create our e-commerce project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
