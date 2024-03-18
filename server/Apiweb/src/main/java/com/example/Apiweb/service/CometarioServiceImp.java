@@ -1,7 +1,7 @@
-package com.Ecommerce.service;
+package com.example.Apiweb.service;
 
-import com.Ecommerce.model.ComentarioModel;
-import com.Ecommerce.repository.IComentarioRepository;
+import com.example.Apiweb.model.ComentarioModel;
+import com.example.Apiweb.repository.IComentarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

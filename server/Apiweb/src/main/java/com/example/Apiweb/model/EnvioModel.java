@@ -1,6 +1,6 @@
-package com.Ecommerce.model;
+package com.example.Apiweb.model;
 
-import com.Ecommerce.model.enums.ModalidadEntrega;
+import com.example.Apiweb.model.enums.ModalidadEntrega;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
-package com.Ecommerce.model;
+package com.example.Apiweb.model;
 
-import com.Ecommerce.model.enums.Genero;
-import com.Ecommerce.model.enums.TipoProducto;
+import com.example.Apiweb.model.enums.Genero;
+import com.example.Apiweb.model.enums.TipoProducto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

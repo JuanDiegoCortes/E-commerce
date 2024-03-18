@@ -1,7 +1,7 @@
-package com.Ecommerce.service;
+package com.example.Apiweb.service;
 
-import com.Ecommerce.model.TallaModel;
-import com.Ecommerce.repository.ITallaRepository;
+import com.example.Apiweb.model.TallaModel;
+import com.example.Apiweb.repository.ITallaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

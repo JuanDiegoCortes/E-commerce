@@ -1,7 +1,7 @@
-package com.Ecommerce.service;
+package com.example.Apiweb.service;
 
-import com.Ecommerce.model.DepartamentoModel;
-import com.Ecommerce.repository.IDepartamentoRepository;
+import com.example.Apiweb.model.DepartamentoModel;
+import com.example.Apiweb.repository.IDepartamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

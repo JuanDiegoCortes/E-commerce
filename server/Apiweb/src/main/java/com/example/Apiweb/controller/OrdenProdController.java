@@ -1,8 +1,8 @@
-package com.Ecommerce.controller;
+package com.example.Apiweb.controller;
 
-import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.OrdenProdModel;
-import com.Ecommerce.service.IOrdenProdService;
+import com.example.Apiweb.exception.RecursoNoEncontradoException;
+import com.example.Apiweb.model.OrdenProdModel;
+import com.example.Apiweb.service.IOrdenProdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,9 +1,9 @@
-package com.Ecommerce.domain;
+package com.example.Apiweb.domain;
 
-import com.Ecommerce.model.EnvioModel;
-import com.Ecommerce.model.UsuarioModel;
-import com.Ecommerce.model.enums.Estado;
-import com.Ecommerce.model.enums.MetodoPago;
+import com.example.Apiweb.model.EnvioModel;
+import com.example.Apiweb.model.UsuarioModel;
+import com.example.Apiweb.model.enums.Estado;
+import com.example.Apiweb.model.enums.MetodoPago;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;

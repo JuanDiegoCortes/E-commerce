@@ -1,16 +1,15 @@
-package com.Ecommerce.controller;
+package com.example.Apiweb.controller;
 
-import com.Ecommerce.domain.OrdenDTO;
-import com.Ecommerce.exception.CamposInvalidosException;
-import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.*;
-import com.Ecommerce.model.enums.Estado;
-import com.Ecommerce.model.enums.MetodoPago;
-import com.Ecommerce.service.*;
+import com.example.Apiweb.domain.OrdenDTO;
+import com.example.Apiweb.exception.CamposInvalidosException;
+import com.example.Apiweb.exception.RecursoNoEncontradoException;
+import com.example.Apiweb.model.*;
+import com.example.Apiweb.model.enums.Estado;
+import com.example.Apiweb.model.enums.MetodoPago;
+import com.example.Apiweb.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;

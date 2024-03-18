@@ -1,19 +1,19 @@
-package com.Ecommerce.controller;
+package com.example.Apiweb.controller;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.Ecommerce.model.*;
-import com.Ecommerce.service.IDisenoPService;
-import com.Ecommerce.service.IUsuarioService;
+import com.example.Apiweb.model.*;
+import com.example.Apiweb.service.IDisenoPService;
+import com.example.Apiweb.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.Ecommerce.exception.CamposInvalidosException;
-import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.service.IComentarioService;
+import com.example.Apiweb.exception.CamposInvalidosException;
+import com.example.Apiweb.exception.RecursoNoEncontradoException;
+import com.example.Apiweb.service.IComentarioService;
 
 @RestController
 @RequestMapping("/Ecommerce/v1/comentario")

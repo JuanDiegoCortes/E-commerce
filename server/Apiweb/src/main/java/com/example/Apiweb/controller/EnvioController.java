@@ -1,14 +1,14 @@
-package com.Ecommerce.controller;
+package com.example.Apiweb.controller;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.Ecommerce.exception.CamposInvalidosException;
-import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.EnvioModel;
-import com.Ecommerce.model.enums.ModalidadEntrega;
-import com.Ecommerce.service.ICiudadService;
-import com.Ecommerce.service.IEnvioService;
+import com.example.Apiweb.exception.CamposInvalidosException;
+import com.example.Apiweb.exception.RecursoNoEncontradoException;
+import com.example.Apiweb.model.EnvioModel;
+import com.example.Apiweb.model.enums.ModalidadEntrega;
+import com.example.Apiweb.service.ICiudadService;
+import com.example.Apiweb.service.IEnvioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +60,7 @@ public class EnvioController {
         //obtenemos los datos que se van actualizar del envío y que son enviados del json
         String nombreActualizar = detallesEnvio.getDireccion();
         String nombreActualizar2 = detallesEnvio.getTelefono();
-        ModalidadEntrega nombreActualizar3= detallesEnvio.getModalidadEntrega();
+        ModalidadEntrega nombreActualizar3 = detallesEnvio.getModalidadEntrega();
 
 
         //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion

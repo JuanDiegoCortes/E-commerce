@@ -1,6 +1,6 @@
-package com.Ecommerce.service;
+package com.example.Apiweb.service;
 
-import com.Ecommerce.model.ComentarioModel;
+import com.example.Apiweb.model.ComentarioModel;
 
 import java.util.List;
 import java.util.Optional;

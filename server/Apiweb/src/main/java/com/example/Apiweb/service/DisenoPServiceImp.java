@@ -1,7 +1,7 @@
-package com.Ecommerce.service;
+package com.example.Apiweb.service;
 
-import com.Ecommerce.model.DisenoPModel;
-import com.Ecommerce.repository.IDisenoPRepository;
+import com.example.Apiweb.model.DisenoPModel;
+import com.example.Apiweb.repository.IDisenoPRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

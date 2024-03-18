@@ -1,9 +1,9 @@
-package com.Ecommerce.controller;
+package com.example.Apiweb.controller;
 
-import com.Ecommerce.exception.CamposInvalidosException;
-import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.model.RolModel;
-import com.Ecommerce.service.IRolService;
+import com.example.Apiweb.exception.CamposInvalidosException;
+import com.example.Apiweb.exception.RecursoNoEncontradoException;
+import com.example.Apiweb.model.RolModel;
+import com.example.Apiweb.service.IRolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

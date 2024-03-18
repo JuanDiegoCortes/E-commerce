@@ -1,7 +1,7 @@
-package com.Ecommerce.service;
+package com.example.Apiweb.service;
 
-import com.Ecommerce.model.RolModel;
-import com.Ecommerce.repository.IRolRepository;
+import com.example.Apiweb.model.RolModel;
+import com.example.Apiweb.repository.IRolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

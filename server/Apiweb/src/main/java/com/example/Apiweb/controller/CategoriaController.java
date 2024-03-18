@@ -1,20 +1,19 @@
-package com.Ecommerce.controller;
+package com.example.Apiweb.controller;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.Ecommerce.domain.CategoriaDTO;
-import com.Ecommerce.model.*;
+import com.example.Apiweb.domain.CategoriaDTO;
+import com.example.Apiweb.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import com.Ecommerce.exception.CamposInvalidosException;
-import com.Ecommerce.exception.RecursoNoEncontradoException;
-import com.Ecommerce.service.ICategoriaService;
+import com.example.Apiweb.exception.CamposInvalidosException;
+import com.example.Apiweb.exception.RecursoNoEncontradoException;
+import com.example.Apiweb.service.ICategoriaService;
 
 @RestController
 @RequestMapping("/Ecommerce/v1/categoria")

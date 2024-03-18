@@ -1,7 +1,7 @@
-package com.Ecommerce.service;
+package com.example.Apiweb.service;
 
-import com.Ecommerce.model.CiudadModel;
-import com.Ecommerce.repository.ICiudadRepository;
+import com.example.Apiweb.model.CiudadModel;
+import com.example.Apiweb.repository.ICiudadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
-package com.Ecommerce.model;
+package com.example.Apiweb.model;
 
-import com.Ecommerce.model.enums.Estado;
-import com.Ecommerce.model.enums.MetodoPago;
+import com.example.Apiweb.model.enums.Estado;
+import com.example.Apiweb.model.enums.MetodoPago;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

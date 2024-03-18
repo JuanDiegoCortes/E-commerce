@@ -1,7 +1,7 @@
-package com.Ecommerce.service;
+package com.example.Apiweb.service;
 
-import com.Ecommerce.model.EnvioModel;
-import com.Ecommerce.repository.IEnvioRepository;
+import com.example.Apiweb.model.EnvioModel;
+import com.example.Apiweb.repository.IEnvioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

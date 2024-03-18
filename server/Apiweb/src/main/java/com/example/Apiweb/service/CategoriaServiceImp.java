@@ -1,7 +1,7 @@
-package com.Ecommerce.service;
+package com.example.Apiweb.service;
 
-import com.Ecommerce.model.CategoriaModel;
-import com.Ecommerce.repository.ICategoriaRepository;
+import com.example.Apiweb.model.CategoriaModel;
+import com.example.Apiweb.repository.ICategoriaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;

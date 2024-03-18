@@ -1,4 +1,4 @@
-package com.Ecommerce.exception;
+package com.example.Apiweb.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

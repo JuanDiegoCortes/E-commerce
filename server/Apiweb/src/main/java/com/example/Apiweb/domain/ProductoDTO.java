@@ -1,8 +1,8 @@
-package com.Ecommerce.domain;
+package com.example.Apiweb.domain;
 
-import com.Ecommerce.model.CategoriaModel;
-import com.Ecommerce.model.enums.Genero;
-import com.Ecommerce.model.enums.TipoProducto;
+import com.example.Apiweb.model.CategoriaModel;
+import com.example.Apiweb.model.enums.Genero;
+import com.example.Apiweb.model.enums.TipoProducto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;

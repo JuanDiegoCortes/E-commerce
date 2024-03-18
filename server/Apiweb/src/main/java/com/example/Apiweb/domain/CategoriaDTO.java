@@ -1,9 +1,7 @@
-package com.Ecommerce.domain;
+package com.example.Apiweb.domain;
 
-import com.Ecommerce.model.CategoriaModel;
+import com.example.Apiweb.model.CategoriaModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
