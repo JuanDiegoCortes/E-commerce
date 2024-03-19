@@ -21,6 +21,9 @@ public class ProductoModel {
     private String descripcion;
     private Float precio;
     private String image_Url;
+
+    @Column(name = "Estado")
+    @Enumerated(EnumType.STRING)
     private Estado estado;
 
     @Column(name = "Genero")
