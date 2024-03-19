@@ -7,6 +7,8 @@ import com.example.Apiweb.model.CategoriaModel;
 import com.example.Apiweb.model.ProdTallaModel;
 import com.example.Apiweb.model.ProductoModel;
 import com.example.Apiweb.model.TallaModel;
+import com.example.Apiweb.model.enums.Estado;
+import com.example.Apiweb.model.enums.Genero;
 import com.example.Apiweb.service.ICategoriaService;
 import com.example.Apiweb.service.IProdTallaService;
 import com.example.Apiweb.service.IProductoService;
@@ -51,7 +53,7 @@ public class ProductoController {
         producto.setNombre(productoDTO.getNombre());
         producto.setDescripcion(productoDTO.getDescripcion());
         producto.setPrecio(productoDTO.getPrecio());
-        producto.setIsActive(productoDTO.getIsActive());
+        producto.setEstado(productoDTO.getEstado());
         producto.setImage_Url(productoDTO.getImage_Url());
         producto.setGenero(productoDTO.getGenero());
         producto.setTipoProducto(productoDTO.getTipoProducto());
@@ -115,7 +117,7 @@ public class ProductoController {
         String nombreActualizar = detallesProducto.getNombre();
         String nombreActualizar2 = detallesProducto.getDescripcion();
         Float nombreActualizar3= detallesProducto.getPrecio();
-        Boolean nombreActualizar4= detallesProducto.getIsActive();
+        Estado nombreActualizar4= detallesProducto.getEstado();
         String nombreActualizar5= detallesProducto.getImage_Url();
 
         //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
@@ -124,7 +126,7 @@ public class ProductoController {
             producto.setNombre(nombreActualizar);
             producto.setDescripcion(nombreActualizar2);
             producto.setPrecio(nombreActualizar3);
-            producto.setIsActive(nombreActualizar4);
+            producto.setEstado(nombreActualizar4);
             producto.setImage_Url(nombreActualizar5);
 
             //guardamos los cambios
@@ -133,5 +135,11 @@ public class ProductoController {
         else{
             throw new CamposInvalidosException("Error! El nombre, la descripción, el precio, el estado y la Imagen URL del producto no pueden estar vacios");
         }
+    }
+
+    //Filtrar por genero
+    @PutMapping("/{genero}")
+    public List<ProductoModel> filtrarPorGenero(@PathVariable Genero genero) {
+        return productoService.filtrarPorGenero(genero);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.Apiweb.model;
 
+import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.model.enums.Genero;
 import com.example.Apiweb.model.enums.TipoProducto;
 import jakarta.persistence.*;
@@ -19,8 +20,8 @@ public class ProductoModel {
     private String nombre;
     private String descripcion;
     private Float precio;
-    private Boolean isActive;
     private String image_Url;
+    private Estado estado;
 
     @Column(name = "Genero")
     @Enumerated(EnumType.STRING)
