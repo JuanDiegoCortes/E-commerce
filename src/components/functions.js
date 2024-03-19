@@ -95,6 +95,8 @@ const productoController = {
       })
       .then(productos => {
         console.log('Productos filtrados por género:', productos);
+        // Mostrar los productos filtrados
+        this.mostrarProductos();
       })
       .catch(error => {
         console.error('Error al filtrar productos por género:', error);

@@ -21,5 +21,5 @@ mujeresBtn.addEventListener('click', () => {
 });
 
 niñosBtn.addEventListener('click', () => {
-  productoController.filtrarPorGenero('NIÑO');
+  productoController.filtrarPorGenero('NINO');
 });
