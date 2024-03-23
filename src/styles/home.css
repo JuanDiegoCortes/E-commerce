@@ -4,113 +4,17 @@ body {
     font-family: Arial, sans-serif;
 }
 
-main {
-    display: flex;
-}
-
 /* Estilos para el nav principal */
-.main-nav {
+.menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #333;
     color: #fff;
-    padding: 0px 20px; /* Reducir el padding para ajustar a las instrucciones */
-    border-bottom: 4px solid #ff6600;
+    padding: 20px; /* Aumentar el padding para un mejor espacio */
 }
 
-/* Estilos para el filtro de categorías */
-.category-filter {
-    display: flex;
-    padding: 10px;
-}
-
-.dropdown {
-    position: relative;
-}
-
-.dropdown-btn {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    text-align: left;
-}
-
-.dropdown-btn:hover {
-    background-color: #ff6600;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.dropdown-content a {
-    color: #333;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s ease;
-}
-
-.dropdown-content a:hover {
-    background-color: #ff6600;
-    color: #fff;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/*Esilos para la barra de busqueda */
-.search {
-    display: flex;
-    align-items: center;
-}
-
-.search-bar img {
-    width: 30px;
-    height: auto;
-}
-
-.search-bar {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 0px 5px;
-}
-
-.search-bar input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 5px;
-    margin-right: 10px;
-}
-
-.search-bar button {
-    background-color: transparent;
-    border: none;
-    color: #333;
-    cursor: pointer;
-    padding: 5px;
-}
-
-/*Estilos para la lista de opciones inicio, sobre nosotros, contacto, carrito*/
+/* Estilos para la lista de opciones inicio, sobre nosotros, contacto, carrito */
 .nav-menu {
     display: flex;
     list-style: none;
@@ -129,16 +33,16 @@ main {
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
     font-size: 16px;
     font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
 }
 
 .nav-menu li a:hover {
     background-color: #ff6600;
 }
 
-/*Estilo para el boton de login*/
+/* Estilo para el boton de login */
 .login-container {
     margin-left: auto; /* Mover el contenedor de login a la derecha */
 }
@@ -149,24 +53,94 @@ main {
     padding: 10px 15px;
     border-radius: 5px;
     background-color: #ff6600;
-    transition: background-color 0.3s ease;
     font-size: 16px;
     font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
 }
 
 .login-link:hover {
     background-color: #e65c00;
+    transform: scale(1.05); /* Animación de botón de login */
 }
 
-/* Estilos para la sección de productos */
+/* Estilos para el main */
+main {
+    display: flex;
+    flex-direction: row; /* Establecer la dirección de los elementos hijos */
+    height: 100vh; /* Hacer que el main ocupe toda la altura de la ventana */
+}
+
+/* Estilos para el aside */
+aside {
+    background-color: #333;
+    width: 200px; /* Definir el ancho del aside */
+    flex: 0 0 auto; /* No permitir que el aside crezca o se encoja */
+}
+
+/* Estilos para la barra de busqueda */
+.categorys {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.boton-categoria {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transiciones suaves */
+}
+
+.boton-categoria:hover {
+    background-color: #555;
+}
+
+.active {
+    background-color: #555;
+}
+
+/* Estilos para el product-section */
 .product-section {
     flex: 1;
     padding: 20px;
+    border-left: 4px solid #ff6600;
+    border-top: 4px solid #ff6600;
 }
 
-.product-grid {
+.product-section .principal-tittle {
+    font-size: 24px; /* Tamaño de fuente para el título principal */
+    margin-bottom: 20px; /* Espaciado inferior para separar el título de la cuadrícula de productos */
+}
+
+.product-section .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    padding: 20px 0;
+}
+
+.product-section .product-grid > * {
+    background-color: #ffffff; /* Color de fondo para los elementos */
+    padding: 15px; /* Espaciado interno para los elementos */
+    border-radius: 8px; /* Añadir bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para resaltar los elementos */
+}
+
+/* Optimización para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+    .login-container {
+        margin: 20px 0;
+    }
+    .nav-menu li {
+        margin: 10px 0;
+    }
 }
