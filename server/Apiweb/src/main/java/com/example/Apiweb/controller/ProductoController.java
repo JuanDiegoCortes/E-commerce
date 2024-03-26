@@ -9,7 +9,6 @@ import com.example.Apiweb.model.ProductoModel;
 import com.example.Apiweb.model.TallaModel;
 import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.model.enums.Genero;
-import com.example.Apiweb.repository.IProductoRepository;
 import com.example.Apiweb.service.ICategoriaService;
 import com.example.Apiweb.service.IProdTallaService;
 import com.example.Apiweb.service.IProductoService;
