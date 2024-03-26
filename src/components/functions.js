@@ -45,6 +45,29 @@ const productoController = {
         console.error('Error al filtrar productos por género:', error);
       });
     },
+
+    filtrarPorCategoria: function(categoria) {
+      fetch(`http://localhost:8080/Apiweb/v1/producto/${categoria}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error al filtrar productos por categoria');
+        }
+        return response.json();
+      })
+      .then(productos => {
+        console.log('Productos filtrados por categoria:', productos);
+        // Mostrar los productos filtrados
+        this.mostrarProductos();
+      })
+      .catch(error => {
+        console.error('Error al filtrar productos por género:', error);
+      });
+    },
   
     crearProducto: function(productoDTO) {
       fetch('http://localhost:8080/Apiweb/v1/producto/', {

@@ -125,3 +125,21 @@ function actualizarNumerito() {
     let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
     numerito.innerText = nuevoNumerito;
 }
+
+document.getElementById("boton-ropa-personalizacion").addEventListener("click", function() {
+    var dropdownContent = document.getElementById("contenido-personalizacion");
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+
+  document.getElementById("boton-ropa-sin-personalizacion").addEventListener("click", function() {
+    var dropdownContent = document.getElementById("contenido-sin-personalizacion");
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });

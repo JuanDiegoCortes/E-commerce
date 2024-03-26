@@ -51,7 +51,31 @@
             </footer>
         </aside>
         <main>
-            <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
+            <div class="principal-titulo-filtro">
+                <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
+                <div class="dropdown">
+                    <button class="boton-ropa-sin-personalizacion" id="boton-ropa-sin-personalizacion">Normal</button>
+                    <div id="contenido-sin-personalizacion" class="contenido-sin-personalizacion">
+                        <button>Todo</button>
+                        <button>Camisetas</button>
+                        <button>Chaquetas</button>
+                        <button>Buzos</button>
+                        <button>Polos</button>
+                        <button>Maletas</button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="boton-ropa-personalizacion" id="boton-ropa-personalizacion">Personalizada</button>
+                    <div id="contenido-personalizacion" class="contenido-personalizacion">
+                        <button>Todo</button>
+                        <button>Camisetas</button>
+                        <button>Chaquetas</button>
+                        <button>Buzos</button>
+                        <button>Polos</button>
+                        <button>Maletas</button>
+                    </div>
+                </div>
+            </div>
             <div id="contenedor-productos" class="contenedor-productos">
                 <!-- Esto se va a rellenar con JS -->
             </div>
