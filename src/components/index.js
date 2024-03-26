@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Obtener referencia a los elementos de género
-const hombresBtn = document.querySelector('.dropdown-content a:nth-child(1)');
-const mujeresBtn = document.querySelector('.dropdown-content a:nth-child(2)');
-const niñosBtn = document.querySelector('.dropdown-content a:nth-child(3)');
+const hombresBtn = document.querySelector('');
+const mujeresBtn = document.querySelector('');
+const niñosBtn = document.querySelector('');
 
 // Agregar eventos de clic a los botones de género
 hombresBtn.addEventListener('click', () => {

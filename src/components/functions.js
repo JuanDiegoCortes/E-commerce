@@ -3,7 +3,7 @@ const productoController = {
       fetch('http://localhost:8080/Apiweb/v1/producto/')
         .then(response => response.json())
         .then(datos => {
-          const productGrid = document.querySelector('.product-grid');
+          const productGrid = document.querySelector('#contenedor-productos');
           productGrid.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
           datos.forEach(producto => {
             const productoElement = document.createElement('div');

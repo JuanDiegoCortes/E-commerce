@@ -1,2 +1,0 @@
-Aqui pues van los estilos de cada cosa que vayamos a crear jajajaja.
-Home.css, etc.

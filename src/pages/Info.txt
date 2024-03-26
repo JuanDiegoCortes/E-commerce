@@ -1,4 +1,0 @@
-Aqui van las paginas como tal, segun observo en el ejemplo,
-Va el Home.js o bien podria ser directamente un Home.html.
-Tambien esta un ProductDetail.js,
-Cart.js.
