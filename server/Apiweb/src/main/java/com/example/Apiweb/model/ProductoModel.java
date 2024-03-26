@@ -2,7 +2,6 @@ package com.example.Apiweb.model;
 
 import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.model.enums.Genero;
-import com.example.Apiweb.model.enums.TipoProducto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,10 +28,6 @@ public class ProductoModel {
     @Column(name = "Genero")
     @Enumerated(EnumType.STRING)
     private Genero genero;
-
-    @Column(name = "tipoProducto")
-    @Enumerated(EnumType.STRING)
-    private TipoProducto tipoProducto;
 
     @ManyToOne
     @JoinColumn(name = "idCategoria")

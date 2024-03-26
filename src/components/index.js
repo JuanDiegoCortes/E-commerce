@@ -3,7 +3,7 @@ import productoController from "./functions";
 
 //Metodo que muestra los productos en la pagina apenas abra
 document.addEventListener('DOMContentLoaded', function() {
-  obtenerProductos();
+  productoController.mostrarProductos();
 });
 
 // Obtener referencia a los elementos de género

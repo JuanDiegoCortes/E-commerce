@@ -3,21 +3,47 @@ const productoController = {
       fetch('http://localhost:8080/Apiweb/v1/producto/')
         .then(response => response.json())
         .then(datos => {
-          const productGrid = document.querySelector('#contenedor-productos');
-          productGrid.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
+          const contenedorProductos = document.querySelector('#contenedor-productos');
+          contenedorProductos.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
           datos.forEach(producto => {
             const productoElement = document.createElement('div');
             productoElement.classList.add('producto');
             productoElement.innerHTML = `
               <img src="${producto.image_Url}" alt="${producto.nombre}">
-              <h3>${producto.nombre}</h3>
-              <p>${producto.descripcion}</p>
-              <p>Precio: ${producto.precio}</p>
+              <div class="producto-detalles">
+                <h3 class="producto-titulo">${producto.nombre}</h3>
+                <p>${producto.descripcion}</p>
+                <p class="producto-precio">Precio: ${producto.precio}</p>
+                <button class="producto-agregar" id="${producto.id}">Agregar</button>
+              </div>
             `;
-            productGrid.appendChild(productoElement);
+            contenedorProductos.appendChild(productoElement);
           });
         })
         .catch(error => console.error('Error:', error));
+    },
+
+    filtrarPorGenero: function(genero) {
+      fetch(`http://localhost:8080/Apiweb/v1/producto/${genero}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error al filtrar productos por género');
+        }
+        return response.json();
+      })
+      .then(productos => {
+        console.log('Productos filtrados por género:', productos);
+        // Mostrar los productos filtrados
+        this.mostrarProductos();
+      })
+      .catch(error => {
+        console.error('Error al filtrar productos por género:', error);
+      });
     },
   
     crearProducto: function(productoDTO) {
@@ -77,29 +103,6 @@ const productoController = {
       })
       .catch(error => {
         console.error('Error al obtener el producto:', error);
-      });
-    },
-  
-    filtrarPorGenero: function(genero) {
-      fetch(`http://localhost:8080/Apiweb/v1/producto/${genero}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error al filtrar productos por género');
-        }
-        return response.json();
-      })
-      .then(productos => {
-        console.log('Productos filtrados por género:', productos);
-        // Mostrar los productos filtrados
-        this.mostrarProductos();
-      })
-      .catch(error => {
-        console.error('Error al filtrar productos por género:', error);
       });
     }
 };

@@ -1,5 +1,7 @@
 package com.example.Apiweb.service;
 
+import com.example.Apiweb.domain.CategoriaDTO;
+import com.example.Apiweb.model.CategoriaModel;
 import com.example.Apiweb.model.ProductoModel;
 import com.example.Apiweb.model.enums.Genero;
 import com.example.Apiweb.repository.IProductoRepository;
@@ -54,6 +56,13 @@ public class ProductoServiceImp implements IProductoService{
                 // Filtra los productos para que solo queden aquellos cuyo género coincida con el género especificado.
                 .filter(producto -> producto.getGenero().equals(genero))
                 // Recolecta los productos filtrados en una lista.
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductoModel> filtrarPorCategoria(CategoriaModel categoria) {
+        return productoRepository.findAll().stream()
+                .filter(producto -> producto.getIdCategoria().equals(categoria))
                 .collect(Collectors.toList());
     }
 }

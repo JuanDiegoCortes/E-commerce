@@ -1,5 +1,7 @@
 package com.example.Apiweb.service;
 
+import com.example.Apiweb.domain.CategoriaDTO;
+import com.example.Apiweb.model.CategoriaModel;
 import com.example.Apiweb.model.ProductoModel;
 import com.example.Apiweb.model.enums.Genero;
 
@@ -15,4 +17,5 @@ public interface IProductoService {
     String actualizarProductoPorId(ProductoModel producto);
 
     List<ProductoModel> filtrarPorGenero(Genero genero);
+    List<ProductoModel> filtrarPorCategoria(CategoriaModel categoria);
 }

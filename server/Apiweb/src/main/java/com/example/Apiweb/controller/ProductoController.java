@@ -9,6 +9,7 @@ import com.example.Apiweb.model.ProductoModel;
 import com.example.Apiweb.model.TallaModel;
 import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.model.enums.Genero;
+import com.example.Apiweb.repository.IProductoRepository;
 import com.example.Apiweb.service.ICategoriaService;
 import com.example.Apiweb.service.IProdTallaService;
 import com.example.Apiweb.service.IProductoService;
@@ -56,7 +57,6 @@ public class ProductoController {
         producto.setEstado(productoDTO.getEstado());
         producto.setImage_Url(productoDTO.getImage_Url());
         producto.setGenero(productoDTO.getGenero());
-        producto.setTipoProducto(productoDTO.getTipoProducto());
         producto.setIdCategoria(categoria);
 
         //Capturar las tallas y verificar que existan
@@ -141,5 +141,10 @@ public class ProductoController {
     @PutMapping("/{genero}")
     public List<ProductoModel> filtrarPorGenero(@PathVariable Genero genero) {
         return productoService.filtrarPorGenero(genero);
+    }
+
+    @PutMapping("/{categoria}")
+    public List<ProductoModel> filtrarPorCategoria(@PathVariable CategoriaModel categoria) {
+        return productoService.filtrarPorCategoria(categoria);
     }
 }

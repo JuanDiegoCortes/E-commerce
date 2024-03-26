@@ -3,7 +3,6 @@ package com.example.Apiweb.domain;
 import com.example.Apiweb.model.CategoriaModel;
 import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.model.enums.Genero;
-import com.example.Apiweb.model.enums.TipoProducto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
