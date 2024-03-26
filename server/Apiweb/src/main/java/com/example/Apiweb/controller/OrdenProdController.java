@@ -24,16 +24,16 @@ public class OrdenProdController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<OrdenProdModel>> listarCiudDepto(){
+    public ResponseEntity<List<OrdenProdModel>> listarOrdenProds(){
         List<OrdenProdModel> ordenProd = ordenProdService.listarOrdenProds();
         return new ResponseEntity<>(ordenProd, HttpStatus.OK);
     }
 
     //consultar una ciudDepto por Id
     @GetMapping("/{ordenProdId}")
-    public ResponseEntity<OrdenProdModel> buscarOrdenProd(@PathVariable Integer ordenPrdoId) {
-        OrdenProdModel ordenProd = this.ordenProdService.obtenerOrdenProdPorId(ordenPrdoId)
-                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la ordenProd con el id " + ordenPrdoId));
+    public ResponseEntity<OrdenProdModel> buscarOrdenProd(@PathVariable Integer ordenProdId) {
+        OrdenProdModel ordenProd = this.ordenProdService.obtenerOrdenProdPorId(ordenProdId)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la ordenProd con el id " + ordenProdId));
         return ResponseEntity.ok(ordenProd);
     }
 }
