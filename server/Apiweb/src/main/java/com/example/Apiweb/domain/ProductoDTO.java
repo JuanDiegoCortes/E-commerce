@@ -22,7 +22,6 @@ public class ProductoDTO {
     private String image_Url;
     private Estado estado;
     private Genero genero;
-    private TipoProducto tipoProducto;
     private CategoriaModel idCategoria;
 
     @JsonProperty("Tallas")
