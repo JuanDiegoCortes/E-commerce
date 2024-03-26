@@ -250,7 +250,7 @@ main {
     font-size: .75rem;
 }
 
-.carrito-producto-eliminar {
+.carrito-producto-eliminar, .carrito-producto-personalizacion {
     border: 0;
     background-color: transparent;
     color: var(--clr-red);
