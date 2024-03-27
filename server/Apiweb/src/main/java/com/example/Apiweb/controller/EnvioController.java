@@ -29,11 +29,6 @@ public class EnvioController {
         ciudadService.obtenerCiudadPorId(envio.getIdCiudad().getIdCiudad())
                 .orElseThrow(()-> new RecursoNoEncontradoException("La ciudad no existe."));
 
-        Optional<EnvioModel> verificacion = envioService.obtenerEnvioPorId(envio.getIdEnvio());
-        if (verificacion.isPresent()){
-            String mensaje = "Este envío ya existe.";
-            return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
-        }
         envioService.crearEnvio(envio);
         return new ResponseEntity<String>(envioService.crearEnvio(envio), HttpStatus.OK);
     }

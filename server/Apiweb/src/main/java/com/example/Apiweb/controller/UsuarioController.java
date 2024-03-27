@@ -25,10 +25,6 @@ public class UsuarioController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearUsuario(@RequestBody UsuarioModel usuario) {
-        //Verificar si el usuario ya existe
-        rolService.obtenerRolPorId(usuario.getIdRol().getIdRol())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El rol no existe."));
-
         Optional<UsuarioModel> verificacion = usuarioService.obtenerUsuarioPorId(usuario.getCedula());
         if (verificacion.isPresent()){
             String mensaje = "Este usuario ya existe.";
@@ -61,15 +57,13 @@ public class UsuarioController {
         Integer nombreActualizar = detallesUsuario.getCedula();
         String nombreActualizar2 = detallesUsuario.getNombre();
         String nombreActualizar3 = detallesUsuario.getCorreo();
-        String nombreActualizar4 = detallesUsuario.getContrasena();
 
         //Verificamos que estos campos actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar3 != null && !nombreActualizar3.isEmpty() && nombreActualizar4 != null && !nombreActualizar4.isEmpty()){
+        if (nombreActualizar !=null && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar3 != null && !nombreActualizar3.isEmpty()){
             //asignamos los valores que vamos actualizar de el usuario
             usuario.setCedula(nombreActualizar);
             usuario.setNombre(nombreActualizar2);
             usuario.setCorreo(nombreActualizar3);
-            usuario.setContrasena(nombreActualizar4);
             //guardamos los cambios
             return new ResponseEntity<String>(usuarioService.actualizarUsuarioPorId(usuario),HttpStatus.OK);
         }

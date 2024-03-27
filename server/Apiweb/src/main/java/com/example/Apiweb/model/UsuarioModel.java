@@ -15,9 +15,4 @@ public class UsuarioModel {
     private Integer cedula;
     private String nombre;
     private String correo;
-    private String contrasena;
-
-    @ManyToOne
-    @JoinColumn(name = "idRol")
-    private RolModel idRol;
 }

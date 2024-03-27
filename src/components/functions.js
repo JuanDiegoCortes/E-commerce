@@ -1,4 +1,4 @@
-const productoController = {
+/*const productoController = {
     mostrarProductos: function() {
       fetch('http://localhost:8080/Apiweb/v1/producto/')
         .then(response => response.json())
@@ -131,4 +131,4 @@ const productoController = {
 };
   
 export default productoController;
-  
+*/

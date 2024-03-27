@@ -13,9 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/Apiweb/v1/orden")
@@ -37,11 +37,8 @@ public class OrdenController {
         //Verificar si la orden ya existe
         boolean bandera = true;
 
-        Optional<OrdenModel> verificacion = ordenService.obtenerOrdenPorId(ordenDTO.getIdOrden());
-        if (verificacion.isPresent()){
-            String mensaje = "Esta orden ya existe.";
-            return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
-        }
+        // Obtener la fecha actual
+        Date fechaActual = new Date();
 
         EnvioModel envio = envioService.obtenerEnvioPorId(ordenDTO.getIdEnvio().getIdEnvio())
                 .orElseThrow(()-> new RecursoNoEncontradoException("El envio no existe."));
@@ -50,7 +47,7 @@ public class OrdenController {
 
         //Crear instancia de un ordenModel
         OrdenModel orden = new OrdenModel();
-        orden.setFecha(ordenDTO.getFecha());
+        orden.setFecha(fechaActual);
         orden.setEstado(ordenDTO.getEstado());
         orden.setMetodoPago(ordenDTO.getMetodoPago());
         orden.setPrecioTotal(ordenDTO.getPrecioTotal());
@@ -75,10 +72,11 @@ public class OrdenController {
             for (Map<String, Integer> Productos : listarProductos) {
                 Integer idProducto = Productos.get("idProducto");
                 OrdenProdModel ordenProd = new OrdenProdModel();
+                Integer cantidad = Productos.get("cantidad");
                 ProductoModel producto = productoService.obtenerProductoPorId(idProducto).get();
                 ordenProd.setIdProducto(producto);
                 ordenProd.setIdOrden(orden);
-                ordenProd.setCantidad(ordenProd.getCantidad());
+                ordenProd.setCantidad(cantidad);
                 ordenProd.setOrdenPersonalizacion(ordenProd.getOrdenPersonalizacion());
                 this.ordenProdService.crearOrdenProd(ordenProd);
             }

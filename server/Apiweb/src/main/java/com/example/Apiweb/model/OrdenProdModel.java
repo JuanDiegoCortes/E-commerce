@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="OrdenProdModel")
+@Table(name="OrdenProd")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,6 +23,6 @@ public class OrdenProdModel {
     @JoinColumn(name = "idProducto")
     private ProductoModel idProducto;
 
-    private String cantidad;
+    private Integer cantidad;
     private String ordenPersonalizacion;
 }

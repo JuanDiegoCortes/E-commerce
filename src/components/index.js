@@ -1,4 +1,4 @@
-import productoController from "./functions";
+/*import productoController from "./functions";
 //Logica de los botones y de mas elementos que no son directamente metodos
 
 //Metodo que muestra los productos en la pagina apenas abra
@@ -23,3 +23,4 @@ mujeresBtn.addEventListener('click', () => {
 niñosBtn.addEventListener('click', () => {
   productoController.filtrarPorGenero('NINO');
 });
+*/
