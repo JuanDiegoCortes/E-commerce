@@ -1,4 +1,4 @@
-/*const productoController = {
+const productoController = {
     mostrarProductos: function() {
       fetch('http://localhost:8080/Apiweb/v1/producto/')
         .then(response => response.json())
@@ -17,8 +17,9 @@
                 <button class="producto-agregar" id="${producto.id}">Agregar</button>
               </div>
             `;
-            contenedorProductos.appendChild(productoElement);
-          });
+            contenedorProductos.append(productoElement);
+          })
+          actualizarBotonesAgregar();
         })
         .catch(error => console.error('Error:', error));
     },
@@ -127,8 +128,15 @@
       .catch(error => {
         console.error('Error al obtener el producto:', error);
       });
-    }
+    },
+
+    actualizarBotonesAgregar: function() {
+      botonesAgregar = document.querySelectorAll(".producto-agregar");
+  
+      botonesAgregar.forEach(boton => {
+          boton.addEventListener("click", agregarAlCarrito);
+      });
+  }
 };
   
 export default productoController;
-*/
