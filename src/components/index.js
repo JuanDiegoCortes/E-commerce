@@ -42,7 +42,7 @@ function cargarProductos(productosElegidos) {
               <h3 class="producto-titulo">${producto.nombre}</h3>
               <p>${producto.descripcion}</p>
               <p class="producto-precio">Precio: ${producto.precio}</p>
-              <button class="producto-agregar" id="${producto.id}">Agregar</button>
+              <button class="producto-agregar" id="${producto.idProducto}">Agregar</button>
           </div>
       `;
 
@@ -82,7 +82,7 @@ botonCategorias.forEach(boton => {
 
     if (categoriaId !== "1") {
       // Filtra los productos por el ID de categoría seleccionado
-      const productosFiltrados = productos.filter(producto => producto.idCategoria === categoriaId);
+      const productosFiltrados = productos.filter(producto => producto.idCategoria.idCategoria === parseInt(categoriaId));
       tituloPrincipal.innerText = e.currentTarget.innerText; // Actualiza el título con el nombre de la categoría seleccionada
       cargarProductos(productosFiltrados); // Carga los productos filtrados en el contenedor
     } else {
@@ -95,30 +95,37 @@ botonCategorias.forEach(boton => {
 
 
 
+// Función para actualizar los eventos de click en los botones de agregar
 function actualizarBotonesAgregar() {
-  botonesAgregar = document.querySelectorAll(".producto-agregar");
+  const botonesAgregar = document.querySelectorAll(".producto-agregar");
 
   botonesAgregar.forEach(boton => {
-      boton.addEventListener("click", agregarAlCarrito);
+    boton.addEventListener("click", agregarAlCarrito);
   });
 }
 
+// Variable para almacenar los productos en el carrito
 let productosEnCarrito;
 
-let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+// Obtenemos los productos en el carrito almacenados en localStorage, si existen
+const productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
 
-if (productosEnCarritoLS) {
-  productosEnCarrito = JSON.parse(productosEnCarritoLS);
+try {
+  // Intentamos parsear los productos en el carrito
+  productosEnCarrito = productosEnCarritoLS ? JSON.parse(productosEnCarritoLS) : [];
   actualizarNumerito();
-} else {
+} catch (error) {
+  console.error("Error al parsear los productos en el carrito:", error);
+  // Si hay un error al parsear, asignamos un array vacío a productosEnCarrito
   productosEnCarrito = [];
 }
 
+// Función para agregar un producto al carrito
 function agregarAlCarrito(e) {
-
-  Toastify({
+  try {
+    Toastify({
       text: "Producto agregado",
-      duration: 3000,
+      duration: 1000,
       close: true,
       gravity: "top", // `top` or `bottom`
       position: "right", // `left`, `center` or `right`
@@ -130,47 +137,59 @@ function agregarAlCarrito(e) {
         fontSize: ".75rem"
       },
       offset: {
-          x: '1.5rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-          y: '1.5rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
-        },
+        x: '1.5rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+        y: '1.5rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
+      },
       onClick: function(){} // Callback after click
     }).showToast();
 
-  const idBoton = e.currentTarget.id;
-  const productoAgregado = productos.find(producto => producto.id === idBoton);
+    const idBoton = e.currentTarget.id;
 
-  if(productosEnCarrito.some(producto => producto.id === idBoton)) {
-      const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
-      productosEnCarrito[index].cantidad++;
-  } else {
-      productoAgregado.cantidad = 1;
-      productosEnCarrito.push(productoAgregado);
+    // Validamos que haya una lista de productos y un ID de botón válido
+    if (productos && idBoton !== undefined) {
+      console.log(idBoton)
+      const productoAgregado = productos.find(producto => producto.idProducto === parseInt(idBoton));
+
+      if (productoAgregado) {
+        // Verificamos si el producto ya está en el carrito
+        const index = productosEnCarrito.findIndex(producto => producto.idProducto === parseInt(idBoton));
+        if (index !== -1) {
+          productosEnCarrito[index].cantidad++;
+        } else {
+          productoAgregado.cantidad = 1;
+          productosEnCarrito.push(productoAgregado);
+        }
+
+        // Actualizamos el número de elementos en el carrito
+        actualizarNumerito();
+
+        // Guardamos los cambios en localStorage
+        localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+      } else {
+        console.error("El producto no se encontró en la lista de productos.");
+      }
+    } else {
+      console.error("No se pudo agregar el producto al carrito debido a datos faltantes.");
+    }
+  } catch (error) {
+    console.error("Error al agregar producto al carrito:", error);
   }
-
-  actualizarNumerito();
-
-  localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
+// Función para actualizar el número de elementos en el carrito
 function actualizarNumerito() {
-  let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
-  numerito.innerText = nuevoNumerito;
+  try {
+    const numerito = document.getElementById("numerito");
+    if (numerito) {
+      const nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+      numerito.innerText = nuevoNumerito;
+    } else {
+      console.warn("El elemento con id 'numerito' no fue encontrado en el DOM.");
+    }
+  } catch (error) {
+    console.error("Error al actualizar el numerito:", error);
+  }
 }
 
-document.getElementById("boton-ropa-personalizacion").addEventListener("click", function() {
-  var dropdownContent = document.getElementById("contenido-personalizacion");
-  if (dropdownContent.style.display === "block") {
-    dropdownContent.style.display = "none";
-  } else {
-    dropdownContent.style.display = "block";
-  }
-});
-
-document.getElementById("boton-ropa-sin-personalizacion").addEventListener("click", function() {
-  var dropdownContent = document.getElementById("contenido-sin-personalizacion");
-  if (dropdownContent.style.display === "block") {
-    dropdownContent.style.display = "none";
-  } else {
-    dropdownContent.style.display = "block";
-  }
-});
+// Llamamos a la función para actualizar los botones de agregar al cargar la página
+actualizarBotonesAgregar();

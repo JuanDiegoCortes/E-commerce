@@ -26,10 +26,10 @@ function cargarProductosCarrito() {
             const div = document.createElement("div");
             div.classList.add("carrito-producto");
             div.innerHTML = `
-                <img class="carrito-producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
+                <img class="carrito-producto-imagen" src="${producto.imagen}" alt="${producto.nombre}">
                 <div class="carrito-producto-titulo">
                     <small>Título</small>
-                    <h3>${producto.titulo}</h3>
+                    <h3>${producto.nombre}</h3>
                 </div>
                 <div class="carrito-producto-cantidad">
                     <small>Cantidad</small>
@@ -43,10 +43,10 @@ function cargarProductosCarrito() {
                     <small>Subtotal</small>
                     <p>$${producto.precio * producto.cantidad}</p>
                 </div>
-                <button class="carrito-producto-personalizacion" id="${producto.id}"><i class="bi bi-pencil-fill"></i></i></i></button> 
-                <button class="carrito-producto-eliminar" id="${producto.id}"><i class="bi bi-trash-fill"></i></button>
+                <button class="carrito-producto-personalizacion" id="${producto.idProducto}"><i class="bi bi-pencil-fill"></i></i></i></button> 
+                <button class="carrito-producto-eliminar" id="${producto.idProducto}"><i class="bi bi-trash-fill"></i></button>
             `;
-    //Hay que hacer el metodo de personalizacion para los productos, deberia ser una ventana distinta o que se agregue desde esa misma ventana un label de escritura.
+            //Hay que hacer el metodo de personalizacion para los productos, deberia ser una ventana distinta o que se agregue desde esa misma ventana un label de escritura.
             contenedorCarritoProductos.append(div);
         })
     
@@ -75,7 +75,7 @@ function actualizarBotonesEliminar() {
 function eliminarDelCarrito(e) {
     Toastify({
         text: "Producto eliminado",
-        duration: 3000,
+        duration: 1000,
         close: true,
         gravity: "top", // `top` or `bottom`
         position: "right", // `left`, `center` or `right`
@@ -94,7 +94,7 @@ function eliminarDelCarrito(e) {
       }).showToast();
 
     const idBoton = e.currentTarget.id;
-    const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+    const index = productosEnCarrito.findIndex(producto => producto.id === parseInt(idBoton));
     
     productosEnCarrito.splice(index, 1);
     cargarProductosCarrito();

@@ -178,6 +178,7 @@ main {
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    max-width: 100%;
 }
 
 .titulo-principal {
@@ -185,7 +186,7 @@ main {
     margin-bottom: 2rem;
 }
 /*Botones de personalizacion y no personalizacion*/
-.boton-ropa-sin-personalizacion, .boton-ropa-personalizacion {
+.boton-ropa-sin-personalizacion {
     border: 0;
     background-color: var(--clr-main-light);
     color: var(--clr-white);
@@ -198,7 +199,7 @@ main {
     margin-bottom: 2rem;
 }
 
-.boton-ropa-sin-personalizacion:hover, .boton-ropa-personalizacion:hover {
+.boton-ropa-sin-personalizacion:hover {
     background-color: var(--clr-white);
     color: var(--clr-main-light);
     border-color: var(--clr-main-light);
@@ -210,7 +211,7 @@ main {
 }
 
 /*Diseno para los botones que se desplieguen de personalizacion y no personalizacion*/
-.contenido-personalizacion, .contenido-sin-personalizacion {
+.contenido-sin-personalizacion {
     display: none;
     position: absolute;
     background-color: transparent;
@@ -219,7 +220,7 @@ main {
     margin: -2rem;
 }
   
-.contenido-personalizacion button, .contenido-sin-personalizacion button {
+.contenido-sin-personalizacion button {
     display: block;
     border: 0;
     background-color: var(--clr-main-light);
@@ -232,7 +233,7 @@ main {
     transition: background-color .2s, color .2s;
 }
 
-.contenido-personalizacion button:hover, .contenido-sin-personalizacion button:hover {
+.contenido-sin-personalizacion button:hover {
     background-color: var(--clr-white);
     color: var(--clr-main);
 }
