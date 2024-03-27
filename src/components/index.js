@@ -40,7 +40,6 @@ function cargarProductos(productosElegidos) {
           <img class="producto-imagen" src="${producto.image_Url}" alt="${producto.nombre}">
           <div class="producto-detalles">
               <h3 class="producto-titulo">${producto.nombre}</h3>
-              <p>${producto.descripcion}</p>
               <p class="producto-precio">Precio: ${producto.precio}</p>
               <button class="producto-agregar" id="${producto.idProducto}">Agregar</button>
           </div>
