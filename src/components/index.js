@@ -42,10 +42,19 @@ function cargarProductos(productosElegidos) {
               <h3 class="producto-titulo">${producto.nombre}</h3>
               <p class="producto-precio">Precio: ${producto.precio}</p>
               <button class="producto-agregar" id="${producto.idProducto}">Agregar</button>
+              <button class="producto-info" id="${producto.idProducto}">Informacion</button>
           </div>
       `;
-
       contenedorProductos.append(div);
+
+    // Agregar evento onclick al botón "Información"
+    const botonInformacion = div.querySelector(".producto-info");
+    botonInformacion.addEventListener("click", function() {
+    // Almacenar el producto seleccionado en sessionStorage
+    sessionStorage.setItem("productoSeleccionado", JSON.stringify(producto));
+    // Redirigir a la página infoProducto.html
+    window.location.href = "infoProducto.html";  
+    });
   })
 
   actualizarBotonesAgregar();

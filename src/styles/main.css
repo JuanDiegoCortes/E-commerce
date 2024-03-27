@@ -267,7 +267,7 @@ main {
     font-size: 1rem;
 }
 
-.producto-agregar {
+.producto-agregar, .producto-info {
     border: 0;
     background-color: var(--clr-white);
     color: var(--clr-main);
@@ -279,7 +279,7 @@ main {
     transition: background-color .2s, color .2s;
 }
 
-.producto-agregar:hover{
+.producto-agregar:hover, .producto-info:hover{
     background-color: var(--clr-main);
     color: var(--clr-white);
 }
