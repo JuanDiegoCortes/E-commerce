@@ -58,7 +58,7 @@ header {
 }
 
 /* Estilo para el boton de login */
-.login-link {
+.login-link, .sig-up-link {
     color: #fff;
     text-decoration: none;
     padding: 1rem;
@@ -71,9 +71,25 @@ header {
 }
 
 
-.login-link:hover {
-    color: var(--clr-main);
+.login-link:hover, .sig-up-link:hover {
+    color: var(--clr-main-light);
     background-color: var(--clr-white);
+}
+
+.d-flex {
+    margin-top: 1.5rem;
+}
+
+.btn-outline-success {
+    color: var(--clr-main-light);
+    border-color: var(--clr-main-light);
+    margin-right: 2rem;
+}
+
+.btn-outline-success:hover {
+    background-color: var(--clr-white);
+    color: var(--clr-main-light);
+    border-color: var(--clr-main-light);
 }
 
 .menu {
@@ -184,7 +200,8 @@ main {
 
 .boton-ropa-sin-personalizacion:hover, .boton-ropa-personalizacion:hover {
     background-color: var(--clr-white);
-    color: var(--clr-main);
+    color: var(--clr-main-light);
+    border-color: var(--clr-main-light);
 }
 /*Contenedor de los filtros por categoria*/
 .dropdown {

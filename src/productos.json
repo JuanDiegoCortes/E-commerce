@@ -4,8 +4,8 @@
         "titulo": "Abrigo 01",
         "imagen": "../assets/img/abrigos/01.jpg",
         "categoria": {
-            "nombre": "Abrigos",
-            "id": "abrigos"
+            "nombre": "Hombres",
+            "id": "hombre"
         },
         "precio": 1000
     },
@@ -14,8 +14,8 @@
         "titulo": "Abrigo 02",
         "imagen": "../assets/img/abrigos/02.jpg",
         "categoria": {
-            "nombre": "Abrigos",
-            "id": "abrigos"
+            "nombre": "Hombres",
+            "id": "hombre"
         },
         "precio": 1000
     },
@@ -24,8 +24,8 @@
         "titulo": "Abrigo 03",
         "imagen": "../assets/img/abrigos/03.jpg",
         "categoria": {
-            "nombre": "Abrigos",
-            "id": "abrigos"
+            "nombre": "Hombres",
+            "id": "hombre"
         },
         "precio": 1000
     },
@@ -34,8 +34,8 @@
         "titulo": "Abrigo 04",
         "imagen": "../assets/img/abrigos/04.jpg",
         "categoria": {
-            "nombre": "Abrigos",
-            "id": "abrigos"
+            "nombre": "Hombres",
+            "id": "hombre"
         },
         "precio": 1000
     },
@@ -44,8 +44,8 @@
         "titulo": "Abrigo 05",
         "imagen": "../assets/img/abrigos/05.jpg",
         "categoria": {
-            "nombre": "Abrigos",
-            "id": "abrigos"
+            "nombre": "Hombres",
+            "id": "hombre"
         },
         "precio": 1000
     },
@@ -54,8 +54,8 @@
         "titulo": "Camiseta 01",
         "imagen": "../assets/img/camisetas/01.jpg",
         "categoria": {
-            "nombre": "Camisetas",
-            "id": "camisetas"
+            "nombre": "Mujeres",
+            "id": "mujer"
         },
         "precio": 1000
     },
@@ -64,8 +64,8 @@
         "titulo": "Camiseta 02",
         "imagen": "../assets/img/camisetas/02.jpg",
         "categoria": {
-            "nombre": "Camisetas",
-            "id": "camisetas"
+            "nombre": "Mujeres",
+            "id": "mujer"
         },
         "precio": 1000
     },
@@ -74,8 +74,8 @@
         "titulo": "Camiseta 03",
         "imagen": "../assets/img/camisetas/03.jpg",
         "categoria": {
-            "nombre": "Camisetas",
-            "id": "camisetas"
+            "nombre": "Mujeres",
+            "id": "mujer"
         },
         "precio": 1000
     },
@@ -84,8 +84,8 @@
         "titulo": "Camiseta 04",
         "imagen": "../assets/img/camisetas/04.jpg",
         "categoria": {
-            "nombre": "Camisetas",
-            "id": "camisetas"
+            "nombre": "Mujeres",
+            "id": "mujer"
         },
         "precio": 1000
     },
@@ -94,8 +94,8 @@
         "titulo": "Camiseta 05",
         "imagen": "../assets/img/camisetas/05.jpg",
         "categoria": {
-            "nombre": "Camisetas",
-            "id": "camisetas"
+            "nombre": "Mujeres",
+            "id": "mujer"
         },
         "precio": 1000
     },
@@ -104,8 +104,8 @@
         "titulo": "Camiseta 06",
         "imagen": "../assets/img/camisetas/06.jpg",
         "categoria": {
-            "nombre": "Camisetas",
-            "id": "camisetas"
+            "nombre": "Mujeres",
+            "id": "mujer"
         },
         "precio": 1000
     },
@@ -114,8 +114,8 @@
         "titulo": "Camiseta 07",
         "imagen": "../assets/img/camisetas/07.jpg",
         "categoria": {
-            "nombre": "Camisetas",
-            "id": "camisetas"
+            "nombre": "Mujeres",
+            "id": "mujer"
         },
         "precio": 1000
     },
@@ -124,8 +124,8 @@
         "titulo": "Camiseta 08",
         "imagen": "../assets/img/camisetas/08.jpg",
         "categoria": {
-            "nombre": "Camisetas",
-            "id": "camisetas"
+            "nombre": "Mujeres",
+            "id": "mujer"
         },
         "precio": 1000
     },
@@ -134,8 +134,8 @@
         "titulo": "Pantalón 01",
         "imagen": "../assets/img/pantalones/01.jpg",
         "categoria": {
-            "nombre": "Pantalones",
-            "id": "pantalones"
+            "nombre": "Niños",
+            "id": "nino"
         },
         "precio": 1000
     },
@@ -144,8 +144,8 @@
         "titulo": "Pantalón 02",
         "imagen": "../assets/img/pantalones/02.jpg",
         "categoria": {
-            "nombre": "Pantalones",
-            "id": "pantalones"
+            "nombre": "Niños",
+            "id": "nino"
         },
         "precio": 1000
     },
@@ -154,8 +154,8 @@
         "titulo": "Pantalón 03",
         "imagen": "../assets/img/pantalones/03.jpg",
         "categoria": {
-            "nombre": "Pantalones",
-            "id": "pantalones"
+            "nombre": "Niños",
+            "id": "nino"
         },
         "precio": 1000
     },
@@ -164,8 +164,8 @@
         "titulo": "Pantalón 04",
         "imagen": "../assets/img/pantalones/04.jpg",
         "categoria": {
-            "nombre": "Pantalones",
-            "id": "pantalones"
+            "nombre": "Niños",
+            "id": "nino"
         },
         "precio": 1000
     },
@@ -174,8 +174,8 @@
         "titulo": "Pantalón 05",
         "imagen": "../assets/img/pantalones/05.jpg",
         "categoria": {
-            "nombre": "Pantalones",
-            "id": "pantalones"
+            "nombre": "Niños",
+            "id": "nino"
         },
         "precio": 1000
     }
