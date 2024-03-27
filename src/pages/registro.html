@@ -8,28 +8,34 @@
 </head>
 <body>
     <div class="regresar">
-        <a href="./index.html">
+        <a href="./login.html">
             <button class="regresarBtn">Regresar</button>
         </a>
     </div>
     <div class="formulario">
-        <h1>Iniciar sesión</h1>
+        <h1>Registro de usuario</h1>
         <form method="post">
+            <h3>Correo electrónico</h3>
+            <div class="email">
+                <input type="email" required>
+                <label>Ingrese su correo electrónico</label>
+            </div>
+            <h3>Usuario</h3>
             <div class="username">
                 <input type="text" required>
                 <label>Ingrese su usuario</label>
             </div>
+            <h3>Contraseña</h3>
             <div class="contraseña">
                 <input type="password" required>
                 <label>Ingrese su contraseña</label>
             </div>
-            <a href="./recordarContraseña.html">
-                <div class="recordar">¿Olvidó su contraseña?</div>
-            </a>
-            <input type="submit" value="Iniciar sesión">
-            <div class="registrarse">
-                Quiero hacer el <a href="./registro.html">registro</a>
+            <h3>Confirmar Contraseña</h3>
+            <div class="contraseña">
+                <input type="password" required>
+                <label>Ingrese su contraseña</label>
             </div>
+            <input type="submit" value="Registrar">
         </form>
     </div>
 </body>
