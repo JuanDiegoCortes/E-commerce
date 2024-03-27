@@ -247,6 +247,8 @@ main {
 }
 
 .producto-imagen {
+    width: 300px; /* Ancho de la imagen */
+    height: 250px; /* Alto de la imagen */
     max-width: 100%;
     border-radius: 1rem;
 }

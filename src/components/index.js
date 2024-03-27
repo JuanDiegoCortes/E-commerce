@@ -1,7 +1,7 @@
 let generoActivo = ""; // Variable para almacenar el género activo
 let productos = [];
 
-fetch("http://localhost:8080/Apiweb/v1/producto/")
+fetch("http://localhost:8081/Apiweb/v1/producto/")
     .then(response => response.json())
     .then(data => {
         productos = data;
