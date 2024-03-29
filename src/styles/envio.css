@@ -1,0 +1,96 @@
+.name,
+.lastName,
+.phoneNumber,
+.adress,
+.details,
+.postalCode,
+.department,
+.city{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+
+.name input,
+.lastName input,
+.phoneNumber input,
+.adress input,
+.details input,
+.postalCode input,
+.department input,
+.city input {
+    width: 20%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.name label,
+.lastName label,
+.phoneNumber label,
+.adress label,
+.details label,
+.postalCode label,
+.department label,
+.city label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.name span::before,
+.lastName span::before,
+.phoneNumber span::before,
+.adress span::before,
+.details span::before,
+.postalCode span::before,
+.department span::before,
+.city span::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #6c3483;
+    transition: .5s;
+}
+
+.name input:focus ~ label,
+.lastName input:focus ~ label,
+.phoneNumber input:focus ~ label,
+.adress input:focus ~ label,
+.details input:focus ~ label,
+.lastName input:focus ~ label,
+.department input:focus ~ label,
+.city input:focus ~ label{
+    top: -5px;
+    color: #6c3483;
+}
+
+.name input:focus ~ span::before,
+.lastName input:focus ~ span::before,
+.phoneNumber input:focus ~ span::before,
+.adress input:focus ~ span::before,
+.details input:focus ~ span::before,
+.department input:focus ~ span::before,
+.city input:focus ~ span::before{
+    width: 100%;
+}
+
+.recordar {
+    margin: -5px 0 20px 5px;
+    color: blue;
+    cursor: pointer;
+}
+
+.recordar:hover {
+    text-decoration: underline;
+}
