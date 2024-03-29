@@ -1,143 +1,126 @@
-let generoActivo = ""; // Variable para almacenar el género activo
+// Define variables
+let generoActivo = "";
 let productos = [];
+let productosEnCarrito = [];
 
-fetch("http://localhost:8081/Apiweb/v1/producto/")
-    .then(response => response.json())
-    .then(data => {
-        productos = data;
-        cargarProductos(productos);
-    })
-
+// Select DOM elements
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesGeneros = document.querySelectorAll(".boton-genero");
 const botonCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
-let botonesAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
 
+// Fetch data from API
+fetch("http://localhost:8081/Apiweb/v1/producto/")
+  .then(response => response.json())
+  .then(data => {
+    productos = data;
+    cargarProductos(productos);
+  });
+
+// Add event listeners
 botonesGeneros.forEach(boton => boton.addEventListener("click", () => {
   aside.classList.remove("aside-visible");
-}))
+}));
 
 botonCategorias.forEach(boton => boton.addEventListener("click", () => {
   aside.classList.remove("aside-visible");
-}))
-
-function cargarProductos(productosElegidos) {
-
-  contenedorProductos.innerHTML = "";
-
-  // Aplicar filtro del género activo si está definido y no es "todos"
-  if (generoActivo && generoActivo !== "todos") {
-      productosElegidos = productosElegidos.filter(producto => producto.genero === generoActivo);
-  }
-
-  productosElegidos.forEach(producto => {
-
-      const div = document.createElement("div");
-      div.classList.add("producto");
-      div.innerHTML = `
-          <img class="producto-imagen" src="${producto.image_Url}" alt="${producto.nombre}">
-          <div class="producto-detalles">
-              <h3 class="producto-titulo">${producto.nombre}</h3>
-              <p class="producto-precio">Precio: ${producto.precio}</p>
-              <button class="producto-agregar" id="${producto.idProducto}">Agregar</button>
-              <button class="producto-info" id="${producto.idProducto}">Informacion</button>
-          </div>
-      `;
-      contenedorProductos.append(div);
-
-    // Agregar evento onclick al botón "Información"
-    const botonInformacion = div.querySelector(".producto-info");
-    botonInformacion.addEventListener("click", function() {
-    // Almacenar el producto seleccionado en sessionStorage
-    sessionStorage.setItem("productoSeleccionado", JSON.stringify(producto));
-    // Redirigir a la página infoProducto.html
-    window.location.href = "infoProducto.html";  
-    });
-  })
-
-  actualizarBotonesAgregar();
-}
+}));
 
 botonesGeneros.forEach(boton => {
   boton.addEventListener("click", (e) => {
+    botonesGeneros.forEach(boton => boton.classList.remove("active"));
+    e.currentTarget.classList.add("active");
+    generoActivo = e.currentTarget.id;
 
-      botonesGeneros.forEach(boton => boton.classList.remove("active"));
-      e.currentTarget.classList.add("active");
-
-      // Actualizar género activo
-      generoActivo = e.currentTarget.id;
-
-      if (e.currentTarget.id != "todos") {
-          const productoGenero = productos.filter(producto => producto.genero === e.currentTarget.id);
-          tituloPrincipal.innerText = e.currentTarget.innerText;
-          cargarProductos(productoGenero);
-      } else {
-          tituloPrincipal.innerText = "Todos los productos";
-          cargarProductos(productos);
-      }
-
-  })
+    if (generoActivo !== "todos") {
+      const productoGenero = productos.filter(producto => producto.genero === generoActivo);
+      tituloPrincipal.innerText = e.currentTarget.innerText;
+      cargarProductos(productoGenero);
+    } else {
+      tituloPrincipal.innerText = "Todos los productos";
+      cargarProductos(productos);
+    }
+  });
 });
 
 botonCategorias.forEach(boton => {
   boton.addEventListener("click", (e) => {
     botonCategorias.forEach(boton => boton.classList.remove("active"));
     e.currentTarget.classList.add("active");
-
-    const categoriaId = e.currentTarget.id; // Obtén el ID de la categoría seleccionada
+    const categoriaId = e.currentTarget.id;
 
     if (categoriaId !== "1") {
-      // Filtra los productos por el ID de categoría seleccionado
       const productosFiltrados = productos.filter(producto => producto.idCategoria.idCategoria === parseInt(categoriaId));
-      tituloPrincipal.innerText = e.currentTarget.innerText; // Actualiza el título con el nombre de la categoría seleccionada
-      cargarProductos(productosFiltrados); // Carga los productos filtrados en el contenedor
+      tituloPrincipal.innerText = e.currentTarget.innerText;
+      cargarProductos(productosFiltrados);
     } else {
-      // Si se selecciona "Todo", muestra todos los productos
       tituloPrincipal.innerText = "Todos los productos";
-      cargarProductos(productos); // Carga todos los productos en el contenedor
+      cargarProductos(productos);
     }
   });
 });
 
+// Function to load products
+function cargarProductos(productosElegidos) {
+  contenedorProductos.innerHTML = "";
 
+  if (generoActivo && generoActivo !== "todos") {
+    productosElegidos = productosElegidos.filter(producto => producto.genero === generoActivo);
+  }
 
-// Función para actualizar los eventos de click en los botones de agregar
+  productosElegidos.forEach(producto => {
+    const div = document.createElement("div");
+    div.classList.add("producto");
+    div.innerHTML = `
+      <img class="producto-imagen" src="${producto.image_Url}" alt="${producto.nombre}">
+      <div class="producto-detalles">
+        <h3 class="producto-titulo">${producto.nombre}</h3>
+        <p class="producto-precio">Precio: ${producto.precio}</p>
+        <button class="producto-agregar" id="${producto.idProducto}">Agregar</button>
+        <button class="producto-info" id="${producto.idProducto}">Informacion</button>
+      </div>
+    `;
+    contenedorProductos.append(div);
+
+    const botonInformacion = div.querySelector(".producto-info");
+    botonInformacion.addEventListener("click", function() {
+      sessionStorage.setItem("productoSeleccionado", JSON.stringify(producto));
+      window.location.href = "infoProducto.html";
+    });
+  });
+
+  actualizarBotonesAgregar();
+}
+
+// Function to update click events on "Agregar" buttons
 function actualizarBotonesAgregar() {
   const botonesAgregar = document.querySelectorAll(".producto-agregar");
-
   botonesAgregar.forEach(boton => {
     boton.addEventListener("click", agregarAlCarrito);
   });
 }
 
-// Variable para almacenar los productos en el carrito
-let productosEnCarrito;
-
-// Obtenemos los productos en el carrito almacenados en localStorage, si existen
+// Get products in cart from localStorage
 const productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
-
 try {
-  // Intentamos parsear los productos en el carrito
   productosEnCarrito = productosEnCarritoLS ? JSON.parse(productosEnCarritoLS) : [];
   actualizarNumerito();
 } catch (error) {
   console.error("Error al parsear los productos en el carrito:", error);
-  // Si hay un error al parsear, asignamos un array vacío a productosEnCarrito
   productosEnCarrito = [];
 }
 
-// Función para agregar un producto al carrito
+// Function to add product to cart
 function agregarAlCarrito(e) {
   try {
     Toastify({
       text: "Producto agregado",
       duration: 1000,
       close: true,
-      gravity: "top", // `top` or `bottom`
-      position: "right", // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
       style: {
         background: "linear-gradient(to right, #4b33a8, #785ce9)",
         borderRadius: "2rem",
@@ -145,21 +128,18 @@ function agregarAlCarrito(e) {
         fontSize: ".75rem"
       },
       offset: {
-        x: '1.5rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-        y: '1.5rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        x: '1.5rem',
+        y: '1.5rem'
       },
-      onClick: function(){} // Callback after click
+      onClick: function(){}
     }).showToast();
 
     const idBoton = e.currentTarget.id;
 
-    // Validamos que haya una lista de productos y un ID de botón válido
     if (productos && idBoton !== undefined) {
-      console.log(idBoton)
       const productoAgregado = productos.find(producto => producto.idProducto === parseInt(idBoton));
 
       if (productoAgregado) {
-        // Verificamos si el producto ya está en el carrito
         const index = productosEnCarrito.findIndex(producto => producto.idProducto === parseInt(idBoton));
         if (index !== -1) {
           productosEnCarrito[index].cantidad++;
@@ -168,10 +148,7 @@ function agregarAlCarrito(e) {
           productosEnCarrito.push(productoAgregado);
         }
 
-        // Actualizamos el número de elementos en el carrito
         actualizarNumerito();
-
-        // Guardamos los cambios en localStorage
         localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
       } else {
         console.error("El producto no se encontró en la lista de productos.");
@@ -184,7 +161,7 @@ function agregarAlCarrito(e) {
   }
 }
 
-// Función para actualizar el número de elementos en el carrito
+// Function to update the cart item count
 function actualizarNumerito() {
   try {
     const numerito = document.getElementById("numerito");
@@ -199,5 +176,5 @@ function actualizarNumerito() {
   }
 }
 
-// Llamamos a la función para actualizar los botones de agregar al cargar la página
+// Call the function to update "Agregar" buttons on page load
 actualizarBotonesAgregar();
