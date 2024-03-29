@@ -185,7 +185,7 @@ main {
     color: var(--clr-main);
     margin-bottom: 2rem;
 }
-/*Botones de personalizacion y no personalizacion*/
+/*Botones de filtro*/
 .boton-filtro {
     border: 0;
     background-color: var(--clr-main-light);
