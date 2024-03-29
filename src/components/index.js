@@ -17,6 +17,8 @@ function fetchData() {
     .then(data => {
       productos = data;
       cargarProductos(productos);
+      productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
+      actualizarNumerito();
     });
 }
 

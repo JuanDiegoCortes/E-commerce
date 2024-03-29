@@ -66,70 +66,6 @@ function cargarProductosCarrito() {
 
 cargarProductosCarrito();
 
-function actualizarBotonesPersonalizar() {
-    botonesPersonalizar = document.querySelectorAll(".carrito-producto-personalizacion");
-
-    botonesPersonalizar.forEach(boton => {
-        boton.addEventListener("click", actualizarBotonesPersonalizar);
-    });
-}
-
-function personalizarDelCarrito(e) {
-    const idProducto = e.currentTarget.id; // Obtener el ID del producto
-
-    // Verificar si existe información de personalización para este producto
-    const productoPersonalizado = productosEnCarrito.find(producto => producto.idProducto === parseInt(idProducto));
-
-    // Crear un formulario o área de entrada para la personalización
-    const personalizacionForm = document.createElement("div");
-    personalizacionForm.innerHTML = `
-        <input type="file" id="personalizacion-imagen" accept="image/*">
-        <textarea id="personalizacion-texto" placeholder="Ingrese su texto personalizado"></textarea>
-        <button id="guardar-personalizacion">Guardar</button>
-    `;
-
-    // Mostrar la información de personalización existente si hay alguna
-    if (productoPersonalizado && productoPersonalizado.personalizacion) {
-        const { imagen, texto } = productoPersonalizado.personalizacion;
-        if (imagen) {
-            // Si hay una imagen guardada, mostrarla
-            const imagenURL = URL.createObjectURL(imagen);
-            personalizacionForm.querySelector("#personalizacion-imagen").setAttribute("disabled", true);
-            personalizacionForm.querySelector("#personalizacion-imagen").insertAdjacentHTML("afterend", `<img src="${imagenURL}" alt="Imagen personalizada">`);
-        }
-        if (texto) {
-            // Si hay texto guardado, mostrarlo
-            personalizacionForm.querySelector("#personalizacion-texto").value = texto;
-        }
-    }
-
-    // Agregar evento para guardar la personalización
-    personalizacionForm.querySelector("#guardar-personalizacion").addEventListener("click", () => {
-        // Obtener la imagen y el texto ingresados por el usuario
-        const imagen = personalizacionForm.querySelector("#personalizacion-imagen").files[0];
-        const texto = personalizacionForm.querySelector("#personalizacion-texto").value;
-
-        // Actualizar el objeto del producto en el carrito con la personalización
-        const index = productosEnCarrito.findIndex(producto => producto.idProducto === parseInt(idProducto));
-        if (index !== -1) {
-            productosEnCarrito[index].personalizacion = {
-                imagen: imagen,
-                texto: texto
-            };
-        }
-
-        // Recargar los productos del carrito para reflejar los cambios
-        cargarProductosCarrito();
-
-        // Cerrar el formulario de personalización
-        personalizacionForm.remove();
-    });
-
-    // Mostrar el formulario de personalización debajo del producto
-    const productoDiv = e.currentTarget.closest(".carrito-producto");
-    productoDiv.appendChild(personalizacionForm);
-}
-
 function actualizarBotonesEliminar() {
     botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
 
@@ -143,30 +79,29 @@ function eliminarDelCarrito(e) {
         text: "Producto eliminado",
         duration: 1000,
         close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
         style: {
-          background: "linear-gradient(to right, #4b33a8, #785ce9)",
-          borderRadius: "2rem",
-          textTransform: "uppercase",
-          fontSize: ".75rem"
+            background: "linear-gradient(to right, #4b33a8, #785ce9)",
+            borderRadius: "2rem",
+            textTransform: "uppercase",
+            fontSize: ".75rem"
         },
         offset: {
-            x: '1.5rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-            y: '1.5rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
-          },
-        onClick: function(){} // Callback after click
-      }).showToast();
+            x: '1.5rem',
+            y: '1.5rem'
+        },
+        onClick: function(){}
+    }).showToast();
 
     const idBoton = e.currentTarget.id;
-    const index = productosEnCarrito.findIndex(producto => producto.id === parseInt(idBoton));
-    
+    const index = productosEnCarrito.findIndex(producto => producto.idProducto === parseInt(idBoton)); // Corregir aquí
+
     productosEnCarrito.splice(index, 1);
     cargarProductosCarrito();
 
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-
 }
 
 botonVaciar.addEventListener("click", vaciarCarrito);
@@ -188,7 +123,6 @@ function vaciarCarrito() {
         }
       })
 }
-
 
 function actualizarTotal() {
     const totalCalculado = productosEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
