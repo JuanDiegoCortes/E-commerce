@@ -2,16 +2,16 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: linear-gradient(15deg, #F8F4F3, #01040c);
-    height: 100vh;
+    background: linear-gradient(20deg, #ff6600, #01040c);
+    width: 200vh;
 }
 
 .container {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
+    top: 100%;
+    left: 100%;
+    transform: translate(-200%, -60%);
+    width: 500px;
     background: white;
     border-radius: 10px;
 }
@@ -23,7 +23,7 @@ body {
 }
 
 .container form {
-    padding: 0 40px;
+    padding: 0 30px;
     box-sizing: border-box;
 }
 
@@ -129,4 +129,22 @@ input[type="submit"] {
 input[type="submit"]:hover {
     border-color: orangered;
     transition: .5s;
+}
+
+/* Estilos para el botón de pago */
+#botonPago {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Agregar transición para suavizar los cambios de color */
+}
+
+#botonPago:hover {
+    background-color: #fd9047; /* Cambiar el color de fondo al pasar el mouse sobre el botón */
 }
