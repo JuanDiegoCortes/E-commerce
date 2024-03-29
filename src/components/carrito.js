@@ -6,7 +6,6 @@ const contenedorCarritoProductos = document.querySelector("#carrito-productos");
 const contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
 const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
 let botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
-let botonesPersonalizar = document.querySelectorAll(".carrito-producto-personalizacion");
 const botonVaciar = document.querySelector("#carrito-acciones-vaciar");
 const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector("#carrito-acciones-comprar");
@@ -77,29 +76,30 @@ function eliminarDelCarrito(e) {
         text: "Producto eliminado",
         duration: 1000,
         close: true,
-        gravity: "top",
-        position: "right",
-        stopOnFocus: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-            background: "linear-gradient(to right, #4b33a8, #785ce9)",
-            borderRadius: "2rem",
-            textTransform: "uppercase",
-            fontSize: ".75rem"
+          background: "linear-gradient(to right, #4b33a8, #785ce9)",
+          borderRadius: "2rem",
+          textTransform: "uppercase",
+          fontSize: ".75rem"
         },
         offset: {
-            x: '1.5rem',
-            y: '1.5rem'
-        },
-        onClick: function(){}
-    }).showToast();
+            x: '1.5rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+            y: '1.5rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
+          },
+        onClick: function(){} // Callback after click
+      }).showToast();
 
     const idBoton = e.currentTarget.id;
-    const index = productosEnCarrito.findIndex(producto => producto.idProducto === parseInt(idBoton)); // Corregir aquí
-
+    const index = productosEnCarrito.findIndex(producto => producto.id === parseInt(idBoton));
+    
     productosEnCarrito.splice(index, 1);
     cargarProductosCarrito();
 
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+
 }
 
 botonVaciar.addEventListener("click", vaciarCarrito);
@@ -121,6 +121,7 @@ function vaciarCarrito() {
         }
       })
 }
+
 
 function actualizarTotal() {
     const totalCalculado = productosEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
