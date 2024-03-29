@@ -11,55 +11,54 @@ const tituloPrincipal = document.querySelector("#titulo-principal");
 const numerito = document.querySelector("#numerito");
 
 // Fetch data from API
-fetch("http://localhost:8081/Apiweb/v1/producto/")
-  .then(response => response.json())
-  .then(data => {
-    productos = data;
-    cargarProductos(productos);
-  });
+function fetchData() {
+  return fetch("http://localhost:8081/Apiweb/v1/producto/")
+    .then(response => response.json())
+    .then(data => {
+      productos = data;
+      cargarProductos(productos);
+    });
+}
 
 // Add event listeners
-botonesGeneros.forEach(boton => boton.addEventListener("click", () => {
+function addEventListeners() {
+  botonesGeneros.forEach(boton => boton.addEventListener("click", handleGeneroClick));
+  botonCategorias.forEach(boton => boton.addEventListener("click", handleCategoriaClick));
+}
+
+// Handle genero click event
+function handleGeneroClick(e) {
   aside.classList.remove("aside-visible");
-}));
+  botonesGeneros.forEach(boton => boton.classList.remove("active"));
+  e.currentTarget.classList.add("active");
+  generoActivo = e.currentTarget.id;
 
-botonCategorias.forEach(boton => boton.addEventListener("click", () => {
+  if (generoActivo !== "todos") {
+    const productoGenero = productos.filter(producto => producto.genero === generoActivo);
+    tituloPrincipal.innerText = e.currentTarget.innerText;
+    cargarProductos(productoGenero);
+  } else {
+    tituloPrincipal.innerText = "Todos los productos";
+    cargarProductos(productos);
+  }
+}
+
+// Handle categoria click event
+function handleCategoriaClick(e) {
   aside.classList.remove("aside-visible");
-}));
+  botonCategorias.forEach(boton => boton.classList.remove("active"));
+  e.currentTarget.classList.add("active");
+  const categoriaId = e.currentTarget.id;
 
-botonesGeneros.forEach(boton => {
-  boton.addEventListener("click", (e) => {
-    botonesGeneros.forEach(boton => boton.classList.remove("active"));
-    e.currentTarget.classList.add("active");
-    generoActivo = e.currentTarget.id;
-
-    if (generoActivo !== "todos") {
-      const productoGenero = productos.filter(producto => producto.genero === generoActivo);
-      tituloPrincipal.innerText = e.currentTarget.innerText;
-      cargarProductos(productoGenero);
-    } else {
-      tituloPrincipal.innerText = "Todos los productos";
-      cargarProductos(productos);
-    }
-  });
-});
-
-botonCategorias.forEach(boton => {
-  boton.addEventListener("click", (e) => {
-    botonCategorias.forEach(boton => boton.classList.remove("active"));
-    e.currentTarget.classList.add("active");
-    const categoriaId = e.currentTarget.id;
-
-    if (categoriaId !== "1") {
-      const productosFiltrados = productos.filter(producto => producto.idCategoria.idCategoria === parseInt(categoriaId));
-      tituloPrincipal.innerText = e.currentTarget.innerText;
-      cargarProductos(productosFiltrados);
-    } else {
-      tituloPrincipal.innerText = "Todos los productos";
-      cargarProductos(productos);
-    }
-  });
-});
+  if (categoriaId !== "1") {
+    const productosFiltrados = productos.filter(producto => producto.idCategoria.idCategoria === parseInt(categoriaId));
+    tituloPrincipal.innerText = e.currentTarget.innerText;
+    cargarProductos(productosFiltrados);
+  } else {
+    tituloPrincipal.innerText = "Todos los productos";
+    cargarProductos(productos);
+  }
+}
 
 // Function to load products
 function cargarProductos(productosElegidos) {
@@ -99,16 +98,6 @@ function actualizarBotonesAgregar() {
   botonesAgregar.forEach(boton => {
     boton.addEventListener("click", agregarAlCarrito);
   });
-}
-
-// Get products in cart from localStorage
-const productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
-try {
-  productosEnCarrito = productosEnCarritoLS ? JSON.parse(productosEnCarritoLS) : [];
-  actualizarNumerito();
-} catch (error) {
-  console.error("Error al parsear los productos en el carrito:", error);
-  productosEnCarrito = [];
 }
 
 // Function to add product to cart
@@ -176,5 +165,6 @@ function actualizarNumerito() {
   }
 }
 
-// Call the function to update "Agregar" buttons on page load
-actualizarBotonesAgregar();
+// Call the functions to fetch data and add event listeners on page load
+fetchData();
+addEventListeners();
