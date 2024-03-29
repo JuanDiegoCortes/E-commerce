@@ -6,6 +6,7 @@ const contenedorCarritoProductos = document.querySelector("#carrito-productos");
 const contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
 const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
 let botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
+let botonesPersonalizar = document.querySelectorAll(".carrito-producto-personalizacion");
 const botonVaciar = document.querySelector("#carrito-acciones-vaciar");
 const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector("#carrito-acciones-comprar");
@@ -51,6 +52,7 @@ function cargarProductosCarrito() {
         })
     
     actualizarBotonesEliminar();
+    actualizarBotonesPersonalizar();
     actualizarTotal();
 	
     } else {
@@ -63,6 +65,70 @@ function cargarProductosCarrito() {
 }
 
 cargarProductosCarrito();
+
+function actualizarBotonesPersonalizar() {
+    botonesPersonalizar = document.querySelectorAll(".carrito-producto-personalizacion");
+
+    botonesPersonalizar.forEach(boton => {
+        boton.addEventListener("click", actualizarBotonesPersonalizar);
+    });
+}
+
+function personalizarDelCarrito(e) {
+    const idProducto = e.currentTarget.id; // Obtener el ID del producto
+
+    // Verificar si existe información de personalización para este producto
+    const productoPersonalizado = productosEnCarrito.find(producto => producto.idProducto === parseInt(idProducto));
+
+    // Crear un formulario o área de entrada para la personalización
+    const personalizacionForm = document.createElement("div");
+    personalizacionForm.innerHTML = `
+        <input type="file" id="personalizacion-imagen" accept="image/*">
+        <textarea id="personalizacion-texto" placeholder="Ingrese su texto personalizado"></textarea>
+        <button id="guardar-personalizacion">Guardar</button>
+    `;
+
+    // Mostrar la información de personalización existente si hay alguna
+    if (productoPersonalizado && productoPersonalizado.personalizacion) {
+        const { imagen, texto } = productoPersonalizado.personalizacion;
+        if (imagen) {
+            // Si hay una imagen guardada, mostrarla
+            const imagenURL = URL.createObjectURL(imagen);
+            personalizacionForm.querySelector("#personalizacion-imagen").setAttribute("disabled", true);
+            personalizacionForm.querySelector("#personalizacion-imagen").insertAdjacentHTML("afterend", `<img src="${imagenURL}" alt="Imagen personalizada">`);
+        }
+        if (texto) {
+            // Si hay texto guardado, mostrarlo
+            personalizacionForm.querySelector("#personalizacion-texto").value = texto;
+        }
+    }
+
+    // Agregar evento para guardar la personalización
+    personalizacionForm.querySelector("#guardar-personalizacion").addEventListener("click", () => {
+        // Obtener la imagen y el texto ingresados por el usuario
+        const imagen = personalizacionForm.querySelector("#personalizacion-imagen").files[0];
+        const texto = personalizacionForm.querySelector("#personalizacion-texto").value;
+
+        // Actualizar el objeto del producto en el carrito con la personalización
+        const index = productosEnCarrito.findIndex(producto => producto.idProducto === parseInt(idProducto));
+        if (index !== -1) {
+            productosEnCarrito[index].personalizacion = {
+                imagen: imagen,
+                texto: texto
+            };
+        }
+
+        // Recargar los productos del carrito para reflejar los cambios
+        cargarProductosCarrito();
+
+        // Cerrar el formulario de personalización
+        personalizacionForm.remove();
+    });
+
+    // Mostrar el formulario de personalización debajo del producto
+    const productoDiv = e.currentTarget.closest(".carrito-producto");
+    productoDiv.appendChild(personalizacionForm);
+}
 
 function actualizarBotonesEliminar() {
     botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
