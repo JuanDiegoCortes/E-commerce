@@ -40,7 +40,9 @@ function capturarValores() {
             direccion: direccion,
             modalidadEntrega: modalidadEntregaSeleccionada,
             telefono: telefono,
-            idCiudad: {idCiudad:ciudadSeleccionadaId}
+            idCiudad: {
+                idCiudad: ciudadSeleccionadaId
+            }
             // nombre: nombre
             // codigoPostal: codigoPostal,
             // referencias: referencias,
@@ -60,10 +62,19 @@ function enviarDatos(data){
     })
     .then(response => {
         if (response.ok) {
-            alert('Datos enviados correctamente.');
-            return response.json();
+            return response.text().then(text => {
+                try {
+                    return JSON.parse(text);
+                } catch {
+                    alert('Datos enviados correctamente'); // pero la respuesta no es JSON.
+                    return console.log(text);
+                }
+            });
         } else {
             alert('Error al enviar los datos.');
         }
     })
+    .catch(error => {
+        console.error('Error en la solicitud Fetch:', error);
+    });
 }
