@@ -1,13 +1,25 @@
 .producto-info {
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
 .producto-imagen {
-    flex: 1; 
+    flex: 1;
+    max-width: 200px; 
+    margin-right: 20px; 
 }
 
 .producto-detalles {
-    flex: 1; 
-    padding-left: 20px; 
+    flex: 1;
 }
+
+.producto-detalles h2 {
+    font-size: 1.2em; 
+    margin-bottom: 10px; 
+}
+
+.producto-detalles p {
+    line-height: 1.5; 
+    margin-bottom: 15px; 
+}
+
