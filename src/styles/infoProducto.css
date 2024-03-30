@@ -1,68 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    background-color: black;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centra el contenido horizontalmente */
-    margin: 5rem;
-    /*background-color: #d96420;*/ 
 }
 
-.producto-info {
-    display: flex;
-    flex-direction: row; /* Cambiar la dirección de flexión a columna */
-    align-items: center; /* Centrar los elementos horizontalmente */
-    margin: 1rem auto; /* Ajustar los márgenes para centrar el contenedor */
-    padding: 20px; /* Agregar relleno al contenedor */
-    border: 2px solid #d96420; /* Agregar un borde alrededor del contenedor */
-    border-radius: 10px; /* Agregar bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar una sombra al contenedor */
-    background-color: #f9f9f9; /* Cambiar el color de fondo */
-    max-width: 600px; /* Establecer un ancho máximo para el contenedor */
-    text-align: center; /* Centrar el texto horizontalmente */
-    font-weight: normal; /* Restaurar el peso de la fuente a normal */
-}
-
-/*.producto-info {
-    display: flex;
-    flex-direction: row;
-    justify-content: center; 
-    align-items: center;
-    margin: 1rem;
-    margin-top: 3rem;
-    font-weight: bold;
-}*/
-
-h1 {
+/*Titulo*/
+.container h1 {
+    color: white;
     text-align: center; /* Centra el título horizontalmente */
-    background-color: #d96420; /* Color de fondo */
-    color: white; /* Color del texto */
     padding: 10px; /* Agrega relleno alrededor del título */
-    margin: 20px 0; /* Agrega margen arriba y abajo del título */
-    font-family: 'Times New Roman', Times, serif; /* Cambia la fuente del título */
+    margin: 1rem; /* Agrega margen arriba y abajo del título */
     font-size: 32px; /* Cambia el tamaño del texto */
     font-weight: bold; /* Hace que el texto sea negrita */
 }
 
-/*h1 {
-    text-align: center; 
-    background-color: #d96420
-}*/
+/*Producto Info*/
+.producto-info {
+    display: flex;
+    flex-direction: row; /* Cambiar la dirección de flexión a columna */
+    align-items: center; /* Centrar los elementos horizontalmente */
+    margin: 1rem; /* Ajustar los márgenes para centrar el contenedor */
+    padding: 2rem; /* Agregar relleno al contenedor */
+    border: 5px solid #d96420; /* Agregar un borde alrededor del contenedor */
+    border-radius: 10px; /* Agregar bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar una sombra al contenedor */
+    background-color: white; /* Cambiar el color de fondo */
+    max-width: 1; /* Establecer un ancho máximo para el contenedor */
+    text-align: center; /* Centrar el texto horizontalmente */
+    font-weight: normal; /* Restaurar el peso de la fuente a normal */
+}
+
+.producto-detalles {
+    display: flex;
+    flex-direction: column; /* Cambiar la dirección de flexión a columna */
+    flex-grow: 1; /* Permitir que este contenedor crezca para ocupar el espacio disponible */
+}
 
 .producto-imagen {
-    margin-right: 1rem;
+    margin-right: 3rem; /* Agrega un tamaño definido al producto-imagen */
+    flex-shrink: 0; /* Evitar que la imagen se reduzca más de lo especificado */
 }
 
 .imagenProducto {
-    width: 500px; /* Ancho de la imagen */
-    height: 400px; /* Alto de la imagen */
+    width: 300px; /* Ancho de la imagen */
+    height: auto; /* Alto de la imagen */
     max-width: 100%;
     border-radius: 1rem;
-    align-items: left;
 }
 
+.producto-detalles > div {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 1rem;
+    width: 350px;
+    height: auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ajustar la sombra para que sea más fuerte */
+}
+
+.container-categoria,
+.container-genero,
+.container-precio {
+    display: flex;
+    align-items: baseline; /* Alinea los elementos basándose en su línea base */
+}
+
+.container-categoria h4,
+.container-genero h4,
+.container-precio h4 {
+    margin-right: 10px; /* Espacio entre el título y el párrafo */
+}
+
+.container-descripcion p,
+.container-descripcion h4{
+    margin: 0;
+    text-align: left;
+}
+
+/*Boton volver*/
 .volver {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    margin: 1rem 1rem;
+    position: relative;
 }
 
 .volverBtn {
@@ -73,6 +102,9 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     outline: none;
+    width: 200px;
+    height: auto;
+    font-weight: bold;
 }
 
 .volverBtn:hover {

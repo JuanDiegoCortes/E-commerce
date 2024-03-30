@@ -5,12 +5,12 @@ window.onload = function() {
 
     // Mostrar la información del producto en la página
     if (productoSeleccionado) {
-        document.getElementById("categoriaProducto").innerText = productoSeleccionado.idCategoria.nombre;
-        document.getElementById("generoProducto").innerText = productoSeleccionado.genero;
+        document.getElementById("categoriaProducto").innerText +=`\t ${productoSeleccionado.idCategoria.nombre}`;
+        document.getElementById("generoProducto").innerText += `\t ${productoSeleccionado.genero}`;
         document.getElementById("nombreProducto").innerText = productoSeleccionado.nombre;
-        document.getElementById("descripcionProducto").innerText = productoSeleccionado.descripcion;
+        document.getElementById("descripcionProducto").innerText += `\t ${productoSeleccionado.descripcion}`;
         document.getElementById("imagenProducto").src = productoSeleccionado.image_Url;
-        document.getElementById("precioProducto").innerText = `Precio: ${productoSeleccionado.precio}`;
+        document.getElementById("precioProducto").innerText += productoSeleccionado.precio;
         // Puedes continuar mostrando el resto de la información del producto
     } else {
         console.error("No se encontró ningún producto seleccionado.");
