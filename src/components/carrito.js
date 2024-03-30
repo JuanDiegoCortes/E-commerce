@@ -42,25 +42,11 @@ function cargarProductosCarrito() {
                     <small>Subtotal</small>
                     <p>$${producto.precio * producto.cantidad}</p>
                 </div>
+                <button class="carrito-producto-personalizar" id="${producto.idProducto}"><i class="bi bi-pencil-fill"></i></button>
                 <button class="carrito-producto-eliminar" id="${producto.idProducto}"><i class="bi bi-trash-fill"></i></button>
             `;
             //Hay que hacer el metodo de personalizacion para los productos, deberia ser una ventana distinta o que se agregue desde esa misma ventana un label de escritura.
-            contenedorCarritoProductos.append(div);
-
-            const div2 = document.createElement("div");
-            div2.classList.add("carrito-producto");
-            div2.innerHTML = `
-                <div class="carrito-producto-personalizacion">
-                    <small>Personalización</small>
-                    <p>${producto.nombre}</p>
-                    <div class="input-group">
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple>
-                    </div>
-                </div>
-            `;
-            contenedorCarritoProductos.append(div2);
-            
+            contenedorCarritoProductos.append(div);            
         })
     
     actualizarBotonesEliminar();
@@ -144,7 +130,7 @@ function actualizarTotal() {
 
 botonComprar.addEventListener("click", comprarCarrito);
 function comprarCarrito() {
-
+    
     productosEnCarrito.length = 0;
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
     
