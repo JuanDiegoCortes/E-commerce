@@ -33,7 +33,6 @@ body {
     padding: 2rem; /* Agregar relleno al contenedor */
     border: 5px solid #d96420; /* Agregar un borde alrededor del contenedor */
     border-radius: 10px; /* Agregar bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar una sombra al contenedor */
     background-color: white; /* Cambiar el color de fondo */
     max-width: 1; /* Establecer un ancho máximo para el contenedor */
     text-align: center; /* Centrar el texto horizontalmente */
@@ -42,8 +41,13 @@ body {
 
 .producto-detalles {
     display: flex;
-    flex-direction: column; /* Cambiar la dirección de flexión a columna */
-    flex-grow: 1; /* Permitir que este contenedor crezca para ocupar el espacio disponible */
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 1rem;
+    width: 350px;
+    height: auto;
+    box-shadow: 0 4px 12px rgba(217, 100, 32, 0.8); /* Hacer la sombra más fuerte */
 }
 
 .producto-imagen {
@@ -56,17 +60,6 @@ body {
     height: auto; /* Alto de la imagen */
     max-width: 100%;
     border-radius: 1rem;
-}
-
-.producto-detalles > div {
-    display: flex;
-    padding: 1rem;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 1rem;
-    width: 350px;
-    height: auto;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ajustar la sombra para que sea más fuerte */
 }
 
 .container-categoria,
