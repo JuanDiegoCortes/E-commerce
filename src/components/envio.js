@@ -1,19 +1,74 @@
-document.getElementById("botonPago").addEventListener("click", xd);
+let ciudadSeleccionadaId = "";
+let modalidadEntregaSeleccionada = "";
 
-function xd() {
-    const nombre = document.getElementById('nombre').value;
+document.querySelectorAll('.boton-ciudad').forEach(button => { //necesito
+    button.addEventListener('click', function() {
+        ciudadSeleccionadaId = this.id;
+    });
+});
+
+document.querySelectorAll('.boton-modalidadEntrega').forEach(button => { //necesito
+    button.addEventListener('click', function() {
+        modalidadEntregaSeleccionada = this.id;
+    });
+});
+
+document.getElementById("botonPago").addEventListener("click", capturarValores);
+
+function capturarValores() {
+    const nombre = document.getElementById('nombre').value; 
     const apellido = document.getElementById('apellido').value;
-    const telefono = document.getElementById('numTelefono').value;
-    const direccion = document.getElementById('direccion').value;
-    const referencias = document.getElementById('referencias').value;
+    const telefono = document.getElementById('numTelefono').value; //necesito
+    const direccion = document.getElementById('direccion').value; //necesito
     const codigoPostal = document.getElementById('codigoPostal').value;
-    const ciudadSeleccionada = document.querySelector('.boton-ciudades').innerText.trim();
+    const referencias = document.getElementById('referencias').value;
 
     console.log('Nombre:', nombre);
     console.log('Apellido:', apellido);
     console.log('Teléfono:', telefono);
     console.log('Dirección:', direccion);
     console.log('Referencias:', referencias);
-    console.log('Código postal:', codigoPostal);
-    console.log('Ciudad seleccionada:', ciudadSeleccionada);
+    console.log('Codigo postal:', codigoPostal);
+    console.log('Texto del botón de modalidad entrega:', modalidadEntregaSeleccionada);
+    console.log('ID del botón de ciudad seleccionada:', ciudadSeleccionadaId);
 }
+
+
+// document.getElementById("botonPago").addEventListener("click", function() {
+//     const nombre = document.getElementById('nombre').value;
+//     const apellido = document.getElementById('apellido').value;
+//     const telefono = document.getElementById('numTelefono').value;
+//     const direccion = document.getElementById('direccion').value;
+//     // Captura el resto de los campos del formulario
+
+//     const envioData = {
+//         nombre: nombre,
+//         apellido: apellido,
+//         telefono: telefono,
+//         direccion: direccion,
+//         // Agrega el resto de los campos
+//     };
+
+//     fetch('/Apiweb/v1/envio/', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(envioData)
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             console.log('Datos enviados correctamente');
+//             // Puedes mostrar un mensaje de éxito aquí si lo deseas
+//         } else {
+//             console.error('Error al enviar datos');
+//             // Puedes mostrar un mensaje de error aquí si lo deseas
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+//         // Puedes mostrar un mensaje de error aquí si lo deseas
+//     });
+// });
+
+

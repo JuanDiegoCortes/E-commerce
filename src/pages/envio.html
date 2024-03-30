@@ -17,31 +17,37 @@
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombreEnvio" required>
             </div>
+
             <h3>Apellido</h3>
             <div class="lastName">
                 <label for="apellido">Apellido</label>
                 <input type="text" id="apellido" name="apellidoEnvio" required>
             </div>
+
             <h3>Número de teléfono</h3>
             <div class="phoneNumber">
                 <label for="numTelefono">Número de teléfono</label>
                 <input type="text" id="numTelefono" name="numTelefonoEnvio" required>
             </div>
+
             <h3>Dirección</h3>
             <div class="adress">
                 <label for="direccion">Dirección</label>
                 <input type="text" id="direccion" name="direccionEnvio" required>
             </div>
+
             <h3>Referencias</h3>
             <div class="details">
                 <label for="referencias">Referencias</label>
                 <input type="text" id="referencias" name="referenciasEnvio">
             </div>
+
             <h3>Código postal</h3>
             <div class="postalCode">
                 <label for="codigoPostal">Código postal</label>
                 <input type="text" id="codigoPostal" name="codigoPostalEnvio" required>
             </div>
+
             <h3>Ciudad</h3>
             <div class="dropdown">
                 <button id="boton-ciudades" class="btn btn-primary dropdown-toggle boton-ciudades" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,6 +64,13 @@
                     <li><button id="8" class="dropdown-item boton-ciudad" type="button">Pereira</button></li>
                     <li><button id="9" class="dropdown-item boton-ciudad" type="button">Santa Marta</button></li>
                     <li><button id="10" class="dropdown-item boton-ciudad" type="button">Buenaventura</button></li>
+                </ul>
+                <button id="boton-modalidadesEntrega" class="btn btn-primary dropdown-toggle boton-modalidadesEntrega" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Modalidad de Entrega
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button id="entrega" class="dropdown-item boton-modalidadEntrega" type="button">Entrega</button></li>
+                    <li><button id="recogida" class="dropdown-item boton-modalidadEntrega" type="button">Recoger</button></li>
                 </ul>
             </div>
 

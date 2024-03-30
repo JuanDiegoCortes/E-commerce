@@ -164,7 +164,7 @@ input[type="submit"]:hover {
 }
 
 /*Botones de ciudad*/
-.boton-ciudades {
+.boton-ciudades, .boton-modalidadesEntrega{
     border: 0;
     background-color: var(--clr-main-light);
     color: var(--clr-white);
@@ -177,7 +177,7 @@ input[type="submit"]:hover {
     margin-bottom: 2rem;
 }
 
-.boton-ciudades:hover {
+.boton-ciudades:hover , .boton-modalidadesEntrega:hover{
     background-color: var(--clr-white);
     color: var(--clr-main-light);
     border-color: var(--clr-main-light);
