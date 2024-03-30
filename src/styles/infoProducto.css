@@ -2,30 +2,80 @@
     display: flex;
     flex-direction: column;
     align-items: center; /* Centra el contenido horizontalmente */
-    margin: 5rem; 
+    margin: 5rem;
+    /*background-color: #d96420;*/ 
 }
 
 .producto-info {
     display: flex;
+    flex-direction: row; /* Cambiar la dirección de flexión a columna */
+    align-items: center; /* Centrar los elementos horizontalmente */
+    margin: 1rem auto; /* Ajustar los márgenes para centrar el contenedor */
+    padding: 20px; /* Agregar relleno al contenedor */
+    border: 2px solid #d96420; /* Agregar un borde alrededor del contenedor */
+    border-radius: 10px; /* Agregar bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar una sombra al contenedor */
+    background-color: #f9f9f9; /* Cambiar el color de fondo */
+    max-width: 600px; /* Establecer un ancho máximo para el contenedor */
+    text-align: center; /* Centrar el texto horizontalmente */
+    font-weight: normal; /* Restaurar el peso de la fuente a normal */
+}
+
+/*.producto-info {
+    display: flex;
     flex-direction: row;
-    justify-content: center; /* Centra el contenido horizontalmente */
+    justify-content: center; 
     align-items: center;
     margin: 1rem;
     margin-top: 3rem;
-}
+    font-weight: bold;
+}*/
 
 h1 {
     text-align: center; /* Centra el título horizontalmente */
+    background-color: #d96420; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px; /* Agrega relleno alrededor del título */
+    margin: 20px 0; /* Agrega margen arriba y abajo del título */
+    font-family: 'Times New Roman', Times, serif; /* Cambia la fuente del título */
+    font-size: 32px; /* Cambia el tamaño del texto */
+    font-weight: bold; /* Hace que el texto sea negrita */
 }
 
+/*h1 {
+    text-align: center; 
+    background-color: #d96420
+}*/
+
 .producto-imagen {
-    margin-right: 10rem;
+    margin-right: 1rem;
 }
 
 .imagenProducto {
-    width: 600px; /* Ancho de la imagen */
-    height: 500px; /* Alto de la imagen */
+    width: 500px; /* Ancho de la imagen */
+    height: 400px; /* Alto de la imagen */
     max-width: 100%;
     border-radius: 1rem;
+    align-items: left;
+}
+
+.volver {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.volverBtn {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.volverBtn:hover {
+    background-color: orangered;
 }
 
