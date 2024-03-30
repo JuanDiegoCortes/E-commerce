@@ -1,13 +1,19 @@
 let ciudadSeleccionadaId = "";
 let modalidadEntregaSeleccionada = "";
+// let nombre = "";
+// let apellido = "";
+let telefono = "";
+let direccion = "";
+// let codigoPostal = "";
+// let referencias = "";
 
-document.querySelectorAll('.boton-ciudad').forEach(button => { //necesito
+document.querySelectorAll('.boton-ciudad').forEach(button => {
     button.addEventListener('click', function() {
-        ciudadSeleccionadaId = this.id;
+        ciudadSeleccionadaId = parseInt(this.id);
     });
 });
 
-document.querySelectorAll('.boton-modalidadEntrega').forEach(button => { //necesito
+document.querySelectorAll('.boton-modalidadEntrega').forEach(button => {
     button.addEventListener('click', function() {
         modalidadEntregaSeleccionada = this.id;
     });
@@ -16,59 +22,44 @@ document.querySelectorAll('.boton-modalidadEntrega').forEach(button => { //neces
 document.getElementById("botonPago").addEventListener("click", capturarValores);
 
 function capturarValores() {
-    const nombre = document.getElementById('nombre').value; 
-    const apellido = document.getElementById('apellido').value;
-    const telefono = document.getElementById('numTelefono').value; //necesito
-    const direccion = document.getElementById('direccion').value; //necesito
-    const codigoPostal = document.getElementById('codigoPostal').value;
-    const referencias = document.getElementById('referencias').value;
+    // nombre = document.getElementById('nombre').value;
+    // apellido = document.getElementById('apellido').value;
+    telefono = document.getElementById('numTelefono').value;
+    direccion = document.getElementById('direccion').value;
+    // codigoPostal = document.getElementById('codigoPostal').value;
+    // referencias = document.getElementById('referencias').value;
 
-    console.log('Nombre:', nombre);
-    console.log('Apellido:', apellido);
-    console.log('Teléfono:', telefono);
-    console.log('Dirección:', direccion);
-    console.log('Referencias:', referencias);
-    console.log('Codigo postal:', codigoPostal);
-    console.log('Texto del botón de modalidad entrega:', modalidadEntregaSeleccionada);
-    console.log('ID del botón de ciudad seleccionada:', ciudadSeleccionadaId);
+    const envioData = {
+
+        // apellido: apellido,
+        direccion: direccion,
+        modalidad: modalidadEntregaSeleccionada,
+        telefono: telefono,
+        idCiudad: {idCiudad:ciudadSeleccionadaId}
+        // nombre: nombre
+        // codigoPostal: codigoPostal,
+        // referencias: referencias,
+    };
+    console.log(envioData);
+    // enviarDatos(envioData);
 }
 
-
-// document.getElementById("botonPago").addEventListener("click", function() {
-//     const nombre = document.getElementById('nombre').value;
-//     const apellido = document.getElementById('apellido').value;
-//     const telefono = document.getElementById('numTelefono').value;
-//     const direccion = document.getElementById('direccion').value;
-//     // Captura el resto de los campos del formulario
-
-//     const envioData = {
-//         nombre: nombre,
-//         apellido: apellido,
-//         telefono: telefono,
-//         direccion: direccion,
-//         // Agrega el resto de los campos
-//     };
-
-//     fetch('/Apiweb/v1/envio/', {
+// function enviarDatos(data){
+//     fetch(`http://localhost:8081/Apiweb/v1/envio/`, {
 //         method: 'POST',
 //         headers: {
-//             'Content-Type': 'application/json'
+//         'Content-Type': 'application/json'
 //         },
-//         body: JSON.stringify(envioData)
+//         body: JSON.stringify(data)
 //     })
 //     .then(response => {
 //         if (response.ok) {
-//             console.log('Datos enviados correctamente');
-//             // Puedes mostrar un mensaje de éxito aquí si lo deseas
+//             console.log('Datos enviados correctamente.');
 //         } else {
-//             console.error('Error al enviar datos');
-//             // Puedes mostrar un mensaje de error aquí si lo deseas
+//             console.error('Error al enviar los datos.');
 //         }
 //     })
 //     .catch(error => {
-//         console.error('Error:', error);
-//         // Puedes mostrar un mensaje de error aquí si lo deseas
+//         console.error('Error en la solicitud Fetch:', error);
 //     });
-// });
-
-
+// }
