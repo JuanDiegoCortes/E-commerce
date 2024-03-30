@@ -25,10 +25,6 @@ public class EnvioController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearEnvio(@RequestBody EnvioModel envio) {
-        //Verificar si el envio ya existe
-        ciudadService.obtenerCiudadPorId(envio.getIdCiudad().getIdCiudad())
-                .orElseThrow(()-> new RecursoNoEncontradoException("La ciudad no existe."));
-
         envioService.crearEnvio(envio);
         return new ResponseEntity<String>(envioService.crearEnvio(envio), HttpStatus.OK);
     }
