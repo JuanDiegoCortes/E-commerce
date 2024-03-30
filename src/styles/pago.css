@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(15deg, #ff5500, #01040c);
+    height: 100vh;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.container h1 {
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+}
+
+.form-group {
+    margin: 30px 0;
+}
+
+.form-group label {
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #adadad;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="button"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #ff6600;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+button[type="button"]:hover {
+    background-color: #ff5500;
+}
+
+@media (max-width: 500px) {
+    .container {
+        width: 90%;
+    }
+}
+
+.regresar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.regresarBtn {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.regresarBtn:hover {
+    background-color: orangered;
+}

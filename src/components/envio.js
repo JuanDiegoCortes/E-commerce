@@ -78,3 +78,5 @@ function enviarDatos(data){
         console.error('Error en la solicitud Fetch:', error);
     });
 }
+
+

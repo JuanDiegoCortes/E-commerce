@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(15deg, #F8F4F3, #007bff);
+    height: 100vh;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Optional: Adjust input file appearance */
+.form-control[type="file"] {
+    overflow: hidden;
+}
+
+.input-file-label {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.input-file-label:hover {
+    background-color: #0056b3;
+}
+
+.regresar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.regresarBtn {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.regresarBtn:hover {
+    background-color: orangered;
+}
