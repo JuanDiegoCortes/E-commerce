@@ -9,46 +9,44 @@
     <title>UAO Shop</title>
 </head>
 <body>
+    <div class="regresar">
+        <a href="./carrito.html">
+            <button class="regresarBtn">Regresar</button>
+        </a>
+    </div>
     <div class="container">
         <h1>Información de envío</h1>
         <form method="post">
-            <h3>Nombre</h3>
             <div class="name">
-                <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombreEnvio" required>
+                <label for="nombre">Nombre*</label>
             </div>
 
-            <h3>Apellido</h3>
             <div class="lastName">
-                <label for="apellido">Apellido</label>
                 <input type="text" id="apellido" name="apellidoEnvio" required>
+                <label for="apellido">Apellido*</label>
             </div>
 
-            <h3>Número de teléfono</h3>
             <div class="phoneNumber">
-                <label for="numTelefono">Número de teléfono</label>
                 <input type="text" id="numTelefono" name="numTelefonoEnvio" required>
+                <label for="numTelefono">Número de teléfono*</label>
             </div>
 
-            <h3>Dirección</h3>
             <div class="adress">
-                <label for="direccion">Dirección</label>
                 <input type="text" id="direccion" name="direccionEnvio" required>
+                <label for="direccion">Dirección*</label>
             </div>
 
-            <h3>Referencias</h3>
             <div class="details">
-                <label for="referencias">Referencias</label>
-                <input type="text" id="referencias" name="referenciasEnvio">
+                <input type="text" id="referencias" name="referenciasEnvio" optional>
+                <label for="referencias">Referencias (Información adicional de entrega)</label>
             </div>
 
-            <h3>Código postal</h3>
-            <div class="postalCode">
-                <label for="codigoPostal">Código postal</label>
+            <div class="codigoPostal">
                 <input type="text" id="codigoPostal" name="codigoPostalEnvio" required>
+                <label for="codigoPostal">Código postal*</label>
             </div>
 
-            <h3>Ciudad</h3>
             <div class="dropdown">
                 <button id="boton-ciudades" class="btn btn-primary dropdown-toggle boton-ciudades" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Ciudades
@@ -73,9 +71,8 @@
                     <li><button id="recogida" class="dropdown-item boton-modalidadEntrega" type="button">Recoger</button></li>
                 </ul>
             </div>
-
             <a>
-                <button type="button" id="botonPago">Continuar con el pago</button>
+                <button type="button" id="botonPago">Continuar con el pago</button> 
             </a>
         </form>
     </div>

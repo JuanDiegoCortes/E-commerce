@@ -11,12 +11,38 @@ body {
     padding: 0;
     font-family: sans-serif;
     background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
-    height: 200vh;
+    height: 180vh;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+} 
+
+.regresar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.regresarBtn {
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.regresarBtn:hover {
+    background-color: var(--clr-orangered);
 }
 
 .container {
     position: absolute;
-    top: 100%;
+    top: 60%;
     left: 100%;
     transform: translate(-200%, -60%);
     width: 500px;
@@ -40,12 +66,11 @@ body {
 .phoneNumber,
 .adress,
 .details,
-.postalCode,
-.department,
+.codigoPostal,
 .city{
     position: relative;
     border-bottom: 2px solid var(--clr-silver);
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 .name input,
@@ -53,13 +78,12 @@ body {
 .phoneNumber input,
 .adress input,
 .details input,
-.postalCode input,
-.department input,
+.codigoPostal input,
 .city input {
     width: 20%;
     padding: 0 5px;
     height: 40px;
-    font-size: 16px;
+    font-size: 10px;
     border: none;
     background: none;
     outline: none;
@@ -70,8 +94,7 @@ body {
 .phoneNumber label,
 .adress label,
 .details label,
-.postalCode label,
-.department label,
+.codigoPostal label,
 .city label {
     position: absolute;
     top: 50%;
@@ -87,8 +110,7 @@ body {
 .phoneNumber span::before,
 .adress span::before,
 .details span::before,
-.postalCode span::before,
-.department span::before,
+.codigoPostal span::before,
 .city span::before {
     content: '';
     position: absolute;
@@ -105,8 +127,7 @@ body {
 .phoneNumber input:focus ~ label,
 .adress input:focus ~ label,
 .details input:focus ~ label,
-.lastName input:focus ~ label,
-.department input:focus ~ label,
+.codigoPostal input:focus ~ label,
 .city input:focus ~ label{
     top: -5px;
     color: #6c3483;
@@ -117,7 +138,7 @@ body {
 .phoneNumber input:focus ~ span::before,
 .adress input:focus ~ span::before,
 .details input:focus ~ span::before,
-.department input:focus ~ span::before,
+.codigoPostal input:focus ~ span::before,
 .city input:focus ~ span::before{
     width: 100%;
 }
@@ -128,7 +149,7 @@ input[type="submit"] {
     border: 1px solid;
     background: var(--clr-main-light);
     border-radius: 25px;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--clr-white);
     cursor: pointer;
     outline: none;
@@ -141,6 +162,7 @@ input[type="submit"]:hover {
 
 /* Estilos para el botón de pago */
 #botonPago {
+    margin-bottom: 20px;
     display: block;
     width: 100%;
     padding: 10px;
