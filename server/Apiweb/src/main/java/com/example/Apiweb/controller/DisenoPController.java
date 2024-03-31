@@ -76,4 +76,10 @@ public class DisenoPController {
             throw new CamposInvalidosException("Error! La url no puede estar vacia.");
         }
     }
+
+    @GetMapping("/visualizarDisenosP/{idOrden}")
+    public ResponseEntity<List<Object>> visualizarDisenos(@PathVariable Integer idOrden) {
+        List<Object> disenos = disenoPService.mostrarDisenosCompartidosPorIdOrden(idOrden);
+        return new ResponseEntity<List<Object>>(disenos, HttpStatus.OK);
+    }
 }

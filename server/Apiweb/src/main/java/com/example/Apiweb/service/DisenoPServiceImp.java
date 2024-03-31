@@ -43,4 +43,9 @@ public class DisenoPServiceImp implements IDisenoPService{
         this.disenoPRepository.save(disenoP);
         return "El diseñoP con id " + disenoP.getIdDisenoP() + " fue actualizado con exito.";
     }
+
+    @Override
+    public List<Object> mostrarDisenosCompartidosPorIdOrden(int idOrden) {
+        return this.disenoPRepository.listarDisenosCompartidosPorIdOrden(idOrden);
+    }
 }
