@@ -26,5 +26,5 @@ public class OrdenDTO {
     private UsuarioModel cedula;
 
     @JsonProperty("Productos")
-    List<Map<String, Integer>> Productos;
+    List<Map<String, Object>> Productos;
 }

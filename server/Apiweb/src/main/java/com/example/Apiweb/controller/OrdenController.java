@@ -56,9 +56,9 @@ public class OrdenController {
 
         //Capturar los productos y verificar que existan
         if (ordenDTO.getProductos() != null) {
-            List<Map<String, Integer>> listarProductos = ordenDTO.getProductos();
-            for (Map<String, Integer> Productos : listarProductos) {
-                Integer idProducto = Productos.get("idProducto");
+            List<Map<String, Object>> listarProductos = ordenDTO.getProductos();
+            for (Map<String, Object> Productos : listarProductos) {
+                Integer idProducto = (Integer) Productos.get("idProducto");
                 ProductoModel producto = this.productoService.obtenerProductoPorId(idProducto)
                         .orElseThrow(() -> new RecursoNoEncontradoException("No esta el producto con id: " + idProducto));
                 if (producto == null) {
@@ -69,16 +69,17 @@ public class OrdenController {
         if (bandera) {
             System.out.println("Bandera: "+ bandera);
             ordenService.crearOrden(orden);
-            for (Map<String, Integer> Productos : listarProductos) {
-                Integer idProducto = Productos.get("idProducto");
+            for (Map<String, Object> Productos : listarProductos) {
+                Integer idProducto = (Integer) Productos.get("idProducto");
                 OrdenProdModel ordenProd = new OrdenProdModel();
-                Integer cantidad = Productos.get("cantidad");
+                Integer cantidad = (Integer) Productos.get("cantidad");
+                String ordenPersonalizacion = (String)  Productos.get("ordenPersonalizacion");
                 ProductoModel producto = productoService.obtenerProductoPorId(idProducto).get();
                 ordenProd.setIdProducto(producto);
                 ordenProd.setIdOrden(orden);
                 ordenProd.setCantidad(cantidad);
-                ordenProd.setOrdenPersonalizacion(ordenProd.getOrdenPersonalizacion());
-                this.ordenProdService.crearOrdenProd(ordenProd);
+                ordenProd.setOrdenPersonalizacion(ordenPersonalizacion);
+                ordenProdService.crearOrdenProd(ordenProd);
             }
             return new ResponseEntity<String>(ordenService.crearOrden(orden), HttpStatus.OK);
         } else{
