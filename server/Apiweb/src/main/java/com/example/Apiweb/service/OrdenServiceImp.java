@@ -43,4 +43,10 @@ public class OrdenServiceImp implements IOrdenService{
         this.ordenRepository.save(orden);
         return "La orden con id " + orden.getIdOrden() + " fue actualizada con exito.";
     }
+
+    @Override
+    public List<Object> mostrarOrdenesPorCedula(int cedula) {
+        return this.ordenRepository.listarOrdenesPorCedula(cedula);
+    }
+
 }

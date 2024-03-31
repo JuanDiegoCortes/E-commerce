@@ -97,6 +97,7 @@ public class OrdenController {
         return new ResponseEntity<>(ordenes, HttpStatus.OK);
     }
 
+
     //consultar una orden por Id
     @GetMapping("/{ordenId}")
     public ResponseEntity<OrdenModel> obtenerOrdenPorId(@PathVariable Integer ordenId) {
@@ -130,5 +131,11 @@ public class OrdenController {
         else{
             throw new CamposInvalidosException("Error! El estado, el método de pago  y el precio total de la orden no pueden estar vacios");
         }
+    }
+
+    @GetMapping("/visualizarOrdenes/{cedula}")
+    public ResponseEntity<List<Object>> visualizarOrdenes(@PathVariable Integer cedula){
+        List<Object> ordenes = ordenService.mostrarOrdenesPorCedula(cedula);
+        return new ResponseEntity<List<Object>>(ordenes, HttpStatus.OK);
     }
 }

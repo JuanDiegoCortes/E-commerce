@@ -12,4 +12,6 @@ public interface IOrdenService {
     Optional<OrdenModel> obtenerOrdenPorId(int ordenId);
     String eliminarOrdenPorId(int ordenId);
     String actualizarOrdenPorId(OrdenModel orden);
+
+    List<Object> mostrarOrdenesPorCedula(int cedula);
 }
