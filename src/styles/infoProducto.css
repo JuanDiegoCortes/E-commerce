@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
+:root {
+    --clr-main: #000;
+    --clr-main-light: #ff6600;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
+}
+
 * {
     font-family: 'Rubik', sans-serif;
 }
 
 body {
-    background-color: black;
+    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
 }
 
 .container {
