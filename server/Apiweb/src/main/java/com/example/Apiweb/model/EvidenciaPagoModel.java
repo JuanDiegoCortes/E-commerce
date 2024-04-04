@@ -6,24 +6,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="OrdenProd")
+@Table(name="EvidenciaPago")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrdenProdModel {
+public class EvidenciaPagoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idOrdenProd;
+    private Integer idEvidenciaPago;
+    private String image_evidencia;
 
     @ManyToOne
     @JoinColumn(name = "idOrden")
     private OrdenModel idOrden;
 
-    @ManyToOne
-    @JoinColumn(name = "idProducto")
-    private ProductoModel idProducto;
-
-    private Integer cantidad;
-    private String image_Personalizacion;
-    private String texto_Personalizacion;
 }

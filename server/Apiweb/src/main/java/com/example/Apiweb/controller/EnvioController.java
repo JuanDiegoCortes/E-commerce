@@ -1,13 +1,11 @@
 package com.example.Apiweb.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.example.Apiweb.exception.CamposInvalidosException;
 import com.example.Apiweb.exception.RecursoNoEncontradoException;
 import com.example.Apiweb.model.EnvioModel;
 import com.example.Apiweb.model.enums.ModalidadEntrega;
-import com.example.Apiweb.service.ICiudadService;
 import com.example.Apiweb.service.IEnvioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +18,6 @@ import org.springframework.web.bind.annotation.*;
 public class EnvioController {
     @Autowired
     private IEnvioService envioService;
-    @Autowired
-    private ICiudadService ciudadService;
 
     @PostMapping("/")
     public ResponseEntity<String> crearEnvio(@RequestBody EnvioModel envio) {
@@ -49,22 +45,32 @@ public class EnvioController {
         EnvioModel envio = this.envioService.obtenerEnvioPorId(envioId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el envío con el id " + envioId));
         //obtenemos los datos que se van actualizar del envío y que son enviados del json
-        String nombreActualizar = detallesEnvio.getDireccion();
-        String nombreActualizar2 = detallesEnvio.getTelefono();
-        ModalidadEntrega nombreActualizar3 = detallesEnvio.getModalidadEntrega();
+        String nombreActualizar1 = detallesEnvio.getNombre();
+        String nombreActualizar2 = detallesEnvio.getApellido();
+        String nombreActualizar3 = detallesEnvio.getTelefono();
+        String nombreActualizar4 = detallesEnvio.getDireccion();
+        String nombreActualizar5 = detallesEnvio.getCodigoPostal();
+        String nombreActualizar6 = detallesEnvio.getReferencias();
+        ModalidadEntrega nombreActualizar7 = detallesEnvio.getModalidadEntrega();
 
 
         //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && !nombreActualizar.isEmpty() && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar3 != null){
+        if (nombreActualizar1 !=null && !nombreActualizar1.isEmpty() && nombreActualizar2 != null && !nombreActualizar2.isEmpty()
+                && nombreActualizar3 != null && nombreActualizar4 !=null && !nombreActualizar4.isEmpty() && nombreActualizar5 !=null
+                && !nombreActualizar6.isEmpty() && nombreActualizar7 !=null){
             //asignamos los valores que vamos actualizar del envio
-            envio.setDireccion(nombreActualizar);
-            envio.setTelefono(nombreActualizar2);
-            envio.setModalidadEntrega(nombreActualizar3);
+            envio.setNombre(nombreActualizar1);
+            envio.setApellido(nombreActualizar2);
+            envio.setTelefono(nombreActualizar3);
+            envio.setDireccion(nombreActualizar4);
+            envio.setCodigoPostal(nombreActualizar5);
+            envio.setReferencias(nombreActualizar6);
+            envio.setModalidadEntrega(nombreActualizar7);
             //guardamos los cambios
             return new ResponseEntity<String>(envioService.actualizarEnvioPorId(envio),HttpStatus.OK);
         }
         else{
-            throw new CamposInvalidosException("Error! La dirección, el teléfono y la modalidad del envío no pueden estar vacios");
+            throw new CamposInvalidosException("Error! Las caracteristicas del envío no pueden estar vacias");
         }
     }
 }

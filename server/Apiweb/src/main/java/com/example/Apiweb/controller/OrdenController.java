@@ -73,12 +73,14 @@ public class OrdenController {
                 Integer idProducto = (Integer) Productos.get("idProducto");
                 OrdenProdModel ordenProd = new OrdenProdModel();
                 Integer cantidad = (Integer) Productos.get("cantidad");
-                String ordenPersonalizacion = (String)  Productos.get("ordenPersonalizacion");
+                String image_Personalizacion = (String)  Productos.get("image_Personalizacion");
+                String texto_Personalizacion = (String)  Productos.get("texto_Personalizacion");
                 ProductoModel producto = productoService.obtenerProductoPorId(idProducto).get();
                 ordenProd.setIdProducto(producto);
                 ordenProd.setIdOrden(orden);
                 ordenProd.setCantidad(cantidad);
-                ordenProd.setOrdenPersonalizacion(ordenPersonalizacion);
+                ordenProd.setImage_Personalizacion(image_Personalizacion);
+                ordenProd.setTexto_Personalizacion(texto_Personalizacion);
                 ordenProdService.crearOrdenProd(ordenProd);
             }
             return new ResponseEntity<String>(ordenService.crearOrden(orden), HttpStatus.OK);

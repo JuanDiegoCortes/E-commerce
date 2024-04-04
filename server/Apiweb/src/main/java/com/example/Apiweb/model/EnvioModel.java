@@ -15,8 +15,12 @@ public class EnvioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEnvio;
-    private String direccion;
+    private String nombre;
+    private String apellido;
     private String telefono;
+    private String direccion;
+    private String codigoPostal;
+    private String referencias;
 
     @Column(name = "ModalidadEntrega")
     @Enumerated(EnumType.STRING)
