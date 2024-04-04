@@ -1,11 +1,5 @@
 let ciudadSeleccionadaId = "";
 let modalidadEntregaSeleccionada = "";
-// let nombre = "";
-// let apellido = "";
-let telefono = "";
-let direccion = "";
-// let codigoPostal = "";
-// let referencias = "";
 
 document.querySelectorAll('.boton-ciudad').forEach(button => {
     button.addEventListener('click', function() {
@@ -23,29 +17,28 @@ document.getElementById("botonPago").addEventListener("click", capturarValores);
 
 function capturarValores() {
 
-    // nombre = document.getElementById('nombre').value;
-    // apellido = document.getElementById('apellido').value;
-    telefono = document.getElementById('numTelefono').value;
-    direccion = document.getElementById('direccion').value;
-    // codigoPostal = document.getElementById('codigoPostal').value;
-    // referencias = document.getElementById('referencias').value;
+    let nombre = document.getElementById('nombre').value;
+    let apellido = document.getElementById('apellido').value;
+    let telefono = document.getElementById('numTelefono').value;
+    let direccion = document.getElementById('direccion').value;
+    let codigoPostal = document.getElementById('codigoPostal').value;
+    let referencias = document.getElementById('referencias').value;
 
     if (ciudadSeleccionadaId === "" || modalidadEntregaSeleccionada === "" || telefono === "" || direccion === "") {
         alert('Por favor, complete todos los campos.');
         return console.log(ciudadSeleccionadaId, modalidadEntregaSeleccionada, telefono, direccion)
     }else {
         const envioData = {
-
-            // apellido: apellido,
+            nombre: nombre,
+            apellido: apellido,
             direccion: direccion,
             modalidadEntrega: modalidadEntregaSeleccionada,
             telefono: telefono,
             idCiudad: {
                 idCiudad: ciudadSeleccionadaId
-            }
-            // nombre: nombre
-            // codigoPostal: codigoPostal,
-            // referencias: referencias,
+            },
+            codigoPostal: codigoPostal,
+            referencias: referencias,
         };
         console.log(envioData);
         enviarDatos(envioData);
