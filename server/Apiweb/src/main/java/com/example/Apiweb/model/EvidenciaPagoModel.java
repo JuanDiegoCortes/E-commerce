@@ -14,7 +14,7 @@ public class EvidenciaPagoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEvidenciaPago;
-    private String image_evidencia;
+    private String image_Evidencia;
 
     @ManyToOne
     @JoinColumn(name = "idOrden")
