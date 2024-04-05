@@ -34,11 +34,6 @@ public class DisenoPController {
         usuarioService.obtenerUsuarioPorId(disenoP.getCedula().getCedula())
                 .orElseThrow(()-> new RecursoNoEncontradoException("El usuario no existe."));
 
-        Optional<DisenoPModel> verificacion = disenoPService.obtenerDisenoPPorId(disenoP.getIdDisenoP());
-        if (verificacion.isPresent()){
-            String mensaje = "Este diseñoP ya existe.";
-            return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
-        }
         disenoPService.crearDisenoP(disenoP);
         return new ResponseEntity<String>(disenoPService.crearDisenoP(disenoP), HttpStatus.OK);
     }
@@ -50,15 +45,15 @@ public class DisenoPController {
     }
 
     //consultar un disenoP por Id
-    @GetMapping("/{disenoP}")
-    public ResponseEntity<DisenoPModel> obtenerDisenoPPorId(@PathVariable Integer disenoId) {
-        DisenoPModel diseno = this.disenoPService.obtenerDisenoPPorId(disenoId)
-                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el disenoP con el id " + disenoId));
+    @GetMapping("/{disenoPId}")
+    public ResponseEntity<DisenoPModel> obtenerDisenoPPorId(@PathVariable Integer disenoPId) {
+        DisenoPModel diseno = this.disenoPService.obtenerDisenoPPorId(disenoPId)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el disenoP con el id " + disenoPId));
         return ResponseEntity.ok(diseno);
     }
 
     //actualizar la información básica del disenoP
-    @PutMapping ("/{disenoP}")
+    @PutMapping ("/{disenoPId}")
     public ResponseEntity<String> actualizarDisenoPPorId(@PathVariable Integer disenoPId, @RequestBody DisenoPModel detallesDisenoP) {
         DisenoPModel disenoP = this.disenoPService.obtenerDisenoPPorId(disenoPId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el disenoP con el id " + disenoPId));
