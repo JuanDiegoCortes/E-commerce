@@ -1,0 +1,34 @@
+.listarBtn {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    position: fixed;
+    top: 40px;
+    right: 60px; 
+    z-index: 999;
+}
+.listarBtn:hover {
+    background-color: black;
+    color: #ffff;
+    border-color: var(--clr-main-light);
+}
+/*.listarDiseno {
+    bottom: 20px; 
+    right: 20px; 
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}*/
+/*
+.listarDiseno:hover {
+    background-color: var(--clr-white);
+    color: var(--clr-main-light);
+    border-color: var(--clr-main-light);
+}*/
