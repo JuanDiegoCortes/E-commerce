@@ -19,11 +19,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     let botonPago = document.getElementById("botonPago");
-    if (botonPago) {
-        botonPago.addEventListener("click", capturarValores);
-    } else {
-        console.error("El elemento 'botonPago' no existe .");
-    }
+    botonPago.addEventListener("click", capturarValores);
 
     function capturarValores() {
         let nombre = document.getElementById('nombre').value;
@@ -33,9 +29,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let codigoPostal = document.getElementById('codigoPostal').value;
         let referencias = document.getElementById('referencias').value;
 
-        if (ciudadSeleccionadaId === "" || modalidadEntregaSeleccionada === "" || telefono === "" || direccion === "") {
+        if (nombre === "" || apellido === "" || codigoPostal === "" || ciudadSeleccionadaId === "" || modalidadEntregaSeleccionada === "" || telefono === "" || direccion === "") {
             alert('Por favor, complete todos los campos.');
-            return console.log(ciudadSeleccionadaId, modalidadEntregaSeleccionada, telefono, direccion);
+            return "";
         } else {
             const envioData = {
                 nombre: nombre,
