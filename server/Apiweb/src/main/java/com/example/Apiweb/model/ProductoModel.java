@@ -2,6 +2,7 @@ package com.example.Apiweb.model;
 
 import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.model.enums.Genero;
+import com.example.Apiweb.model.enums.Personalizable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,10 @@ public class ProductoModel {
     @Column(name = "Estado")
     @Enumerated(EnumType.STRING)
     private Estado estado;
+
+    @Column(name = "Personalizable")
+    @Enumerated(EnumType.STRING)
+    private Personalizable personalizable;
 
     @Column(name = "Genero")
     @Enumerated(EnumType.STRING)
