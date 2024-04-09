@@ -26,7 +26,7 @@ function fetchData(){
     .then(response => response.json())
     .then(data => {
         DisenosP = data;
-        cargarDisenosP(Disenos);
+        cargarDisenosP(DisenosP);
     });
 }
 
