@@ -19,6 +19,49 @@
 
 // window.addEventListener('load', listarDiseños);
 
+function buscarDiseños(){
+    const designList = document.getElementById('design-list');
+
+    // Agregar un mensaje de carga mientras se obtienen los diseños
+    designList.innerHTML = '<p>Cargando diseños...</p>';
+    
+    fetch("http://localhost:8081/Apiweb/v1/diseñoP/")
+        .then(response => {
+            if (!response.ok) {
+                // Si la respuesta no es exitosa, lanzar un error
+                throw new Error('No se pudo obtener los diseños');
+            }
+            return response.json(); // Parsea la respuesta como JSON
+        })
+        .then(data => {
+            if (data.length === 0) {
+                // Si no hay diseños, mostrar un mensaje adecuado al usuario
+                designList.innerHTML = '<p>No se encontraron diseños disponibles.</p>';
+            } else {
+                // Iterar sobre los datos obtenidos y agregarlos a la lista
+                designList.innerHTML = ''; // Limpiar el mensaje de carga
+                data.forEach(design => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <img src="${design.image_Url}" alt="${design.nombre}">
+                        <h3>${design.nombre}</h3>
+                        <p>Precio: $${design.precio.toFixed(2)}</p>`;
+                    designList.appendChild(listItem);
+                });
+            }
+        })
+        .catch(error => {
+            // Manejar cualquier error que ocurra durante la solicitud
+            console.error('Error al obtener los diseños:', error);
+            // Mostrar un mensaje de error al usuario
+            designList.innerHTML = '<p>Ocurrió un error al cargar los diseños. Por favor, inténtalo de nuevo más tarde.</p>';
+        });
+}
+
+// Llama a la función buscarDiseños para cargar los diseños cuando se cargue la página
+window.addEventListener('load', buscarDiseños);
+
+
 const contenerdorDisenos = document.querySelector("#contenedor-disenos");
 
 function fetchData(){
