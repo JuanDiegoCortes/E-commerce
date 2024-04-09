@@ -22,9 +22,9 @@ function cargarProductosCarrito() {
     
         productosEnCarrito.forEach(producto => {
     
-            const div = document.createElement("div");
-            div.classList.add("carrito-producto");
-            div.innerHTML = `
+            const divProducto = document.createElement("div");
+            divProducto.classList.add("carrito-producto");
+            divProducto.innerHTML = `
                 <img class="carrito-producto-imagen" src="${producto.image_Url}" alt="${producto.nombre}">
                 <div class="carrito-producto-titulo">
                     <small>Título</small>
@@ -44,22 +44,26 @@ function cargarProductosCarrito() {
                 </div>
                 <button class="carrito-producto-eliminar" id="${producto.idProducto}"><i class="bi bi-trash-fill"></i></button>
             `;
-            //Hay que hacer el metodo de personalizacion para los productos, deberia ser una ventana distinta o que se agregue desde esa misma ventana un label de escritura.
-            contenedorCarritoProductos.append(div);   
             
-            const div2 = document.createElement("div");
-            div2.classList.add("carrito-producto");
-            div2.innerHTML = `
+            const divPersonalizacion = document.createElement("div");
+            divPersonalizacion.classList.add("carrito-producto");
+            divPersonalizacion.innerHTML = `
                 <div class="personalizacion">
-                    <small>Personalización</small>
-                    <p>${producto.nombre}</p>
+                    <small>Personalización: ${producto.nombre}</small>
                     <div class="input-group">
                         <textarea class="form-control" aria-label="With textarea"> Ingrese el texto que quiere en su diseño ...</textarea>
                         <input class="form-control agregar" type="file" id="formFileMultiple" multiple></input>
                     </div>  
                 </div>
                 `;
-            contenedorCarritoProductos.append(div2);
+
+                if (producto.personalizable === "si") {
+                    contenedorCarritoProductos.append(divProducto);
+                    contenedorCarritoProductos.appendChild(divPersonalizacion);
+                } else {
+                    contenedorCarritoProductos.appendChild(divProducto);
+                }
+
         })
     
     actualizarBotonesEliminar();

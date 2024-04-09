@@ -7,6 +7,7 @@ let productosEnCarrito = [];
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesGeneros = document.querySelectorAll(".boton-genero");
 const botonCategorias = document.querySelectorAll(".boton-categoria");
+const botonPersonalizable = document.querySelectorAll(".boton-personalizable");
 const tituloPrincipal = document.querySelector("#titulo-principal");
 const numerito = document.querySelector("#numerito");
 
@@ -26,6 +27,7 @@ function fetchData() {
 function addEventListeners() {
   botonesGeneros.forEach(boton => boton.addEventListener("click", handleGeneroClick));
   botonCategorias.forEach(boton => boton.addEventListener("click", handleCategoriaClick));
+  botonPersonalizable.forEach(boton => boton.addEventListener("click", handlePersonalizableClick));
 }
 
 // Handle genero click event
@@ -62,6 +64,29 @@ function handleCategoriaClick(e) {
   }
 }
 
+// Handle personalizable click event
+function handlePersonalizableClick(e) {
+  aside.classList.remove("aside-visible");
+  botonPersonalizable.forEach(boton => boton.classList.remove("active"));
+  e.currentTarget.classList.add("active");
+  const personalizable = e.currentTarget.id;
+
+  let productosFiltrados = productos;
+
+  if (generoActivo && generoActivo !== "todos") {
+    productosFiltrados = productosFiltrados.filter(producto => producto.genero === generoActivo);
+  }
+
+  const categoriaId = document.querySelector(".boton-categoria.active")?.id;
+  if (categoriaId && categoriaId !== "1") {
+    productosFiltrados = productosFiltrados.filter(producto => producto.idCategoria.idCategoria === parseInt(categoriaId));
+  }
+
+  const productosPersonalizables = productosFiltrados.filter(producto => producto.personalizable === personalizable);
+  cargarProductos(productosPersonalizables);
+}
+
+
 // Function to load products
 function cargarProductos(productosElegidos) {
   contenedorProductos.innerHTML = "";
@@ -77,6 +102,7 @@ function cargarProductos(productosElegidos) {
       <img class="producto-imagen" src="${producto.image_Url}" alt="${producto.nombre}">
       <div class="producto-detalles">
         <h3 class="producto-titulo">${producto.nombre}</h3>
+        <p class="producto-personalizable">Personalizable: ${producto.personalizable}</p>
         <p class="producto-precio">Precio: ${producto.precio}</p>
         <button class="producto-agregar" id="${producto.idProducto}">Agregar</button>
         <button class="producto-info" id="${producto.idProducto}">Informacion</button>
