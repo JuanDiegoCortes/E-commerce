@@ -137,8 +137,8 @@ public class OrdenController {
     }
 
     @GetMapping("/visualizarOrdenes/{cedula}")
-    public ResponseEntity<List<Object>> visualizarOrdenes(@PathVariable Integer cedula){
-        List<Object> ordenes = ordenService.mostrarOrdenesPorCedula(cedula);
-        return new ResponseEntity<List<Object>>(ordenes, HttpStatus.OK);
+    public ResponseEntity<List<OrdenModel>> visualizarOrdenes(@PathVariable Integer cedula){
+        List<OrdenModel> ordenes = ordenService.mostrarOrdenesPorCedula(cedula);
+        return new ResponseEntity<List<OrdenModel>>(ordenes, HttpStatus.OK);
     }
 }

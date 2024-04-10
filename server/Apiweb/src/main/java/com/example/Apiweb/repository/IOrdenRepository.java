@@ -13,5 +13,5 @@ public interface IOrdenRepository extends JpaRepository<OrdenModel, Integer> {
     @Query (value="SELECT *" +
             "FROM `E-commerce`.`Orden`" +
             "WHERE `cedula` =  :cedula", nativeQuery = true)
-    List<Object> listarOrdenesPorCedula(@Param("cedula") Integer cedula);
+    List<OrdenModel> listarOrdenesPorCedula(@Param("cedula") Integer cedula);
 }

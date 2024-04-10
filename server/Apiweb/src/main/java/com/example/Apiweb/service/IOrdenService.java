@@ -13,5 +13,5 @@ public interface IOrdenService {
     String eliminarOrdenPorId(int ordenId);
     String actualizarOrdenPorId(OrdenModel orden);
 
-    List<Object> mostrarOrdenesPorCedula(int cedula);
+    List<OrdenModel> mostrarOrdenesPorCedula(int cedula);
 }

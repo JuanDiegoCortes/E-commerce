@@ -133,8 +133,7 @@ function disminuirCantidad(idProducto) {
     }
 }
 
-botonVaciar.addEventListener("click", vaciarCarrito);
-function vaciarCarrito() {
+botonVaciar.addEventListener("click", () => {
 
     Swal.fire({
         title: '¿Estás seguro?',
@@ -151,16 +150,14 @@ function vaciarCarrito() {
             cargarProductosCarrito();
             }
         })
-}
-
+});
 
 function actualizarTotal() {
     const totalCalculado = productosEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
     total.innerText = `$${totalCalculado}`;
 }
 
-botonComprar.addEventListener("click", comprarCarrito);
-function comprarCarrito() {
+botonComprar.addEventListener("click", () =>  {
     // Esto elimina los productos en el carrito que se almacenan de forma local
     productosEnCarrito.length = 0;
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
@@ -170,4 +167,4 @@ function comprarCarrito() {
     contenedorCarritoAcciones.classList.add("disabled");
     contenedorCarritoComprado.classList.remove("disabled");
 
-}
+});
