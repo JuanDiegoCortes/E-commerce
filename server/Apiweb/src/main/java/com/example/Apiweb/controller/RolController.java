@@ -21,12 +21,6 @@ public class RolController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearRol(@RequestBody RolModel rol) {
-        //Verificar si el rol ya existe
-        Optional<RolModel> verificacion = rolService.obtenerRolPorId(rol.getIdRol());
-        if (verificacion.isPresent()){
-            String mensaje = "Este rol ya existe.";
-            return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
-        }
         rolService.crearRol(rol);
         return new ResponseEntity<String>(rolService.crearRol(rol), HttpStatus.OK);
     }

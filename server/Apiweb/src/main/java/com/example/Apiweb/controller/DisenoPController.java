@@ -28,12 +28,6 @@ public class DisenoPController {
     
     @PostMapping("/")
     public ResponseEntity<String> crearDisenoP(@RequestBody DisenoPModel disenoP) {
-        //Verificar si el envio ya existe
-        ordenService.obtenerOrdenPorId(disenoP.getIdOrden().getIdOrden())
-                .orElseThrow(()-> new RecursoNoEncontradoException("La orden no existe."));
-        usuarioService.obtenerUsuarioPorId(disenoP.getCedula().getCedula())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El usuario no existe."));
-
         disenoPService.crearDisenoP(disenoP);
         return new ResponseEntity<String>(disenoPService.crearDisenoP(disenoP), HttpStatus.OK);
     }

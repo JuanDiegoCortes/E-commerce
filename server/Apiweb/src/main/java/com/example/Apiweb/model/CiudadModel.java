@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CiudadModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCiudad;
     private String nombre;
 

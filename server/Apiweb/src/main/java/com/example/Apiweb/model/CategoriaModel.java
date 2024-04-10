@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CategoriaModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCategoria;
     private String nombre;
     private String descripcion;

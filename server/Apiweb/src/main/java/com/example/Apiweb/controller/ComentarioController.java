@@ -28,12 +28,6 @@ public class ComentarioController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearComentario(@RequestBody ComentarioModel comentario) {
-        //Verificar si el comentario ya existe
-        usuarioService.obtenerUsuarioPorId(comentario.getCedula().getCedula())
-                .orElseThrow(() -> new RecursoNoEncontradoException("El usuario no existe."));
-        disenoPService.obtenerDisenoPPorId(comentario.getIdDisenoP().getIdDisenoP())
-                .orElseThrow(() -> new RecursoNoEncontradoException("El disenoP no existe."));
-
         Optional<ComentarioModel> verificacion = comentarioService.obtenerComentarioPorId(comentario.getIdComentario());
         if (verificacion.isPresent()) {
             String mensaje = "Este comentario ya existe.";

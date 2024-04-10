@@ -22,12 +22,6 @@ public class DepartamentoController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearDepartamento(@RequestBody DepartamentoModel departamento) {
-        //Verificar si el departamento ya existe
-        Optional<DepartamentoModel> verificacion = departamentoService.obtenerDepartamentoPorId(departamento.getIdDepartamento());
-        if (verificacion.isPresent()){
-            String mensaje = "Este departamento ya existe.";
-            return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
-        }
         departamentoService.crearDepartamento(departamento);
         return new ResponseEntity<String>(departamentoService.crearDepartamento(departamento), HttpStatus.OK);
     }

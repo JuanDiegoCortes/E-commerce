@@ -21,12 +21,6 @@ public class TallaController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearTalla(@RequestBody TallaModel talla) {
-        //Verificar si la talla ya existe
-        Optional<TallaModel> verificacion = tallaService.obtenerTallaPorId(talla.getIdTalla());
-        if (verificacion.isPresent()){
-            String mensaje = "Esta talla ya existe.";
-            return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
-        }
         tallaService.crearTalla(talla);
         return new ResponseEntity<String>(tallaService.crearTalla(talla), HttpStatus.OK);
     }
