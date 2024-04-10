@@ -21,7 +21,6 @@ function cargarProductosCarrito() {
         contenedorCarritoProductos.innerHTML = "";
     
         productosEnCarrito.forEach(producto => {
-    
             const divProducto = document.createElement("div");
             divProducto.classList.add("carrito-producto");
             divProducto.innerHTML = `
@@ -33,6 +32,8 @@ function cargarProductosCarrito() {
                 <div class="carrito-producto-cantidad">
                     <small>Cantidad</small>
                     <p>${producto.cantidad}</p>
+                    <button class="carrito-producto-restar" id="${producto.idProducto}"><i class="bi bi-dash"></i></button>
+                    <button class="carrito-producto-sumar" id="${producto.idProducto}"><i class="bi bi-plus"></i></button>
                 </div>
                 <div class="carrito-producto-precio">
                     <small>Precio</small>
@@ -42,29 +43,26 @@ function cargarProductosCarrito() {
                     <small>Subtotal</small>
                     <p>$${producto.precio * producto.cantidad}</p>
                 </div>
+                <div class="personalizacion">
+                    <button class="carrito-producto-personalizar" id="${producto.idProducto}"><i class="bi bi-pencil-fill"></i></button>
+                </div>
                 <button class="carrito-producto-eliminar" id="${producto.idProducto}"><i class="bi bi-trash-fill"></i></button>
             `;
-            
-            const divPersonalizacion = document.createElement("div");
-            divPersonalizacion.classList.add("carrito-producto");
-            divPersonalizacion.innerHTML = `
-                <div class="personalizacion">
-                    <small>Personalización: ${producto.nombre}</small>
-                    <div class="input-group">
-                        <textarea class="form-control" aria-label="With textarea"> Ingrese el texto que quiere en su diseño ...</textarea>
-                        <input class="form-control agregar" type="file" id="formFileMultiple" multiple></input>
-                    </div>  
-                </div>
-                `;
+        
+            if (producto.personalizable !== "si") {
+                const botonPersonalizar = divProducto.querySelector('.carrito-producto-personalizar');
+                botonPersonalizar.style.display = "none"; // Oculta el botón de personalización para productos no personalizables
+            }
+        
+            contenedorCarritoProductos.appendChild(divProducto);
 
-                if (producto.personalizable === "si") {
-                    contenedorCarritoProductos.append(divProducto);
-                    contenedorCarritoProductos.appendChild(divPersonalizacion);
-                } else {
-                    contenedorCarritoProductos.appendChild(divProducto);
-                }
+            const botonSumar = divProducto.querySelector('.carrito-producto-sumar');
+            const botonRestar = divProducto.querySelector('.carrito-producto-restar');
 
-        })
+            botonSumar.addEventListener("click", () => aumentarCantidad(producto.idProducto));
+            botonRestar.addEventListener("click", () => disminuirCantidad(producto.idProducto));
+        });
+        
     
     actualizarBotonesEliminar();
     actualizarTotal();
@@ -107,16 +105,32 @@ function eliminarDelCarrito(e) {
             y: '1.5rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
           },
         onClick: function(){} // Callback after click
-      }).showToast();
+        }).showToast();
 
     const idBoton = e.currentTarget.id;
-    const index = productosEnCarrito.findIndex(producto => producto.id === parseInt(idBoton));
-    
+    const index = productosEnCarrito.findIndex(producto => producto.idProducto === parseInt(idBoton));
+      
     productosEnCarrito.splice(index, 1);
     cargarProductosCarrito();
 
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 
+}
+
+function aumentarCantidad(idProducto) {
+    const producto = productosEnCarrito.find(producto => producto.idProducto === parseInt(idProducto));
+    producto.cantidad++;
+    cargarProductosCarrito();
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+}
+
+function disminuirCantidad(idProducto) {
+    const producto = productosEnCarrito.find(producto => producto.idProducto === parseInt(idProducto));
+    if (producto.cantidad > 1) {
+        producto.cantidad--;
+        cargarProductosCarrito();
+        localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+    }
 }
 
 botonVaciar.addEventListener("click", vaciarCarrito);
@@ -135,8 +149,8 @@ function vaciarCarrito() {
             productosEnCarrito.length = 0;
             localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
             cargarProductosCarrito();
-        }
-      })
+            }
+        })
 }
 
 
