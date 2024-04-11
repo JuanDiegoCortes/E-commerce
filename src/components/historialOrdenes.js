@@ -1,20 +1,19 @@
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", () => {
+
     //Variables
     let ordenes = [];
-    let ordenesListadas = []
     let cedula = 582347196 /* localStorage.getItem("usuario.cedula"); */
 
     //Select DOM elements
     const contenedorOrdenes = document.querySelector("#contenedor-orden");
 
-    const url = `http://localhost:8081/Apiweb/v1/ordenProducto/visualizarOrdenes/${cedula}`;
+    const url = `http://localhost:8081/Apiweb/v1/orden/visualizarOrdenes/${cedula}`;
     fetch(url)
         .then(response => response.json())
         .then(data => {
             ordenes = data;
             cargarHistorialOrdenesPorCedula(ordenes);
             console.log(ordenes);
-
         })
         .catch(error => {
             console.error("Error al obtener los datos:", error);
@@ -35,16 +34,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 <p>${orden.precioTotal}</p>
             </div>
             <div class="boton-info">
-                <a href="../pages/ordenDetalle.html">
-                    <button class="regresarBtn" > Info </button>
-                </a>
+                <button class="regresarBtn boton-detalles" id="${orden.idOrden}">Ver detalles</button>  
             </div>
-        `;
+            `;
             contenedorOrdenes.appendChild(div);
-            sessionStorage.setItem("ordenSeleccionada", JSON.stringify(orden));
-            window.location.href = "../pages/ordenDetalle.html";
+
+            const botonDetalles = div.querySelector(".boton-detalles");
+            botonDetalles.addEventListener("click", function() {
+                sessionStorage.setItem("ordenSeleccionada", JSON.stringify(orden));
+                window.location.href = "../pages/ordenDetalle.html";
+            });
         });
     }
-    localStorage.setItem("ordenesListadas", JSON.stringify(ordenesListadas));
 
 });

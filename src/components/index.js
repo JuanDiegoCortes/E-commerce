@@ -108,7 +108,7 @@ function cargarProductos(productosElegidos) {
         <button class="producto-agregar" id="${producto.idProducto}">Agregar</button>
         <button class="producto-info" id="${producto.idProducto}">Informacion</button>
       </div>
-    `;
+      `;
     contenedorProductos.append(div);
 
     const botonInformacion = div.querySelector(".producto-info");
