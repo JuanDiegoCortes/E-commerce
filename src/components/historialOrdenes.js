@@ -1,17 +1,19 @@
 let ordenes = [];
+let ordenesListadas = []
 //Select DOM elements
 const contenedorOrdenes = document.querySelector("#contenedor-orden");
 
 cedula = 582347196 /* localStorage.getItem("cedula"); */
 url = `http://localhost:8081/Apiweb/v1/orden/visualizarOrdenes/`;
 
-function fetchData() {
+function fetchData(cedula) {
     return fetch(url + cedula)
         .then(response => response.json())
         .then(data => {
             ordenes = data;
             cargarHistorialOrdenesPorCedula(ordenes);
             console.log(ordenes);
+
         })
         .catch(error => {
             console.error("Error al obtener los datos:", error);
@@ -33,10 +35,15 @@ function cargarHistorialOrdenesPorCedula(ordenesSeleccionadas) {
             <p>${orden.precioTotal}</p>
         </div>
         <div class="boton-info">
-            <button class="regresarBtn"> Info </button>
+            <a href="../pages/ordenDetalle.html">
+                <button class="regresarBtn" > Info </button>
+            </a>
         </div>
     `;
         contenedorOrdenes.appendChild(div);
+        sessionStorage.setItem("ordenSeleccionada", JSON.stringify(orden));
     });
 }
-fetchData();
+localStorage.setItem("ordenesListadas", JSON.stringify(ordenesListadas));
+
+fetchData(cedula);
