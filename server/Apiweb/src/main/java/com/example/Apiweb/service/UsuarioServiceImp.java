@@ -43,4 +43,9 @@ public class UsuarioServiceImp implements IUsuarioService{
         this.usuarioRepository.save(usuario);
         return "El usuario con cédula " + usuario.getCedula() + " fue actualizado con exito.";
     }
+
+    @Override
+    public List<Object> verUsuarioPorCedulaYContrasena(int cedula, String contrasena) {
+        return this.usuarioRepository.mostrarUsuarioPorCedulaYContrasena(cedula, contrasena);
+    }
 }

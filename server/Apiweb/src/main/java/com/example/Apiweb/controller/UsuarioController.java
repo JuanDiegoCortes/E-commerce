@@ -3,6 +3,7 @@ package com.example.Apiweb.controller;
 
 import com.example.Apiweb.exception.CamposInvalidosException;
 import com.example.Apiweb.exception.RecursoNoEncontradoException;
+import com.example.Apiweb.model.OrdenModel;
 import com.example.Apiweb.model.UsuarioModel;
 import com.example.Apiweb.service.IRolService;
 import com.example.Apiweb.service.IUsuarioService;
@@ -68,5 +69,11 @@ public class UsuarioController {
         else{
             throw new CamposInvalidosException("Error! Los datos del uisuario no pueden estar vacios.");
         }
+    }
+
+    @GetMapping("/autenticacionUsuario/{cedula}/{contrasena}")
+    public ResponseEntity<List<Object>> autenticacionUsuario(@PathVariable Integer cedula, @PathVariable String contrasena) {
+        List<Object> usuarios = usuarioService.verUsuarioPorCedulaYContrasena(cedula, contrasena);
+        return new ResponseEntity<List<Object>>(usuarios, HttpStatus.OK);
     }
 }
