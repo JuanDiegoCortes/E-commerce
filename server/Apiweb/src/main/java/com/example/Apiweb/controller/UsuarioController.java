@@ -20,8 +20,6 @@ import java.util.Optional;
 public class UsuarioController {
     @Autowired
     private IUsuarioService usuarioService;
-    @Autowired
-    private IRolService rolService;
 
     @PostMapping("/")
     public ResponseEntity<String> crearUsuario(@RequestBody UsuarioModel usuario) {
