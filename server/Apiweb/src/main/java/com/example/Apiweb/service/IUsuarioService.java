@@ -12,5 +12,5 @@ public interface IUsuarioService {
     Optional<UsuarioModel> obtenerUsuarioPorId(int usuarioId);
     String eliminarUsuarioPorId(int usuarioId);
     String actualizarUsuarioPorId(UsuarioModel usuario);
-    List<Object> verUsuarioPorCedulaYContrasena(int cedula, String contrasena);
+    Optional<UsuarioModel> verUsuarioPorCedulaYContrasena(int cedula, String contrasena);
 }

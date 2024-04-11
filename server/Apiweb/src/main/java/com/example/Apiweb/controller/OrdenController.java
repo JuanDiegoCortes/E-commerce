@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.time.LocalDate;
 import java.util.List;
@@ -39,15 +40,23 @@ public class OrdenController {
 
         // Obtener la fecha actual
         Date fechaActual = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaFormateada = formato.format(fechaActual);
+        Date fechaFormateadaDate = null;
+        try {
+            fechaFormateadaDate = formato.parse(fechaFormateada);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         EnvioModel envio = envioService.obtenerEnvioPorId(ordenDTO.getIdEnvio().getIdEnvio())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El envio no existe."));
+                .orElseThrow(() -> new RecursoNoEncontradoException("El envio no existe."));
         UsuarioModel usuario = usuarioService.obtenerUsuarioPorId(ordenDTO.getCedula().getCedula())
-                .orElseThrow(()-> new RecursoNoEncontradoException("El usuario no existe."));
+                .orElseThrow(() -> new RecursoNoEncontradoException("El usuario no existe."));
 
         //Crear instancia de un ordenModel
         OrdenModel orden = new OrdenModel();
-        orden.setFecha(fechaActual);
+        orden.setFecha(fechaFormateadaDate);
         orden.setEstado(ordenDTO.getEstado());
         orden.setMetodoPago(ordenDTO.getMetodoPago());
         orden.setPrecioTotal(ordenDTO.getPrecioTotal());
@@ -66,29 +75,29 @@ public class OrdenController {
                     throw new RecursoNoEncontradoException("No se encontró el producto con ID: " + idProducto);
                 }
             }
-        if (bandera) {
-            System.out.println("Bandera: "+ bandera);
-            ordenService.crearOrden(orden);
-            for (Map<String, Object> Productos : listarProductos) {
-                Integer idProducto = (Integer) Productos.get("idProducto");
-                OrdenProdModel ordenProd = new OrdenProdModel();
-                Integer cantidad = (Integer) Productos.get("cantidad");
-                String image_Personalizacion = (String)  Productos.get("image_Personalizacion");
-                String texto_Personalizacion = (String)  Productos.get("texto_Personalizacion");
-                ProductoModel producto = productoService.obtenerProductoPorId(idProducto).get();
-                ordenProd.setIdProducto(producto);
-                ordenProd.setIdOrden(orden);
-                ordenProd.setCantidad(cantidad);
-                ordenProd.setImage_Personalizacion(image_Personalizacion);
-                ordenProd.setTexto_Personalizacion(texto_Personalizacion);
-                ordenProdService.crearOrdenProd(ordenProd);
+            if (bandera) {
+                System.out.println("Bandera: " + bandera);
+                ordenService.crearOrden(orden);
+                for (Map<String, Object> Productos : listarProductos) {
+                    Integer idProducto = (Integer) Productos.get("idProducto");
+                    OrdenProdModel ordenProd = new OrdenProdModel();
+                    Integer cantidad = (Integer) Productos.get("cantidad");
+                    String image_Personalizacion = (String) Productos.get("image_Personalizacion");
+                    String texto_Personalizacion = (String) Productos.get("texto_Personalizacion");
+                    ProductoModel producto = productoService.obtenerProductoPorId(idProducto).get();
+                    ordenProd.setIdProducto(producto);
+                    ordenProd.setIdOrden(orden);
+                    ordenProd.setCantidad(cantidad);
+                    ordenProd.setImage_Personalizacion(image_Personalizacion);
+                    ordenProd.setTexto_Personalizacion(texto_Personalizacion);
+                    ordenProdService.crearOrdenProd(ordenProd);
+                }
+                return new ResponseEntity<String>(ordenService.crearOrden(orden), HttpStatus.OK);
+            } else {
+                String mensaje = "Verifica que los datos ingresados sean correctos.";
+                return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST); //Envia esto cuando no existen las tallas
             }
-            return new ResponseEntity<String>(ordenService.crearOrden(orden), HttpStatus.OK);
-        } else{
-            String mensaje = "Verifica que los datos ingresados sean correctos.";
-            return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST); //Envia esto cuando no existen las tallas
-            }
-        }else{
+        } else {
             String mensaje = "Verifica que hayas ingresado las tallas del producto.";
             return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST);
         }

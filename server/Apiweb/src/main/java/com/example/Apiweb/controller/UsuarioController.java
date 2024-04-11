@@ -4,6 +4,7 @@ package com.example.Apiweb.controller;
 import com.example.Apiweb.exception.CamposInvalidosException;
 import com.example.Apiweb.exception.RecursoNoEncontradoException;
 import com.example.Apiweb.model.OrdenModel;
+import com.example.Apiweb.model.RolUsuarioModel;
 import com.example.Apiweb.model.UsuarioModel;
 import com.example.Apiweb.service.IRolService;
 import com.example.Apiweb.service.IUsuarioService;
@@ -72,8 +73,11 @@ public class UsuarioController {
     }
 
     @GetMapping("/autenticacionUsuario/{cedula}/{contrasena}")
-    public ResponseEntity<List<Object>> autenticacionUsuario(@PathVariable Integer cedula, @PathVariable String contrasena) {
-        List<Object> usuarios = usuarioService.verUsuarioPorCedulaYContrasena(cedula, contrasena);
-        return new ResponseEntity<List<Object>>(usuarios, HttpStatus.OK);
+    public ResponseEntity<Object> autenticacionUsuario(@PathVariable Integer cedula, @PathVariable String contrasena) {
+        Optional<UsuarioModel> usuario = this.usuarioService.verUsuarioPorCedulaYContrasena(cedula,contrasena);
+        if (usuario == null){
+            throw new RecursoNoEncontradoException("Error!. No se encontró el usuario con la cedula:" + cedula + "y contraseña: " + contrasena);
+        }
+        return ResponseEntity.ok(usuario);
     }
 }
