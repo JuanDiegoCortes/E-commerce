@@ -1,6 +1,7 @@
 package com.example.Apiweb.service;
 
 import com.example.Apiweb.model.RolUsuarioModel;
+import com.example.Apiweb.model.UsuarioModel;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,4 +13,5 @@ public interface IRolUsuarioService {
     Optional<RolUsuarioModel> obtenerRolUsuarioPorId(int rolUsuarioId);
     String eliminarRolUsuarioPorId(int rolUsuarioId);
     String actualizarRolUsuarioPorId(RolUsuarioModel rolUsuario);
+    Optional<RolUsuarioModel> verUsuarioPorCedulaYContrasena(int cedula, String contrasena);
 }

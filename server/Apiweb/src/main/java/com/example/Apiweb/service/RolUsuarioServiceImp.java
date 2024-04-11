@@ -1,6 +1,7 @@
 package com.example.Apiweb.service;
 
 import com.example.Apiweb.model.RolUsuarioModel;
+import com.example.Apiweb.model.UsuarioModel;
 import com.example.Apiweb.repository.IRolUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -42,5 +43,10 @@ public class RolUsuarioServiceImp implements IRolUsuarioService{
     public String actualizarRolUsuarioPorId(RolUsuarioModel rolUsuario) {
         this.rolUsuarioRepository.save(rolUsuario);
         return "El rolUsuario con id " + rolUsuario.getIdRolUsuario() + " fue actualizado con exito.";
+    }
+
+    @Override
+    public Optional<RolUsuarioModel> verUsuarioPorCedulaYContrasena(int cedula, String contrasena) {
+        return this.rolUsuarioRepository.mostrarUsuarioPorCedulaYContrasena(cedula, contrasena);
     }
 }

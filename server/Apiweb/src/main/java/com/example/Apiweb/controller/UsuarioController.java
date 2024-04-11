@@ -71,13 +71,4 @@ public class UsuarioController {
             throw new CamposInvalidosException("Error! Los datos del uisuario no pueden estar vacios.");
         }
     }
-
-    @GetMapping("/autenticacionUsuario/{cedula}/{contrasena}")
-    public ResponseEntity<Object> autenticacionUsuario(@PathVariable Integer cedula, @PathVariable String contrasena) {
-        Optional<UsuarioModel> usuario = this.usuarioService.verUsuarioPorCedulaYContrasena(cedula,contrasena);
-        if (usuario == null){
-            throw new RecursoNoEncontradoException("Error!. No se encontró el usuario con la cedula:" + cedula + "y contraseña: " + contrasena);
-        }
-        return ResponseEntity.ok(usuario);
-    }
 }

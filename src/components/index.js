@@ -13,7 +13,8 @@ const numerito = document.querySelector("#numerito");
 
 // Fetch data from API
 function fetchData() {
-  return fetch("http://localhost:8081/Apiweb/v1/producto/")
+  const url = "http://localhost:8081/Apiweb/v1/producto/";
+  return fetch(url)
     .then(response => response.json())
     .then(data => {
       productos = data;
@@ -113,7 +114,7 @@ function cargarProductos(productosElegidos) {
     const botonInformacion = div.querySelector(".producto-info");
     botonInformacion.addEventListener("click", function() {
       sessionStorage.setItem("productoSeleccionado", JSON.stringify(producto));
-      window.location.href = "infoProducto.html";
+      window.location.href = "../pages/infoProducto.html";
     });
   });
 

@@ -2,6 +2,7 @@ package com.example.Apiweb.controller;
 
 import com.example.Apiweb.exception.RecursoNoEncontradoException;
 import com.example.Apiweb.model.RolUsuarioModel;
+import com.example.Apiweb.model.UsuarioModel;
 import com.example.Apiweb.service.IRolUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Apiweb/v1/rolUsuario")
@@ -35,5 +37,12 @@ public class RolUsuarioController {
         RolUsuarioModel rolUsuario = this.rolUsuarioService.obtenerRolUsuarioPorId(rolUsuarioId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el rolUsuario con el id " + rolUsuarioId));
         return ResponseEntity.ok(rolUsuario);
+    }
+
+    @GetMapping("/autenticacionUsuario/{cedula}/{contrasena}")
+    public ResponseEntity<RolUsuarioModel> autenticacionUsuario(@PathVariable Integer cedula, @PathVariable String contrasena) {
+        RolUsuarioModel usuario = this.rolUsuarioService.verUsuarioPorCedulaYContrasena(cedula,contrasena)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el usuario con la cedula: " + cedula + " y contraseña: " + contrasena));
+        return ResponseEntity.ok(usuario);
     }
 }
