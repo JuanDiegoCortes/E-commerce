@@ -17,8 +17,8 @@ public class DisenoPModel {
     private String image_url;
 
     @ManyToOne
-    @JoinColumn(name = "idOrden")
-    private OrdenModel idOrden;
+    @JoinColumn(name = "idOrdenProd")
+    private OrdenProdModel idOrdenProd;
 
     @ManyToOne
     @JoinColumn(name = "cedula")

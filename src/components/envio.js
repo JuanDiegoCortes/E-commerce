@@ -46,36 +46,36 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 referencias: referencias,
             };
             console.log(envioData);
-            // enviarDatos(envioData);
+            enviarDatos(envioData);
         }
     }
 });
 
-// function enviarDatos(data){
-//     fetch("http://localhost:8081/Apiweb/v1/envio/", {
-//         method: 'POST',
-//         headers: {
-//         'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-//     })
-//     .then(response => {
-//         if (response.ok) {
-//             return response.text().then(text => {
-//                 try {
-//                     return JSON.parse(text);
-//                 } catch {
-//                     alert('Datos enviados correctamente'); // pero la respuesta no es JSON.
-//                     return console.log(text);
-//                 }
-//             });
-//         } else {
-//             alert('Error al enviar los datos.');
-//         }
-//     })
-//     .catch(error => {
-//         console.error('Error en la solicitud Fetch:', error);
-//     });
-// }
+function enviarDatos(data){
+    fetch("http://localhost:8081/Apiweb/v1/envio/", {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.text().then(text => {
+                try {
+                    return JSON.parse(text);
+                } catch {
+                    alert('Datos enviados correctamente'); // pero la respuesta no es JSON.
+                    return console.log(text);
+                }
+            });
+        } else {
+            alert('Error al enviar los datos.');
+        }
+    })
+    .catch(error => {
+        console.error('Error en la solicitud Fetch:', error);
+    });
+}
 
 
