@@ -16,21 +16,23 @@
         <h1>Iniciar sesión</h1>
         <form method="post">
             <div class="username">
-                <input type="text" required>
-                <label>Ingrese su usuario</label>
+                <input id="cedula_usuario" type="text" required>
+                <label>Ingrese su cedula</label>
             </div>
             <div class="contrasena">
-                <input type="password" required>
+                <input id="contrasena_usuario" type="password" required>
                 <label>Ingrese su contraseña</label>
             </div>
             <a href="./recordarContraseña.html">
                 <div class="recordar">¿Olvidó su contraseña?</div>
             </a>
-            <input type="submit" value="Iniciar sesión">
+            <input id="btn-iniciar-sesion" type="submit" value="Iniciar sesión">
             <div class="registrarse">
                 Quiero hacer el <a href="./registro.html">registro</a>
             </div>
         </form>
     </div>
+
+    <script src="../components/login.js"></script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package com.example.Apiweb.service;
 
-import com.example.Apiweb.model.ProdTallaModel;
 import com.example.Apiweb.model.RolUsuarioModel;
 import com.example.Apiweb.repository.IRolUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;

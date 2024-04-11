@@ -39,7 +39,7 @@ public class UsuarioController {
     }
 
     //consultar una categorias por Id
-    @GetMapping("/{usuariosId}")
+    @GetMapping("/{usuarioId}")
     public ResponseEntity<UsuarioModel> buscarUsuarioPorId(@PathVariable Integer usuarioId) {
         UsuarioModel usuario = this.usuarioService.obtenerUsuarioPorId(usuarioId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el usuario con el id " + usuarioId));

@@ -5,7 +5,7 @@ const contenedorOrdenes = document.querySelector("#contenedor-orden");
 cedula = 582347196 /* localStorage.getItem("cedula"); */
 url = `http://localhost:8081/Apiweb/v1/orden/visualizarOrdenes/`;
 
-function fetchData(cedula) {
+function fetchData() {
     return fetch(url + cedula)
         .then(response => response.json())
         .then(data => {
@@ -39,4 +39,4 @@ function cargarHistorialOrdenesPorCedula(ordenesSeleccionadas) {
         contenedorOrdenes.appendChild(div);
     });
 }
-fetchData(cedula);
+fetchData();

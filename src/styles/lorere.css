@@ -29,7 +29,7 @@ body {
 
 .email,
 .username,
-.contraseña {
+.contrasena {
     position: relative;
     border-bottom: 2px solid #adadad;
     margin: 30px 0;
@@ -37,7 +37,7 @@ body {
 
 .email input,
 .username input,
-.contraseña input {
+.contrasena input {
     width: 100%;
     padding: 0 5px;
     height: 40px;
@@ -49,7 +49,7 @@ body {
 
 .email label,
 .username label,
-.contraseña label {
+.contrasena label {
     position: absolute;
     top: 50%;
     left: 5px;
@@ -61,7 +61,7 @@ body {
 
 .email span::before,
 .username span::before,
-.contraseña span::before {
+.contrasena span::before {
     content: '';
     position: absolute;
     top: 40px;
@@ -74,14 +74,14 @@ body {
 
 .email input:focus ~ label,
 .username input:focus ~ label,
-.contraseña input:focus ~ label {
+.contrasena input:focus ~ label {
     top: -5px;
     color: #6c3483;
 }
 
 .email input:focus ~ span::before,
 .username input:focus ~ span::before,
-.contraseña input:focus ~ span::before {
+.contrasena input:focus ~ span::before {
     width: 100%;
 }
 
