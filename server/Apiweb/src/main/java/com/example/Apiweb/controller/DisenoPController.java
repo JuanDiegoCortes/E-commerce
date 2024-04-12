@@ -66,9 +66,10 @@ public class DisenoPController {
         }
     }
 
-    @GetMapping("/visualizarDisenosP/{idOrden}")
-    public ResponseEntity<List<Object>> visualizarDisenos(@PathVariable Integer idOrden) {
-        List<Object> disenos = disenoPService.mostrarDisenosCompartidosPorIdOrden(idOrden);
-        return new ResponseEntity<List<Object>>(disenos, HttpStatus.OK);
+    @GetMapping("/visualizarDisenoP/{idOrdenProd}")
+    public ResponseEntity<DisenoPModel> visualizarDiseno(@PathVariable Integer idOrdenProd) {
+        DisenoPModel diseno = this.disenoPService.mostrarDisenoCompartidoPorIdOrden(idOrdenProd)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el disenoP con el idOrden " + idOrdenProd));
+        return ResponseEntity.ok(diseno);
     }
 }

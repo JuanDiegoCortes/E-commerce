@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface IOrdenProdRepository extends JpaRepository<OrdenProdModel, Integer> {
-    @Query(value="SELECT idProducto " +
+    @Query(value = "SELECT * " +
             "FROM `E-commerce`.`OrdenProd` " +
             "WHERE `idOrden` =  :idOrden", nativeQuery = true)
     List<OrdenProdModel> listarProductosPorIdOrden(@Param("idOrden") Integer idOrden);

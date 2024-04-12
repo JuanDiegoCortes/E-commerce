@@ -28,11 +28,6 @@ public class ComentarioController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearComentario(@RequestBody ComentarioModel comentario) {
-        Optional<ComentarioModel> verificacion = comentarioService.obtenerComentarioPorId(comentario.getIdComentario());
-        if (verificacion.isPresent()) {
-            String mensaje = "Este comentario ya existe.";
-            return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
-        }
         comentarioService.crearComentario(comentario);
         return new ResponseEntity<String>(comentarioService.crearComentario(comentario), HttpStatus.OK);
     }
@@ -69,5 +64,11 @@ public class ComentarioController {
         else{
             throw new CamposInvalidosException("Error! El texto del comentario no puede esta vacio.");
         }
+    }
+
+    @GetMapping("/visualizarComentarios/{idDisenoP}")
+    public ResponseEntity<List<ComentarioModel>> visualizarComentarios(@PathVariable Integer idDisenoP){
+        List<ComentarioModel> comentarios = comentarioService.mostrarComentariosPorIdDisenoP(idDisenoP);
+        return new ResponseEntity<List<ComentarioModel>>(comentarios, HttpStatus.OK);
     }
 }

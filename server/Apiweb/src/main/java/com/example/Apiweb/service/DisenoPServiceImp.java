@@ -45,7 +45,7 @@ public class DisenoPServiceImp implements IDisenoPService{
     }
 
     @Override
-    public List<Object> mostrarDisenosCompartidosPorIdOrden(int idOrden) {
-        return this.disenoPRepository.listarDisenosCompartidosPorIdOrden(idOrden);
+    public Optional<DisenoPModel> mostrarDisenoCompartidoPorIdOrden(int idOrdenProd) {
+        return this.disenoPRepository.listarDisenoCompartidoPorIdOrden(idOrdenProd);
     }
 }

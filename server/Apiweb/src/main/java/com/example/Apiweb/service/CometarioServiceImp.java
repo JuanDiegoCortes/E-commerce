@@ -43,4 +43,9 @@ public class CometarioServiceImp implements IComentarioService{
         this.comentarioRepository.save(comentario);
         return "El comentario con id " + comentario.getIdComentario() + " fue actualizado con exito.";
     }
+
+    @Override
+    public List<ComentarioModel> mostrarComentariosPorIdDisenoP(int idDisenoP) {
+        return this.comentarioRepository.listarComentariosPorIdDisenoP(idDisenoP);
+    }
 }

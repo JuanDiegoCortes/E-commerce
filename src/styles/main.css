@@ -173,6 +173,25 @@ main {
     padding: 3rem;
 }
 
+.botonListarDisenosP {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    position: fixed;
+    top: 40px;
+    right: 60px; 
+    z-index: 999;
+}
+.botonListarDisenosP:hover {
+    background-color: black;
+    color: #ffff;
+    border-color: var(--clr-main-light);
+}
+
 .principal-titulo-filtro {
     align-items: center;
     display: flex;

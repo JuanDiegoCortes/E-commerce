@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     //Variables
     let ordenes = [];
     let cedula = 582347196 /* localStorage.getItem("usuario.cedula"); */
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             ordenes = data;
             cargarHistorialOrdenesPorCedula(ordenes);
-            console.log(ordenes);
         })
         .catch(error => {
             console.error("Error al obtener los datos:", error);
@@ -24,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ordenesSeleccionadas.forEach(orden => {
             const div = document.createElement("div");
-            console.log(orden)
             div.classList.add("orden");
             div.innerHTML = `
             <div class="historial-Orden-atributos">
@@ -43,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const botonDetalles = div.querySelector(".boton-detalles");
             botonDetalles.addEventListener("click", function() {
                 sessionStorage.setItem("ordenSeleccionada", JSON.stringify(orden));
-                window.location.href = "../pages/ordenDetalle.html";
+                window.location.href = "../pages/detalleOrden.html";
             });
         });
     }

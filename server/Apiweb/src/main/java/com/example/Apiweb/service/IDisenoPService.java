@@ -13,5 +13,5 @@ public interface IDisenoPService {
     String eliminarDisenoPPorId(int disenoPId);
     String actualizarDisenoPPorId(DisenoPModel disenoP);
 
-    List<Object> mostrarDisenosCompartidosPorIdOrden(int idOrden);
+    Optional<DisenoPModel> mostrarDisenoCompartidoPorIdOrden(int idDisenoP);
 }

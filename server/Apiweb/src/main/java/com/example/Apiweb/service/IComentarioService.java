@@ -1,6 +1,7 @@
 package com.example.Apiweb.service;
 
 import com.example.Apiweb.model.ComentarioModel;
+import com.example.Apiweb.model.OrdenModel;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,4 +13,5 @@ public interface IComentarioService {
     Optional<ComentarioModel> obtenerComentarioPorId(int comentarioId);
     String eliminarComentarioPorId(int comentarioId);
     String actualizarComentarioPorId(ComentarioModel comentario);
+    List<ComentarioModel> mostrarComentariosPorIdDisenoP(int idDisenoP);
 }
