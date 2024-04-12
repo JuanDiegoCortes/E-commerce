@@ -129,7 +129,6 @@ public class OrdenController {
         MetodoPago nombreActualizar3 = detallesOrden.getMetodoPago();
         Float nombreActualizar4 = detallesOrden.getPrecioTotal();
 
-
         //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
         if (nombreActualizar !=null && nombreActualizar2 != null && nombreActualizar3 != null && nombreActualizar4 != null){
             //asignamos los valores que vamos actualizar del envio

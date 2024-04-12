@@ -48,7 +48,9 @@ function cargarProductosCarrito() {
                 </div>
                 <button class="carrito-producto-eliminar" id="${producto.idProducto}"><i class="bi bi-trash-fill"></i></button>
             `;
-        
+        // producto.cantidad es un atributo que se le crea al producto, para almacenarla en el localStorage,
+        // y poder modificarla desde el carrito, sin modificar la cantidad del producto en la base de datos.
+        // Luego toca restarsela a la cantidad del producto en la base de datos, cuando se confirme la compra.
             if (producto.personalizable !== "si") {
                 const botonPersonalizar = divProducto.querySelector('.carrito-producto-personalizar');
                 botonPersonalizar.style.display = "none"; // Oculta el botón de personalización para productos no personalizables
