@@ -18,6 +18,32 @@
     background-color: orangered;
 }
 
-.container-nombre h4 {
-    margin-right: 10px; /* Espacio entre el título y el párrafo */
+.bordered-box {
+    border: 2px solid #ccc; /* Color y grosor del borde */
+    padding: 20px; /* Espacio interno entre el contenido y el borde */
+    border-radius: 10px; /* Radio de las esquinas del borde */
+    width: 400px; /* Ancho del rectángulo */
+    margin: 0 0; /* Centrar lado izquierdo */
+}
+
+.orden-detalles {
+    margin: 0; /* Eliminar márgenes predeterminados */
+    padding: 0; /* Eliminar relleno predeterminado */
+}
+
+.container-nombre,
+.container-apellido,
+.container-telefono,
+.container-direccion,
+.container-referencias,
+.container-codigo-postal,
+.container-ciudad,
+.container-modalidad-entrega,
+.container-fecha {
+    margin-bottom: 5px; /* Espacio entre cada campo */
+}
+
+h4 {
+    margin: 0; /* Eliminar márgenes predeterminados */
+    font-weight: bold; /* Hacer el texto en negrita */
 }
