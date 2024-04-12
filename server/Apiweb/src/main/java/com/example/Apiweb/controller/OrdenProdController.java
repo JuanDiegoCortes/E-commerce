@@ -1,6 +1,7 @@
 package com.example.Apiweb.controller;
 
 import com.example.Apiweb.exception.RecursoNoEncontradoException;
+import com.example.Apiweb.model.OrdenModel;
 import com.example.Apiweb.model.OrdenProdModel;
 import com.example.Apiweb.service.IOrdenProdService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,11 @@ public class OrdenProdController {
         OrdenProdModel ordenProd = this.ordenProdService.obtenerOrdenProdPorId(ordenProdId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la ordenProd con el id " + ordenProdId));
         return ResponseEntity.ok(ordenProd);
+    }
+
+    @GetMapping("/visualizarProductos/{idOrden}")
+    public ResponseEntity<List<OrdenProdModel>> visualizarProductos(@PathVariable Integer idOrden){
+        List<OrdenProdModel> productos = ordenProdService.mostrarProductosPorIdOrden(idOrden);
+        return new ResponseEntity<List<OrdenProdModel>>(productos, HttpStatus.OK);
     }
 }

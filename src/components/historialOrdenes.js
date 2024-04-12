@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ordenesSeleccionadas.forEach(orden => {
             const div = document.createElement("div");
+            console.log(orden)
             div.classList.add("orden");
             div.innerHTML = `
             <div class="historial-Orden-atributos">

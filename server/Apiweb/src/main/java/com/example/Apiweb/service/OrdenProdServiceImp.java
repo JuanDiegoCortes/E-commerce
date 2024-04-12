@@ -1,5 +1,6 @@
 package com.example.Apiweb.service;
 
+import com.example.Apiweb.model.OrdenModel;
 import com.example.Apiweb.model.OrdenProdModel;
 import com.example.Apiweb.repository.IOrdenProdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,10 @@ public class OrdenProdServiceImp implements IOrdenProdService {
     public String actualizarOrdenProdPorId(OrdenProdModel ordenProd) {
         this.ordenProdRepository.save(ordenProd);
         return "El ordenProd con id " + ordenProd.getIdOrden() + " fue actualizada con exito.";
+    }
+
+    @Override
+    public List<OrdenProdModel> mostrarProductosPorIdOrden(int idOrden) {
+        return this.ordenProdRepository.listarProductosPorIdOrden(idOrden);
     }
 }

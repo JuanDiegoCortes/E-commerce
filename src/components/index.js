@@ -18,6 +18,7 @@ function fetchData() {
     .then(response => response.json())
     .then(data => {
       productos = data;
+      console.log(productos);
       cargarProductos(productos);
       productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
       actualizarNumerito();

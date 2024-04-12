@@ -1,5 +1,6 @@
 package com.example.Apiweb.service;
 
+import com.example.Apiweb.model.OrdenModel;
 import com.example.Apiweb.model.OrdenProdModel;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface IOrdenProdService {
     Optional<OrdenProdModel> obtenerOrdenProdPorId(int ordenProdId);
     String eliminarOrdenProdPorId(int ordenProdId);
     String actualizarOrdenProdPorId(OrdenProdModel ordenProd);
+    List<OrdenProdModel> mostrarProductosPorIdOrden(int idOrden);
 }
