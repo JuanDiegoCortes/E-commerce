@@ -1,4 +1,4 @@
-.regresar {
+/* .regresar {
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -19,17 +19,16 @@
 }
 
 .bordered-box {
-    border: 2px solid #ccc; /* Color y grosor del borde */
-    padding: 20px; /* Espacio interno entre el contenido y el borde */
-    border-radius: 10px; /* Radio de las esquinas del borde */
-    width: 400px; /* Ancho del rectángulo */
-    margin: 0 0; /* Centrar lado izquierdo */
+    border: 2px solid #ccc; 
+    padding: 20px; 
+    border-radius: 10px;
+    width: 400px;
+    margin: 0 0; 
 }
 
 .orden-detalles {
-    margin: 0; /* Eliminar márgenes predeterminados */
-    padding: 0; /* Eliminar relleno predeterminado */
-}
+    margin: 0; 
+    padding: 0;}
 
 .container-nombre,
 .container-apellido,
@@ -40,10 +39,125 @@
 .container-ciudad,
 .container-modalidad-entrega,
 .container-fecha {
-    margin-bottom: 5px; /* Espacio entre cada campo */
+    margin-bottom: 5px; 
 }
 
 h4 {
-    margin: 0; /* Eliminar márgenes predeterminados */
-    font-weight: bold; /* Hacer el texto en negrita */
+    margin: 0; 
+    font-weight: bold; 
+} */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-main: #000;
+    --clr-main-light: #ff6600;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
+}
+
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
+    margin: 0;
+    padding: 0;
+}
+
+#container-Envio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.bordered-box {
+    border: 5px solid var(--clr-red);
+    border-radius: 10px;
+    background-color: var(--clr-white);
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.bordered-box h1 {
+    color: var(--clr-main);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.bordered-box .container-nombre,
+.bordered-box .container-apellido,
+.bordered-box .container-telefono,
+.bordered-box .container-direccion,
+.bordered-box .container-referencias,
+.bordered-box .container-codigo-postal,
+.bordered-box .container-ciudad,
+.bordered-box .container-modalidad-entrega,
+.bordered-box .container-fecha {
+    margin-bottom: 15px;
+}
+
+.bordered-box .container-producto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ececec;
+    background: #000;
+}
+
+
+.bordered-box h4 {
+    color: var(--clr-main);
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.bordered-box p {
+    color: var(--clr-main);
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.regresar {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.regresarBtn {
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.regresarBtn:hover {
+    background-color: var(--clr-red);
+}
+
+h1{
+    text-align: center;
+    color: #e2e2e2;
+}
+
+#container-Envio {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.bordered-box {
+    border: 5px solid var(--clr-red);
+    border-radius: 10px;
+    background-color: var(--clr-white);
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
 }
