@@ -1,0 +1,20 @@
+/* Estilo para los comentarios */
+.container-comentarios {
+    margin-top: 20px;
+}
+
+.espacio-comentarios {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.form-floating {
+    margin-bottom: 10px;
+}
+
+/* Estilo para las imágenes */
+.img-producto {
+    max-width: 100%;
+    height: auto;
+}
