@@ -5,7 +5,7 @@
 }
 
 .regresarBtn {
-    background-color: #ff6600;
+    background-color: black;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -18,10 +18,12 @@
     background-color: orangered;
 }
 
-body{
-    background-color: whitesmoke;
+body {
+    background-color: #ff6600;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #f8f8f8;
 }
+
 
 
 .orden {
@@ -66,7 +68,7 @@ body{
     justify-content: space-between;
     align-items: center;
     background-color: var(--clr-gray);
-    color: var(--clr-main);
+    color: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
     padding: .5rem;
     padding-right: 1.5rem;
     border-radius: 1rem;
@@ -77,5 +79,5 @@ body{
     flex-direction: column;
     gap: 1rem;
     margin: 1rem;
+    background-color: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
 }
-
