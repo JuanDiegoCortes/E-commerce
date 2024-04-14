@@ -18,3 +18,24 @@
     max-width: 100%;
     height: auto;
 }
+
+.regresar {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.regresarBtn {
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.regresarBtn:hover {
+    background-color: var(--clr-red);
+}
