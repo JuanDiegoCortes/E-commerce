@@ -53,7 +53,7 @@ window.onload = function() {
     botonEnviar.addEventListener("click", () => {
         let textoComentario = document.getElementById('text-area-comentario');
         let cedulaUsuario = JSON.parse(localStorage.getItem("usuario")).cedula.cedula;
-        let subIdComentario = "";
+        let subIdComentario = infoFinal.idComentario;
         let idDisenoP = infoFinal.idDisenoP.idDisenoP;
         
         let comentario = {
@@ -61,20 +61,19 @@ window.onload = function() {
             cedula: {
                 cedula: cedulaUsuario
             },
-            subIdComentario: [
-                {
+            subIdComentario: {
                 subIdComentario: subIdComentario /* Toca mirar como ponerle el id del comentario anterior */
-                }
-            ],
+            }
+            ,
             idDisenoP: {
                 idDisenoP: idDisenoP
             }
         }
-        console.log(comentario);
         crearComentario(comentario);
     });
 
     function crearComentario(comentario){
+        console.log("Enviando comentario: ", comentario);
         const url = `http://localhost:8081/Apiweb/v1/comentario/`
         fetch(url, {
             method: 'POST',
@@ -83,7 +82,12 @@ window.onload = function() {
                 'Content-Type': 'application/json'
             }
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(text => { throw new Error(text) });
+            }
+            return response.json();
+        })
         .then(data => {
             console.log('Success: ', data);
         })
