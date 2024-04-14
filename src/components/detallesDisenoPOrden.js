@@ -75,10 +75,12 @@ window.onload = function() {
                 'Content-Type': 'application/json'
             }
         })
-        .then(response => {
+        .then(async response => {
             if (!response.ok) {
-                return response.text().then(text => { throw new Error(text) });
+                const text = await response.text();
+                throw new Error(text);
             }
+            window.location.reload();
             return response.json();
         })
         .then(data => {
