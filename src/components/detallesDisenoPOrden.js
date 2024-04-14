@@ -58,16 +58,9 @@ window.onload = function() {
         
         let comentario = {
             texto: textoComentario.value,
-            cedula: {
-                cedula: cedulaUsuario
-            },
-            subIdComentario: {
-                subIdComentario: subIdComentario /* Toca mirar como ponerle el id del comentario anterior */
-            }
-            ,
-            idDisenoP: {
-                idDisenoP: idDisenoP
-            }
+            cedula: { cedula: cedulaUsuario },
+            subIdComentario: { subIdComentario: subIdComentario },
+            idDisenoP: { idDisenoP: idDisenoP }
         }
         crearComentario(comentario);
     });
