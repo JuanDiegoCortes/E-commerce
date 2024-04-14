@@ -20,7 +20,6 @@
 }
 
 .regresar {
-<<<<<<< Updated upstream
     text-align: center;
     margin-top: 30px;
 }
@@ -28,7 +27,6 @@
 .regresarBtn {
     background-color: var(--clr-main-light);
     color: var(--clr-white);
-=======
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -38,26 +36,17 @@
 .regresarBtn {
     background-color: #ff6600; /* Color anaranjado */
     color: black; /* Texto en negro para resaltar */
->>>>>>> Stashed changes
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     outline: none;
-<<<<<<< Updated upstream
     font-weight: bold;
     text-decoration: none;
 }
 
 .regresarBtn:hover {
     background-color: var(--clr-red);
-}
-=======
-    transition: background-color 0.3s ease; /* Transición suave */
-}
-
-.regresarBtn:hover {
-    background-color: #ff9000; /* Anaranjado más claro al pasar el ratón */
 }
 
 .disenoP-imagen{
@@ -66,4 +55,3 @@
     max-width: 100%;
     border-radius: 1rem;
 }
->>>>>>> Stashed changes
