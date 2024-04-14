@@ -45,7 +45,7 @@ window.onload = function() {
                 <h3 class="producto-genero">Genero: ${producto.genero}</h3>
                 <p class="producto-precio">Precio unitario: ${producto.precio}</p>
                 <p class="producto-personalizable">Personalizable: ${producto.personalizable}</p>
-                <button class="btn-a-disenoP" id="${ordenProd.idOrdenProd}">Ver personalizacion</button>
+                <button class="btn-a-disenoP" id="${ordenProd.idOrdenProd}">Ver personalización</button>
                 </div>
                 `;
             if (producto.personalizable !== "si") {
