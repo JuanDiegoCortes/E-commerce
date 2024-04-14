@@ -21,10 +21,6 @@ import com.example.Apiweb.service.IComentarioService;
 public class ComentarioController {
     @Autowired
     private IComentarioService comentarioService;
-    @Autowired
-    private IUsuarioService usuarioService;
-    @Autowired
-    private IDisenoPService disenoPService;
 
     @PostMapping("/")
     public ResponseEntity<String> crearComentario(@RequestBody ComentarioModel comentario) {
