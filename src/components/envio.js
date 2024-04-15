@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         return JSON.parse(text);
                     } catch {
                         alert('Datos enviados correctamente'); // pero la respuesta no es JSON.
+                        window.location.href = "../pages/index.html";
                         return console.log(text);
                     }
                 });
