@@ -45,9 +45,9 @@ public class OrdenServiceImp implements IOrdenService{
     }
 
     @Override
-    public String agregarEvidenciaPagoOrden(OrdenModel orden) {
-        this.ordenRepository.save(orden);
-        return "La orden con id " + orden.getIdOrden() + " fue actualizada con exito.";
+    public String agregarEvidenciaPagoOrden(OrdenModel ordenIdEvidencia) {
+        this.ordenRepository.save(ordenIdEvidencia);
+        return "La orden con id " + ordenIdEvidencia.getIdOrden() + " fue actualizada con exito.";
     }
 
     @Override

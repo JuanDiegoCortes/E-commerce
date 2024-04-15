@@ -144,6 +144,26 @@ public class OrdenController {
             throw new CamposInvalidosException("Error! El estado, el método de pago  y el precio total de la orden no pueden estar vacios");
         }
     }
+
+    @PutMapping ("/agregarEvidenciaPagoOrden/{ordenIdEvidencia}")
+    public ResponseEntity<String> agregarEvidenciaPagoOrden(@PathVariable Integer ordenIdEvidencia, @RequestBody OrdenModel detallesOrden) {
+        OrdenModel orden = this.ordenService.obtenerOrdenPorId(ordenIdEvidencia)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la orden con el id " + ordenIdEvidencia));
+        //obtenemos los datos que se van actualizar de la orden y que son enviados del json
+        String pagoActualizar = detallesOrden.getImage_Evidencia();
+
+        //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
+        if (pagoActualizar !=null){
+            //asignamos los valores que vamos actualizar de la orden
+            orden.setImage_Evidencia(pagoActualizar);
+            //guardamos los cambios
+            return new ResponseEntity<String>(ordenService.agregarEvidenciaPagoOrden(orden),HttpStatus.OK);
+        }
+        else{
+            throw new CamposInvalidosException("Error! La evidencia de pago de la orden no puede estar vacia");
+        }
+    }
+
     @GetMapping("/visualizarOrdenes/{cedula}")
     public ResponseEntity<List<OrdenModel>> visualizarOrdenes(@PathVariable Integer cedula){
         List<OrdenModel> ordenes = ordenService.mostrarOrdenesPorCedula(cedula);
