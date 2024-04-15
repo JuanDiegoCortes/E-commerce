@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-main: #000;
+    --clr-main-light: #ff6600;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
+}
 /* Estilos para el botón de regresar */
 .regresar {
     position: fixed;
@@ -32,16 +41,12 @@
 
 /* Estilos para el cuerpo de la página */
 body {
-    background-color: #f8f8f8; /* Fondo gris claro */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #1a1a1a; /* Texto negro */
-    margin: 0;
-    padding-bottom: 60px;
+    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
 }
 
 /* Estilos para las órdenes */
 .orden {
-    background-color: white;
+    background-color: whitesmoke;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 20px;
@@ -65,4 +70,8 @@ body {
 
 .boton-ver-mas:hover {
     background-color: #ff9000;
+}
+
+.contenedor-orden{
+    background-color: white;
 }

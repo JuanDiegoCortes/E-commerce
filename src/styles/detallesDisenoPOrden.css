@@ -1,16 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-main: #000;
+    --clr-main-light: #ff6600;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
+}
+
 /* Estilo para los comentarios */
 .container-comentarios {
     margin-top: 20px;
+}
+
+body{
+    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
 }
 
 .espacio-comentarios {
     margin-top: 10px;
     border: 1px solid #ccc;
     padding: 10px;
+    width: 900px;
 }
 
 .form-floating {
     margin-bottom: 10px;
+    width: 900px;
 }
 
 /* Estilo para las imágenes */
@@ -54,4 +70,29 @@
     height: auto; /* Alto de la imagen */
     max-width: 100%;
     border-radius: 1rem;
+}
+
+h2{
+    color: whitesmoke;
+}
+
+.comentarios{
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.comentario{
+    color: whitesmoke;
+}
+
+.comentarios, .btn, .btn-primary{
+    display: flexbox;
+    justify-content: center;
+    margin-left: 500px;
+    margin-bottom: 60px;
 }
