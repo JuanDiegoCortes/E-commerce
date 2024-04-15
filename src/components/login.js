@@ -25,6 +25,7 @@ function fetchData(cedula, contrasena) {
             }
             console.log("Usuario autenticado", usuario);
             localStorage.setItem("usuario", JSON.stringify(usuario));
+            window.location.href = 'index.html';
         })
         .catch(error => {
             console.error("Error al iniciar sesión:", error);

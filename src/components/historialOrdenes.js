@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Usuario autenticado", usuario = JSON.parse(localStorage.getItem("usuario")));
     }
 
-    let cedula = usuario.cedula.cedula;  /* 582347196 */ 
+    let cedula = /* usuario.cedula.cedula; */  582347196 
 
     //Select DOM elements
     const contenedorOrdenes = document.querySelector("#contenedor-orden");

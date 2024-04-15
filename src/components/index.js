@@ -13,6 +13,19 @@ const numerito = document.querySelector("#numerito");
 const openMenu = document.querySelector("#open-menu");
 const closeMenu = document.querySelector("#close-menu");
 const aside = document.querySelector("aside");
+const btnLogin = document.querySelector(".login-link");
+const btnSigiUp = document.querySelector(".sig-up-link");
+const btnUsuarioInfo = document.querySelector(".usuarioInfo");
+
+if (localStorage.getItem("usuario") === null) {
+  btnLogin.style.display = "display";
+  btnSigiUp.style.display = "display";
+  btnUsuarioInfo.style.display = "none";
+} else {
+  btnLogin.style.display = "none";
+  btnSigiUp.style.display = "none";
+  btnUsuarioInfo.style.display = "display";
+}
 
 openMenu.addEventListener("click", () => {
   aside.classList.add("aside-visible");
