@@ -37,14 +37,7 @@ public class ProductoController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearProducto(@RequestBody ProductoDTO productoDTO) {
-        //Verificar si el producto ya existe
         boolean bandera = true;
-        Optional<ProductoModel> verificacion = productoService.obtenerProductoPorId(productoDTO.getIdProducto());
-        if (verificacion.isPresent()){
-            String mensaje = "Este producto ya existe.";
-            return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
-        }
-
         CategoriaModel categoria = categoriaService.obtenerCategoriaPorId(productoDTO.getIdCategoria().getIdCategoria())
                 .orElseThrow(()-> new RecursoNoEncontradoException("La categoria no existe."));
 
@@ -54,6 +47,7 @@ public class ProductoController {
         producto.setDescripcion(productoDTO.getDescripcion());
         producto.setPrecio(productoDTO.getPrecio());
         producto.setEstado(productoDTO.getEstado());
+        producto.setPersonalizable(productoDTO.getPersonalizable());
         producto.setImage_Url(productoDTO.getImage_Url());
         producto.setGenero(productoDTO.getGenero());
         producto.setIdCategoria(categoria);
