@@ -161,10 +161,17 @@ function actualizarTotal() {
 }
 
 botonComprar.addEventListener("click", () =>  {
+
+    if (localStorage.getItem("usuario") === null) {
+        alert("Por favor inicie sesión para comprar");
+        window.location.href = "../pages/login.html";
+    } else {
     
+    window.location.href = "../pages/envio.html";
     contenedorCarritoVacio.classList.add("disabled");
     contenedorCarritoProductos.classList.add("disabled");
     contenedorCarritoAcciones.classList.add("disabled");
     contenedorCarritoComprado.classList.remove("disabled");
 
+    }
 });
