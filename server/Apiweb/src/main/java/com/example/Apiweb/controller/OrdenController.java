@@ -60,6 +60,7 @@ public class OrdenController {
         orden.setEstado(ordenDTO.getEstado());
         orden.setMetodoPago(ordenDTO.getMetodoPago());
         orden.setPrecioTotal(ordenDTO.getPrecioTotal());
+        orden.setImage_Evidencia(ordenDTO.getImage_Evidencia());
         orden.setIdEnvio(envio);
         orden.setCedula(usuario);
 
@@ -118,7 +119,7 @@ public class OrdenController {
         return ResponseEntity.ok(orden);
     }
 
-    //actualizar la información básica del envío
+    //actualizar la información básica de la orden
     @PutMapping ("/{ordenId}")
     public ResponseEntity<String> actualizarOrdenPorId(@PathVariable Integer ordenId, @RequestBody OrdenModel detallesOrden) {
         OrdenModel orden = this.ordenService.obtenerOrdenPorId(ordenId)
@@ -143,7 +144,6 @@ public class OrdenController {
             throw new CamposInvalidosException("Error! El estado, el método de pago  y el precio total de la orden no pueden estar vacios");
         }
     }
-
     @GetMapping("/visualizarOrdenes/{cedula}")
     public ResponseEntity<List<OrdenModel>> visualizarOrdenes(@PathVariable Integer cedula){
         List<OrdenModel> ordenes = ordenService.mostrarOrdenesPorCedula(cedula);

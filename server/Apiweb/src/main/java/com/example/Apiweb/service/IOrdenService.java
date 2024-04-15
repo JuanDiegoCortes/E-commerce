@@ -13,5 +13,7 @@ public interface IOrdenService {
     String eliminarOrdenPorId(int ordenId);
     String actualizarOrdenPorId(OrdenModel orden);
 
+    String agregarEvidenciaPagoOrden(OrdenModel orden);
+
     List<OrdenModel> mostrarOrdenesPorCedula(int cedula);
 }

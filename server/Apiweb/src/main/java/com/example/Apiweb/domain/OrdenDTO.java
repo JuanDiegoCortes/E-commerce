@@ -22,6 +22,7 @@ public class OrdenDTO {
     private Estado estado;
     private MetodoPago metodoPago;
     private Float precioTotal;
+    private String image_Evidencia;
     private EnvioModel idEnvio;
     private UsuarioModel cedula;
 

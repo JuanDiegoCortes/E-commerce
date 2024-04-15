@@ -24,6 +24,7 @@ public class OrdenModel {
     @Enumerated(EnumType.STRING)
     private Estado estado;
 
+    private String image_Evidencia;
     private Float precioTotal;
 
     @Column(name = "MetodoPago")
