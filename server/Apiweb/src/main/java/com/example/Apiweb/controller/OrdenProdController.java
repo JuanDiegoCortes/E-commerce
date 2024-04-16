@@ -1,7 +1,6 @@
 package com.example.Apiweb.controller;
 
 import com.example.Apiweb.exception.RecursoNoEncontradoException;
-import com.example.Apiweb.model.OrdenModel;
 import com.example.Apiweb.model.OrdenProdModel;
 import com.example.Apiweb.service.IOrdenProdService;
 import org.springframework.beans.factory.annotation.Autowired;

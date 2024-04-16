@@ -2,8 +2,6 @@ package com.example.Apiweb.controller;
 
 import com.example.Apiweb.model.DisenoPModel;
 import com.example.Apiweb.service.IDisenoPService;
-import com.example.Apiweb.service.IOrdenService;
-import com.example.Apiweb.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +11,6 @@ import com.example.Apiweb.exception.CamposInvalidosException;
 import com.example.Apiweb.exception.RecursoNoEncontradoException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/Apiweb/v1/disenoP")
@@ -21,10 +18,6 @@ import java.util.Optional;
 public class DisenoPController {
     @Autowired
     private IDisenoPService disenoPService;
-    @Autowired
-    private IOrdenService ordenService;
-    @Autowired
-    private IUsuarioService usuarioService;
     
     @PostMapping("/")
     public ResponseEntity<String> crearDisenoP(@RequestBody DisenoPModel disenoP) {

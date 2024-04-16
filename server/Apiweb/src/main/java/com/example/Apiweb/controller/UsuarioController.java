@@ -3,10 +3,7 @@ package com.example.Apiweb.controller;
 
 import com.example.Apiweb.exception.CamposInvalidosException;
 import com.example.Apiweb.exception.RecursoNoEncontradoException;
-import com.example.Apiweb.model.OrdenModel;
-import com.example.Apiweb.model.RolUsuarioModel;
 import com.example.Apiweb.model.UsuarioModel;
-import com.example.Apiweb.service.IRolService;
 import com.example.Apiweb.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

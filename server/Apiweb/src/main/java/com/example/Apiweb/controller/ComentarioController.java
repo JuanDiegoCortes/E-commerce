@@ -1,11 +1,8 @@
 package com.example.Apiweb.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.example.Apiweb.model.*;
-import com.example.Apiweb.service.IDisenoPService;
-import com.example.Apiweb.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

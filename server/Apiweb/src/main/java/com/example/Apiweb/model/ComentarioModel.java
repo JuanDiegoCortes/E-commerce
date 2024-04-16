@@ -22,7 +22,7 @@ public class ComentarioModel {
 
     @ManyToOne
     @JoinColumn(name = "subIdComentario")
-    private ComentarioModel subIdComentario;
+    private Integer subIdComentario;
 
     @ManyToOne
     @JoinColumn(name = "idDisenoP")

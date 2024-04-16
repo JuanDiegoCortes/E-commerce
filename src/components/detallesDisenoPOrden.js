@@ -53,15 +53,15 @@ window.onload = function() {
     botonEnviar.addEventListener("click", () => {
         let textoComentario = document.getElementById('text-area-comentario');
         let cedulaUsuario = JSON.parse(localStorage.getItem("usuario")).cedula.cedula;
-        let subIdComentario = infoFinal.idComentario;
-        let idDisenoP = infoFinal.idDisenoP.idDisenoP;
+        let subIdComentarioUsuario = infoFinal.idComentario;
+        let idDisenoPUsario = infoFinal.idDisenoP.idDisenoP;
         
         let comentario = {
             texto: textoComentario.value,
             cedula: { cedula: cedulaUsuario },
-            subIdComentario: { subIdComentario: subIdComentario },
-            idDisenoP: { idDisenoP: idDisenoP }
-        }
+            subIdComentario: { subIdComentario: subIdComentarioUsuario },
+            idDisenoP: { idDisenoP: idDisenoPUsario }
+        } 
         crearComentario(comentario);
     });
 
