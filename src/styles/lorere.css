@@ -51,25 +51,26 @@ body {
 .username label,
 .contrasena label {
     position: absolute;
-    top: 50%;
+    top: -25%;
     left: 5px;
     color: #adadad;
-    transform: translateY(-50%);
     font-size: 16px;
     pointer-events: none;
-}
+    transition: .3s;
+}*/
 
 .email span::before,
 .username span::before,
 .contrasena span::before {
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: #6c3483;
-    transition: .5s;
+    width: 100%;
+    padding: 10px 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+    position: relative;
+    z-index: 1;
 }
 
 .email input:focus ~ label,
