@@ -65,12 +65,11 @@ window.onload = function() {
         crearComentario(comentario);
     });
 
-    function crearComentario(comentario){
-        console.log("Enviando comentario: ", comentario);
+    function crearComentario(data){
         const url = `http://localhost:8081/Apiweb/v1/comentario/`
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(comentario),
+            body: JSON.stringify(data),
             headers:{
                 'Content-Type': 'application/json'
             }

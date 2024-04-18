@@ -31,9 +31,7 @@ function cargarProductosCarrito() {
                 </div>
                 <div class="carrito-producto-cantidad">
                     <small>Cantidad</small>
-                    <p>${producto.cantidad}</p>
-                    <button class="carrito-producto-restar" id="${producto.idProducto}"><i class="bi bi-dash"></i></button>
-                    <button class="carrito-producto-sumar" id="${producto.idProducto}"><i class="bi bi-plus"></i></button>
+                    <input type="number" class="carrito-producto-input-cantidad" value="${producto.cantidad}" min="1">
                 </div>
                 <div class="carrito-producto-precio">
                     <small>Precio</small>
@@ -57,12 +55,6 @@ function cargarProductosCarrito() {
             }
         
             contenedorCarritoProductos.appendChild(divProducto);
-
-            const botonSumar = divProducto.querySelector('.carrito-producto-sumar');
-            const botonRestar = divProducto.querySelector('.carrito-producto-restar');
-
-            botonSumar.addEventListener("click", () => aumentarCantidad(producto.idProducto));
-            botonRestar.addEventListener("click", () => disminuirCantidad(producto.idProducto));
         });
         
     
@@ -117,22 +109,6 @@ function eliminarDelCarrito(e) {
 
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 
-}
-
-function aumentarCantidad(idProducto) {
-    const producto = productosEnCarrito.find(producto => producto.idProducto === parseInt(idProducto));
-    producto.cantidad++;
-    cargarProductosCarrito();
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-}
-
-function disminuirCantidad(idProducto) {
-    const producto = productosEnCarrito.find(producto => producto.idProducto === parseInt(idProducto));
-    if (producto.cantidad > 1) {
-        producto.cantidad--;
-        cargarProductosCarrito();
-        localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-    }
 }
 
 botonVaciar.addEventListener("click", () => {

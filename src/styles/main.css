@@ -312,23 +312,6 @@ main {
     border-radius: 1rem;
 }
 
-.carrito-producto-cantidad {
-    padding: 1rem;
-    text-align: center;
-}
-
-.carrito-producto-cantidad small{
-    margin-bottom: .5rem;
-}
-
-.carrito-producto-restar,
-.carrito-producto-sumar {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem; /* Ajusta el tamaño de los íconos según sea necesario */
-}
-
 .carrito-producto small {
     font-size: .75rem;
 }
@@ -349,21 +332,6 @@ main {
     cursor: pointer;
     text-transform: uppercase;
     font-size: .75rem;
-}
-
-.input-group {
-    margin-top: 5px;
-    align-items: center;
-}
-
-.input-group textarea {
-    width: 210%;
-    resize: none;
-}
-
-.input-group input[type="file"] {
-    margin-top: 5px;
-    width: 100%;
 }
 
 /* --------- Fin de personalizar ---------*/
