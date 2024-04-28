@@ -1,6 +1,7 @@
 package com.example.Apiweb.service;
 
 import com.example.Apiweb.model.OrdenModel;
+import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.repository.IOrdenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -53,5 +54,13 @@ public class OrdenServiceImp implements IOrdenService{
     @Override
     public List<OrdenModel> mostrarOrdenesPorCedula(int cedula) {
         return this.ordenRepository.listarOrdenesPorCedula(cedula);
+    }
+
+    @Override
+    public String actualizarEstadoOrden(int idOrden, Estado estado) {
+        Optional<OrdenModel> ordenRef = this.ordenRepository.findById(idOrden);
+        ordenRef.get().setEstado(estado);
+        this.ordenRepository.save(ordenRef.get());
+        return "El estado de la orden con id " + ordenRef.get().getIdOrden() + " fue actualizado con exito.";
     }
 }

@@ -1,6 +1,7 @@
 package com.example.Apiweb.service;
 
 import com.example.Apiweb.model.OrdenModel;
+import com.example.Apiweb.model.enums.Estado;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,4 +15,5 @@ public interface IOrdenService {
     String actualizarOrdenPorId(OrdenModel orden);
     String agregarEvidenciaPagoOrden(OrdenModel ordenIdEvidencia);
     List<OrdenModel> mostrarOrdenesPorCedula(int cedula);
+    String actualizarEstadoOrden(int idOrden, Estado estado);
 }

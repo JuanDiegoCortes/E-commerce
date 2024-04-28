@@ -40,6 +40,7 @@ window.onload = function() {
             boton.addEventListener("click", cargarProductosOrden);
         });
     }
+    
     function actualizarBotonesGestionar(e) {
         btnsGestionar = document.querySelectorAll(".btn-gestionar");
     

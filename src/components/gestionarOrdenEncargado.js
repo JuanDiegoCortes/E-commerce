@@ -5,7 +5,6 @@ window.onload = function() {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         mostrarOrdenes(data);
         });
 
@@ -23,6 +22,7 @@ window.onload = function() {
             <th>Evindecia de pago</th>
             <th>Metodo de pago</th>
             <th>Precio total</th>
+            <th>Editar estado</th>
         `;
         table.appendChild(trHeader);
     
@@ -36,16 +36,28 @@ window.onload = function() {
         tr.innerHTML = `
         <td>${orden.idOrden}</td> 
         <td>${orden.cedula.cedula}</td>
-        <td>${orden.estado}</td>
+        <td>${orden.estado}</td> 
         <td>${validacionPago}</td>
         <td>${orden.metodoPago}</td>
         <td>${orden.precioTotal}</td>
+        <td>
+            <div class="dropdown">
+                <button id="${orden.idOrden}" class="btn btn-primary dropdown-toggle boton-editar-estado" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Editar
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button id="activo" class="dropdown-item boton-estado" type="button">Activo</button></li>
+                    <li><button id="inactivo" class="dropdown-item boton-estado" type="button">Inactivo</button></li>
+                </ul>
+            </div>
+        </td>
         `;
     
         table.appendChild(tr);
         containerOrdenes.appendChild(table);
     
-        cargarProductosOrden(ordenId)
+        cargarProductosOrden(ordenId);
+        actualizarBotonesEditarEstado(); // Llama a esta función cada vez que se crea una nueva orden
     }
 
     function cargarProductosOrden(ordenId){
@@ -54,7 +66,6 @@ window.onload = function() {
         .then(response => response.json())
         .then(data => {
             ordenProd = data;
-            console.log(ordenProd);
             mostrarProductosOrden(ordenProd);
         })
     }
@@ -86,5 +97,40 @@ window.onload = function() {
             containerProductos.appendChild(tr);
         });
     }
-}
 
+    function actualizarBotonesEditarEstado() {
+        const botonesEditarEstado = document.querySelectorAll(".boton-estado");
+        botonesEditarEstado.forEach(boton => {
+            boton.addEventListener("click", function(e) {
+                const estado = e.target.id;
+                actualizarEstadoOrden(ordenId, estado);
+            });
+        });
+    }
+    
+    function actualizarEstadoOrden(ordenId, data) {
+        const url = `http://localhost:8081/Apiweb/v1/orden/actualizarEstadoOrden/${ordenId}/${data}`;
+        fetch(url, {
+            method: 'PUT',
+        })
+        .then(response => response)
+        .then(() => {
+            Toastify({
+                text: "Estado actualizado correctamente",
+                duration: 1000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                    borderRadius: "2rem",
+                }
+            }).showToast();
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+        })
+        .catch(error => console.error(error));
+    }
+}

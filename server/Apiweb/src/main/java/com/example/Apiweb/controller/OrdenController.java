@@ -169,4 +169,9 @@ public class OrdenController {
         return new ResponseEntity<List<OrdenModel>>(ordenes, HttpStatus.OK);
     }
 
+    @PutMapping("/actualizarEstadoOrden/{idOrden}/{estado}")
+    public ResponseEntity<String> actualizarEstadoOrden(@PathVariable Integer idOrden, @PathVariable Estado estado) {
+        return new ResponseEntity<String>(ordenService.actualizarEstadoOrden(idOrden, estado), HttpStatus.OK);
+    }
+
 }
