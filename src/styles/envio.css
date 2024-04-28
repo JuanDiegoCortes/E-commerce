@@ -80,10 +80,10 @@ h1 {
 .details input,
 .codigoPostal input,
 .city input {
-    width: 20%;
+    width: 100%; /* Ajustar el ancho del input para ocupar el contenedor */
     padding: 0 5px;
     height: 40px;
-    font-size: 10px;
+    font-size: 16px; /* Ajustar el tamaño de fuente para mayor legibilidad */
     border: none;
     background: none;
     outline: none;
@@ -97,12 +97,23 @@ h1 {
 .codigoPostal label,
 .city label {
     position: absolute;
-    top: 50%;
+    top: 10px; /* Ajusta la distancia del borde superior del input */
     left: 5px;
     color: var(--clr-silver);
-    transform: translateY(-50%);
     font-size: 16px;
     pointer-events: none;
+    transition: top 0.3s ease, font-size 0.3s ease; /* Agrega transición para una animación suave */
+}
+
+.name input:not(:placeholder-shown) + label,
+.lastName input:not(:placeholder-shown) + label,
+.phoneNumber input:not(:placeholder-shown) + label,
+.adress input:not(:placeholder-shown) + label,
+.details input:not(:placeholder-shown) + label,
+.codigoPostal input:not(:placeholder-shown) + label,
+.city input:not(:placeholder-shown) + label {
+    top: -10px; /* Mueve el label hacia arriba cuando hay contenido en el input */
+    font-size: 12px; /* Reducir el tamaño del label cuando se mueve hacia arriba */
 }
 
 .name span::before,
