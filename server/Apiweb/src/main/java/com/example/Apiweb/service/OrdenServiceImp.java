@@ -54,10 +54,4 @@ public class OrdenServiceImp implements IOrdenService{
     public List<OrdenModel> mostrarOrdenesPorCedula(int cedula) {
         return this.ordenRepository.listarOrdenesPorCedula(cedula);
     }
-
-    @Override
-    public List<OrdenModel> mostrarOrdenesConProductos() {
-        return this.ordenRepository.listarOrdenesConProductos();
-    }
-
 }

@@ -1,0 +1,29 @@
+body {
+    padding: 1rem;
+    background-color: white;
+}
+
+.contenedor-informacion {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-spacing: 1rem; 
+    text-align: center;
+    border-radius: 10px;
+}
+
+.contenedor-informacion th {
+    padding: 1rem;
+    border: 1px solid black; /* Añade esta línea */
+}
+
+.contenedor-informacion td {
+    border: 1px solid black; /* Añade esta línea */
+}
+
+.contenedor-informacion-productos {
+    border-spacing: 1rem; 
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+}
