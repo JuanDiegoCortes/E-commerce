@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+
+:root {
+    --clr-main: #000;
+    --clr-main-light: #ff6600;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
+}
+
+.regresar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.regresarBtn {
+    background-color: #ff6600; /* Color anaranjado */
+    color: black; /* Texto en negro para resaltar */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.regresarBtn:hover {
+    background-color: #ff9000; /* Anaranjado más claro al pasar el ratón */
+}
+
+body {
+    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
+}
+
+.disenoP {
+    background-color: whitesmoke;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.contenedor-disenosP{
+    background-color: white;
+}
