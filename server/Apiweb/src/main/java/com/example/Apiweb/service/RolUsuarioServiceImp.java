@@ -1,7 +1,6 @@
 package com.example.Apiweb.service;
 
 import com.example.Apiweb.model.RolUsuarioModel;
-import com.example.Apiweb.model.UsuarioModel;
 import com.example.Apiweb.repository.IRolUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;

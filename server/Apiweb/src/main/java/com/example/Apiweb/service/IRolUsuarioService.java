@@ -1,7 +1,6 @@
 package com.example.Apiweb.service;
 
 import com.example.Apiweb.model.RolUsuarioModel;
-import com.example.Apiweb.model.UsuarioModel;
 
 import java.util.List;
 import java.util.Optional;

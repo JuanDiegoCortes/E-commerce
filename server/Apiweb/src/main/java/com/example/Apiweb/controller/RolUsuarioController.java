@@ -2,7 +2,6 @@ package com.example.Apiweb.controller;
 
 import com.example.Apiweb.exception.RecursoNoEncontradoException;
 import com.example.Apiweb.model.RolUsuarioModel;
-import com.example.Apiweb.model.UsuarioModel;
 import com.example.Apiweb.service.IRolUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/Apiweb/v1/rolUsuario")
