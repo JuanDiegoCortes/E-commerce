@@ -58,7 +58,7 @@ header {
 }
 
 /* Estilo para el boton de login */
-.login-link, .sig-up-link {
+.login-link, .sig-up-link, .logout {
     color: #fff;
     text-decoration: none;
     padding: 1rem;
@@ -71,7 +71,7 @@ header {
 }
 
 
-.login-link:hover, .sig-up-link:hover {
+.login-link:hover, .sig-up-link:hover, .logout:hover {
     color: var(--clr-main-light);
     background-color: var(--clr-white);
 }

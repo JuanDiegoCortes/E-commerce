@@ -168,4 +168,10 @@ public class OrdenController {
         List<OrdenModel> ordenes = ordenService.mostrarOrdenesPorCedula(cedula);
         return new ResponseEntity<List<OrdenModel>>(ordenes, HttpStatus.OK);
     }
+
+    @GetMapping("/visualizarOrdenesConProductos")
+    public ResponseEntity<List<OrdenModel>> visualizarOrdenesConProductos(){
+        List<OrdenModel> ordenes = ordenService.mostrarOrdenesConProductos();
+        return new ResponseEntity<List<OrdenModel>>(ordenes, HttpStatus.OK);
+    }
 }

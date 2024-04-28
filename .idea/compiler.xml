@@ -10,5 +10,10 @@
         <module name="Apiweb.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Apiweb" target="17" />
+      <module name="Apiweb.main" target="17" />
+      <module name="Apiweb.test" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

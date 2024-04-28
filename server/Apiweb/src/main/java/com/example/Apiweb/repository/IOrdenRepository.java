@@ -13,4 +13,10 @@ public interface IOrdenRepository extends JpaRepository<OrdenModel, Integer> {
             "FROM `E-commerce`.`Orden`" +
             "WHERE `cedula` =  :cedula", nativeQuery = true)
     List<OrdenModel> listarOrdenesPorCedula(@Param("cedula") Integer cedula);
+
+    @Query (value="SELECT *" +
+            "FROM `E-commerce`.`Orden` AS O" +
+            "INNER JOIN `E-commerce`.`OrdenProd` AS OP ON O.idOrden = OP.idOrden" +
+            "INNER JOIN `E-commerce`.`Producto` AS P ON OP.idProducto = P.idProducto", nativeQuery = true)
+    List<OrdenModel> listarOrdenesConProductos();
 }

@@ -16,16 +16,44 @@ const aside = document.querySelector("aside");
 const btnLogin = document.querySelector(".login-link");
 const btnSigiUp = document.querySelector(".sig-up-link");
 const btnUsuarioInfo = document.querySelector(".usuarioInfo");
+const btnLogout = document.querySelector(".logout");
+const btnOrdenesEncargado = document.querySelector(".boton-ordenes");
+const btnDisenosPDisenador = document.querySelector(".boton-disenosP");
 
 if (localStorage.getItem("usuario") === null) {
   btnLogin.style.display = "display";
   btnSigiUp.style.display = "display";
   btnUsuarioInfo.style.display = "none";
+  btnLogout.style.display = "none";
+  btnOrdenesEncargado.style.display = "none";
+  btnDisenosPDisenador.style.display = "none";
 } else {
   btnLogin.style.display = "none";
   btnSigiUp.style.display = "none";
   btnUsuarioInfo.style.display = "display";
+  btnLogout.style.display = "display";
+
+  let session = JSON.parse(localStorage.getItem("usuario"));
+
+  if (session.idRol.idRol === 1) {
+    btnOrdenesEncargado.style.display = "display";
+    btnDisenosPDisenador.style.display = "display";
+  } else if (session.idRol.idRol === 3) {
+    btnOrdenesEncargado.style.display = "display";
+    btnDisenosPDisenador.style.display = "none";
+  } else if (session.idRol.idRol === 4){ 
+    btnOrdenesEncargado.style.display = "none";
+    btnDisenosPDisenador.style.display = "display";
+  } else {
+    btnOrdenesEncargado.style.display = "none";
+    btnDisenosPDisenador.style.display = "none";
 }
+}
+
+btnLogout.addEventListener("click", () => {
+  localStorage.removeItem("usuario");
+  window.location.href = "./index.html";
+});
 
 openMenu.addEventListener("click", () => {
   aside.classList.add("aside-visible");

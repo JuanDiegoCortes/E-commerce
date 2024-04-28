@@ -14,4 +14,5 @@ public interface IOrdenService {
     String actualizarOrdenPorId(OrdenModel orden);
     String agregarEvidenciaPagoOrden(OrdenModel ordenIdEvidencia);
     List<OrdenModel> mostrarOrdenesPorCedula(int cedula);
+    List<OrdenModel> mostrarOrdenesConProductos();
 }
