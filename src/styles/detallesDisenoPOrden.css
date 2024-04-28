@@ -22,11 +22,13 @@ body{
     border: 1px solid #ccc;
     padding: 10px;
     width: 900px;
+    margin: 0 auto;
 }
 
 .form-floating {
     margin-bottom: 10px;
     width: 900px;
+    margin: 0 auto;
 }
 
 /* Estilo para las imágenes */
@@ -70,10 +72,12 @@ body{
     height: auto; /* Alto de la imagen */
     max-width: 100%;
     border-radius: 1rem;
+    text-align: center;
 }
 
 h2{
     color: whitesmoke;
+    text-align: center;
 }
 
 .comentarios{
@@ -93,6 +97,15 @@ h2{
 .comentarios, .btn, .btn-primary{
     display: flexbox;
     justify-content: center;
-    margin-left: 500px;
+    margin-left: 650px;
     margin-bottom: 60px;
+}
+
+.disenoP {
+    text-align: center; 
+}
+
+.disenoP-imagen {
+    display: inline-block; 
+    width: 250px; 
 }
