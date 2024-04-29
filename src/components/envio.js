@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    let solicitudEnviada=false;
-
     let ciudadSeleccionadaId = "";
     let modalidadEntregaSeleccionada = "";
 

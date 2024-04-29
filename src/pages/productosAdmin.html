@@ -69,48 +69,38 @@
                     Categoría
                 </button>
                 <ul class="dropdown-menu">
-                    <li><button id="1" class="dropdown-item boton-categoria" type="button">Ropa Deportiva</button></li>
-                    <li><button id="2" class="dropdown-item boton-categoria" type="button">Diseño Personalización</button></li>
-                </ul>
-
-            <!-- Aqui se agrega la subcategoria -->
-                <button id="boton-subCategoria 0" class="btn btn-primary dropdown-toggle boton-subCategoria" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Subcategoría
-                </button>
-                <ul class="dropdown-menu">
-                    <li><button id="11" class="dropdown-item boton-subCategoria" type="button">Chaquetas</button></li>
-                    <li><button id="12" class="dropdown-item boton-subCategoria" type="button">Buzos</button></li>
-                    <li><button id="13" class="dropdown-item boton-subCategoria" type="button">Camisetas</button></li>
-                    <li><button id="14" class="dropdown-item boton-subCategoria" type="button">Polos</button></li>
-                    <li><button id="15" class="dropdown-item boton-subCategoria" type="button">Maletas</button></li>
+                    <li><button id="11" class="dropdown-item boton-categoria" type="button">Chaquetas</button></li>
+                    <li><button id="12" class="dropdown-item boton-categoria" type="button">Buzos</button></li>
+                    <li><button id="13" class="dropdown-item boton-categoria" type="button">Camisetas</button></li>
+                    <li><button id="14" class="dropdown-item boton-categoria" type="button">Polos</button></li>
+                    <li><button id="15" class="dropdown-item boton-categoria" type="button">Maletas</button></li>
                 </ul>
             </div>
 
             <!-- Aqui se asignan las tallas y cantidades -->
-  
             <div id="tallas">
                 <div class="talla">
-                    <input type="radio" id="tallaXS" name="tallaXS">
+                    <input type="radio" id="tallaXS" name="tallaXS" data-id="1">
                     <label for="tallaXS">XS</label>
                     <label for="cantidadXS">Cantidad:</label>
                     <input type="number" id="cantidadXS" name="cantidadXS" step="1" min="0">
 
-                    <input type="radio" id="tallaS" name="tallaS">
+                    <input type="radio" id="tallaS" name="tallaS" data-id="2">
                     <label for="tallaS">S</label>
                     <label for="cantidadS">Cantidad:</label>
                     <input type="number" id="cantidadS" name="cantidadS" step="1" min="0">
 
-                    <input type="radio" id="tallaM" name="tallaM">
+                    <input type="radio" id="tallaM" name="tallaM" data-id="3">
                     <label for="tallaM">M</label>
                     <label for="cantidadM">Cantidad:</label>
                     <input type="number" id="cantidadM" name="cantidadM" step="1" min="0">
 
-                    <input type="radio" id="tallaL" name="tallaL">
+                    <input type="radio" id="tallaL" name="tallaL" data-id="4">
                     <label for="tallaL">L</label>
                     <label for="cantidadL">Cantidad:</label>
                     <input type="number" id="cantidadL" name="cantidadL" step="1" min="0">
 
-                    <input type="radio" id="tallaXL" name="tallaXL">
+                    <input type="radio" id="tallaXL" name="tallaXL" data-id="5">
                     <label for="tallaXL">XL</label>
                     <label for="cantidadXL">Cantidad:</label>
                     <input type="number" id="cantidadXL" name="cantidadXL" step="1" min="0">
@@ -119,13 +109,12 @@
 
             <!-- Aqui se agrega la imagen -->
             <div>
-                <label for="image_Url">Imagen (PNG):</label>
-                <input type="file" id="image_Url" name="image_Url" accept="image/png" required>
+                <label for="image_Url">URL de la imagen (PNG):</label>
+                <input type="text" id="image_Url" name="image_Url" required>
             </div>
 
             <!-- Botón de crear producto -->
-            <button type="submit" class="botonCrear">Crear</button>
-
+            <button type="button" id="botonCrear">Crear Producto</button>
 
     <section id="listar">
         <h2>Listar Artículos</h2>
