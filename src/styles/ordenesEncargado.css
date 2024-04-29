@@ -5,8 +5,18 @@ body {
 
 aside {
     padding: 1rem;
+    justify-content: space-between;
     border-spacing: 1rem; 
     text-align: center;
     border: 1px solid black;
     border-radius: 10px;
 }
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid black;
+}
+

@@ -7,8 +7,10 @@ window.onload = function() {
     let btnsGestionar = document.querySelectorAll(".btn-gestionar");
     const botonEstado = document.querySelectorAll(".boton-estado");
     const aside = document.querySelector("aside");
+
     const inputFiltro = document.querySelector(".input-search")
-    const botonBuscar = document.querySelector(".button-search")
+    const botonBuscarID = document.querySelector(".button-search-id")
+    const botonBuscarNombre = document.querySelector(".button-search-nombre")
 
     const url = 'http://localhost:8081/Apiweb/v1/orden/';
     fetch(url)
@@ -96,14 +98,24 @@ window.onload = function() {
 
     function addEventListeners() {
         botonEstado.forEach(boton => boton.addEventListener("click", handleEstadoClick));
-        botonBuscar.addEventListener('click', function() {
-            const idBuscado = inputFiltro.value;
+        botonBuscarID.addEventListener('click', function() {
+            const idBuscado = parseInt(inputFiltro.value);
             const ordenFiltrada = ordenes.find(orden => orden.idOrden === idBuscado);
         
             if (ordenFiltrada) {
                 mostrarOrdenes([ordenFiltrada]);
             } else {
                 containerOrdenes.innerHTML = "No se encontró ninguna orden con ese ID.";
+            }
+        });
+        botonBuscarNombre.addEventListener('click', function() {
+            const nombreBuscado = inputFiltro.value.toLowerCase();
+            const ordenesFiltradas = ordenes.filter(orden => orden.cedula.nombre.toLowerCase() === nombreBuscado);
+        
+            if (ordenesFiltradas.length > 0) {
+                mostrarOrdenes(ordenesFiltradas);
+            } else {
+                containerOrdenes.innerHTML = "No se encontró ninguna orden con ese nombre.";
             }
         });
     }
