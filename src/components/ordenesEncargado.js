@@ -24,8 +24,8 @@ window.onload = function() {
 
         const trHeader = document.createElement("tr");
         trHeader.innerHTML = `
-            <th>Nombre</th>
-            <th>Género</th>
+            <th>Nro Orden</th>
+            <th>Nombre Cliente</th>
             <th>Estado</th>
             <th>Productos</th>
             <th>Gestionar informacion</th>
@@ -96,7 +96,16 @@ window.onload = function() {
 
     function addEventListeners() {
         botonEstado.forEach(boton => boton.addEventListener("click", handleEstadoClick));
-        botonBuscar.addEventListener("click", () => filtrarOrdenesPorId(parseInt(inputFiltro.value)));
+        botonBuscar.addEventListener('click', function() {
+            const idBuscado = inputFiltro.value;
+            const ordenFiltrada = ordenes.find(orden => orden.idOrden === idBuscado);
+        
+            if (ordenFiltrada) {
+                mostrarOrdenes([ordenFiltrada]);
+            } else {
+                containerOrdenes.innerHTML = "No se encontró ninguna orden con ese ID.";
+            }
+        });
     }
 
     function handleEstadoClick(e) {
@@ -111,16 +120,6 @@ window.onload = function() {
         } else {
             mostrarOrdenes(ordenes);
         }
-    }
-
-    function filtrarOrdenesPorId(ordenId) {
-        const url = `http://localhost:8081/Apiweb/v1/orden/${ordenId}`;
-        fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            ordenes = data;
-            mostrarOrdenes(ordenes);
-        });
     }
 
     addEventListeners();

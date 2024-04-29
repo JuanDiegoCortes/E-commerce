@@ -15,7 +15,7 @@
 body {
     background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
     margin: 0;
-    padding: 0;
+    padding: 2rem;
     color: var(--clr-white);
 }
 
