@@ -1,29 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-main: #000;
+    --clr-main-light: #ff6600;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
+}
+
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
 body {
-    padding: 1rem;
-    background-color: white;
+    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
+    margin: 0;
+    padding: 0;
+    color: var(--clr-white);
 }
 
-.contenedor-informacion {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    border-spacing: 1rem; 
+.regresar {
     text-align: center;
-    border-radius: 10px;
+    margin-top: 30px;
 }
 
-.contenedor-informacion th {
-    padding: 1rem;
-    border: 1px solid black; /* Añade esta línea */
+.regresarBtn {
+    background-color: black;
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
-.contenedor-informacion td {
-    border: 1px solid black; /* Añade esta línea */
+.regresarBtn:hover {
+    background-color: var(--clr-red);
 }
 
+aside {
+    padding: 20px;
+}
+
+.contenedor-informacion,
 .contenedor-informacion-productos {
-    border-spacing: 1rem; 
-    text-align: center;
-    border: 1px solid black;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: var(--clr-gray);
     border-radius: 10px;
+    text-align: center;
+    color: var(--clr-main); /* Cambia el color del texto a negro */
 }

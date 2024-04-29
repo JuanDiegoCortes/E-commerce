@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-main: #000;
+    --clr-main-light: #ff6600;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
+}
+
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
+    margin: 0;
+    padding: 0;
+    color: var(--clr-white);
+}
+
+.regresar {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.regresarBtn {
+    background-color: black;
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.regresarBtn:hover {
+    background-color: var(--clr-red);
+}
+
+.contenedor-ordenes,
+.contenedor-productos {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: var(--clr-gray);
+    border-radius: 10px;
+    text-align: center;
+    color: var(--clr-main); /* Cambia el color del texto a negro */
+}
