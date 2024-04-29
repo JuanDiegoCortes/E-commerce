@@ -5,6 +5,10 @@ window.onload = function() {
 
     let btnsDetalles = document.querySelectorAll(".btn-detalles");
     let btnsGestionar = document.querySelectorAll(".btn-gestionar");
+    const botonEstado = document.querySelectorAll(".boton-estado");
+    const aside = document.querySelector("aside");
+    const inputFiltro = document.querySelector(".input-search")
+    const botonBuscar = document.querySelector(".button-search")
 
     const url = 'http://localhost:8081/Apiweb/v1/orden/';
     fetch(url)
@@ -17,14 +21,25 @@ window.onload = function() {
     function mostrarOrdenes(ordenes) {
         const containerOrdenes = document.querySelector(".contenedor-ordenes");
         containerOrdenes.innerHTML = "";
+
+        const trHeader = document.createElement("tr");
+        trHeader.innerHTML = `
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Estado</th>
+            <th>Productos</th>
+            <th>Gestionar informacion</th>
+        `;
+        containerOrdenes.appendChild(trHeader);
+
         ordenes.forEach(orden => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
             <td>${orden.idOrden}</td>
             <td>${orden.cedula.nombre}</td>
             <td>${orden.estado}</td>
-            <td><button class="btn btn-detalles" id="${orden.idOrden}">Ver productos</button></td>
-            <td><button class="btn btn-gestionar" id="${orden.idOrden}">Gestionar</button></td>
+            <td><button class="btn-detalles" id="${orden.idOrden}">Ver productos</button></td>
+            <td><button class="btn-gestionar" id="${orden.idOrden}">Gestionar</button></td>
             `;
 
             containerOrdenes.appendChild(tr);
@@ -41,7 +56,7 @@ window.onload = function() {
         });
     }
     
-    function actualizarBotonesGestionar(e) {
+    function actualizarBotonesGestionar() {
         btnsGestionar = document.querySelectorAll(".btn-gestionar");
     
         btnsGestionar.forEach(boton => {
@@ -79,4 +94,35 @@ window.onload = function() {
         });
     }
 
+    function addEventListeners() {
+        botonEstado.forEach(boton => boton.addEventListener("click", handleEstadoClick));
+        botonBuscar.addEventListener("click", () => filtrarOrdenesPorId(parseInt(inputFiltro.value)));
+    }
+
+    function handleEstadoClick(e) {
+        aside.classList.remove("aside-visible");
+        botonEstado.forEach(boton => boton.classList.remove("active"));
+        e.currentTarget.classList.add("active");
+        estadoActivo = e.currentTarget.id;
+
+        if (estadoActivo !== "todos") {
+        const ordenesEstado = ordenes.filter(orden => orden.estado === estadoActivo);
+        mostrarOrdenes(ordenesEstado);
+        } else {
+            mostrarOrdenes(ordenes);
+        }
+    }
+
+    function filtrarOrdenesPorId(ordenId) {
+        const url = `http://localhost:8081/Apiweb/v1/orden/${ordenId}`;
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            ordenes = data;
+            mostrarOrdenes(ordenes);
+        });
+    }
+
+    addEventListeners();
 }
+
