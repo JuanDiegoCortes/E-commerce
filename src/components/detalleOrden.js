@@ -1,4 +1,4 @@
-window.onload = function() {
+    window.onload = function() {
     const ordenSeleccionada = JSON.parse(sessionStorage.getItem("ordenSeleccionada"));
     const idOrden = ordenSeleccionada.idOrden;
     const contenedorProductos = document.getElementById("container-producto");
