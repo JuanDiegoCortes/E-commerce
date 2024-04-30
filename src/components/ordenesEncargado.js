@@ -26,11 +26,11 @@ window.onload = function() {
 
         const trHeader = document.createElement("tr");
         trHeader.innerHTML = `
-            <th>Nro Orden</th>
-            <th>Nombre Cliente</th>
-            <th>Estado</th>
-            <th>Productos</th>
-            <th>Gestionar informacion</th>
+            <th>Nro Orden  |</th>
+            <th>Nombre Cliente  |</th>
+            <th>Estado  |</th>
+            <th>Productos  |</th>
+            <th>Gestionar información</th>
         `;
         containerOrdenes.appendChild(trHeader);
 
