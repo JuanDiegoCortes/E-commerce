@@ -20,8 +20,8 @@ public class TallaController {
 
     @PostMapping("/")
     public ResponseEntity<String> crearTalla(@RequestBody TallaModel talla) {
-        tallaService.crearTalla(talla);
-        return new ResponseEntity<String>(tallaService.crearTalla(talla), HttpStatus.OK);
+        String resultado = tallaService.crearTalla(talla);
+        return new ResponseEntity<String>(resultado, HttpStatus.OK);
     }
 
     @GetMapping("/")
