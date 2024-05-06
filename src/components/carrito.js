@@ -139,15 +139,28 @@ function actualizarTotal() {
 botonComprar.addEventListener("click", () =>  {
 
     if (localStorage.getItem("usuario") === null) {
-        alert("Por favor inicie sesión para comprar");
-        window.location.href = "../pages/login.html";
+        Toastify({
+            text: "Por favor inicie sesión para comprar",
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: 'right', // `left`, `center` or `right`
+            style: {
+                background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                borderRadius: "2rem",
+                textTransform: "uppercase",
+                fontSize: ".75rem"
+                },
+          }).showToast();
+          
+          setTimeout(function(){
+            window.location.href = "../pages/login.html";
+          }, 3100);
     } else {
-    
-    window.location.href = "../pages/envio.html";
-    contenedorCarritoVacio.classList.add("disabled");
-    contenedorCarritoProductos.classList.add("disabled");
-    contenedorCarritoAcciones.classList.add("disabled");
-    contenedorCarritoComprado.classList.remove("disabled");
-
+        window.location.href = "../pages/envio.html";
+        contenedorCarritoVacio.classList.add("disabled");
+        contenedorCarritoProductos.classList.add("disabled");
+        contenedorCarritoAcciones.classList.add("disabled");
+        contenedorCarritoComprado.classList.remove("disabled");
     }
 });

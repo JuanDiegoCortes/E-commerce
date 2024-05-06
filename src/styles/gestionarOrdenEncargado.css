@@ -15,7 +15,7 @@
 body {
     background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
     margin: 0;
-    padding: 0;
+    padding: 2rem;
     color: var(--clr-white);
     font-family: Arial, sans-serif;
 }
@@ -45,11 +45,26 @@ body {
 
 .contenedor-informacion,
 .contenedor-informacion-productos {
-    margin: 50px auto; /* Centra los contenedores horizontalmente */
-    padding: 20px;
-    background-color: var(--clr-gray);
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: var(--clr-white);
     border-radius: 10px;
     text-align: center;
-    color: var(--clr-main); /* Cambia el color del texto a negro */
-    max-width: 600px; /* Limita el ancho del contenedor */
+    color: var(--clr-main); 
+}
+
+table {
+    width: 100%;
+    padding: .5rem;
+    border-radius: 1rem;
+}
+
+th, td {
+    padding: 1rem;
+    border: 1px solid var(--clr-main);
+}
+
+th {
+    background-color: var(--clr-main);
+    color: var(--clr-white);
 }

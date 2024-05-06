@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(data => {
         disenosP = data;
-        console.log(disenosP);
         mostrarDisenosP(disenosP);
     })
     .catch(error => {

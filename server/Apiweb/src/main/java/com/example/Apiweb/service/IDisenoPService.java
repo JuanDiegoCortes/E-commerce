@@ -1,6 +1,7 @@
 package com.example.Apiweb.service;
 
 import com.example.Apiweb.model.DisenoPModel;
+import com.example.Apiweb.model.enums.Estado;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,4 +15,5 @@ public interface IDisenoPService {
     String actualizarDisenoPPorId(DisenoPModel disenoP);
 
     Optional<DisenoPModel> mostrarDisenoCompartidoPorIdOrden(int idDisenoP);
+    Optional<DisenoPModel> cambiarEstadoDisenoPorIdOrdenProd(int idOrdenProd, Estado estado);
 }

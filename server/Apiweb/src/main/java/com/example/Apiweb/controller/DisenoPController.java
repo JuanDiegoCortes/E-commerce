@@ -1,6 +1,7 @@
 package com.example.Apiweb.controller;
 
 import com.example.Apiweb.model.DisenoPModel;
+import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.service.IDisenoPService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -64,5 +65,12 @@ public class DisenoPController {
         DisenoPModel diseno = this.disenoPService.mostrarDisenoCompartidoPorIdOrden(idOrdenProd)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el disenoP con el idOrden " + idOrdenProd));
         return ResponseEntity.ok(diseno);
+    }
+
+    @PutMapping("/cambiarEstadoDisenoP/{idOrdenProd}/{estado}")
+    public ResponseEntity<String> cambiarEstadoDiseno(@PathVariable Integer idOrdenProd, @PathVariable Estado estado) {
+        DisenoPModel diseno = this.disenoPService.cambiarEstadoDisenoPorIdOrdenProd(idOrdenProd, estado)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el disenoP con el idOrdenProd " + idOrdenProd));
+        return new ResponseEntity<String>("El estado del diseñoP con idOrdenProd " + idOrdenProd + " fue actualizado con exito.", HttpStatus.OK);
     }
 }

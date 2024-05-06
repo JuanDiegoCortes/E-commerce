@@ -21,6 +21,16 @@ window.onload = function() {
         div.classList.add("disenoP");
         div.innerHTML = `
             <img class="disenoP-imagen" src="${data.image_url}" alt="DisenoP">
+            <div class="dropdown">
+                <button id="${data.idOrdenProd}" class="btn btn-primary dropdown-toggle boton-editar-estado-diseno" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Estado del diseño
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button id="pendiente" class="dropdown-item boton-estado-disenoP" type="button">Pendiente</button></li>
+                    <li><button id="rechazado" class="dropdown-item boton-estado-disenoP" type="button">Rechazado</button></li>
+                    <li><button id="aprobado" class="dropdown-item boton-estado-disenoP" type="button">Aprobado</button></li>
+                </ul>
+            </div>
             `;
         contenedorDisenosP.append(div);
         obtenerComentarios(data);
@@ -50,21 +60,6 @@ window.onload = function() {
         });
     }
 
-    botonEnviar.addEventListener("click", () => {
-        let textoComentario = document.getElementById('text-area-comentario');
-        let cedulaUsuario = JSON.parse(localStorage.getItem("usuario")).cedula.cedula;
-        let subIdComentarioUsuario = infoFinal.idComentario;
-        let idDisenoPUsario = infoFinal.idDisenoP.idDisenoP;
-        
-        let comentario = {
-            texto: textoComentario.value,
-            cedula: { cedula: cedulaUsuario },
-            subIdComentario: { subIdComentario: subIdComentarioUsuario },
-            idDisenoP: { idDisenoP: idDisenoPUsario }
-        } 
-        crearComentario(comentario);
-    });
-
     function crearComentario(data){
         const url = `http://localhost:8081/Apiweb/v1/comentario/`
         fetch(url, {
@@ -87,4 +82,30 @@ window.onload = function() {
         })
         .catch(error => console.error('Error:', error));
     }
+
+    function addEventListeners() {
+        const botonesEstadoDisenoP = document.querySelectorAll('.boton-estado-disenoP');
+        botonesEstadoDisenoP.forEach(botonEstadoDisenoP => {
+        botonEstadoDisenoP.addEventListener('click', (e) => {
+            alert("Estado del diseño actualizado");
+            //Hay que añadir el metodo en la api de cambiar estado disenoP y actualizar el estado en la base de datos
+            });
+        });
+
+        botonEnviar.addEventListener("click", () => {
+            let textoComentario = document.getElementById('text-area-comentario');
+            let cedulaUsuario = JSON.parse(localStorage.getItem("usuario")).cedula.cedula;
+            let subIdComentarioUsuario = infoFinal.idComentario;
+            let idDisenoPUsario = infoFinal.idDisenoP.idDisenoP;
+            
+            let comentario = {
+                texto: textoComentario.value,
+                cedula: { cedula: cedulaUsuario },
+                subIdComentario: { subIdComentario: subIdComentarioUsuario },
+                idDisenoP: { idDisenoP: idDisenoPUsario }
+            } 
+            crearComentario(comentario);
+        });
+    };
+    addEventListeners();
 }

@@ -14,6 +14,10 @@ public class OrdenProdModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idOrdenProd;
+    private Integer cantidad;
+    private String image_Personalizacion;
+    private String texto_Personalizacion;
+    private Integer disenadorAsignado;
 
     @ManyToOne
     @JoinColumn(name = "idOrden")
@@ -22,9 +26,4 @@ public class OrdenProdModel {
     @ManyToOne
     @JoinColumn(name = "idProducto")
     private ProductoModel idProducto;
-
-    private Integer cantidad;
-    private String image_Personalizacion;
-    private String texto_Personalizacion;
-    private Integer disenadorAsignado;
 }
