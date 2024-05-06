@@ -67,6 +67,7 @@ window.onload = function() {
         .then(data => {
             ordenProd = data;
             mostrarProductosOrden(ordenProd);
+            console.log(ordenProd);
         })
     }
 
@@ -81,17 +82,35 @@ window.onload = function() {
             <th>Estado</th>
             <th>Personalizable</th>
             <th>Cantidad</th>
+            <th>Diseeñador Asignado</th>
         `;
         containerProductos.appendChild(trHeader);
 
         ordenProd.forEach(producto => {
             const tr = document.createElement("tr");
+            console.log(producto.image_Personalizacion);
+            console.log(producto.texto_Personalizacion);
+            console.log(producto.idProducto.personalizable);
+
+            let disenadorAsignadoInput = "";
+            let asignarButton = "";
+            if((producto.image_Personalizacion !== null || producto.texto_Personalizacion !== null) && producto.idProducto.personalizable.toLowerCase() === "si") {
+                disenadorAsignadoInput = `<td><input type="text" name="disenadorAsignado"></td>`;
+                asignarButton = `<td><button type="button" name="asignarButton">Asignar</button></td>`;
+            }else{
+                disenadorAsignadoInput = `<td></td>`;
+                asignarButton = `<td></td>`;
+
+            }
             tr.innerHTML = `
             <td>${producto.idProducto.nombre}</td>
             <td>${producto.idProducto.genero}</td>
             <td>${producto.idProducto.estado}</td>
             <td>${producto.idProducto.personalizable}</td>
             <td>${producto.cantidad}</td>
+            ${disenadorAsignadoInput}
+            ${asignarButton}
+
             `;
 
             containerProductos.appendChild(tr);

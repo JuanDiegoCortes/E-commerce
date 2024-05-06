@@ -26,4 +26,5 @@ public class OrdenProdModel {
     private Integer cantidad;
     private String image_Personalizacion;
     private String texto_Personalizacion;
+    private Integer disenadorAsignado;
 }
