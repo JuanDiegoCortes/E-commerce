@@ -26,7 +26,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let referencias = document.getElementById('referencias').value;
 
         if (nombre === "" || apellido === "" || codigoPostal === "" || ciudadSeleccionadaId === "" || modalidadEntregaSeleccionada === "" || telefono === "" || direccion === "") {
-            alert('Por favor, complete todos los campos.');
+            Toastify({
+                text: "Por favor, complete todos los campos.",
+                duration: 1000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                    borderRadius: "2rem",
+                }
+            }).showToast();
             return "";
         } else {
             const envioData = {
@@ -61,9 +72,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     try {
                         return JSON.parse(text);
                     } catch {
-                        alert('Datos enviados correctamente'); // pero la respuesta no es JSON.
-                        window.location.href = "../pages/index.html";
-                        return console.log(text);
+                        Toastify({
+                            text: "Informacion enviada correctamente",
+                            duration: 1000,
+                            close: true,
+                            gravity: "top",
+                            position: "right",
+                            stopOnFocus: true,
+                            style: {
+                                background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                                borderRadius: "2rem",
+                            }
+                        }).showToast();
+                        setTimeout(() => {
+                            window.location.href = "../pages/index.html";
+                        }, 2000);
                     }
                 });
             } else {
