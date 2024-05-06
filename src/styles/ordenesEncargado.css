@@ -1,5 +1,5 @@
 body {
-    background-color:#11F2DB;
+    background:linear-gradient(15deg, #F78B34, #090400);
     padding: 2rem;
     display: flex;
     justify-content: center;
@@ -14,7 +14,7 @@ aside {
     text-align: center;
     border: 1px solid black;
     border-radius: 10px;
-    background-color: #08CBF5;
+    background-color: #F78B34;
 }
 
 form {
