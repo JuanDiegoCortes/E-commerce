@@ -5,7 +5,6 @@
     --clr-main-light: #ff6600;
     --clr-white: #ececec;
     --clr-gray: #e2e2e2;
-    --clr-red: #961818;
 }
 
 * {
@@ -58,7 +57,7 @@ header {
 }
 
 /* Estilo para el boton de login */
-.login-link, .sig-up-link, .logout {
+.login-link, .sig-up-link {
     color: #fff;
     text-decoration: none;
     padding: 1rem;
@@ -66,14 +65,26 @@ header {
     background-color: #ff6600;
     font-size: 1rem;
     font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
-    margin-top: 1rem; /* Añadir margen superior */
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+    margin-top: 1rem; 
 }
 
 
-.login-link:hover, .sig-up-link:hover, .logout:hover {
+.login-link:hover, .sig-up-link:hover {
     color: var(--clr-main-light);
     background-color: var(--clr-white);
+}
+
+.user-info, .logout {
+    margin-left: 1rem;
+    padding: .5rem;
+    color: var(--clr-white);
+    font-size: 1rem; 
+    cursor: pointer;
+}
+
+.user-info:hover, .logout:hover {
+    color: var(--clr-main-light);
 }
 
 .d-flex {

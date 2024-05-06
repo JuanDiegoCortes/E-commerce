@@ -1,15 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    
     //Variables
     let ordenes = [];
-
-    if (localStorage.getItem("usuario") === null) {
-        alert("Por favor inicie sesión para ver su historial de órdenes");
-        window.location.href = "../pages/login.html";
-    } else {
-        console.log("Usuario autenticado", usuario = JSON.parse(localStorage.getItem("usuario")));
-    }
-
-    let cedula = /* usuario.cedula.cedula; */  582347196 
+    let cedula = usuario.cedula.cedula; 
 
     //Select DOM elements
     const contenedorOrdenes = document.querySelector("#contenedor-orden");

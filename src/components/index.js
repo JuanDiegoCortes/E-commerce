@@ -3,6 +3,8 @@ let generoActivo = "";
 let productos = [];
 let productosEnCarrito = [];
 
+const usuario = JSON.parse(localStorage.getItem("usuario"));
+
 // Select DOM elements
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesGeneros = document.querySelectorAll(".boton-genero");
@@ -30,7 +32,11 @@ if (localStorage.getItem("usuario") === null) {
 } else {
   btnLogin.style.display = "none";
   btnSigiUp.style.display = "none";
-  btnUsuarioInfo.style.display = "display";
+  if (usuario.idRol.idRol === 2) {
+    btnUsuarioInfo.style.display = "display";
+  } else {
+    btnUsuarioInfo.style.display = "none";
+  }
   btnLogout.style.display = "display";
 
   let session = JSON.parse(localStorage.getItem("usuario"));
