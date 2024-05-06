@@ -96,7 +96,20 @@ window.onload = function() {
     }
 
     function addEventListeners() {
-        botonEstado.forEach(boton => boton.addEventListener("click", handleEstadoClick));
+        botonEstado.forEach(boton => boton.addEventListener("click", function(e) {
+            aside.classList.remove("aside-visible");
+            botonEstado.forEach(boton => boton.classList.remove("active"));
+            e.currentTarget.classList.add("active");
+            estadoActivo = e.currentTarget.id;
+
+            if (estadoActivo !== "todos") {
+            const ordenesEstado = ordenes.filter(orden => orden.estado === estadoActivo);
+            mostrarOrdenes(ordenesEstado);
+            } else {
+                mostrarOrdenes(ordenes);
+            }
+        }));
+
         botonBuscarID.addEventListener('click', function() {
             const idBuscado = parseInt(inputFiltro.value);
             const ordenFiltrada = ordenes.find(orden => orden.idOrden === idBuscado);
@@ -107,6 +120,7 @@ window.onload = function() {
                 containerOrdenes.innerHTML = "No se encontró ninguna orden con ese ID.";
             }
         });
+
         botonBuscarNombre.addEventListener('click', function() {
             const nombreBuscado = inputFiltro.value.toLowerCase();
             let ordenesParaFiltrar;
@@ -126,21 +140,6 @@ window.onload = function() {
             }
         });
     }
-
-    function handleEstadoClick(e) {
-        aside.classList.remove("aside-visible");
-        botonEstado.forEach(boton => boton.classList.remove("active"));
-        e.currentTarget.classList.add("active");
-        estadoActivo = e.currentTarget.id;
-
-        if (estadoActivo !== "todos") {
-        const ordenesEstado = ordenes.filter(orden => orden.estado === estadoActivo);
-        mostrarOrdenes(ordenesEstado);
-        } else {
-            mostrarOrdenes(ordenes);
-        }
-    }
-
     addEventListeners();
 }
 
