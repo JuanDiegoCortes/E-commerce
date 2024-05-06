@@ -15,7 +15,6 @@ public class DisenoPModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDisenoP;
     private String image_url;
-    private Integer disenadorAsignado;
 
     @ManyToOne
     @JoinColumn(name = "idOrdenProd")
