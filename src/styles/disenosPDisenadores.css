@@ -12,7 +12,8 @@
 .regresar {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 50%;
+    transform: translateX(50%);
     z-index: 9999;
 }
 
@@ -33,6 +34,14 @@
 
 body {
     background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
+    margin: 0;
+    padding: 0;
+    color: var(--clr-white);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
 }
 
 .disenoP {
@@ -43,6 +52,12 @@ body {
     margin-bottom: 20px;
 }
 
-.contenedor-disenosP{
+.contenedor-disenosP {
     background-color: white;
 }
+
+h1 {
+    text-align: center;
+    margin-top: -500px; /* Margen superior para separar el título del contenido */
+}
+

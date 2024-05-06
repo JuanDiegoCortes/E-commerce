@@ -8,37 +8,49 @@
     <link rel="stylesheet" href="../styles/ordenesEncargado.css">
 </head>
 <body>
-    <div class="regresar">
-        <a href="./index.html">
-            <button class="regresarBtn">Regresar</button>
-        </a>
-    </div>
-    <div class="titulo">
-        <h1>Gestionar Ordenes</h1>
-    </div>
-    <aside>
-        <form class="d-flex" role="search">
-            <div class="dropdown" style="margin: 2px;">
-                <button id="boton-filtro" class="btn btn-primary dropdown-toggle boton-filtro" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Estado
-                </button>
-                <ul class="dropdown-menu">
-                    <li><button id="todos" class="dropdown-item boton-estado" type="button">Todo</button></li>
-                    <li><button id="activo" class="dropdown-item boton-estado" type="button">Activo</button></li>
-                    <li><button id="inactivo" class="dropdown-item boton-estado" type="button">Inactivo</button></li>
-                </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col text-end">
+                <div class="regresar">
+                    <a href="./index.html">
+                        <button class="regresarBtn">Regresar</button>
+                    </a>
+                </div>
             </div>
-            <input id="input-search" class="form-control me-2 input-search"  placeholder="Search by ID or Name">
-            <button class="btn btn-outline-success button-search-id" type="button">Search ID</button>
-            <button class="btn btn-outline-success button-search-nombre" type="button">Search Name</button>
-        </form>
-        <div id="contenedor-ordenes" class="contenedor-ordenes">
-            <!-- Esto se va a rellenar con JS-->
         </div>
-        <div id="contenedor-productos" class="contenedor-productos">
-            <!-- Esto se va a rellenar con JS-->
+        <div class="row">
+            <div class="col text-center">
+                <div class="titulo">
+                    <h1>Gestión de Órdenes</h1>
+                </div>
+            </div>
         </div>
-    </aside>
+        <div class="row justify-content-center">
+            <aside class="col-md-8">
+                <form class="d-flex">
+                    <div class="dropdown">
+                        <button id="boton-filtro" class="btn btn-primary dropdown-toggle boton-filtro" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Estado
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button id="todos" class="dropdown-item boton-estado" type="button">Todo</button></li>
+                            <li><button id="activo" class="dropdown-item boton-estado" type="button">Activo</button></li>
+                            <li><button id="inactivo" class="dropdown-item boton-estado" type="button">Inactivo</button></li>
+                        </ul>
+                    </div>
+                    <input id="input-search" class="form-control me-2 input-search"  placeholder="Buscar por ID o Nombre">
+                    <button class="btn btn-outline-success button-search-id" type="button">Buscar ID</button>
+                    <button class="btn btn-outline-success button-search-nombre" type="button">Buscar Nombre</button>
+                </form>
+                <div id="contenedor-ordenes" class="contenedor-ordenes">
+                    <!-- Esto se va a rellenar con JS-->
+                </div>
+                <div id="contenedor-productos" class="contenedor-productos">
+                    <!-- Esto se va a rellenar con JS-->
+                </div>
+            </aside>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../components/ordenesEncargado.js"> </script>

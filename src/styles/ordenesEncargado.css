@@ -1,6 +1,10 @@
 body {
-    background-color: white;
+    background-color:#11F2DB;
     padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 aside {
@@ -10,6 +14,7 @@ aside {
     text-align: center;
     border: 1px solid black;
     border-radius: 10px;
+    background-color: #08CBF5;
 }
 
 form {
@@ -18,6 +23,12 @@ form {
     align-items: center;
     padding: 1rem;
     border-bottom: 1px solid black;
+}
+
+.input-search,
+.button-search-id,
+.button-search-nombre {
+    background-color: beige;
 }
 
 .regresar {

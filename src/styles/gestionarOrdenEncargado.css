@@ -17,11 +17,13 @@ body {
     margin: 0;
     padding: 0;
     color: var(--clr-white);
+    font-family: Arial, sans-serif;
 }
 
 .regresar {
-    text-align: center;
-    margin-top: 30px;
+    position: absolute;
+    top: 20px; /* Aumenta el espacio desde la parte superior */
+    right: 20px;
 }
 
 .regresarBtn {
@@ -43,10 +45,11 @@ body {
 
 .contenedor-informacion,
 .contenedor-informacion-productos {
-    margin-top: 50px;
+    margin: 50px auto; /* Centra los contenedores horizontalmente */
     padding: 20px;
     background-color: var(--clr-gray);
     border-radius: 10px;
     text-align: center;
     color: var(--clr-main); /* Cambia el color del texto a negro */
+    max-width: 600px; /* Limita el ancho del contenedor */
 }

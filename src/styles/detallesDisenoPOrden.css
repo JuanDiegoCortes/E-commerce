@@ -10,11 +10,21 @@
 
 /* Estilo para los comentarios */
 .container-comentarios {
-    margin-top: 20px;
+    width: 900px;
+    margin: 20px auto;
+    margin-bottom: 70px;
 }
 
 body{
     background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
+    margin: 0;
+    padding: 0;
+    color: var(--clr-white);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
 }
 
 .espacio-comentarios {
@@ -39,7 +49,10 @@ body{
 
 .regresar {
     text-align: center;
-    margin-top: 30px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .regresarBtn {
@@ -94,11 +107,10 @@ h2{
     color: whitesmoke;
 }
 
-.comentarios, .btn, .btn-primary{
-    display: flexbox;
+.text-center {
+    display: flex;
     justify-content: center;
-    margin-left: 650px;
-    margin-bottom: 60px;
+    margin-top: 20px;
 }
 
 .disenoP {
@@ -109,3 +121,4 @@ h2{
     display: inline-block; 
     width: 250px; 
 }
+

@@ -8,27 +8,29 @@
     <link rel="stylesheet" href="../styles/detallesDisenoPOrden.css">
 </head>
 <body>
-    <div class="regresar">
-        <a href="./detalleOrden.html">
-            <button class="regresarBtn"> Regresar </button>
-        </a>
-    </div>
-    <div class="container-disenop" id="container-disenop">
-        <!-- se llena con js -->
-    </div>
-    <div class="container-comentarios">
-        <div>
-            <h2>COMENTARIOS</h2>
-            <div id="comentarios" class="espacio-comentarios">
-                <!-- se llena con js -->
-            </div>
+    <div class="container">
+        <div class="regresar">
+            <a href="./detalleOrden.html">
+                <button class="regresarBtn">Regresar</button>
+            </a>
         </div>
-        <div>
+        <div class="container-disenop" id="container-disenop">
+            <!-- Se llena con JS -->
+        </div>
+        <div class="container-comentarios">
+            <div>
+                <h2>Comentarios</h2>
+                <div id="comentarios" class="espacio-comentarios">
+                    <!-- Se llena con JS -->
+                </div>
+            </div>
             <div class="form-floating">
-                <textarea class="form-control" id="text-area-comentario" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <textarea class="form-control" id="text-area-comentario" placeholder="Leave a comment here" style="height: 100px"></textarea>
                 <label for="floatingTextarea2">Escribe un comentario...</label>
             </div>
-            <button id="btn-enviar-comentario" class="btn btn-primary" type="submit">Enviar</button>
+            <div class="text-center">
+                <button id="btn-enviar-comentario" class="btn btn-primary mt-3" type="submit">Enviar</button>
+            </div>
         </div>
     </div>
 
@@ -36,3 +38,6 @@
     <script src="../components/detallesDisenoPOrden.js"></script>
 </body>
 </html>
+
+
+

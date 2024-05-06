@@ -17,22 +17,26 @@ body {
     margin: 0;
     padding: 0;
     color: var(--clr-white);
+    font-family: Arial, sans-serif; /* Añade una fuente de texto */
 }
 
 h1, h2, h4 {
     text-align: center;
+    margin: 20px 0; /* Añade un margen a los títulos */
 }
 
 .info-container {
-    margin: 0 auto;
+    max-width: 600px; /* Limita el ancho del contenedor */
+    margin: 50px auto; /* Centra el contenedor verticalmente */
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    gap: 20px; /* Aumenta el espacio entre los elementos */
+    justify-content: center;
     align-items: center;
-    margin-top: 50px;
 }
 
 .image-container {
-    width: 40%;
+    width: 50%;
 }
 
 .image-container img {
@@ -43,11 +47,12 @@ h1, h2, h4 {
 }
 
 .info-item {
-    width: 40%;
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
     padding: 20px;
     background-color: var(--clr-gray);
     border-radius: 10px;
     color: var(--clr-main); /* Cambia el color del texto */
+    text-align: center; /* Centra el texto dentro del contenedor */
 }
 
 .info-item h4 {
@@ -57,7 +62,7 @@ h1, h2, h4 {
 
 .regresar {
     text-align: center;
-    margin: 0 auto;
+    margin-top: 30px;
 }
 
 .regresarBtn {

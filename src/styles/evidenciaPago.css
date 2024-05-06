@@ -1,18 +1,21 @@
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: linear-gradient(15deg, #F8F4F3, #007bff);
-    height: 100vh;
+    background: linear-gradient(15deg, #f73808, #007bff);
 }
 
 .container {
     max-width: 500px;
-    margin: 50px auto;
+    margin: 50px auto; 
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    background: white;
+    border-radius: 30px;
+    background: #11CAF2;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -32,11 +35,17 @@ form {
 .btn-primary {
     margin-top: 20px;
     width: 100%;
+    border-radius: 30px;
+    padding: 10px;
+    background-color: #ff6600;
+    color: white;
 }
 
 /* Optional: Adjust input file appearance */
 .form-control[type="file"] {
     overflow: hidden;
+    border-radius: 30px;
+    padding: 10px;
 }
 
 .input-file-label {
