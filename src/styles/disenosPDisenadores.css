@@ -10,16 +10,14 @@
 }
 
 .regresar {
-    position: fixed;
-    bottom: 20px;
-    right: 50%;
-    transform: translateX(50%);
-    z-index: 9999;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .regresarBtn {
-    background-color: #ff6600; /* Color anaranjado */
-    color: black; /* Texto en negro para resaltar */
+    background-color: var(--clr-main-light); 
+    color: var(--clr-main); 
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -33,31 +31,34 @@
 }
 
 body {
-    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
-    margin: 0;
-    padding: 0;
-    color: var(--clr-white);
-    font-family: Arial, sans-serif;
+    background: linear-gradient(15deg, var(--clr-main), var(--clr-main-light));
+    font-family: sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center; 
-    min-height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;    
 }
 
 .disenoP {
-    background-color: whitesmoke;
+    background-color: var(--clr-gray);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 10px;
+    width: 300px;
+    text-align: center;
 }
 
 .contenedor-disenosP {
-    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 20px;
 }
 
-h1 {
-    text-align: center;
-    margin-top: -500px; /* Margen superior para separar el título del contenido */
+.h1 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--clr-main);
 }
 
