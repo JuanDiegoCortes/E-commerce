@@ -21,6 +21,7 @@ window.onload = function() {
         div.classList.add("disenoP");
         div.innerHTML = `
             <img class="disenoP-imagen" src="${data.image_url}" alt="DisenoP">
+            <p class="disenoP-estado">Estado del diseño: ${data.estado}</p>
             <div class="dropdown">
                 <button id="${data.idOrdenProd}" class="btn btn-primary dropdown-toggle boton-editar-estado-diseno" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Estado del diseño
@@ -34,6 +35,7 @@ window.onload = function() {
             `;
         contenedorDisenosP.append(div);
         obtenerComentarios(data);
+        addEventListeners();
     }
 
     function obtenerComentarios(data){
@@ -83,13 +85,38 @@ window.onload = function() {
         .catch(error => console.error('Error:', error));
     }
 
+    function actualizareEstadoDisenoP(estado) {
+        console.log(estado, idOrdenProd);
+        fetch(`http://localhost:8081/Apiweb/v1/disenoP/cambiarEstadoDisenoP/${idOrdenProd}/${estado}`, {
+                    method: 'PUT',
+                })
+                .then(() => {
+                    Toastify({
+                        text: "Estado actualizado correctamente",
+                        duration: 1000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        stopOnFocus: true,
+                        style: {
+                            background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                            borderRadius: "2rem",
+                        }
+                    }).showToast();
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000);
+                })
+                .catch(error => console.error(error));
+    }
+
     function addEventListeners() {
         const botonesEstadoDisenoP = document.querySelectorAll('.boton-estado-disenoP');
         botonesEstadoDisenoP.forEach(botonEstadoDisenoP => {
-        botonEstadoDisenoP.addEventListener('click', (e) => {
-            alert("Estado del diseño actualizado");
-            //Hay que añadir el metodo en la api de cambiar estado disenoP y actualizar el estado en la base de datos
-            });
+            botonEstadoDisenoP.addEventListener('click', (e) => {
+                    const estado = e.target.id;
+                    actualizareEstadoDisenoP(estado);
+                });
         });
 
         botonEnviar.addEventListener("click", () => {
@@ -101,11 +128,10 @@ window.onload = function() {
             let comentario = {
                 texto: textoComentario.value,
                 cedula: { cedula: cedulaUsuario },
-                subIdComentario: { subIdComentario: subIdComentarioUsuario },
+                subComentarios: { subIdComentario: subIdComentarioUsuario },
                 idDisenoP: { idDisenoP: idDisenoPUsario }
             } 
             crearComentario(comentario);
         });
     };
-    addEventListeners();
 }

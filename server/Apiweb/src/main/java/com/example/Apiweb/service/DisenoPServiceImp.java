@@ -1,7 +1,6 @@
 package com.example.Apiweb.service;
 
 import com.example.Apiweb.model.DisenoPModel;
-import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.repository.IDisenoPRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -51,7 +50,7 @@ public class DisenoPServiceImp implements IDisenoPService{
     }
 
     @Override
-    public Optional<DisenoPModel> cambiarEstadoDisenoPorIdOrdenProd(int idOrdenProd, Estado estado) {
-        return this.disenoPRepository.actualizarEstadoDisenoPorIdOrdenProd(idOrdenProd, estado);
+    public void cambiarEstadoDisenoPorIdOrdenProd(int idOrdenProd, String estado) {
+        this.disenoPRepository.actualizarEstadoDisenoPorIdOrdenProd(idOrdenProd, estado);
     }
 }

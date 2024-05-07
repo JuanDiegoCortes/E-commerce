@@ -3,10 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     
     //Variables
     let ordenes = [];
-    let cedula = usuario.cedula.cedula; 
+    let cedula = /* usuario.cedula.cedula;  */582347196
 
     //Select DOM elements
     const contenedorOrdenes = document.querySelector("#contenedor-orden");
+    const aside = document.querySelector("aside");
 
     const url = `http://localhost:8081/Apiweb/v1/orden/visualizarOrdenes/${cedula}`;
     fetch(url)
@@ -46,5 +47,29 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
+    function addEventListeners() {  
+        aside.classList.remove("aside-visible");
+        let btnFiltro = document.querySelectorAll('.boton-estado');
+        btnFiltro.forEach(boton => {
+            boton.addEventListener("click", function(e) {
+                btnFiltro.forEach(boton => boton.classList.remove("active"));
+                e.currentTarget.classList.add("active");
+                estadoActivo = e.currentTarget.id;
+        
+                if (estadoActivo !== "todos") { 
+                    const ordenesEstado = ordenes.filter(orden => orden.estado === estadoActivo);
+                    if (ordenesEstado.length === 0) {
+                        contenedorOrdenes.innerHTML = "No hay órdenes con este estado.";
+                    } else {
+                        cargarHistorialOrdenesPorCedula(ordenesEstado);
+                    }
+                } else {
+                    cargarHistorialOrdenesPorCedula(ordenes);
+                }
+            });
+        });
+    }
+    addEventListeners();
 
 });

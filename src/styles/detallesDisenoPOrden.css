@@ -18,7 +18,7 @@
 body{
     background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
     margin: 0;
-    padding: 0;
+    padding: 1rem;
     color: var(--clr-white);
     font-family: Arial, sans-serif;
     display: flex;
@@ -49,7 +49,6 @@ body{
 
 .regresar {
     text-align: center;
-    position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
@@ -58,7 +57,6 @@ body{
 .regresarBtn {
     background-color: var(--clr-main-light);
     color: var(--clr-white);
-    position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 9999;

@@ -7,6 +7,15 @@
     --clr-gray: #e2e2e2;
     --clr-red: #961818;
 }
+
+body {
+    padding: 1rem;
+}
+
+.boton-filtro {
+    margin: 1rem;
+}
+
 /* Estilos para el botón de regresar */
 .regresar {
     position: fixed;

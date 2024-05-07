@@ -68,9 +68,8 @@ public class DisenoPController {
     }
 
     @PutMapping("/cambiarEstadoDisenoP/{idOrdenProd}/{estado}")
-    public ResponseEntity<String> cambiarEstadoDiseno(@PathVariable Integer idOrdenProd, @PathVariable Estado estado) {
-        DisenoPModel diseno = this.disenoPService.cambiarEstadoDisenoPorIdOrdenProd(idOrdenProd, estado)
-                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el disenoP con el idOrdenProd " + idOrdenProd));
-        return new ResponseEntity<String>("El estado del diseñoP con idOrdenProd " + idOrdenProd + " fue actualizado con exito.", HttpStatus.OK);
+    public ResponseEntity<String> cambiarEstadoDiseno(@PathVariable Integer idOrdenProd, @PathVariable String estado) {
+        disenoPService.cambiarEstadoDisenoPorIdOrdenProd(idOrdenProd, estado);
+        return new ResponseEntity<String>("Estado de el disenoP actualizado correctamente.", HttpStatus.OK);
     }
 }
