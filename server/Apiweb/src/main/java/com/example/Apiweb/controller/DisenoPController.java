@@ -1,7 +1,6 @@
 package com.example.Apiweb.controller;
 
 import com.example.Apiweb.model.DisenoPModel;
-import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.service.IDisenoPService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
