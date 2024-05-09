@@ -1,52 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-main: #000;
+    --clr-main-light: #ff6600;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
+}
+
 body {
-    background:linear-gradient(15deg, #F78B34, #090400);
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(15deg, var(--clr-main-light), var(--clr-main));
+    margin: 20px;
+    padding: 30px;
 }
 
-aside {
-    padding: 1rem;
-    justify-content: space-between;
-    border-spacing: 1rem; 
-    text-align: center;
-    border: 1px solid black;
+.container {
+    max-width: auto;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: var(--clr-white);
     border-radius: 10px;
-    background-color: #F78B34;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form {
+.contenedor-flex{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid black;
+    justify-content: space-between;
 }
 
-.input-search,
-.button-search-id,
-.button-search-nombre {
-    background-color: beige;
+h1 {
+    text-align: center;
+    color: var(--clr-main);
 }
 
 .regresar {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
 }
 
 .regresarBtn {
-    background-color: #ff6600;
-    color: white;
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    outline: none;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
 .regresarBtn:hover {
-    background-color: orangered;
+    background-color: var(--clr-red);
 }
+
+.d-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    margin-right: 10px;
+}
+
+.input-search {
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.button-search-id,
+.button-search-nombre {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.button-search-id:hover,
+.button-search-nombre:hover {
+    background-color: #218838;
+}
+
+.contenedor-ordenes {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: 10px;
+    max-width: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.contenedor-productos{
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.contenedor-ordenes table,
+.contenedor-productos table {
+    width: 100%; 
+    border-collapse: collapse;
+}
+
+.contenedor-ordenes th,
+.contenedor-productos th,
+.contenedor-ordenes td,
+.contenedor-productos td {
+    padding: 10px; 
+    border-bottom: 1px solid; 
+    text-align: center;
+}
+
+.btn-detalles, .btn-gestionar {
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-detalles:hover,
+.btn-gestionar:hover {
+    background-color: var(--clr-red);
+}
+
+
+
+
+
+
+
+
+
+
