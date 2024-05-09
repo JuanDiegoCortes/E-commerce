@@ -77,9 +77,10 @@ h2 {
     font-size: 16px;
     transition: background-color 0.3s;
 }
- .btn-primary{
+
+.btn-primary:hover {
     background-color: var(--clr-orangered);
- }
+}
 
 /* Estilos para el contenedor principal */
 .container {
@@ -174,67 +175,71 @@ h2 {
     width: 100%;
 }
 
-.talla{
-    margin: 30px;
+
+/* Estilos para los contenedores de talla y cantidad */
+.talla {
+    margin: 20px 0; /* Aumentado el espacio entre las tallas */
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    justify-content: center; /* Añadido para centrar los elementos horizontalmente */
 }
 
-.cantidad {
-    width: 80px;
-    margin-left: 10px;
-}
-
-.talla input{
-    width: 20px;
-    padding: 5px;
-    margin-right: 5px;
-    height: 40px;
-    font-size: 16px;
-    border: none;
-    background: none;
+.talla input[type="number"] {
+    width: 80px; /* Aumentado el ancho para que sea consistente con otros inputs */
+    height: 40px; /* Ajustando la altura para que sea igual que otros inputs */
+    padding: 10px; /* Agregando relleno para mejorar la apariencia */
+    font-size: 16px; /* Ajustando el tamaño de fuente para que sea igual que otros inputs */
+    border: 2px solid var(--clr-silver); /* Agregando borde para mejorar la apariencia */
+    border-radius: 5px; /* Agregando bordes redondeados */
     outline: none;
+}
+
+.talla label {
+    color: var(--clr-silver);
+    font-size: 16px;
+    margin-right: 10px; /* Añadiendo espacio entre el radio button y el texto */
+}
+
+.talla input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px; /* Añadiendo espacio entre los radio buttons */
+    outline: none;
+}
+
+.talla input[type="radio"]:checked + label {
+    color: var(--clr-main-light);
 }
 
 .talla span::before {
+    content: '';
+    position: absolute;
+    top: 100%; /* Colocando la línea debajo del label */
+    left: 0;
     width: 100%;
-    padding: 10px 5px;
-    height: 40px;
-    font-size: 16px;
-    border: none;
-    background: none;
-    outline: none;
-    position: relative;
-    z-index: 1;
+    height: 2px;
+    background: var(--clr-main-light);
+    transition: .5s;
 }
 
 .talla label {
     position: relative;
-    top: -20px;
-    left: 5px;
-    color: #adadad;
-    font-size: 16px;
-    pointer-events: none;
+    top: -5px; /* Ajustando la posición para que esté alineado con los inputs */
     transition: .3s;
-}
-
-.talla input:focus ~ label {
-    top: -5px;
-    color: var(--clr-main);
 }
 
 .talla input:focus ~ span::before {
     width: 100%;
 }
 
-.link-imagen{
+
+.link-imagen {
     position: relative;
     border-bottom: 2px solid var(--clr-silver);
     margin: 20px 0;
 }
 
-.link-imagen input{
+.link-imagen input {
     width: 100%;
     padding: 0 5px;
     height: 40px;
@@ -243,7 +248,8 @@ h2 {
     background: none;
     outline: none;
 }
-.link-imagen label{
+
+.link-imagen label {
     position: relative;
     top: -25%;
     left: 5px;
@@ -293,15 +299,13 @@ input[type="submit"]:hover {
     transition: .5s;
 }
 
-
-
 /* Estilos para los dropdowns */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-.buscar{
+.buscar {
     align-items: center; /* Centrar verticalmente los elementos */
     justify-content: space-between; /* Distribuir los elementos horizontalmente */
     margin-bottom: 20px;
@@ -336,7 +340,7 @@ input[type="submit"]:hover {
     background-color: var(--clr-orangered);
 }
 
-
-.formBuscarArticulo{
+.formBuscarArticulo {
     display: inline-block;
 }
+
