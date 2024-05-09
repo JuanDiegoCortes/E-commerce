@@ -8,115 +8,69 @@
     --clr-red: #961818;
 }
 
-/* Estilo para los comentarios */
-.container-comentarios {
-    width: 900px;
-    margin: 20px auto;
-    margin-bottom: 70px;
+* {
+    font-family: 'Rubik', sans-serif;
 }
 
-body{
+body {
     background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
-    margin: 0;
-    padding: 1rem;
-    color: var(--clr-white);
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    min-height: 100vh;
-}
-
-.espacio-comentarios {
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 900px;
-    margin: 0 auto;
-}
-
-.form-floating {
-    margin-bottom: 10px;
-    width: 900px;
-    margin: 0 auto;
-}
-
-/* Estilo para las imágenes */
-.img-producto {
-    max-width: 100%;
-    height: auto;
-}
-
-.regresar {
-    text-align: center;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    padding: 2rem;
 }
 
 .regresarBtn {
-    background-color: var(--clr-main-light);
-    color: var(--clr-white);
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-}
-
-.regresarBtn {
-    background-color: #ff6600; /* Color anaranjado */
-    color: black; /* Texto en negro para resaltar */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    outline: none;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.regresarBtn:hover {
-    background-color: var(--clr-red);
-}
-
-.disenoP-imagen{
-    width: 300px; /* Ancho de la imagen */
-    height: auto; /* Alto de la imagen */
-    max-width: 100%;
-    border-radius: 1rem;
-    text-align: center;
-}
-
-h2{
-    color: whitesmoke;
-    text-align: center;
-}
-
-.comentarios{
-    color: white;
+    background-color: #ff6600;
+    color: black;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     outline: none;
     transition: background-color 0.3s ease;
+    margin: 1rem;
 }
 
-.comentario{
-    color: whitesmoke;
+.regresarBtn:hover {
+    background-color: #ff9000;
 }
 
-.text-center {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+.contenedor-informacion {
+    margin: 2rem;
+    text-align: center;
 }
 
-.disenoP {
-    text-align: center; 
+.container {
+    padding: 1rem;
+    background: white;
+    border-radius: 1rem;
 }
 
-.disenoP-imagen {
-    display: inline-block; 
-    width: 250px; 
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
+table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 1rem;
+    border-bottom: 1px solid;
+    text-align: center;
+}
+
+table img {
+    width: 100px;
+    height: auto;
+}
+
+.container-comentarios h2 {
+    text-align: center;
+}
+
+.espacio-comentarios {
+    padding: 1rem;
+}

@@ -82,6 +82,18 @@ window.onload = function() {
     function mostrarProductosOrden(ordenProd){
         const containerProductos = document.querySelector(".contenedor-productos");
         containerProductos.innerHTML = "";
+    
+        const table = document.createElement("table");
+    
+        const trHeader = document.createElement("tr");
+        trHeader.innerHTML = `
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Estado</th>
+            <th>Personalizable</th>
+        `;
+        table.appendChild(trHeader);
+    
         ordenProd.forEach(producto => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
@@ -90,9 +102,11 @@ window.onload = function() {
             <td>${producto.idProducto.estado}</td>
             <td>${producto.idProducto.personalizable}</td>
             `;
-
-            containerProductos.appendChild(tr);
+    
+            table.appendChild(tr);
         });
+    
+        containerProductos.appendChild(table);
     }
 
     function addEventListeners() {

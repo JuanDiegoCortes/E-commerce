@@ -17,11 +17,23 @@ window.onload = function() {
     .catch(error => console.error(error));
 
     function mostrarDiseno(data){
-        const div = document.createElement("div");
-        div.classList.add("disenoP");
-        div.innerHTML = `
-            <img class="disenoP-imagen" src="${data.image_url}" alt="DisenoP">
-            <p class="disenoP-estado">Estado del diseño: ${data.estado}</p>
+        contenedorDisenosP.innerHTML = "";
+    
+        const table = document.createElement("table");
+    
+        const trHeader = document.createElement("tr");
+        trHeader.innerHTML = `
+            <th>Imagen Diseño</th>
+            <th>Estado</th>
+            <th>Editar Estado</th>
+        `;
+        table.appendChild(trHeader);
+    
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+        <td><img style="width: 100px; height: auto;" src="${data.image_url}" alt="Imagen de diseño"></td>
+        <td>${data.estado}</td>
+        <td>
             <div class="dropdown">
                 <button id="${data.idOrdenProd}" class="btn btn-primary dropdown-toggle boton-editar-estado-diseno" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Estado del diseño
@@ -32,8 +44,11 @@ window.onload = function() {
                     <li><button id="aprobado" class="dropdown-item boton-estado-disenoP" type="button">Aprobado</button></li>
                 </ul>
             </div>
-            `;
-        contenedorDisenosP.append(div);
+        </td>
+        `;
+    
+        table.appendChild(tr);
+        contenedorDisenosP.appendChild(table);
         obtenerComentarios(data);
         addEventListeners();
     }

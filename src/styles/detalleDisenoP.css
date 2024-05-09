@@ -14,74 +14,63 @@
 
 body {
     background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
-    margin: 0;
-    padding: 0;
-    color: var(--clr-white);
-    font-family: Arial, sans-serif; /* Añade una fuente de texto */
-}
-
-h1, h2, h4 {
-    text-align: center;
-    margin: 20px 0; /* Añade un margen a los títulos */
-}
-
-.info-container {
-    max-width: 600px; /* Limita el ancho del contenedor */
-    margin: 50px auto; /* Centra el contenedor verticalmente */
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Aumenta el espacio entre los elementos */
-    justify-content: center;
-    align-items: center;
-}
-
-.image-container {
-    width: 50%;
-}
-
-.image-container img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-.info-item {
-    width: 100%; /* Ajusta el ancho al 100% del contenedor */
-    padding: 20px;
-    background-color: var(--clr-gray);
-    border-radius: 10px;
-    color: var(--clr-main); /* Cambia el color del texto */
-    text-align: center; /* Centra el texto dentro del contenedor */
-}
-
-.info-item h4 {
-    margin-bottom: 10px;
-    color: var(--clr-main-light); /* Cambia el color del texto */
-}
-
-.regresar {
-    text-align: center;
-    margin-top: 30px;
+    padding: 2rem;
 }
 
 .regresarBtn {
-    background-color: black;
-    color: var(--clr-white);
+    background-color: #ff6600;
+    color: black;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     outline: none;
-    font-weight: bold;
-    text-decoration: none;
     transition: background-color 0.3s ease;
+    margin: 1rem;
 }
 
 .regresarBtn:hover {
-    background-color: var(--clr-red);
+    background-color: #ff9000;
 }
 
-.nombreDisenoP{
-    align-items: center;
+.contenedor-informacion {
+    margin: 2rem;
+    text-align: center;
+}
+
+.container {
+    padding: 1rem;
+    background: white;
+    border-radius: 1rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 1rem;
+    border-bottom: 1px solid;
+    text-align: center;
+}
+
+table img {
+    width: 100px;
+    height: auto;
+}
+
+.container-comentarios h2 {
+    text-align: center;
+}
+
+.espacio-comentarios {
+    padding: 1rem;
 }
