@@ -81,52 +81,52 @@
             <div id="tallas">
                 <div class="talla">
                     <input type="radio" id="tallaXS" name="tallaXS" data-id="1">
-                    <label for="tallaXS">XS</label>
-                    <label for="cantidadXS">Cantidad:</label>
-                    <input type="number" id="cantidadXS" name="cantidadXS" step="1" min="0">
+                <label for="tallaXS">XS</label>
+                <label for="cantidadXS">Cantidad:</label>
+                <input type="number" id="cantidadXS" name="cantidadXS" step="1" min="0">
 
-                    <input type="radio" id="tallaS" name="tallaS" data-id="2">
-                    <label for="tallaS">S</label>
-                    <label for="cantidadS">Cantidad:</label>
-                    <input type="number" id="cantidadS" name="cantidadS" step="1" min="0">
+                <input type="radio" id="tallaS" name="tallaS" data-id="2">
+                <label for="tallaS">S</label>
+                <label for="cantidadS">Cantidad:</label>
+                <input type="number" id="cantidadS" name="cantidadS" step="1" min="0">
 
-                    <input type="radio" id="tallaM" name="tallaM" data-id="3">
-                    <label for="tallaM">M</label>
-                    <label for="cantidadM">Cantidad:</label>
-                    <input type="number" id="cantidadM" name="cantidadM" step="1" min="0">
+                <input type="radio" id="tallaM" name="tallaM" data-id="3">
+                <label for="tallaM">M</label>
+                <label for="cantidadM">Cantidad:</label>
+                <input type="number" id="cantidadM" name="cantidadM" step="1" min="0">
 
-                    <input type="radio" id="tallaL" name="tallaL" data-id="4">
-                    <label for="tallaL">L</label>
-                    <label for="cantidadL">Cantidad:</label>
-                    <input type="number" id="cantidadL" name="cantidadL" step="1" min="0">
+                <input type="radio" id="tallaL" name="tallaL" data-id="4">
+                <label for="tallaL">L</label>
+                <label for="cantidadL">Cantidad:</label>
+                <input type="number" id="cantidadL" name="cantidadL" step="1" min="0">
 
-                    <input type="radio" id="tallaXL" name="tallaXL" data-id="5">
-                    <label for="tallaXL">XL</label>
-                    <label for="cantidadXL">Cantidad:</label>
-                    <input type="number" id="cantidadXL" name="cantidadXL" step="1" min="0">
+                <input type="radio" id="tallaXL" name="tallaXL" data-id="5">
+                <label for="tallaXL">XL</label>
+                <label for="cantidadXL">Cantidad:</label>
+                <input type="number" id="cantidadXL" name="cantidadXL" step="1" min="0">
                 </div>
             </div>
 
             <!-- Aqui se agrega la imagen -->
-            <div>
+            <div class="link-imagen">
                 <label for="image_Url">URL de la imagen (PNG):</label>
                 <input type="text" id="image_Url" name="image_Url" required>
             </div>
 
             <!-- Botón de crear producto -->
-            <button type="button" id="botonCrear">Crear Producto</button>
+            <button type="button" class="botonCrear">Crear Producto</button>
 
     <section id="listar">
         <h2>Listar Artículos</h2>
         <ul id="listaArticulos"></ul>
     </section>
 
-    <section id="buscar">
+    <section class="buscar">
         <h2>Buscar Artículo</h2>
-        <form id="formBuscarArticulo">
+        <form class="formBuscarArticulo">
             <label for="buscar">Buscar:</label>
-            <input type="text" id="buscar" name="buscar">
-            <button type="submit" class="btn btn-primary">Buscar</button>
+            <input type="text" class="buscar" name="buscar">
+            <button type="submit" class="btn-primary">Buscar</button>
         </form>
     </section>
 

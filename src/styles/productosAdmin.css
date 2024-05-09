@@ -9,8 +9,8 @@
 
 /* Estilos generales del cuerpo */
 body {
-    margin: 0;
-    padding: 0;
+    margin: auto;
+    padding: 30px;
     font-family: sans-serif;
     background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
     min-height: 100vh;
@@ -54,20 +54,38 @@ h2 {
     background-color: var(--clr-main-light);
     color: var(--clr-white);
     border: none;
+    margin: 20px auto;
     padding: 8px 18px;
     border-radius: 4px;
     cursor: pointer;
     outline: none;
+    display: block;
 }
 
 .botonCrear:hover {
     background-color: var(--clr-orangered);
 }
 
+.btn-primary{
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+ .btn-primary{
+    background-color: var(--clr-orangered);
+ }
+
 /* Estilos para el contenedor principal */
 .container {
-    max-width: 500px;
-    width: 90%;
+    max-width: auto;
+    width: 100%;
+    margin: 0 auto;
     padding: 40px;
     background-color: #fff;
     border-radius: 10px;
@@ -156,6 +174,106 @@ h2 {
     width: 100%;
 }
 
+.talla{
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cantidad {
+    width: 80px;
+    margin-left: 10px;
+}
+
+.talla input{
+    width: 20px;
+    padding: 5px;
+    margin-right: 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.talla span::before {
+    width: 100%;
+    padding: 10px 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+    position: relative;
+    z-index: 1;
+}
+
+.talla label {
+    position: relative;
+    top: -20px;
+    left: 5px;
+    color: #adadad;
+    font-size: 16px;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.talla input:focus ~ label {
+    top: -5px;
+    color: var(--clr-main);
+}
+
+.talla input:focus ~ span::before {
+    width: 100%;
+}
+
+.link-imagen{
+    position: relative;
+    border-bottom: 2px solid var(--clr-silver);
+    margin: 20px 0;
+}
+
+.link-imagen input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+.link-imagen label{
+    position: relative;
+    top: -25%;
+    left: 5px;
+    color: #adadad;
+    font-size: 16px;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.link-imagen span::before {
+    width: 100%;
+    padding: 10px 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+    position: relative;
+    z-index: 1;
+}
+
+.link-imagen input:focus ~ label {
+    top: -5px;
+    color: var(--clr-main);
+}
+
+.link-imagen input:focus ~ span::before {
+    width: 100%;
+}
+
 /* Estilos para el botón de enviar */
 input[type="submit"] {
     width: 50%; /* Cambiado el ancho al 50% para centrarlo */
@@ -183,33 +301,42 @@ input[type="submit"]:hover {
     display: inline-block;
 }
 
-/* Estilos para los contenedores de tallas */
-.talla-container {
-    max-width: 400px; /* Limita el ancho */
-    width: 100%; /* Asegura que el contenedor se ajuste al ancho disponible */
-    margin: 0 auto 20px; /* Centra horizontalmente y agrega espacio en la parte inferior */
-    padding: 20px; /* Añade espacio interno */
-    background-color: #fff; /* Color de fondo */
-    border-radius: 5px; /* Borde redondeado */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+.buscar{
+    align-items: center; /* Centrar verticalmente los elementos */
+    justify-content: space-between; /* Distribuir los elementos horizontalmente */
+    margin-bottom: 20px;
+    text-align: center;
+    margin: 20px;
 }
 
-.talla-container div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Espaciado inferior entre elementos */
+.buscar input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid var(--clr-silver);
+    border-radius: 20px; /* Hacer los bordes más redondeados */
+    outline: none;
 }
 
-.talla-container label {
-    margin-right: 15px; /* Espacio derecho */
+.buscar input:focus {
+    border-color: var(--clr-main-light);
 }
 
-.talla-container input[type="number"] {
-    width: 60px; /* Ancho del input */
-    padding: 8px; /* Espaciado interno */
-    font-size: 14px; /* Tamaño de fuente */
-    border: 1px solid var(--clr-silver); /* Borde */
-    border-radius: 5px; /* Borde redondeado */
-    background: none; /* Fondo transparente */
-    outline: none; /* Sin contorno */
+.buscar button {
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px; 
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s; 
+}
+
+.buscar button:hover {
+    background-color: var(--clr-orangered);
+}
+
+
+.formBuscarArticulo{
+    display: inline-block;
 }
