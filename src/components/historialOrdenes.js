@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
             div.classList.add("orden");
             div.innerHTML = `
             <div class="historial-Orden-atributos">
-                <p>${orden.cedula.nombre}</p>
-                <p>${orden.cedula.correo}</p>
-                <p>${orden.fecha}</p>
-                <p>${orden.estado}</p>
-                <p>${orden.precioTotal}</p>
+                <p>Nombre cliente: ${orden.cedula.nombre}</p>
+                <p>Correo cliente: ${orden.cedula.correo}</p>
+                <p>Fecha de orden: ${orden.fecha}</p>
+                <p>Estado de orden: ${orden.estado}</p>
+                <p>Costo total: ${orden.precioTotal}</p>
             </div>
             <div class="boton-info">
                 <button class="regresarBtn boton-detalles" id="${orden.idOrden}">Ver detalles</button>  
