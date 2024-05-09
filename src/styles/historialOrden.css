@@ -9,7 +9,8 @@
 }
 
 body {
-    padding: 1rem;
+    padding: 2rem;
+    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
 }
 
 .boton-filtro {
@@ -39,33 +40,6 @@ body {
     background-color: #ff9000; /* Anaranjado más claro al pasar el ratón */
 }
 
-.orden .boton-info {
-    grid-column: span 2;
-    padding: 10px;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Estilos para el cuerpo de la página */
-body {
-    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
-}
-
-/* Estilos para las órdenes */
-.orden {
-    background-color: whitesmoke;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.orden h3, .orden p {
-    margin: 0;
-}
-
 .boton-ver-mas {
     background-color: #ff6600;
     color: white; 
@@ -83,4 +57,12 @@ body {
 
 .contenedor-orden{
     background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+table td, table th {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid;
 }

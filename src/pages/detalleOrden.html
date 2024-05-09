@@ -1,69 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UAO shop</title>
-    <link rel="stylesheet" href="../styles/ordenDetalle.css">
+    <link rel="stylesheet" href="../styles/detalleOrden.css">
 </head>
 <body>
-    <h1>Información de la orden</h1>
-        <div id="container-Envio" class="bordered-box">
-        <div class="orden-detalles">
-            <h2>Información de envío</h2>
-            <div class="info-container">
-                <div class="image-container">
-                    <!-- Aquí van las imágenes -->
-                </div>
-                <div class="info-item">
-                    <h4>Nombre:</h4>
-                    <p id="nombreOrden"></p>
-                </div>
-                <div class="info-item">
-                    <h4>Apellido:</h4>
-                    <p id="apellidoOrden"></p>
-                </div>
-                <div class="info-item">
-                    <h4>Número de teléfono:</h4>
-                    <p id="telefonoOrden"></p>
-                </div>
-                <div class="info-item">
-                    <h4>Dirección:</h4>
-                    <p id="direccionOrden"></p>
-                </div>
-                <div class="info-item">
-                    <h4>Referencias:</h4>
-                    <p id="referenciasOrden"></p>
-                </div>
-                <div class="info-item">
-                    <h4>Código postal:</h4>
-                    <p id="codigo-postalOrden"></p>
-                </div>
-                <div class="info-item">
-                    <h4>Ciudad:</h4>
-                    <p id="ciudadOrden"></p>
-                </div>
-                <div class="info-item">
-                    <h4>Modalidad de entrega:</h4>
-                    <p id="modalidad-entregaOrden"></p>
-                </div>
-                <div class="info-item">
-                    <h4>Fecha:</h4>
-                    <p id="fechaOrden"></p>
-                </div>
-            </div>
+    <div class="container">
+        <h1>Información de la orden</h1>
+        <div id="container-Envio">
+            <!-- La información de envío se llenará con JavaScript -->
+        </div>
+        <h1>Informacion de los productos</h1>
+        <div id="container-producto">
+            <!-- Los productos se llenarán con JavaScript -->
         </div>
     </div>
-<div class="container-producto-imagen">
-    <div class="container-producto" id="container-producto">
-        <!-- Se va a llenar con Js -->
-    </div>
-</div>
     <div class="regresar">
         <a href="./historialOrdenes.html">
             <button class="regresarBtn">Regresar</button>
         </a>
     </div>
+
     <script src="../components/detalleOrden.js"></script>
 </body>
 </html>
