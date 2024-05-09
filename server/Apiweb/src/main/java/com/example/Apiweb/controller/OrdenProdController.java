@@ -2,6 +2,7 @@ package com.example.Apiweb.controller;
 
 import com.example.Apiweb.exception.RecursoNoEncontradoException;
 import com.example.Apiweb.model.OrdenProdModel;
+import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.service.IOrdenProdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,4 +43,10 @@ public class OrdenProdController {
         List<OrdenProdModel> productos = ordenProdService.mostrarProductosPorIdOrden(idOrden);
         return new ResponseEntity<List<OrdenProdModel>>(productos, HttpStatus.OK);
     }
+
+    @PutMapping("/asignarDisenador/{idOrdenProd}/{disenadorAsignado}")
+    public ResponseEntity<Integer> asignarDisenador(@PathVariable Integer idOrdenProd, @PathVariable Integer disenadorAsignado) {
+        return new ResponseEntity<Integer>(ordenProdService.asignarDisenador(idOrdenProd, disenadorAsignado), HttpStatus.OK);
+    }
+
 }

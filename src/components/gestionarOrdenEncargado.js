@@ -1,6 +1,7 @@
 window.onload = function() {
     let ordenId = sessionStorage.getItem("ordenId");
 
+
     url = `http://localhost:8081/Apiweb/v1/orden/${ordenId}`;
     fetch(url)
     .then(response => response.json())
@@ -73,6 +74,7 @@ window.onload = function() {
         .then(data => {
             ordenProd = data;
             mostrarProductosOrden(ordenProd);
+            console.log(ordenProd);
         })
     }
 
@@ -97,27 +99,25 @@ window.onload = function() {
             let disenadorAsignadoInput = "";
             let asignarButton = "";
 
-            if ((producto.image_Personalizacion !== null || producto.texto_Personalizacion !== null) && producto.idProducto.personalizable.toLowerCase() === "si") {
-                disenadorAsignadoInput = `<input type="text" name="disenadorAsignado">`;
-                asignarButton = `<button type="button" name="asignarButton">Asignar</button>`;
-
-            } else {
-                disenadorAsignadoInput = ``;
-                asignarButton = ``;
-            }
-
             tr.innerHTML = `
             <td>${producto.idProducto.nombre}</td>
             <td>${producto.idProducto.genero}</td>
             <td>${producto.idProducto.estado}</td>
             <td>${producto.idProducto.personalizable}</td>
             <td>${producto.cantidad}</td>
-            <td>${disenadorAsignadoInput}${asignarButton}</td>
-
+            <td><input type="text" id="input-${producto.idOrdenProd}" class="inputDisenador" name="disenadorAsignado"> <button class = "botonEnviar" id= "${producto.idOrdenProd}"type="button" name="asignarButton">Asignar</button></td>
             `;
 
+            if ((producto.image_Personalizacion == null || producto.texto_Personalizacion == null) && producto.idProducto.personalizable.toLowerCase() === "no") {
+                const inputDisenador = tr.querySelector(".inputDisenador");
+                const botonEnviar = tr.querySelector(".botonEnviar");
+                inputDisenador.style.display = "none";
+                botonEnviar.style.display = "none";
+            }
             containerProductos.appendChild(tr);
         });
+        
+        asignarDisenadorBoton();
     }
 
     function actualizarBotonesEditarEstado() {
@@ -126,6 +126,20 @@ window.onload = function() {
             boton.addEventListener("click", function(e) {
                 const estado = e.target.id;
                 actualizarEstadoOrden(ordenId, estado);
+            });
+        });
+    }
+
+    function asignarDisenadorBoton(){
+        const botonAsignar = document.querySelectorAll(".botonEnviar");
+        botonAsignar.forEach(boton => {
+            boton.addEventListener("click", function(e) {
+                const idOrdenProd = e.target.id;
+                const inputId = 'input-' + idOrdenProd; 
+                const disenadorAsignado = document.getElementById(inputId).value;
+
+                console.log(idOrdenProd, disenadorAsignado);
+                asignarDisenador(idOrdenProd, disenadorAsignado);
             });
         });
     }
@@ -152,6 +166,34 @@ window.onload = function() {
             setTimeout(() => {
                 location.reload();
             }, 1000);
+        })
+        .catch(error => console.error(error));
+        console.log(data);
+    }
+
+
+    function asignarDisenador(idOrdenProd, disenadorAsignado){
+        const url = `http://localhost:8081/Apiweb/v1/ordenProd/asignarDisenador/${idOrdenProd}/${disenadorAsignado}`;
+        fetch(url, {
+            method: 'PUT',
+        })
+        .then(response => response)
+        .then(() => {
+            Toastify({
+                text: "Diseñador asignado correctamente",
+                duration: 1000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                    borderRadius: "2rem",
+                }
+            }).showToast();
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
         })
         .catch(error => console.error(error));
     }

@@ -1,6 +1,8 @@
 package com.example.Apiweb.service;
 
+import com.example.Apiweb.model.OrdenModel;
 import com.example.Apiweb.model.OrdenProdModel;
+import com.example.Apiweb.model.enums.Estado;
 import com.example.Apiweb.repository.IOrdenProdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -46,5 +48,13 @@ public class OrdenProdServiceImp implements IOrdenProdService {
     @Override
     public List<OrdenProdModel> mostrarProductosPorIdOrden(int idOrden) {
         return this.ordenProdRepository.listarProductosPorIdOrden(idOrden);
+    }
+
+    @Override
+    public Integer asignarDisenador(int idOrdenProd, int disenadorAsginado) {
+        Optional<OrdenProdModel> ordenProdRef = this.ordenProdRepository.findById(idOrdenProd);
+        ordenProdRef.get().setDisenadorAsignado(disenadorAsginado);
+        this.ordenProdRepository.save(ordenProdRef.get());
+        return(disenadorAsginado);
     }
 }
