@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
             div.classList.add("disenoP");
             div.innerHTML = `
             <div class="disenoP-atributos">
-                <p> ID:${disenoP.idDisenoP}</p>
-                <p> Nombre: ${disenoP.cedula.nombre}</p>
-                <p> Nombre: ${disenoP.cedula.correo}</p>
-                <p> Nombre: ${disenoP.cedula.cedula}</p>
+                <p> ID disenoP:${disenoP.idDisenoP}</p>
+                <p> Cedula del cliente: ${disenoP.cedula.cedula}</p>
+                <p> Nombre del cliente: ${disenoP.cedula.nombre}</p>
+                <p> Correo del cliente: ${disenoP.cedula.correo}</p>
             </div>
             <div class="boton-info">
                 <button class="regresarBtn boton-detalles" id="${disenoP.idDisenoP}">Ver detalles</button>
