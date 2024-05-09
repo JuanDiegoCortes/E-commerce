@@ -14,57 +14,51 @@
 
 body {
     background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
-    margin: 0;
     padding: 2rem;
-    color: var(--clr-white);
-    font-family: Arial, sans-serif;
-}
-
-.regresar {
-    position: absolute;
-    top: 20px; /* Aumenta el espacio desde la parte superior */
-    right: 20px;
 }
 
 .regresarBtn {
-    background-color: black;
-    color: var(--clr-white);
+    background-color: #ff6600; /* Color anaranjado */
+    color: black; /* Texto en negro para resaltar */
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     outline: none;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* Transición suave */
+    margin: 1rem;
 }
 
 .regresarBtn:hover {
-    background-color: var(--clr-red);
+    background-color: #ff9000; /* Anaranjado más claro al pasar el ratón */
 }
 
 .contenedor-informacion,
 .contenedor-informacion-productos {
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: var(--clr-white);
-    border-radius: 10px;
+    margin: 2rem;
     text-align: center;
-    color: var(--clr-main); 
+}
+
+.container {
+    padding: 1rem;
+    background: white;
+    border-radius: 1rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 table {
     width: 100%;
-    padding: .5rem;
-    border-radius: 1rem;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
-th, td {
+table th, table td {
     padding: 1rem;
-    border: 1px solid var(--clr-main);
-}
-
-th {
-    background-color: var(--clr-main);
-    color: var(--clr-white);
+    border-bottom: 1px solid;
+    text-align: center;
 }
