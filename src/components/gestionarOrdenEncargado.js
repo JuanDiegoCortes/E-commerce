@@ -81,7 +81,9 @@ window.onload = function() {
     function mostrarProductosOrden(ordenProd){
         const containerProductos = document.querySelector(".contenedor-informacion-productos");
         containerProductos.innerHTML = "";
-
+    
+        const table = document.createElement("table");
+    
         const trHeader = document.createElement("tr");
         trHeader.innerHTML = `
             <th>Nombre</th>
@@ -91,14 +93,11 @@ window.onload = function() {
             <th>Cantidad</th>
             <th>Diseñador Asignado</th>
         `;
-        containerProductos.appendChild(trHeader);
-
+        table.appendChild(trHeader);
+    
         ordenProd.forEach(producto => {
             const tr = document.createElement("tr");
-
-            let disenadorAsignadoInput = "";
-            let asignarButton = "";
-
+    
             tr.innerHTML = `
             <td>${producto.idProducto.nombre}</td>
             <td>${producto.idProducto.genero}</td>
@@ -107,16 +106,17 @@ window.onload = function() {
             <td>${producto.cantidad}</td>
             <td><input type="text" id="input-${producto.idOrdenProd}" class="inputDisenador" name="disenadorAsignado"> <button class = "botonEnviar" id= "${producto.idOrdenProd}"type="button" name="asignarButton">Asignar</button></td>
             `;
-
+    
             if ((producto.image_Personalizacion == null || producto.texto_Personalizacion == null) && producto.idProducto.personalizable.toLowerCase() === "no") {
                 const inputDisenador = tr.querySelector(".inputDisenador");
                 const botonEnviar = tr.querySelector(".botonEnviar");
                 inputDisenador.style.display = "none";
                 botonEnviar.style.display = "none";
             }
-            containerProductos.appendChild(tr);
+            table.appendChild(tr);
         });
         
+        containerProductos.appendChild(table);
         asignarDisenadorBoton();
     }
 
