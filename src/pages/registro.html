@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="../styles/lorere.css">
     <title>UAO Shop</title>
 </head>
@@ -14,29 +15,37 @@
     </div>
     <div class="formulario">
         <h1>Registro de usuario</h1>
-        <form method="post">
+        <form>
+            <h3>Cedula</h3>
+            <div class="cedula">
+                <input id="cedula" type="number">
+                <label>Ingrese su cedula</label>
+            </div>
+            <h3>Nombre</h3>
+            <div class="username">
+                <input id="nombre" type="text">
+                <label>Ingrese su nombre</label>
+            </div>
             <h3>Correo electrónico</h3>
             <div class="email">
-                <input type="email" required>
+                <input id="correo" type="email">
                 <label>Ingrese su correo electrónico</label>
-            </div>
-            <h3>Usuario</h3>
-            <div class="username">
-                <input type="text" required>
-                <label>Ingrese su usuario</label>
             </div>
             <h3>Contraseña</h3>
             <div class="contrasena">
-                <input type="password" required>
+                <input id="contrasena" type="password">
                 <label>Ingrese su contraseña</label>
             </div>
             <h3>Confirmar Contraseña</h3>
             <div class="contrasena">
-                <input type="password" required>
+                <input id="vContrasena" type="password">
                 <label>Ingrese su contraseña</label>
             </div>
-            <input type="submit" value="Registrar">
+            <button class="btnregistrar" id="btnregistrar">Registrarse</button>
         </form>
     </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../components/registro.js"></script>
 </body>
 </html>
