@@ -118,7 +118,11 @@ window.onload = function() {
 
             if (estadoActivo !== "todos") {
             const ordenesEstado = ordenes.filter(orden => orden.estado === estadoActivo);
-            mostrarOrdenes(ordenesEstado);
+                if (ordenesEstado.length === 0) {
+                    containerOrdenes.innerHTML = "No hay ordenes con ese estado.";
+                } else {
+                    mostrarOrdenes(ordenesEstado);
+                }
             } else {
                 mostrarOrdenes(ordenes);
             }
