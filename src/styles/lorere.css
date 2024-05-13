@@ -1,8 +1,16 @@
+:root {
+    --clr-main: #000;
+    --clr-main-light: #ff6600;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: linear-gradient(15deg, #F78B34, #01040c);
+    background: linear-gradient(15deg, var(--clr-main-light), var(--clr-main));
     height: 100vh;
 }
 
@@ -27,6 +35,7 @@ body {
     box-sizing: border-box;
 }
 
+.cedula,
 .email,
 .username,
 .contrasena {
@@ -35,6 +44,7 @@ body {
     margin: 30px 0;
 }
 
+.cedula input,
 .email input,
 .username input,
 .contrasena input {
@@ -47,6 +57,7 @@ body {
     outline: none;
 }
 
+.cedula label,
 .email label,
 .username label,
 .contrasena label {
@@ -57,33 +68,14 @@ body {
     font-size: 16px;
     pointer-events: none;
     transition: .3s;
-}*/
-
-.email span::before,
-.username span::before,
-.contrasena span::before {
-    width: 100%;
-    padding: 10px 5px;
-    height: 40px;
-    font-size: 16px;
-    border: none;
-    background: none;
-    outline: none;
-    position: relative;
-    z-index: 1;
 }
 
+.cedula input:focus ~ label,
 .email input:focus ~ label,
 .username input:focus ~ label,
 .contrasena input:focus ~ label {
     top: -5px;
     color: #6c3483;
-}
-
-.email input:focus ~ span::before,
-.username input:focus ~ span::before,
-.contrasena input:focus ~ span::before {
-    width: 100%;
 }
 
 .recordar {
@@ -96,19 +88,19 @@ body {
     text-decoration: underline;
 }
 
-input[type="submit"] {
+input {
     width: 100%;
     height: 50px;
     border: 1px solid;
     background: #ff6600;
     border-radius: 25px;
     font-size: 18px;
-    color: white;
+    color: black;
     cursor: pointer;
     outline: none;
 }
 
-input[type="submit"]:hover {
+input:hover {
     border-color: orangered;
     transition: .5s;
 }
@@ -127,6 +119,66 @@ input[type="submit"]:hover {
 
 .registrarse a:hover {
     text-decoration: underline;
+}
+
+.btn-iniciar-sesion{
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-iniciar-sesion:hover{
+    background-color: var(--clr-red);
+}
+
+.btnregistrar {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid;
+    background-color: var(--clr-main-light);
+    border-radius: 25px;
+    font-size: 18px;
+    color: var(--clr-white);
+    cursor: pointer;
+    outline: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s;
+}
+
+.btnregistrar:hover{
+    background-color: var(--clr-red);
+}
+
+.btn-recuperarContraseña{
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid;
+    background: var(--clr-main-light);
+    border-radius: 25px;
+    font-size: 18px;
+    color: var(--clr-white);
+    cursor: pointer;
+    outline: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s;
+}
+
+.btn-recuperarContraseña:hover{
+    background-color: var(--clr-red);
 }
 
 .regresar {
@@ -148,3 +200,4 @@ input[type="submit"]:hover {
 .regresarBtn:hover {
     background-color: orangered;
 }
+
