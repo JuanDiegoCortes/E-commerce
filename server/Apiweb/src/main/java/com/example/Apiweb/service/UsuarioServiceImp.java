@@ -43,4 +43,9 @@ public class UsuarioServiceImp implements IUsuarioService{
         this.usuarioRepository.save(usuario);
         return "El usuario con cédula " + usuario.getCedula() + " fue actualizado con exito.";
     }
+
+    @Override
+    public Optional<UsuarioModel> mostrarUsuarioPorCorreo(String correo) {
+        return this.usuarioRepository.obtenerUsuarioPorCorreo(correo);
+    }
 }

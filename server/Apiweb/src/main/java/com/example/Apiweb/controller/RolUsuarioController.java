@@ -43,4 +43,11 @@ public class RolUsuarioController {
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el usuario con la cedula: " + cedula + " y contraseña: " + contrasena));
         return ResponseEntity.ok(usuario);
     }
+
+    @GetMapping("/obtenerRolUsuarioPorCedula/{cedula}")
+    public ResponseEntity<RolUsuarioModel> obtenerRolUsuarioPorCedula(@PathVariable Integer cedula) {
+        RolUsuarioModel usuario = this.rolUsuarioService.mostrarRolUsuarioPorCedula(cedula)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró el usuario con la cedula: " + cedula));
+        return ResponseEntity.ok(usuario);
+    }
 }

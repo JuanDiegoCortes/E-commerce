@@ -13,4 +13,5 @@ public interface IRolUsuarioService {
     String eliminarRolUsuarioPorId(int rolUsuarioId);
     String actualizarRolUsuarioPorId(RolUsuarioModel rolUsuario);
     Optional<RolUsuarioModel> verUsuarioPorCedulaYContrasena(int cedula, String contrasena);
+    Optional<RolUsuarioModel> mostrarRolUsuarioPorCedula(int cedula);
 }

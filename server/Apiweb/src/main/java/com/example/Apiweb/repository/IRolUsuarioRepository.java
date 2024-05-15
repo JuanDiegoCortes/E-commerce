@@ -12,4 +12,9 @@ public interface IRolUsuarioRepository extends JpaRepository<RolUsuarioModel, In
             "FROM RolUsuario ru " +
             "WHERE ru.cedula = :cedula AND ru.contrasena = :contrasena", nativeQuery = true)
     Optional<RolUsuarioModel> mostrarUsuarioPorCedulaYContrasena(@Param("cedula") Integer cedula, @Param("contrasena") String contrasena);
+
+    @Query(value = "SELECT * " +
+            "FROM RolUsuario ru " +
+            "WHERE ru.cedula = :cedula", nativeQuery = true)
+    Optional<RolUsuarioModel> obtenerRolUsuarioPorCedula(@Param("cedula") Integer cedula);
 }

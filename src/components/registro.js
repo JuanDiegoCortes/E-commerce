@@ -102,21 +102,74 @@ window.onload = function() {
         }
     }
 
-    function crearUsuario(cedula, nombre, correo, contrasena) {
-        const usuario = {
-            cedula: cedula,
-            nombre: nombre,
-            correo: correo
+    function crearUsuario(cedulaValue, nombreValue, correoValue, contrasenaValue) {
+        let usuario = {
+            cedula: cedulaValue,
+            nombre: nombreValue,
+            correo: correoValue,
+            roles: [
+                {
+                cedula: cedulaValue ,
+                idRol: 1,
+                contrasena: contrasenaValue
+                }
+            ]
         }
 
-        const rolUsuario = {
-            cedula: { cedula: cedula },
-            idRol:{ idRol: 1 },
-            contrasena: contrasena
-        }
-
-        console.log(usuario, rolUsuario);
-
-        //Falta el fetch en la api esta incompleto
+        const url = 'http://localhost:8081/Apiweb/v1/usuario/registroUsuario/';
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(usuario)
+        }).then(response => response.ok)
+        .then(data => {
+            if (data) {
+                Toastify({
+                    text: "Usuario registrado con exito",
+                    duration: 2000,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    stopOnFocus: true,
+                    style: {
+                        background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                        borderRadius: "2rem",
+                        textTransform: "uppercase",
+                        fontSize: ".75rem"
+                    },
+                    offset: {
+                        x: '1.5rem',
+                        y: '1.5rem'
+                    },
+                    onClick: function () { }
+                }).showToast();
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
+            } else {
+                Toastify({
+                    text: "Error al registrar usuario, cedula o correo en uso.",
+                    duration: 2000,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    stopOnFocus: true,
+                    style: {
+                        background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                        borderRadius: "2rem",
+                        textTransform: "uppercase",
+                        fontSize: ".75rem"
+                    },
+                    offset: {
+                        x: '1.5rem',
+                        y: '1.5rem'
+                    },
+                    onClick: function () { }
+                }).showToast();
+            }
+        })
     }
+
 }

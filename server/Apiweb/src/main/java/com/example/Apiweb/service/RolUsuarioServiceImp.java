@@ -48,4 +48,9 @@ public class RolUsuarioServiceImp implements IRolUsuarioService{
     public Optional<RolUsuarioModel> verUsuarioPorCedulaYContrasena(int cedula, String contrasena) {
         return this.rolUsuarioRepository.mostrarUsuarioPorCedulaYContrasena(cedula, contrasena);
     }
+
+    @Override
+    public Optional<RolUsuarioModel> mostrarRolUsuarioPorCedula(int cedula) {
+        return this.rolUsuarioRepository.obtenerRolUsuarioPorCedula(cedula);
+    }
 }
