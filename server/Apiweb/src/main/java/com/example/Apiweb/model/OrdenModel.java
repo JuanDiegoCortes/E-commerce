@@ -19,6 +19,7 @@ public class OrdenModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idOrden;
     private Date fecha;
+    private Integer disenadorAsignado;
 
     @Column(name="Estado")
     @Enumerated(EnumType.STRING)

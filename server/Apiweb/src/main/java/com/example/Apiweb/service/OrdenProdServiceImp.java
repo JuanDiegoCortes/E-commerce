@@ -50,11 +50,4 @@ public class OrdenProdServiceImp implements IOrdenProdService {
         return this.ordenProdRepository.listarProductosPorIdOrden(idOrden);
     }
 
-    @Override
-    public Integer asignarDisenador(int idOrdenProd, int disenadorAsginado) {
-        Optional<OrdenProdModel> ordenProdRef = this.ordenProdRepository.findById(idOrdenProd);
-        ordenProdRef.get().setDisenadorAsignado(disenadorAsginado);
-        this.ordenProdRepository.save(ordenProdRef.get());
-        return(disenadorAsginado);
-    }
 }

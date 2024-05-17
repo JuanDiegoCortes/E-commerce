@@ -14,5 +14,5 @@ public interface IOrdenProdService {
     String eliminarOrdenProdPorId(int ordenProdId);
     String actualizarOrdenProdPorId(OrdenProdModel ordenProd);
     List<OrdenProdModel> mostrarProductosPorIdOrden(int idOrden);
-    Integer asignarDisenador(int idOrdenProd, int disenadorAsignado);
+
 }

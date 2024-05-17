@@ -174,4 +174,9 @@ public class OrdenController {
         return new ResponseEntity<String>(ordenService.actualizarEstadoOrden(idOrden, estado), HttpStatus.OK);
     }
 
+    @PutMapping("/asignarDisenador/{idOrden}/{disenadorAsignado}")
+    public ResponseEntity<Integer> asignarDisenador(@PathVariable Integer idOrden, @PathVariable Integer disenadorAsignado) {
+        return new ResponseEntity<Integer>(ordenService.asignarDisenador(idOrden, disenadorAsignado), HttpStatus.OK);
+    }
+
 }

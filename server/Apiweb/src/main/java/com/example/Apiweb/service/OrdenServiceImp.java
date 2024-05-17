@@ -63,4 +63,12 @@ public class OrdenServiceImp implements IOrdenService{
         this.ordenRepository.save(ordenRef.get());
         return "El estado de la orden con id " + ordenRef.get().getIdOrden() + " fue actualizado con exito.";
     }
+
+    @Override
+    public Integer asignarDisenador(int idOrden, int disenadorAsginado) {
+        Optional<OrdenModel> ordenRef = this.ordenRepository.findById(idOrden);
+        ordenRef.get().setDisenadorAsignado(disenadorAsginado);
+        this.ordenRepository.save(ordenRef.get());
+        return(disenadorAsginado);
+    }
 }

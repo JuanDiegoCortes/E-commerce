@@ -138,8 +138,8 @@ window.onload = function() {
                 const inputId = 'input-' + idOrdenProd; 
                 const disenadorAsignado = document.getElementById(inputId).value;
 
-                console.log(idOrdenProd, disenadorAsignado);
-                asignarDisenador(idOrdenProd, disenadorAsignado);
+                console.log(ordenId, disenadorAsignado);
+                asignarDisenador(ordenId, disenadorAsignado);
             });
         });
     }
@@ -171,9 +171,9 @@ window.onload = function() {
         console.log(data);
     }
 
-
-    function asignarDisenador(idOrdenProd, disenadorAsignado){
-        const url = `http://localhost:8081/Apiweb/v1/ordenProd/asignarDisenador/${idOrdenProd}/${disenadorAsignado}`;
+    function asignarDisenador(ordenId, disenadorAsignado){
+        console.log(ordenId);
+        const url = `http://localhost:8081/Apiweb/v1/orden/asignarDisenador/${ordenId}/${disenadorAsignado}`;
         fetch(url, {
             method: 'PUT',
         })

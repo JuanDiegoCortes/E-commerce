@@ -44,9 +44,4 @@ public class OrdenProdController {
         return new ResponseEntity<List<OrdenProdModel>>(productos, HttpStatus.OK);
     }
 
-    @PutMapping("/asignarDisenador/{idOrdenProd}/{disenadorAsignado}")
-    public ResponseEntity<Integer> asignarDisenador(@PathVariable Integer idOrdenProd, @PathVariable Integer disenadorAsignado) {
-        return new ResponseEntity<Integer>(ordenProdService.asignarDisenador(idOrdenProd, disenadorAsignado), HttpStatus.OK);
-    }
-
 }
