@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     let ciudadSeleccionadaId = "";
     let modalidadEntregaSeleccionada = "";
+    let metodoPagoSeleccionado = "";
+
+    document.querySelectorAll('.boton-metodoPago').forEach(button => {
+        button.addEventListener('click', function() {
+            metodoPagoSeleccionado = this.id;
+        });
+    });
 
     document.querySelectorAll('.boton-ciudad').forEach(button => {
         button.addEventListener('click', function() {
@@ -11,6 +18,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.querySelectorAll('.boton-modalidadEntrega').forEach(button => {
         button.addEventListener('click', function() {
             modalidadEntregaSeleccionada = this.id;
+        });
+    });
+
+    document.querySelectorAll('.boton-metodoPago').forEach(button => {
+        button.addEventListener('click', function() {
+            const metodoPago = this.id;
+            const orden = JSON.parse(localStorage.getItem("orden"));
+            orden.metodoPago = metodoPago;
+            localStorage.setItem("orden", JSON.stringify(orden));
         });
     });
 
@@ -25,7 +41,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let codigoPostal = document.getElementById('codigoPostal').value;
         let referencias = document.getElementById('referencias').value;
 
-        if (nombre === "" || apellido === "" || codigoPostal === "" || ciudadSeleccionadaId === "" || modalidadEntregaSeleccionada === "" || telefono === "" || direccion === "") {
+        if (nombre === "" || apellido === "" || codigoPostal === "" || ciudadSeleccionadaId === "" || modalidadEntregaSeleccionada === "" || telefono === "" || direccion === "" || metodoPagoSeleccionado === "") {
             Toastify({
                 text: "Por favor, complete todos los campos.",
                 duration: 1000,
@@ -52,50 +68,65 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 codigoPostal: codigoPostal,
                 referencias: referencias,
             };
-            console.log(envioData);
-            enviarDatos(envioData);
+
+            let ordenObj = localStorage.getItem("orden");
+            let orden = JSON.parse(ordenObj);
+            orden.idEnvio = envioData;
+            localStorage.setItem("orden", JSON.stringify(orden));
+
+            crearOrden(orden);
         }
     }
-
-    function enviarDatos(data){
-        const url = `http://localhost:8081/Apiweb/v1/envio/`;
+    function crearOrden(data) {
+        const url = `http://localhost:8081/Apiweb/v1/orden/`;
         fetch(url, {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         })
         .then(response => {
+            return response;
+        })
+        .then(response => {
             if (response.ok) {
-                return response.text().then(text => {
-                    try {
-                        return JSON.parse(text);
-                    } catch {
-                        Toastify({
-                            text: "Informacion enviada correctamente",
-                            duration: 1000,
-                            close: true,
-                            gravity: "top",
-                            position: "right",
-                            stopOnFocus: true,
-                            style: {
-                                background: "linear-gradient(to right, #4b33a8, #785ce9)",
-                                borderRadius: "2rem",
-                            }
-                        }).showToast();
-                        setTimeout(() => {
-                            window.location.href = "../pages/index.html";
-                        }, 2000);
-                    }
+                response.text().then(text => {
+                    Toastify({
+                        text: text,
+                        duration: 2000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        stopOnFocus: true,
+                        style: {
+                            background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                            borderRadius: "2rem",
+                        }
+                    }).showToast();
+                    setTimeout(() => {
+                        localStorage.removeItem("orden");
+                        localStorage.removeItem("productos-en-carrito");
+                        window.location.href = "../pages/index.html";
+                    }, 2000);
                 });
             } else {
-                alert('Error al enviar los datos.');
+                response.text().then(text => {
+                    Toastify({
+                        text: text,
+                        duration: 2000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        stopOnFocus: true,
+                        style: {
+                            background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                            borderRadius: "2rem",
+                        }
+                    }).showToast();
+                });
             }
         })
-        .catch(error => {
-            console.error('Error en la solicitud Fetch:', error);
-        });
     }
 
 });

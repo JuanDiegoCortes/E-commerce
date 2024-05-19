@@ -197,7 +197,7 @@ input[type="submit"]:hover {
 }
 
 /*Botones de ciudad*/
-.boton-ciudades, .boton-modalidadesEntrega{
+.boton-ciudades, .boton-modalidadesEntrega, .boton-metodosPago{
     border: 0;
     background-color: var(--clr-main-light);
     color: var(--clr-white);
@@ -210,7 +210,7 @@ input[type="submit"]:hover {
     margin-bottom: 2rem;
 }
 
-.boton-ciudades:hover , .boton-modalidadesEntrega:hover{
+.boton-ciudades:hover , .boton-modalidadesEntrega:hover, .boton-metodosPago:hover{
     background-color: var(--clr-white);
     color: var(--clr-main-light);
     border-color: var(--clr-main-light);

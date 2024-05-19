@@ -12,4 +12,7 @@ public interface IProdTallaService {
     Optional<ProdTallaModel> obtenerProdTallaPorId(int prodTallaId);
     String eliminarProdTallaPorId(int prodTallaId);
     String actualizarProdTallaPorId(ProdTallaModel prodTalla);
+    void actualizarCantidadProdTalla(int cantidad, int idProducto, int idTalla);
+    ProdTallaModel obtenerProdTallaPorProductoYTalla(int idProducto, int idTalla);
+    List<ProdTallaModel> obtenerProdTallaPorIdProducto(int idProducto);
 }

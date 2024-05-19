@@ -43,4 +43,19 @@ public class ProdTallaServiceImp implements IProdTallaService{
         this.prodTallaRepository.save(prodTalla);
         return "La prodTalla con id " + prodTalla.getIdProdTalla() + " fue actualizada con exito.";
     }
+
+    @Override
+    public void actualizarCantidadProdTalla(int cantidad, int idProducto, int idTalla) {
+        this.prodTallaRepository.actualizarCantidadProdTalla(cantidad, idProducto, idTalla);
+    }
+
+    @Override
+    public ProdTallaModel obtenerProdTallaPorProductoYTalla(int idProducto, int idTalla) {
+        return this.prodTallaRepository.obtenerProdTallaPorProductoYTalla(idProducto, idTalla);
+    }
+
+    @Override
+    public List<ProdTallaModel> obtenerProdTallaPorIdProducto(int idProducto) {
+        return this.prodTallaRepository.obtenerProdTallaPorIdProducto(idProducto);
+    }
 }

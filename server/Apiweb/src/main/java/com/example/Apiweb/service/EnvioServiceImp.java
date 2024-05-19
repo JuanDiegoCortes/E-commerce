@@ -16,9 +16,8 @@ public class EnvioServiceImp implements IEnvioService{
     IEnvioRepository envioRepository;
 
     @Override
-    public String crearEnvio(EnvioModel envio) {
-        this.envioRepository.save(envio);
-        return "El envio " + envio.getIdEnvio() + " fue creado exitosamente";
+    public EnvioModel crearEnvio(EnvioModel envio) {
+        return this.envioRepository.save(envio);
     }
 
     @Override

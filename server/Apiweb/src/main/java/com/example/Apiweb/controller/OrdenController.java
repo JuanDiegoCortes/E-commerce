@@ -31,6 +31,8 @@ public class OrdenController {
     private IProductoService productoService;
     @Autowired
     private IOrdenProdService ordenProdService;
+    @Autowired
+    private IProdTallaService prodTallaService;
 
     @PostMapping("/")
     public ResponseEntity<String> crearOrden(@RequestBody OrdenDTO ordenDTO) {
@@ -48,8 +50,17 @@ public class OrdenController {
             e.printStackTrace();
         }
 
-        EnvioModel envio = envioService.obtenerEnvioPorId(ordenDTO.getIdEnvio().getIdEnvio())
-                .orElseThrow(() -> new RecursoNoEncontradoException("El envio no existe."));
+        EnvioModel envio = new EnvioModel();
+        envio.setNombre(ordenDTO.getIdEnvio().getNombre());
+        envio.setApellido(ordenDTO.getIdEnvio().getApellido());
+        envio.setDireccion(ordenDTO.getIdEnvio().getDireccion());
+        envio.setModalidadEntrega(ordenDTO.getIdEnvio().getModalidadEntrega());
+        envio.setTelefono(ordenDTO.getIdEnvio().getTelefono());
+        envio.setCodigoPostal(ordenDTO.getIdEnvio().getCodigoPostal());
+        envio.setReferencias(ordenDTO.getIdEnvio().getReferencias());
+        envio.setIdCiudad(ordenDTO.getIdEnvio().getIdCiudad());
+        envioService.crearEnvio(envio);
+
         UsuarioModel usuario = usuarioService.obtenerUsuarioPorId(ordenDTO.getCedula().getCedula())
                 .orElseThrow(() -> new RecursoNoEncontradoException("El usuario no existe."));
 
@@ -59,7 +70,6 @@ public class OrdenController {
         orden.setEstado(ordenDTO.getEstado());
         orden.setMetodoPago(ordenDTO.getMetodoPago());
         orden.setPrecioTotal(ordenDTO.getPrecioTotal());
-        orden.setImage_Evidencia(ordenDTO.getImage_Evidencia());
         orden.setIdEnvio(envio);
         orden.setCedula(usuario);
 
@@ -67,12 +77,17 @@ public class OrdenController {
         if (ordenDTO.getProductos() != null) {
             List<Map<String, Object>> listarProductos = ordenDTO.getProductos();
             for (Map<String, Object> Productos : listarProductos) {
-                Integer idProducto = (Integer) Productos.get("idProducto");
-                ProductoModel producto = this.productoService.obtenerProductoPorId(idProducto)
-                        .orElseThrow(() -> new RecursoNoEncontradoException("No esta el producto con id: " + idProducto));
-                if (producto == null) {
+                Integer cantidad = (Integer) Productos.get("cantidad");
+                Integer idTalla = (Integer) Productos.get("idTalla");
+
+                ProdTallaModel talla = this.prodTallaService.obtenerProdTallaPorId(idTalla)
+                        .orElseThrow(() -> new RecursoNoEncontradoException("No esta la talla con id: " + idTalla));
+                ProductoModel productito = this.productoService.obtenerProductoPorId((Integer) Productos.get("idProducto"))
+                        .orElseThrow(() -> new RecursoNoEncontradoException("No esta el producto con id: " + Productos.get("idProducto")));
+
+                if (talla.getCantidad() < cantidad) {
                     bandera = false;
-                    throw new RecursoNoEncontradoException("No se encontró el producto con ID: " + idProducto);
+                    return new ResponseEntity<String>("No hay suficientes stock en la talla seleccionada para el producto: " + productito.getNombre(), HttpStatus.BAD_REQUEST);
                 }
             }
             if (bandera) {
@@ -80,27 +95,33 @@ public class OrdenController {
                 ordenService.crearOrden(orden);
                 for (Map<String, Object> Productos : listarProductos) {
                     Integer idProducto = (Integer) Productos.get("idProducto");
+                    Integer idTalla = (Integer) Productos.get("idTalla");
                     OrdenProdModel ordenProd = new OrdenProdModel();
                     Integer cantidad = (Integer) Productos.get("cantidad");
                     String image_Personalizacion = (String) Productos.get("image_Personalizacion");
                     String texto_Personalizacion = (String) Productos.get("texto_Personalizacion");
                     ProductoModel producto = productoService.obtenerProductoPorId(idProducto).get();
-                    ordenProd.setIdProducto(producto);
-                    ordenProd.setIdOrden(orden);
                     ordenProd.setCantidad(cantidad);
                     ordenProd.setImage_Personalizacion(image_Personalizacion);
                     ordenProd.setTexto_Personalizacion(texto_Personalizacion);
+                    ordenProd.setIdProducto(producto);
+                    ordenProd.setIdOrden(orden);
+
+                    //Actualizar la cantidad de productos en la talla
+                    ProdTallaModel prodTalla = this.prodTallaService.obtenerProdTallaPorProductoYTalla(idProducto, idTalla);
+                    Integer Resultado = prodTalla.getCantidad() - cantidad;
+                    System.out.println(Resultado);
+                    prodTallaService.actualizarCantidadProdTalla(Resultado, prodTalla.getIdProducto().getIdProducto(), prodTalla.getIdTalla().getIdTalla());
+
                     ordenProdService.crearOrdenProd(ordenProd);
                 }
-                return new ResponseEntity<String>(ordenService.crearOrden(orden), HttpStatus.OK);
-            } else {
-                String mensaje = "Verifica que los datos ingresados sean correctos.";
-                return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST); //Envia esto cuando no existen las tallas
+                return new ResponseEntity<String>("Orden creada correctamente. Redirigiendo...", HttpStatus.OK);
             }
         } else {
-            String mensaje = "Verifica que hayas ingresado las tallas del producto.";
+            String mensaje = "Verifica que hayas ingresado laos datos de la orden.";
             return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST);
         }
+        return null;
     }
 
     @GetMapping("/")

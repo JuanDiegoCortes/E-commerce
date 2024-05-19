@@ -20,9 +20,9 @@ public class EnvioController {
     private IEnvioService envioService;
 
     @PostMapping("/")
-    public ResponseEntity<String> crearEnvio(@RequestBody EnvioModel envio) {
-        envioService.crearEnvio(envio);
-        return new ResponseEntity<String>(envioService.crearEnvio(envio), HttpStatus.OK);
+    public ResponseEntity<EnvioModel> crearEnvio(@RequestBody EnvioModel envio) {
+        EnvioModel infoEnvio = envioService.crearEnvio(envio);
+        return new ResponseEntity<EnvioModel>(infoEnvio, HttpStatus.OK);
     }
 
     @GetMapping("/")

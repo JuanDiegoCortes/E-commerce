@@ -36,4 +36,10 @@ public class ProdTallaController {
                 .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la prodTalla con el id " + prodTallaId));
         return ResponseEntity.ok(prodTalla);
     }
+
+    @GetMapping("/prodTallaPorIdProducto/{idProducto}")
+    public ResponseEntity<List<ProdTallaModel>> obtenerProdTallaPorIdProducto(@PathVariable Integer idProducto) {
+        List<ProdTallaModel> prodTalla = this.prodTallaService.obtenerProdTallaPorIdProducto(idProducto);
+        return ResponseEntity.ok(prodTalla);
+    }
 }

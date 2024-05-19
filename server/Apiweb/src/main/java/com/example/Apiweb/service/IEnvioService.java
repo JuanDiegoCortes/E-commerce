@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface IEnvioService {
     //funcionalidades /logica que  realizara esta entidad
-    String crearEnvio(EnvioModel envio);
+    EnvioModel crearEnvio(EnvioModel envio);
     List<EnvioModel> listarEnvios();
     Optional<EnvioModel> obtenerEnvioPorId(int envioId);
     String eliminarEnvioPorId(int envioId);
