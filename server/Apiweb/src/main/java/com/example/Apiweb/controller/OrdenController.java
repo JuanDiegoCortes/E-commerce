@@ -87,7 +87,7 @@ public class OrdenController {
 
                 if (talla.getCantidad() < cantidad) {
                     bandera = false;
-                    return new ResponseEntity<String>("No hay suficientes stock en la talla seleccionada para el producto: " + productito.getNombre(), HttpStatus.BAD_REQUEST);
+                    return new ResponseEntity<String>("No hay suficientes stock en la talla " + talla.getIdTalla().getMedida() + " seleccionada para " + productito.getNombre() + " (Cantidad: " + talla.getCantidad() + ")", HttpStatus.BAD_REQUEST);
                 }
             }
             if (bandera) {
