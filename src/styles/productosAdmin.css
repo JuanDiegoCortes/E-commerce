@@ -7,11 +7,15 @@
     --clr-orangered: #ff4500;
 }
 
+* {
+    font-family: 'Rubik', sans-serif;
+    box-sizing: border-box;
+}
+
 /* Estilos generales del cuerpo */
 body {
     margin: auto;
     padding: 30px;
-    font-family: sans-serif;
     background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
     min-height: 100vh;
     display: flex;
@@ -32,7 +36,7 @@ h2 {
 .regresar {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 120px;
 }
 
 .regresarBtn {
@@ -46,6 +50,27 @@ h2 {
 }
 
 .regresarBtn:hover {
+    background-color: var(--clr-orangered);
+}
+
+/* Estilos para el botón de siguiente */
+.siguiente {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.siguienteBtn {
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.siguienteBtn :hover {
     background-color: var(--clr-orangered);
 }
 

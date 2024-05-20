@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-main: #000;
+    --clr-main-light: #ff6600;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(15deg, var(--clr-main-light), var(--clr-main));
+    margin: 20px;
+    padding: 30px;
+}
+
+.container {
+    max-width: auto;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: var(--clr-white);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    text-align: center;
+    color: var(--clr-main);
+}
+
+.regresar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.regresarBtn {
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.regresarBtn:hover {
+    background-color: var(--clr-red);
+}
+
+.d-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-search {
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.button-search-id,
+.button-search-nombre {
+    background-color: #ff6600;
+    margin-inline-start: 5px;
+    color: #fff;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.button-search-id:hover,
+.button-search-nombre:hover {
+    background-color: #fb7e2b;
+}
+
+.contenedor-productos{
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.contenedor-productos table {
+    width: 100%; 
+    border-collapse: collapse;
+}
+
+.contenedor-productos th,
+.contenedor-productos td {
+    padding: 10px; 
+    border-bottom: 1px solid; 
+    text-align: center;
+}
+
+.btn-editar {
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-editar:hover {
+    background-color: var(--clr-red);
+}
+
+table img {
+    width: 100px;
+    height: auto;
+}
