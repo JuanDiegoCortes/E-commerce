@@ -3,18 +3,13 @@ document.addEventListener("DOMContentLoaded", function() {
     let estadoSeleccionado = "";
     let personalizableSeleccionado = "";
     let categoriaSeleccionadaId = "";
-    let imagenSeleccionada = document.getElementById('image_Url').value;
 
-    let tallaXS = document.querySelectorAll('.cantidadXS');
-
-    let tallasSeleccionadas = [
-        {idTalla: 1, cantidad: 0},
-        {idTalla: 2, cantidad: 0},
-        {idTalla: 3, cantidad: 0},
-        {idTalla: 4, cantidad: 0},
-        {idTalla: 5, cantidad: 0},
-        {idTalla: 6, cantidad: 0},
-    ];
+    document.querySelectorAll(".cantidadXS").forEach(el => el.style.display = "none");
+    document.querySelectorAll(".cantidadS").forEach(el => el.style.display = "none");
+    document.querySelectorAll(".cantidadM").forEach(el => el.style.display = "none");
+    document.querySelectorAll(".cantidadL").forEach(el => el.style.display = "none");
+    document.querySelectorAll(".cantidadXL").forEach(el => el.style.display = "none");
+    document.querySelectorAll(".cantidadUNICA").forEach(el => el.style.display = "none");
 
     document.querySelectorAll('.boton-genero').forEach(button => {
         button.addEventListener('click', function() {
@@ -34,13 +29,28 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    document.querySelectorAll('.boton-categoria').forEach(button => {
+    document.querySelectorAll('.dropdown-menu .boton-categoria').forEach(button => {
         button.addEventListener('click', function() {
             categoriaSeleccionadaId = parseInt(this.id);
+            if (categoriaSeleccionadaId === 15) {
+                document.querySelectorAll(".cantidadXS").forEach(el => el.style.display = "none");
+                document.querySelectorAll(".cantidadS").forEach(el => el.style.display = "none");
+                document.querySelectorAll(".cantidadM").forEach(el => el.style.display = "none");
+                document.querySelectorAll(".cantidadL").forEach(el => el.style.display = "none");
+                document.querySelectorAll(".cantidadXL").forEach(el => el.style.display = "none");
+                document.querySelectorAll(".cantidadUNICA").forEach(el => el.style.display = "block");
+            } else {
+                document.querySelectorAll(".cantidadXS").forEach(el => el.style.display = "block");
+                document.querySelectorAll(".cantidadS").forEach(el => el.style.display = "block");
+                document.querySelectorAll(".cantidadM").forEach(el => el.style.display = "block");
+                document.querySelectorAll(".cantidadL").forEach(el => el.style.display = "block");
+                document.querySelectorAll(".cantidadXL").forEach(el => el.style.display = "block");
+                document.querySelectorAll(".cantidadUNICA").forEach(el => el.style.display = "none");
+            }
         });
     });
 
-    let botonCrear = document.getElementById("botonCrear");
+    let botonCrear = document.querySelector(".botonCrear");
     botonCrear.addEventListener("click", capturarValores);
 
     // Función para capturar valores y enviar la solicitud
@@ -48,10 +58,27 @@ document.addEventListener("DOMContentLoaded", function() {
         let nombre = document.getElementById('nombre').value;
         let descripcion = document.getElementById('descripcion').value;
         let precio = parseFloat(document.getElementById('precio').value);
-        imagenSeleccionada = document.getElementById('image_Url').value;
+        let imagenSeleccionada = document.getElementById('image_Url').value;
+        let tallaXS = parseInt(document.querySelector('.cantidadXS').value || 0);
+        let tallaS = parseInt(document.querySelector('.cantidadS').value || 0);
+        let tallaM = parseInt(document.querySelector('.cantidadM').value || 0);
+        let tallaL = parseInt(document.querySelector('.cantidadL').value || 0);
+        let tallaXL = parseInt(document.querySelector('.cantidadXL').value || 0);
+        let tallaUNICA = parseInt(document.querySelector('.cantidadUNICA').value || 0);
+
+        let Tallas = [
+            {idTalla: 1, cantidad: tallaXS},
+            {idTalla: 2, cantidad: tallaS},
+            {idTalla: 3, cantidad: tallaM},
+            {idTalla: 4, cantidad: tallaL},
+            {idTalla: 5, cantidad: tallaXL},
+            {idTalla: 6, cantidad: tallaUNICA},
+        ];
+
+        Tallas = Tallas.filter(talla => !(talla.cantidad === 0));
 
         // Validar campos requeridos
-        if (nombre === "" || descripcion === "" || isNaN(precio) || generoSeleccionado === "" || estadoSeleccionado === "" || isNaN(categoriaSeleccionadaId) || Object.keys(tallasSeleccionadas).length === 0 || imagenSeleccionada === ""){            
+        if (nombre === "" || descripcion === "" || isNaN(precio) || generoSeleccionado === "" || estadoSeleccionado === "" || isNaN(categoriaSeleccionadaId) || (Tallas == null) || imagenSeleccionada === ""){            
             alert('Por favor, complete todos los campos.');
             return "";
         } else {
@@ -59,11 +86,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 nombre: nombre,
                 descripcion: descripcion,
                 precio: precio,
-                genero: generoSeleccionado,
                 estado: estadoSeleccionado,
-                idCategoria: categoriaSeleccionadaId,
+                personalizable: personalizableSeleccionado,
                 image_Url: imagenSeleccionada,
-                idTallas: Object.entries(tallasSeleccionadas).map(([idTalla, cantidad]) => ({idTalla: parseInt(idTalla), cantidad: parseInt(cantidad)}))
+                genero: generoSeleccionado,
+                idCategoria: {
+                    idCategoria: categoriaSeleccionadaId
+                },
+                Tallas
             };
             console.log(productoData);
             enviarDatos(productoData);
@@ -83,13 +113,18 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => {
             if (response.ok) {
                 return response.text().then(text => {
-                    try {
-                        return JSON.parse(text);
-                    } catch {
-                        alert('Datos enviados correctamente'); // pero la respuesta no es JSON.
-                        window.location.href = "../pages/index.html";
-                        return console.log(text);
-                    }
+                    Toastify({
+                        text: text,
+                        duration: 2000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        stopOnFocus: true,
+                        style: {
+                            background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                            borderRadius: "2rem",
+                        }
+                    }).showToast();
                 });
             } else {
                 alert('Error al enviar los datos.');

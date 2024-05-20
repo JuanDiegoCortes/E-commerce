@@ -54,15 +54,6 @@ public class ProductoController {
         //Capturar las tallas y verificar que existan
         if (productoDTO.getTallas() != null) {
             List<Map<String, Integer>> listarTallas = productoDTO.getTallas();
-            for (Map<String, Integer> Tallas : listarTallas) {
-                Integer idTalla = Tallas.get("idTalla");
-                TallaModel talla = this.tallaService.obtenerTallaPorId(idTalla)
-                        .orElseThrow(() -> new RecursoNoEncontradoException("No esta la talla con id: " + idTalla));
-                if (talla == null) {
-                    bandera = false;
-                    throw new RecursoNoEncontradoException("No se encontró la talla con ID: " + idTalla);
-                }
-            }
             if (bandera) {
                 System.out.println("Bandera: "+ bandera);
                 productoService.crearProducto(producto);
@@ -72,18 +63,16 @@ public class ProductoController {
                     TallaModel talla = tallaService.obtenerTallaPorId(idTalla).get();
                     prodTalla.setIdProducto(producto);
                     prodTalla.setIdTalla(talla);
-                    prodTalla.setCantidad(prodTalla.getCantidad());
+                    prodTalla.setCantidad(Tallas.get("cantidad"));
                     this.prodTallaService.crearProdTalla(prodTalla);
                 }
-                return new ResponseEntity<String>(productoService.crearProducto(producto), HttpStatus.OK);
-            } else{
-                String mensaje = "Verifica que los datos ingresados sean correctos.";
-                return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST); //Envia esto cuando no existen las tallas
+                return new ResponseEntity<String>("Producto creado exitosamente.", HttpStatus.OK);
             }
         }else{
             String mensaje = "Verifica que hayas ingresado las tallas del producto.";
             return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST);
         }
+        return null;
     }
 
     @GetMapping("/")

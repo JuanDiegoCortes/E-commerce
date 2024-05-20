@@ -168,11 +168,9 @@ function cargarProductos(productosElegidos) {
         <button class="producto-info" id="${producto.idProducto}">Informacion</button>
       </div>
       `;
-    contenedorProductos.append(div);
 
-    if ( producto.estado === "inactivo") {
-      const producto = div.querySelector(".producto");
-      producto.style.display = "none";
+    if (producto.estado !== "inactivo") {
+      contenedorProductos.append(div);
     }
 
     const botonInformacion = div.querySelector(".producto-info");

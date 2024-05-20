@@ -19,6 +19,47 @@
         <form method="post">
             <h2>Crear Artículo</h2>
 
+            <!-- Aqui se especifica el genero-->
+            <div class="dropdown">
+                <!-- Aqui se agrega la categoria -->
+                <button id="boton-categoria" class="btn btn-primary dropdown-toggle boton-categoria" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categoría
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button id="11" class="dropdown-item boton-categoria" type="button">Chaquetas</button></li>
+                    <li><button id="12" class="dropdown-item boton-categoria" type="button">Buzos</button></li>
+                    <li><button id="13" class="dropdown-item boton-categoria" type="button">Camisetas</button></li>
+                    <li><button id="14" class="dropdown-item boton-categoria" type="button">Polos</button></li>
+                    <li><button id="15" class="dropdown-item boton-categoria" type="button">Maletas</button></li>
+                </ul>
+                <button id="boton-genero 0" class="btn btn-primary dropdown-toggle boton-genero" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Género
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button id="hombre" class="dropdown-item boton-genero" type="button">Hombre</button></li>
+                    <li><button id="mujer" class="dropdown-item boton-genero" type="button">Mujer</button></li>
+                    <li><button id="nino" class="dropdown-item boton-genero" type="button">Niño</button></li>
+                </ul>
+
+                <!-- Aqui se especifica si es personalizable o no -->
+                <button id="boton-personalizable 0" class="btn btn-primary dropdown-toggle boton-personalizable" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Personalizable
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button id="si" class="dropdown-item boton-personalizable" type="button">Sí</button></li>
+                    <li><button id="no" class="dropdown-item boton-personalizable" type="button">No</button></li>
+                </ul>
+                </div>
+  
+                <!-- Aqui se especifica su estado -->
+                <button id="boton-estado 0" class="btn btn-primary dropdown-toggle boton-estado" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Estado
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button id="activo" class="dropdown-item boton-estado" type="button">Activo</button></li>
+                    <li><button id="inactivo" class="dropdown-item boton-estado" type="button">Inactivo</button></li>
+                </ul>
+
             <div class="nombre">
                 <input type="text" id="nombre" name="nombreProducto" required>
                 <label for="nombre">Nombre*</label>
@@ -38,23 +79,23 @@
             <!-- Aqui se asignan las tallas y cantidades -->
             <div id="tallas">
                 <div class="talla">
-                    <label for="cantidadXS">Cantidad (XS):</label>
+                    <label for="cantidadXS" class="cantidadXS">Cantidad(XS):</label>
                     <input type="number" id="1" class="cantidadXS" step="1" min="0">
                 
-                    <label for="cantidadS">Cantidad (S):</label>
+                    <label for="cantidadS" class="cantidadS">Cantidad(S):</label>
                     <input type="number" id="2" class="cantidadS" step="1" min="0">
                 
-                    <label for="cantidadM">Cantidad (M):</label>
+                    <label for="cantidadM" class="cantidadM">Cantidad(M):</label>
                     <input type="number" id="3" class="cantidadM" step="1" min="0">
                 
-                    <label for="cantidadL">Cantidad (L):</label>
+                    <label for="cantidadL" class="cantidadL">Cantidad(L):</label>
                     <input type="number" id="4" class="cantidadL" step="1" min="0">
                 
-                    <label for="cantidadXL">Cantidad (XL):</label>
+                    <label for="cantidadXL" class="cantidadXL">Cantidad(XL):</label>
                     <input type="number" id="5" class="cantidadXL" step="1" min="0">
                 
-                    <label for="cantidadXL">Cantidad (UNICA):</label>
-                    <input type="number" id="6" class="cantidadXL" step="1" min="0">
+                    <label for="cantidadXL" class="cantidadUNICA">Cantidad(UNICA):</label>
+                    <input type="number" id="6" class="cantidadUNICA" step="1" min="0">
                 </div>
             </div>
             
@@ -63,48 +104,6 @@
             <div class="link-imagen">
                 <label for="image_Url">URL de la imagen (PNG):</label>
                 <input type="text" id="image_Url" name="image_Url" required>
-            </div>
-
-            <!-- Aqui se especifica el genero-->
-            <div class="dropdown">
-                <button id="boton-genero 0" class="btn btn-primary dropdown-toggle boton-genero" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Género
-                </button>
-                <ul class="dropdown-menu">
-                    <li><button id="hombre" class="dropdown-item boton-genero" type="button">Hombre</button></li>
-                    <li><button id="mujer" class="dropdown-item boton-genero" type="button">Mujer</button></li>
-                    <li><button id="nino" class="dropdown-item boton-genero" type="button">Niño</button></li>
-                </ul>
-  
-            <!-- Aqui se especifica su estado -->
-                <button id="boton-estado 0" class="btn btn-primary dropdown-toggle boton-estado" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Estado
-                </button>
-                <ul class="dropdown-menu">
-                    <li><button id="activo" class="dropdown-item boton-estado" type="button">Activo</button></li>
-                    <li><button id="inactivo" class="dropdown-item boton-estado" type="button">Inactivo</button></li>
-                </ul>
-
-            <!-- Aqui se especifica si es personalizable o no -->
-                <button id="boton-personalizable 0" class="btn btn-primary dropdown-toggle boton-personalizable" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Personalizable
-                </button>
-                <ul class="dropdown-menu">
-                    <li><button id="si" class="dropdown-item boton-personalizable" type="button">Sí</button></li>
-                    <li><button id="no" class="dropdown-item boton-personalizable" type="button">No</button></li>
-                </ul>
-
-            <!-- Aqui se agrega la categoria -->
-                <button id="boton-categoria 0" class="btn btn-primary dropdown-toggle boton-categoria" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Categoría
-                </button>
-                <ul class="dropdown-menu">
-                    <li><button id="11" class="dropdown-item boton-categoria" type="button">Chaquetas</button></li>
-                    <li><button id="12" class="dropdown-item boton-categoria" type="button">Buzos</button></li>
-                    <li><button id="13" class="dropdown-item boton-categoria" type="button">Camisetas</button></li>
-                    <li><button id="14" class="dropdown-item boton-categoria" type="button">Polos</button></li>
-                    <li><button id="15" class="dropdown-item boton-categoria" type="button">Maletas</button></li>
-                </ul>
             </div>
 
             <!-- Botón de crear producto -->
