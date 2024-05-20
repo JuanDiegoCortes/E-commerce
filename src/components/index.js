@@ -19,6 +19,7 @@ const btnLogin = document.querySelector(".login-link");
 const btnSigiUp = document.querySelector(".sig-up-link");
 const btnUsuarioInfo = document.querySelector(".usuarioInfo");
 const btnLogout = document.querySelector(".logout");
+const btnProductosAdmin = document.querySelector(".boton-productosAdmin");
 const btnOrdenesEncargado = document.querySelector(".boton-ordenes");
 const btnDisenosPDisenador = document.querySelector(".boton-disenosP");
 
@@ -168,6 +169,11 @@ function cargarProductos(productosElegidos) {
       </div>
       `;
     contenedorProductos.append(div);
+
+    if ( producto.estado === "inactivo") {
+      const producto = div.querySelector(".producto");
+      producto.style.display = "none";
+    }
 
     const botonInformacion = div.querySelector(".producto-info");
     botonInformacion.addEventListener("click", function() {

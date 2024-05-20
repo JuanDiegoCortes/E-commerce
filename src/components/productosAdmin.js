@@ -3,22 +3,18 @@ document.addEventListener("DOMContentLoaded", function() {
     let estadoSeleccionado = "";
     let personalizableSeleccionado = "";
     let categoriaSeleccionadaId = "";
-    let tallasSeleccionadas = {};
     let imagenSeleccionada = document.getElementById('image_Url').value;
-    ['XS', 'S', 'M', 'L', 'XL'].forEach(talla => {
-        document.getElementById(`talla${talla}`).addEventListener('change', function() {
-            if (this.checked) {
-                let cantidad = parseInt(document.getElementById(`cantidad${talla}`).value);  // Asegúrate de que 'cantidad' es un número
-                let idTalla = this.dataset.id;  // Obtener el ID de la talla del atributo data-id
-                if (!isNaN(cantidad)) {  // Si 'cantidad' es un número, añadirlo a 'tallasSeleccionadas'
-                    tallasSeleccionadas[idTalla] = cantidad;  // Usar el ID de la talla como clave en lugar de la talla
-                }
-            } else {
-                let idTalla = this.dataset.id;  // Obtener el ID de la talla del atributo data-id
-                delete tallasSeleccionadas[idTalla];  // Usar el ID de la talla como clave en lugar de la talla
-            }
-        });
-    });
+
+    let tallaXS = document.querySelectorAll('.cantidadXS');
+
+    let tallasSeleccionadas = [
+        {idTalla: 1, cantidad: 0},
+        {idTalla: 2, cantidad: 0},
+        {idTalla: 3, cantidad: 0},
+        {idTalla: 4, cantidad: 0},
+        {idTalla: 5, cantidad: 0},
+        {idTalla: 6, cantidad: 0},
+    ];
 
     document.querySelectorAll('.boton-genero').forEach(button => {
         button.addEventListener('click', function() {

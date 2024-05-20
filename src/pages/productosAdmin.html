@@ -35,6 +35,36 @@
                 <label for="precio">Precio*</label>
             </div>
 
+            <!-- Aqui se asignan las tallas y cantidades -->
+            <div id="tallas">
+                <div class="talla">
+                    <label for="cantidadXS">Cantidad (XS):</label>
+                    <input type="number" id="1" class="cantidadXS" step="1" min="0">
+                
+                    <label for="cantidadS">Cantidad (S):</label>
+                    <input type="number" id="2" class="cantidadS" step="1" min="0">
+                
+                    <label for="cantidadM">Cantidad (M):</label>
+                    <input type="number" id="3" class="cantidadM" step="1" min="0">
+                
+                    <label for="cantidadL">Cantidad (L):</label>
+                    <input type="number" id="4" class="cantidadL" step="1" min="0">
+                
+                    <label for="cantidadXL">Cantidad (XL):</label>
+                    <input type="number" id="5" class="cantidadXL" step="1" min="0">
+                
+                    <label for="cantidadXL">Cantidad (UNICA):</label>
+                    <input type="number" id="6" class="cantidadXL" step="1" min="0">
+                </div>
+            </div>
+            
+
+            <!-- Aqui se agrega la imagen -->
+            <div class="link-imagen">
+                <label for="image_Url">URL de la imagen (PNG):</label>
+                <input type="text" id="image_Url" name="image_Url" required>
+            </div>
+
             <!-- Aqui se especifica el genero-->
             <div class="dropdown">
                 <button id="boton-genero 0" class="btn btn-primary dropdown-toggle boton-genero" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -75,51 +105,6 @@
                     <li><button id="14" class="dropdown-item boton-categoria" type="button">Polos</button></li>
                     <li><button id="15" class="dropdown-item boton-categoria" type="button">Maletas</button></li>
                 </ul>
-            </div>
-
-            <!-- Aqui se asignan las tallas y cantidades -->
-            <div id="tallas">
-                <div class="talla">
-                    <label for="tallaXS">XS</label>
-                    <input type="radio" id="tallaXS" name="talla" data-id="1">
-                    <label for="cantidadXS">Cantidad:</label>
-                    <input type="number" id="cantidadXS" name="cantidadXS" step="1" min="0">
-                </div>
-            
-                <div class="talla">
-                    <label for="tallaS">S</label>
-                    <input type="radio" id="tallaS" name="talla" data-id="2">
-                    <label for="cantidadS">Cantidad:</label>
-                    <input type="number" id="cantidadS" name="cantidadS" step="1" min="0">
-                </div>
-            
-                <div class="talla">
-                    <label for="tallaM">M</label>
-                    <input type="radio" id="tallaM" name="talla" data-id="3">
-                    <label for="cantidadM">Cantidad:</label>
-                    <input type="number" id="cantidadM" name="cantidadM" step="1" min="0">
-                </div>
-            
-                <div class="talla">
-                    <label for="tallaL">L</label>
-                    <input type="radio" id="tallaL" name="talla" data-id="4">
-                    <label for="cantidadL">Cantidad:</label>
-                    <input type="number" id="cantidadL" name="cantidadL" step="1" min="0">
-                </div>
-            
-                <div class="talla">
-                    <label for="tallaXL">XL</label>
-                    <input type="radio" id="tallaXL" name="talla" data-id="5">
-                    <label for="cantidadXL">Cantidad:</label>
-                    <input type="number" id="cantidadXL" name="cantidadXL" step="1" min="0">
-                </div>
-            </div>
-            
-
-            <!-- Aqui se agrega la imagen -->
-            <div class="link-imagen">
-                <label for="image_Url">URL de la imagen (PNG):</label>
-                <input type="text" id="image_Url" name="image_Url" required>
             </div>
 
             <!-- Botón de crear producto -->
