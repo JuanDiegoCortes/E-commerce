@@ -63,10 +63,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-.dropdown {
-    margin-right: 10px;
-}
-
 .input-search {
     margin-right: 10px;
     border-radius: 5px;
@@ -74,7 +70,7 @@ h1 {
     border: 1px solid #ccc;
 }
 
-.button-search-id,
+.button-search-descripcion,
 .button-search-nombre {
     background-color: #ff6600;
     margin-inline-start: 5px;
@@ -87,21 +83,9 @@ h1 {
     transition: background-color 0.3s;
 }
 
-.button-search-id:hover,
+.button-search-descripcion:hover,
 .button-search-nombre:hover {
     background-color: #fb7e2b;
-}
-
-.contenedor-ordenes {
-    flex-grow: 1;
-    flex-shrink: 1;
-    margin-right: 10px;
-    max-width: auto;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
 }
 
 .contenedor-productos{
@@ -115,22 +99,19 @@ h1 {
     box-sizing: border-box;
 }
 
-.contenedor-ordenes table,
 .contenedor-productos table {
     width: 100%; 
     border-collapse: collapse;
 }
 
-.contenedor-ordenes th,
 .contenedor-productos th,
-.contenedor-ordenes td,
 .contenedor-productos td {
     padding: 10px; 
     border-bottom: 1px solid; 
     text-align: center;
 }
 
-.btn-detalles, .btn-gestionar {
+.btn-editar {
     background-color: var(--clr-main-light);
     color: var(--clr-white);
     border: none;
@@ -142,17 +123,11 @@ h1 {
     transition: background-color 0.3s;
 }
 
-.btn-detalles:hover,
-.btn-gestionar:hover {
+.btn-editar:hover {
     background-color: var(--clr-red);
 }
 
-
-
-
-
-
-
-
-
-
+table img {
+    width: 100px;
+    height: auto;
+}
