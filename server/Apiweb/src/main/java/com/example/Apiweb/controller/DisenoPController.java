@@ -71,4 +71,9 @@ public class DisenoPController {
         disenoPService.cambiarEstadoDisenoPorIdOrdenProd(idOrdenProd, estado);
         return new ResponseEntity<String>("Estado de el disenoP actualizado correctamente.", HttpStatus.OK);
     }
+
+    @PutMapping("/actualizarImagen/{idDisenoP}")
+    public ResponseEntity<String> actualizarImagen(@PathVariable Integer idDisenoP, @RequestBody String image_url) {
+        return new ResponseEntity<String>(disenoPService.actualizarImagenPorId(idDisenoP,image_url), HttpStatus.OK);
+    }
 }

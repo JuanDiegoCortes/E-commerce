@@ -7,7 +7,6 @@ window.onload = function() {
     function mostrarDisenoP(orden) {
         const containerOrdenes = document.querySelector(".contenedor-informacion");
         containerOrdenes.innerHTML = "";
-    
         const table = document.createElement("table");
     
         const trHeader = document.createElement("tr");
@@ -33,6 +32,67 @@ window.onload = function() {
     
         table.appendChild(tr);
         containerOrdenes.appendChild(table);
+
+
+        const AgregarDisenosHeader = document.createElement("tr");
+        AgregarDisenosHeader.innerHTML = `
+            <th> Agregar diseño </th>
+        `;
+        table.appendChild(AgregarDisenosHeader);
+
+        const trAgregarDisenos = document.createElement("tr");
+        trAgregarDisenos.innerHTML = `
+            <td><input type="text" id="input-${orden.idDisenoP}" class="inputAgregarDiseno" name="inputAgregarDiseno"> <button class = "botonAsignar" id= "${orden.idDisenoP}" type="button" name="asignarImagenButton"> Asignar </button></td>
+        `;
+
+        table.appendChild(trAgregarDisenos);
+        containerOrdenes.appendChild(table);
+
+        asignarImagenBoton();
+    }
+
+    function asignarImagenBoton(){
+    const botonAsignar = document.querySelectorAll(".botonAsignar");
+    botonAsignar.forEach(boton => {
+        boton.addEventListener("click", function(e) {
+            const idDisenoP = e.target.id;
+            const inputId = 'input-' + idDisenoP;
+            const imagenAsignada = document.getElementById(inputId).value;
+
+            console.log(idDisenoP, imagenAsignada);
+            asignarImagen(idDisenoP, imagenAsignada);
+        });
+    });
+    }
+
+    function asignarImagen(idDisenoP, imagenAsignada){
+        console.log(idDisenoP, imagenAsignada);
+        const urlImagen = `http://localhost:8081/Apiweb/v1/disenoP/actualizarImagen/${idDisenoP}`; 
+        fetch(urlImagen, {
+            method: 'PUT',
+            body: imagenAsignada,
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response)
+        .then(() => {
+            Toastify({
+                text: "Diseñador asignado correctamente",
+                duration: 1000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                    borderRadius: "2rem",
+                }
+            }).showToast();
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        })
+        .catch(error => console.error(error));
     }
     
     function obtenerComentarios(data){
@@ -104,4 +164,5 @@ window.onload = function() {
     mostrarDisenoP(disenoPSeleccionado)
     obtenerComentarios(disenoPSeleccionado)
     addEventListeners()
+
 }

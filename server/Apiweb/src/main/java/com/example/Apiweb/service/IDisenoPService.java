@@ -15,4 +15,5 @@ public interface IDisenoPService {
 
     Optional<DisenoPModel> mostrarDisenoCompartidoPorIdOrden(int idDisenoP);
     void cambiarEstadoDisenoPorIdOrdenProd(int idOrdenProd, String estado);
+    String actualizarImagenPorId(int idDisenoP, String image_url);
 }

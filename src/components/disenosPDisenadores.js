@@ -68,40 +68,39 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 mostrarDisenosP(disenosP);
             }
+            botonBuscarID.addEventListener("click", function(){
+                const idBuscado = parseInt(inputFiltro.value);
+                if (!disenosP) {
+                    console.error('disenosP is undefined');
+                    return;
+                }
+                const disenoPFiltrados = disenosP.filter(disenoP => disenoP.idDisenoP === idBuscado);
+            
+                if (disenoPFiltrados && disenoPFiltrados.length > 0){
+                    mostrarDisenosP(disenoPFiltrados);
+                }else{
+                    containerDiseñosP.innerHTML = "No se encontro ningun diseño con ese ID";
+                }
+            });
+    
+            botonBuscarNombre.addEventListener("click", function(){
+                const nombreBuscado = inputFiltro.value.toLowerCase();
+                let disenosParaFiltrar;
+    
+                if (estadoActivo !== "todos") {
+                    disenosParaFiltrar = disenosP.filter(disenoP => disenoP.estado === estadoActivo);
+                } else {
+                    disenosParaFiltrar = disenosP;
+                }
+                const disenosFiltrados = disenosParaFiltrar.filter(disenoP => disenoP.cedula.nombre.toLowerCase() === nombreBuscado);
+    
+                if (disenosFiltrados.length > 0) {
+                    mostrarDisenosP(disenosFiltrados);
+                } else {
+                    containerDiseñosP.innerHTML = "No se encontro ningun diseño con ese nombre en el estado seleccionado.";
+                }
+            });
         }));
-
-        botonBuscarID.addEventListener("click", function(){
-            const idBuscado = parseInt(inputFiltro.value);
-            if (!disenosP) {
-                console.error('disenosP is undefined');
-                return;
-            }
-            const disenoPFiltrados = disenosP.filter(disenoP => disenoP.idDisenoP === idBuscado);
-        
-            if (disenoPFiltrados && disenoPFiltrados.length > 0){
-                mostrarDisenosP(disenoPFiltrados);
-            }else{
-                containerDiseñosP.innerHTML = "No se encontro ningun diseño con ese ID";
-            }
-        });
-
-        botonBuscarNombre.addEventListener("click", function(){
-            const nombreBuscado = inputFiltro.value.toLowerCase();
-            let disenosParaFiltrar;
-
-            if (estadoActivo !== "todos") {
-                disenosParaFiltrar = disenosP.filter(disenoP => disenoP.estado === estadoActivo);
-            } else {
-                disenosParaFiltrar = disenosP;
-            }
-            const disenosFiltrados = disenosParaFiltrar.filter(disenoP => disenoP.cedula.nombre.toLowerCase() === nombreBuscado);
-
-            if (disenosFiltrados.length > 0) {
-                mostrarDisenosP(disenosFiltrados);
-            } else {
-                containerDiseñosP.innerHTML = "No se encontro ningun diseño con ese nombre en el estado seleccionado.";
-            }
-        });
     }
     addEventListener();
 });

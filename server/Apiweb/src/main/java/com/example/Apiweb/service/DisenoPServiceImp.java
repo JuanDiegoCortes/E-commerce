@@ -53,4 +53,14 @@ public class DisenoPServiceImp implements IDisenoPService{
     public void cambiarEstadoDisenoPorIdOrdenProd(int idOrdenProd, String estado) {
         this.disenoPRepository.actualizarEstadoDisenoPorIdOrdenProd(idOrdenProd, estado);
     }
+
+    @Override
+    public String actualizarImagenPorId(int idDisenoP, String image_url) {
+        Optional<DisenoPModel> disenoPref = this.disenoPRepository.findById(idDisenoP);
+        disenoPref.get().setImage_url(image_url);
+        this.disenoPRepository.save(disenoPref.get());
+        return (image_url);
+    }
+
+
 }
