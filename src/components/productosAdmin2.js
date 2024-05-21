@@ -1,22 +1,23 @@
 window.onload = function() {
-    sessionStorage.removeItem("productoId");
 
     let productos = [];
     
     let btnsEditar = document.querySelectorAll(".btn-editar");
-
+    // Select DOM elements
     const inputFiltro = document.querySelector(".input-search")
     const botonBuscarID = document.querySelector(".button-search-id")
     const botonBuscarNombre = document.querySelector(".button-search-nombre")
     const containerProductos = document.querySelector(".contenedor-productos");
 
-    const url = 'http://localhost:8081/Apiweb/v1/producto/';
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        productos = data;
-        mostrarProductos(productos);
-        });
+    function fetchData() {
+        const url = "http://localhost:8081/Apiweb/v1/producto/";
+        return fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            productos = data;
+            mostrarProductos(productos);
+          });
+      }
 
     function mostrarProductos(productos) {
         containerProductos.innerHTML = "";
@@ -24,7 +25,7 @@ window.onload = function() {
         const trHeader = document.createElement("tr");
         trHeader.innerHTML = `
             <th>Imagen</th>
-            <th>Nro Articulo</th>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Precio</th>
@@ -32,16 +33,14 @@ window.onload = function() {
             <th>Personalizable</th>
             <th>Género</th>
             <th>Categoría</th>
-            <th>Tallas</th>
-            <th>Editar Articulo</th>
+            <th>Editar</th>
         `;
         containerProductos.appendChild(trHeader);
 
         productos.forEach(producto => {
             const tr = document.createElement("tr");
-            let tallas = producto.idProdTalla.map(talla => talla.idTalla).join(", ");
             tr.innerHTML = `
-            <td><img src="${producto.image_Url}" alt="${producto.nombre}"></td>
+            <td><img class="producto-img" src="${producto.image_Url}" alt="${producto.nombre}"></td>
             <td>${producto.idProducto}</td>
             <td>${producto.nombre}</td>
             <td>${producto.descripcion}</td>
@@ -50,8 +49,7 @@ window.onload = function() {
             <td>${producto.personalizable}</td>  
             <td>${producto.genero}</td>
             <td>${producto.idCategoria.nombre}</td>
-            <td>${tallas}</td>
-            <td><button class="btn-gestionar" id="${producto.idProducto}">Editar</button></td>
+            <td><button class="btn-editar" id="${producto.idProducto}">Editar</button></td>
             `;
 
             containerProductos.appendChild(tr);
@@ -93,5 +91,6 @@ window.onload = function() {
             }
         });
     }
+    fetchData();
     addEventListeners();
 }
