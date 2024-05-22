@@ -255,7 +255,7 @@ h1 {
 }
 
 /* Estilos para el botón de enviar */
-input[type="submit"] {
+input {
     width: 50%; /* Cambiado el ancho al 50% para centrarlo */
     margin: 0 auto; /* Centrar horizontalmente */
     height: 50px;
@@ -268,7 +268,7 @@ input[type="submit"] {
     outline: none;
 }
 
-input[type="submit"]:hover {
+input:hover {
     border-color: var(--clr-orangered);
     transition: .5s;
 }

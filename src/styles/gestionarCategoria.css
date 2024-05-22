@@ -70,7 +70,7 @@ h1 {
     border: 1px solid #ccc;
 }
 
-.button-search-descripcion,
+.button-search-id,
 .button-search-nombre {
     background-color: #ff6600;
     margin-inline-start: 5px;
@@ -83,12 +83,12 @@ h1 {
     transition: background-color 0.3s;
 }
 
-.button-search-descripcion:hover,
+.button-search-id:hover,
 .button-search-nombre:hover {
     background-color: #fb7e2b;
 }
 
-.contenedor-productos{
+.contenedor-categorias{
     flex-grow: 1;
     flex-shrink: 1;
     max-width: auto;
@@ -99,13 +99,13 @@ h1 {
     box-sizing: border-box;
 }
 
-.contenedor-productos table {
+.contenedor-categorias table {
     width: 100%; 
     border-collapse: collapse;
 }
 
-.contenedor-productos th,
-.contenedor-productos td {
+.contenedor-categorias th,
+.contenedor-categorias td {
     padding: 10px; 
     border-bottom: 1px solid; 
     text-align: center;
@@ -127,7 +127,4 @@ h1 {
     background-color: var(--clr-red);
 }
 
-table img {
-    width: 100px;
-    height: auto;
-}
+
