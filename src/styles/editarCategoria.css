@@ -35,7 +35,7 @@ h1 {
 .regresar {
     position: absolute;
     top: 10px;
-    right: 120px;
+    right: 10px;
 }
 
 .regresarBtn {
@@ -165,7 +165,7 @@ h1 {
     position: absolute;
     top: 40px;
     left: 0;
-    width: 0%;
+    width: 100%;
     height: 2px;
     background: var(--clr-main-light);
     transition: .5s;
@@ -175,82 +175,6 @@ h1 {
 .nombre input:focus ~ span::before,
 .descripcion input:focus ~ span::before,
 .precio input:focus ~ span::before {
-    width: 100%;
-}
-
-
-/* Estilos para los contenedores de talla y cantidad */
-.talla {
-    margin: 20px 0; /* Aumentado el espacio entre las tallas */
-    display: flex;
-    align-items: center;
-}
-
-.talla input[type="number"] {
-    width: 80px; /* Aumentado el ancho para que sea consistente con otros inputs */
-    height: 40px; /* Ajustando la altura para que sea igual que otros inputs */
-    padding: 10px; /* Agregando relleno para mejorar la apariencia */
-    margin-right: 10px;
-    font-size: 16px; /* Ajustando el tamaño de fuente para que sea igual que otros inputs */
-    border: 2px solid var(--clr-silver); /* Agregando borde para mejorar la apariencia */
-    border-radius: 5px; /* Agregando bordes redondeados */
-    outline: none;
-}
-
-.talla label {
-    color: var(--clr-silver);
-    font-size: 16px;
-}
-
-.talla input:focus ~ span::before {
-    width: 100%;
-}
-
-
-.link-imagen {
-    position: relative;
-    border-bottom: 2px solid var(--clr-silver);
-    margin: 20px 0;
-}
-
-.link-imagen input {
-    width: 100%;
-    padding: 0 5px;
-    height: 40px;
-    font-size: 16px;
-    border: none;
-    background: none;
-    outline: none;
-}
-
-.link-imagen label {
-    position: relative;
-    top: -25%;
-    left: 5px;
-    color: #adadad;
-    font-size: 16px;
-    pointer-events: none;
-    transition: .3s;
-}
-
-.link-imagen span::before {
-    width: 100%;
-    padding: 10px 5px;
-    height: 40px;
-    font-size: 16px;
-    border: none;
-    background: none;
-    outline: none;
-    position: relative;
-    z-index: 1;
-}
-
-.link-imagen input:focus ~ label {
-    top: -5px;
-    color: var(--clr-main);
-}
-
-.link-imagen input:focus ~ span::before {
     width: 100%;
 }
 
