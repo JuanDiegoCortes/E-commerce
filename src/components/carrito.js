@@ -53,7 +53,7 @@ async function cargarProductosCarrito() {
                     <p>$${producto.precio * producto.cantidad}</p>
                 </div>
                 <div class="personalizacion">
-                    <button class="carrito-producto-personalizar" id="${producto.idProducto}"><i class="bi bi-pencil-fill"></i></button>
+                    <button name="${producto.nombre}" class="carrito-producto-personalizar" id="${producto.idProducto}"><i class="bi bi-pencil-fill"></i></button>
                 </div>
                 <button class="carrito-producto-eliminar" id="${producto.idProducto}"><i class="bi bi-trash-fill"></i></button>
             `;
@@ -83,6 +83,7 @@ async function cargarProductosCarrito() {
         actualizarTotal();
         actualizarBotonesTallas();
         actualizarCantidadInput();
+        actualizarInfoPersonalizacion();
 
     } else {
         contenedorCarritoVacio.classList.remove("disabled");
@@ -93,6 +94,127 @@ async function cargarProductosCarrito() {
 
 
 cargarProductosCarrito();
+
+let divAbierto = false; // Añade esta línea al principio de tu script
+let idDivAbierto = null; // Añade esta línea para guardar el id del div abierto
+function actualizarInfoPersonalizacion() {
+    // Seleccionar todos los botones
+    let botones = document.querySelectorAll('.carrito-producto-personalizar');
+
+    botones.forEach(function(boton) {
+        // Agregar evento de click al botón
+        boton.addEventListener('click', () => {
+            // Verificar si el div ya existe
+            let divExistente = document.getElementById('divPersonalizacion' + boton.id);
+
+            if (divExistente) {
+                // Si el div existe, eliminarlo
+                divExistente.remove();
+                divAbierto = false; // Establece divAbierto en false cuando se cierra un div
+                idDivAbierto = null; // Establece idDivAbierto en null cuando se cierra un div
+            } else if (!divAbierto){
+                divAbierto = true; // Establece divAbierto en true cuando se abre un div
+                idDivAbierto = boton.id; // Guarda el id del div abierto
+                // Crear nuevo div y áreas de texto
+                let div = document.createElement('div');
+                div.id = 'divPersonalizacion' + boton.id;
+                let textAreaUrl = document.createElement('input');
+                let textAreaDescripcion = document.createElement('input');
+
+                // Crear títulos
+                let tituloPrincipal = document.createElement('h4');
+                tituloPrincipal.textContent = 'Personalizando ' + boton.name; // Asume que boton.name es el nombre del artículo
+                let tituloUrl = document.createElement('label');
+                tituloUrl.textContent = 'URL de la imagen:';
+                let tituloDescripcion = document.createElement('label');
+                tituloDescripcion.textContent = 'Describa su diseño:';
+
+                // Aplicar estilos CSS a los títulos
+                tituloPrincipal.style.fontWeight = 'bold';
+                tituloUrl.style.fontWeight = 'bold';
+                tituloDescripcion.style.fontWeight = 'bold';
+
+                // Aplicar margen a los elementos
+                tituloPrincipal.style.margin = '20px';
+                tituloUrl.style.margin = '10px';
+                textAreaUrl.style.margin = '10px';
+                tituloDescripcion.style.margin = '10px';
+
+
+                // Añadir títulos y áreas de texto al div
+                div.appendChild(tituloPrincipal);
+                div.appendChild(tituloUrl);
+                div.appendChild(textAreaUrl);
+                div.appendChild(tituloDescripcion);
+                div.appendChild(textAreaDescripcion);
+
+                // Aplicar estilos CSS al div
+                div.style.position = 'fixed';
+                div.style.top = '50%';
+                div.style.left = '50%';
+                div.style.transform = 'translate(-50%, -50%)';
+                div.style.width = '500px';  
+                div.style.height = '200px';
+                div.style.backgroundColor = 'white';
+                div.style.zIndex = '1000';
+                div.style.padding = '20px';
+                div.style.boxShadow = '0 0 10px rgba(0,0,0,0.25)';
+
+                // Añadir div al DOM
+                document.body.appendChild(div);
+
+                textAreaUrl.addEventListener('change', function() {
+                    // Buscar producto en el array productosEnCarrito
+                    let index = productosEnCarrito.findIndex(prod => prod.idProducto === parseInt(boton.id));
+                    
+                    // Comprobar si el producto existe
+                    if (index !== -1) {
+                        // Actualizar producto en el carrito
+                        productosEnCarrito[index].image_Personalizacion = textAreaUrl.value;
+                        
+                        // Guardar array actualizado en el localStorage
+                        localStorage.setItem('productos-en-carrito', JSON.stringify(productosEnCarrito));
+                    }
+                    cargarProductosCarrito();
+                });
+                
+                textAreaDescripcion.addEventListener('change', function() {
+                    // Buscar producto en el array productosEnCarrito
+                    let index = productosEnCarrito.findIndex(prod => prod.idProducto === parseInt(boton.id));
+                
+                    // Comprobar si el producto existe
+                    if (index !== -1) {
+                        // Actualizar producto en el carrito
+                        productosEnCarrito[index].texto_Personalizacion = textAreaDescripcion.value;
+                        
+                        // Guardar array actualizado en el localStorage
+                        localStorage.setItem('productos-en-carrito', JSON.stringify(productosEnCarrito));
+                    }
+                    cargarProductosCarrito();
+                });
+            } else if (divAbierto && idDivAbierto !== parseInt(boton.id)) {
+                Toastify({
+                    text: "Por favor cierre la ventana de personalización actual antes de abrir otra.",
+                    duration: 2000,
+                    close: true,
+                    gravity: "top", 
+                    position: "right", 
+                    stopOnFocus: true, 
+                    style: {
+                      background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                      borderRadius: "2rem",
+                      fontSize: ".75rem"
+                    },
+                    offset: {
+                        x: '1.5rem', 
+                        y: '1.5rem'
+                      },
+                    onClick: function(){} 
+                    }).showToast();
+            }
+        });
+    });
+}
 
 function actualizarCantidadInput() {
     let inputsCantidad = document.querySelectorAll('.carrito-producto-input-cantidad');
@@ -242,7 +364,7 @@ botonComprar.addEventListener("click", () =>  {
                 Productos: productosEnCarrito.map(producto => ({
                     cantidad: producto.cantidad,
                     image_Personalizacion: producto.image_Personalizacion || "",
-                    texto_Personalizaion: producto.texto_Personalizaion || "",
+                    texto_Personalizacion: producto.texto_Personalizacion || "",
                     idProducto: producto.idProducto,
                     idTalla: producto.idTalla
                 }))
