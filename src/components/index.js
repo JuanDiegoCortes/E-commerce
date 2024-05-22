@@ -43,15 +43,19 @@ if (localStorage.getItem("usuario") === null) {
   let session = JSON.parse(localStorage.getItem("usuario"));
 
   if (session.idRol.idRol === 1) {
+    btnProductosAdmin.style.display = "display";
     btnOrdenesEncargado.style.display = "display";
     btnDisenosPDisenador.style.display = "display";
   } else if (session.idRol.idRol === 3) {
+    btnProductosAdmin.style.display = "none";
     btnOrdenesEncargado.style.display = "display";
     btnDisenosPDisenador.style.display = "none";
   } else if (session.idRol.idRol === 4){ 
+    btnProductosAdmin.style.display = "none";
     btnOrdenesEncargado.style.display = "none";
     btnDisenosPDisenador.style.display = "display";
   } else {
+    btnProductosAdmin.style.display = "none";
     btnOrdenesEncargado.style.display = "none";
     btnDisenosPDisenador.style.display = "none";
 }
