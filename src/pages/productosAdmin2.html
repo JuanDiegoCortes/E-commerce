@@ -9,16 +9,32 @@
     <link rel="stylesheet" href="../styles/productosAdmin2.css">
 </head>
 <body>
-        <div class="container">
+    <div class="container">
         <h2>Gestión de Articulos</h2>
         <div class="regresar">
             <a href="./productosAdmin.html" class="regresarBtn">Regresar</a>
         </div>
-        <form class="d-flex">
-            <input id="input-search" class="form-control me-2 input-search"  placeholder="Buscar por ID o Nombre">
-            <button class="btn btn-outline-success button-search-id" type="button">Buscar ID</button>
-            <button class="btn btn-outline-success button-search-nombre" type="button">Buscar Nombre</button>
-        </form>
+            <form class="d-flex">
+                <input id="input-search" class="form-control me-2 input-search"  placeholder="Buscar por ID o Nombre">
+                <button class="btn btn-outline-success button-search-id" type="button">Buscar ID</button>
+                <button class="btn btn-outline-success button-search-nombre" type="button">Buscar Nombre</button>
+            </form>
+            <div class="dropdown">
+                <button id="boton-filtro" class="btn btn-primary dropdown-toggle boton-filtro" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Estado
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button id="todos" class="dropdown-item boton-Categorias" type="button">Todo</button></li>
+                    <li><button id="Deportiva" class="dropdown-item boton-Categorias" type="button">Deportiva</button></li>
+                    <li><button id="Personalización" class="dropdown-item boton-Categorias" type="button">Personalización</button></li>
+                    <li><button id="Chaquetas" class="dropdown-item boton-Categorias" type="button">Chaquetas</button></li>
+                    <li><button id="Buzos" class="dropdown-item boton-Categorias" type="button">Buzos</button></li>
+                    <li><button id="Camisetas" class="dropdown-item boton-Categorias" type="button">Camisetas</button></li>
+                    <li><button id="Polos" class="dropdown-item boton-Categorias" type="button">Polos</button></li>
+                    <li><button id="Maletas" class="dropdown-item boton-Categorias" type="button">Maletas</button></li>
+                </ul>
+            </div>
+
         <div class="contenedor-flex">
             <div id="contenedor-productos" class="contenedor-productos">
                 <!-- Esto se va a rellenar con JS-->

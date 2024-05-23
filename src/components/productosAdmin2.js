@@ -8,6 +8,7 @@ window.onload = function() {
     const botonBuscarID = document.querySelector(".button-search-id")
     const botonBuscarNombre = document.querySelector(".button-search-nombre")
     const containerProductos = document.querySelector(".contenedor-productos");
+    const botonCategorias = document.querySelectorAll(".boton-Categorias");
 
     function fetchData() {
         const url = "http://localhost:8081/Apiweb/v1/producto/";
@@ -15,6 +16,7 @@ window.onload = function() {
           .then(response => response.json())
           .then(data => {
             productos = data;
+            console.log(productos);
             mostrarProductos(productos);
           });
       }
@@ -69,6 +71,25 @@ window.onload = function() {
     }
 
     function addEventListeners() {
+
+        botonCategorias.forEach(boton => boton.addEventListener("click", function(e) {
+            botonCategorias.forEach(boton => boton.classList.remove("active"));
+            e.currentTarget.classList.add("active");
+
+            let categoriaActiva = e.currentTarget.id;
+        
+            if (categoriaActiva !== "todos") {
+                const productosCategoria = productos.filter(producto => producto.idCategoria.nombre === categoriaActiva);
+                if (productosCategoria.length === 0) {
+                    containerProductos.innerHTML = "No hay productos en esa categoría.";
+                } else {
+                    mostrarProductos(productosCategoria);
+                }
+            } else {
+                mostrarProductos(productos);
+            }
+        }));
+
         botonBuscarID.addEventListener('click', function() {
             const idBuscado = parseInt(inputFiltro.value);
             const productoFiltrado = productos.find(producto => producto.idProducto === idBuscado);
@@ -82,14 +103,14 @@ window.onload = function() {
 
         botonBuscarNombre.addEventListener('click', function() {
             const nombreBuscado = inputFiltro.value.toLowerCase();
-            let productosFiltrados = productos.filter(producto => producto.nombre.toLowerCase() === nombreBuscado);
-
+            let productosFiltrados = productos.filter(producto => producto.nombre.toLowerCase().includes(nombreBuscado));
             if (productosFiltrados.length > 0) {
                 mostrarProductos(productosFiltrados);
             } else {
                 containerProductos.innerHTML = "No se encontró ningún producto con ese nombre";
             }
         });
+        
     }
     fetchData();
     addEventListeners();
