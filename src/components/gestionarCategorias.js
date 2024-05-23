@@ -1,22 +1,23 @@
 window.onload = function() {
-    sessionStorage.removeItem("productoId");
 
     let categorias = [];
     
     let btnsEditar = document.querySelectorAll(".btn-editar");
-
+    // Select DOM elements
     const inputFiltro = document.querySelector(".input-search")
     const botonBuscarId = document.querySelector(".button-search-id")
     const botonBuscarNombre = document.querySelector(".button-search-nombre")
     const containerCategorias = document.querySelector(".contenedor-categorias");
 
-    const url = 'http://localhost:8081/Apiweb/v1/producto/';
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        categorias = data;
-        mostrarCategorias(categorias);
-        });
+    function fetchData() {
+        const url = "http://localhost:8081/Apiweb/v1/categoria/";
+        return fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            categorias = data;
+            mostrarCategorias(categorias);
+          });
+      }
 
     function mostrarCategorias(categorias) {
         containerCategorias.innerHTML = "";
@@ -26,7 +27,7 @@ window.onload = function() {
             <th>ID</th>
             <th>Nombre</th>
             <th>Descripción</th>
-            <th>Id subcategorias</th>
+            <th>Id subCategorias</th>
             <th>Editar</th>
         `;
         containerCategorias.appendChild(trHeader);
@@ -37,7 +38,7 @@ window.onload = function() {
             <td>${categoria.idCategoria}</td>
             <td>${categoria.nombre}</td>
             <td>${categoria.descripcion}</td>
-            <td>${categoria.subIdCategoria}</td>
+            <td>${categoria.subIdCategoria ? categoria.subIdCategoria.idCategoria : 'N/A'}</td>
             <td><button class="btn-editar" id="${categoria.idCategoria}">Editar</button></td>
             `;
 
@@ -51,7 +52,7 @@ window.onload = function() {
     
         btnsEditar.forEach(boton => {
             boton.addEventListener("click", () => {
-                sessionStorage.setItem("idCategoria", JSON.stringify(parseInt(boton.id)))
+                sessionStorage.setItem("categoriaId", JSON.stringify(parseInt(boton.id)))
                 window.location.href = "editarCategoria.html";
             });
         });
@@ -60,12 +61,12 @@ window.onload = function() {
     function addEventListeners() {
         botonBuscarId.addEventListener('click', function() {
             const idBuscado = parseInt(inputFiltro.value);
-            const categoriasFiltradas = categorias.find(categoria => categoria.idCategoria === idBuscado);
+            const categoriaFiltrada = categorias.find(categoria => categoria.idCategoria === idBuscado);
         
-            if (categoriasFiltradas) {
-                mostrarCategorias([categoriasFiltradas]);
+            if (categoriaFiltrada) {
+                mostrarCategorias([categoriaFiltrada]);
             } else {
-                containerCategorias.innerHTML = "No se encontró ningún producto con ese ID.";
+                containerCategorias.innerHTML = "No se encontró ninguna categoria con ese ID.";
             }
         });
 
@@ -76,9 +77,10 @@ window.onload = function() {
             if (categoriasFiltradas.length > 0) {
                 mostrarCategorias(categoriasFiltradas);
             } else {
-                containerCategorias.innerHTML = "No se encontró ningún producto con ese nombre";
+                containerCategorias.innerHTML = "No se encontró ninguna categoria con ese nombre";
             }
         });
     }
+    fetchData();
     addEventListeners();
 }
