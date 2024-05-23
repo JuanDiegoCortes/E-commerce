@@ -1,4 +1,6 @@
 window.onload = function() {
+
+
     const disenoPSeleccionado = JSON.parse(sessionStorage.getItem("disenoPSeleccionado"));
 
     const contenedorComentarios = document.getElementById('comentarios');
@@ -77,7 +79,7 @@ window.onload = function() {
         }).then(response => response)
         .then(() => {
             Toastify({
-                text: "Diseñador asignado correctamente",
+                text: "Diseño asignado correctamente",
                 duration: 1000,
                 close: true,
                 gravity: "top",
@@ -88,10 +90,13 @@ window.onload = function() {
                     borderRadius: "2rem",
                 }
             }).showToast();
-            setTimeout(() => {
-                location.reload();
-            }, 2000);
-        })
+                let disenoPSeleccionado = JSON.parse(sessionStorage.getItem('disenoPSeleccionado'));
+                disenoPSeleccionado.image_url = imagenAsignada;
+                sessionStorage.setItem('disenoPSeleccionado', JSON.stringify(disenoPSeleccionado));
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+            })
         .catch(error => console.error(error));
     }
     
