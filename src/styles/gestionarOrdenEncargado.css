@@ -6,6 +6,8 @@
     --clr-white: #ececec;
     --clr-gray: #e2e2e2;
     --clr-red: #961818;
+    --clr-orangered: #ff4500;
+
 }
 
 * {
@@ -19,7 +21,7 @@ body {
 
 .regresarBtn {
     background-color: #ff6600; /* Color anaranjado */
-    color: black; /* Texto en negro para resaltar */
+    color: rgb(255, 255, 255); /* Texto en negro para resaltar */
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -30,7 +32,7 @@ body {
 }
 
 .regresarBtn:hover {
-    background-color: #ff9000; /* Anaranjado más claro al pasar el ratón */
+    background-color: var(--clr-orangered);
 }
 
 .contenedor-informacion,
@@ -61,4 +63,27 @@ table th, table td {
     padding: 1rem;
     border-bottom: 1px solid;
     text-align: center;
+}
+
+/* Estilos para los dropdowns */
+.dropdown {
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.btn-primary{
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-orangered);
 }

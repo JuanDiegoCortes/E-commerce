@@ -6,6 +6,7 @@
     --clr-white: #ececec;
     --clr-gray: #e2e2e2;
     --clr-red: #961818;
+    --clr-orangered: #ff4500;
 }
 
 body {
@@ -53,7 +54,7 @@ h1 {
 }
 
 .regresarBtn:hover {
-    background-color: var(--clr-red);
+    background-color: var(--clr-orangered);
 }
 
 .d-flex {
@@ -89,7 +90,7 @@ h1 {
 
 .button-search-id:hover,
 .button-search-nombre:hover {
-    background-color: #fb7e2b;
+    background-color: var(--clr-orangered);
 }
 
 .contenedor-ordenes {
@@ -144,11 +145,32 @@ h1 {
 
 .btn-detalles:hover,
 .btn-gestionar:hover {
-    background-color: var(--clr-red);
+    background-color: var(--clr-orangered);
 }
 
 
+/* Estilos para los dropdowns */
+.dropdown {
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+}
 
+.btn-primary{
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-orangered);
+}
 
 
 

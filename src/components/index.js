@@ -22,6 +22,7 @@ const btnLogout = document.querySelector(".logout");
 const btnProductosAdmin = document.querySelector(".boton-productosAdmin");
 const btnOrdenesEncargado = document.querySelector(".boton-ordenes");
 const btnDisenosPDisenador = document.querySelector(".boton-disenosP");
+const btnGestionarCategorias = document.querySelector(".boton-gestionarCategoria");
 
 if (localStorage.getItem("usuario") === null) {
   btnLogin.style.display = "display";
@@ -30,6 +31,8 @@ if (localStorage.getItem("usuario") === null) {
   btnLogout.style.display = "none";
   btnOrdenesEncargado.style.display = "none";
   btnDisenosPDisenador.style.display = "none";
+  btnProductosAdmin.style.display = "none";
+  btnGestionarCategorias.style.display = "none";
 } else {
   btnLogin.style.display = "none";
   btnSigiUp.style.display = "none";
@@ -46,18 +49,22 @@ if (localStorage.getItem("usuario") === null) {
     btnProductosAdmin.style.display = "display";
     btnOrdenesEncargado.style.display = "display";
     btnDisenosPDisenador.style.display = "display";
+    btnGestionarCategorias.style.display = "display";
   } else if (session.idRol.idRol === 3) {
     btnProductosAdmin.style.display = "none";
     btnOrdenesEncargado.style.display = "display";
     btnDisenosPDisenador.style.display = "none";
+    btnGestionarCategorias.style.display= "none";
   } else if (session.idRol.idRol === 4){ 
     btnProductosAdmin.style.display = "none";
     btnOrdenesEncargado.style.display = "none";
     btnDisenosPDisenador.style.display = "display";
+    btnGestionarCategorias.style.display= "none";
   } else {
     btnProductosAdmin.style.display = "none";
     btnOrdenesEncargado.style.display = "none";
     btnDisenosPDisenador.style.display = "none";
+    btnGestionarCategorias.style.display= "none";
 }
 }
 

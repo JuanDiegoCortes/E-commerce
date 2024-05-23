@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
+/* Variables de color */
 :root {
     --clr-main: #000;
     --clr-main-light: #ff6600;
     --clr-white: #ececec;
-    --clr-gray: #e2e2e2;
-    --clr-red: #961818;
+    --clr-silver: #adadad;
+    --clr-orangered: #ff4500;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
 }
 
 /* Estilos generales del cuerpo */
@@ -57,7 +65,7 @@ h1 {
 }
 
 .regresarBtn:hover {
-    background-color: var(--clr-red);
+    background-color: var(--clr-orangered);
 }
 
 .d-flex {
@@ -88,8 +96,8 @@ h1 {
 }
 
 .button-search-id:hover,
-.button-search-nombre:hover {
-    background-color: #fb7e2b;
+.button-search-nombre:hover{
+    background-color: var(--clr-orangered);
 }
 
 .contenedor-categorias{
@@ -129,9 +137,132 @@ h1 {
 }
 
 .btn-editar:hover {
-    background-color: var(--clr-red);
+    background-color: var(--clr-orangered);
+}
+
+.btnCrear {
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btnCrear:hover {
+    background-color: var(--clr-orangered);
+}
+
+/* Estilos para los dropdowns */
+.dropdown {
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.btn-primary{
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-orangered);
 }
 
 
+/* Estilos para los contenedores de id, nombre y descripción */
+.id,
+.nombre,
+.descripcion 
+{
+    position: relative;
+    border-bottom: 2px solid var(--clr-silver);
+    margin: 20px 0;
+}
 
+/* Estilos para los inputs de id, nombre y descripción */
+.id input,
+.nombre input,
+.descripcion input {
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
 
+/* Estilos para los labels de id, nombre y descripción */
+.id label,
+.nombre label,
+.descripcion label{
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    color: var(--clr-silver);
+    font-size: 16px;
+    pointer-events: none;
+    transition: top 0.3s ease, font-size 0.3s ease;
+}
+
+/* Estilos para los inputs enfocados */
+.id input:focus ~ label,
+.nombre input:focus ~ label,
+.descripcion input:focus ~ label{
+    top: -5px;
+    color: var(--clr-main-light);
+}
+
+/* Estilos para los inputs con contenido */
+.id input:not(:placeholder-shown) + label,
+.nombre input:not(:placeholder-shown) + label,
+.descripcion input:not(:placeholder-shown) + label{
+    top: -10px;
+    font-size: 14px;
+}
+
+/* Estilos para la línea debajo del label */
+.id span::before,
+.nombre span::before,
+.descripcion span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--clr-main-light);
+    transition: .5s;
+}
+
+/* Estilos para la línea debajo del label cuando el input está enfocado */
+.id input:focus ~ span::before,
+.nombre input:focus ~ span::before,
+.descripcion input:focus ~ span::before{
+    width: 100%;
+}
+
+.crear {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacio entre los elementos */
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}

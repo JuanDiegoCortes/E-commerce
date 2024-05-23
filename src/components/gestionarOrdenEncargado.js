@@ -18,10 +18,10 @@ window.onload = function() {
             const trHeader = document.createElement("tr");
             trHeader.innerHTML = `
                 <th>Nro. Orden</th>
-                <th>Cedula del Usuario</th>
+                <th>Cédula del Usuario</th>
                 <th>Estado de la orden</th>
-                <th>Evindecia de pago</th>
-                <th>Metodo de pago</th>
+                <th>Evidencia de pago</th>
+                <th>Método de pago</th>
                 <th>Precio total</th>
                 <th>Editar estado</th>
             `;

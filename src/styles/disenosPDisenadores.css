@@ -7,14 +7,22 @@
     --clr-white: #ececec;
     --clr-gray: #e2e2e2;
     --clr-red: #961818;
+    --clr-orangered: #ff4500;
 }
+
 
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(15deg, var(--clr-main-light), var(--clr-main));
+    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
     margin: 20px;
     padding: 30px;
 }
+
+
 
 .container {
     max-width: 800px;
@@ -49,7 +57,7 @@ h1 {
 }
 
 .regresarBtn:hover {
-    background-color: var(--clr-red);
+    background-color: var(--clr-orangered);
 }
 
 .d-flex {
@@ -57,10 +65,6 @@ h1 {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.dropdown {
-    margin-right: 10px;
 }
 
 .input-search {
@@ -72,10 +76,11 @@ h1 {
 
 .button-search-id,
 .button-search-nombre {
-    background-color: #28a745;
+    background-color: #ff6600;
+    margin-inline-start: 5px;
     color: #fff;
     border: none;
-    padding: 8px 20px;
+    padding: 4px 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
@@ -83,9 +88,10 @@ h1 {
 }
 
 .button-search-id:hover,
-.button-search-nombre:hover {
-    background-color: #218838;
+.button-search-nombre:hover{
+    background-color: var(--clr-orangered);
 }
+
 
 .contenedor-disenosP {
     background-color: #fff;
@@ -111,4 +117,25 @@ th {
     color: var(--clr-white);
 }
 
+/* Estilos para los dropdowns */
+.dropdown {
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+}
 
+.btn-primary{
+    background-color: var(--clr-main-light);
+    color: var(--clr-white);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-orangered);
+}
