@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     let disenosP = [];  
+    let estadoActivo = "todos";
 
     const contenedorDisenosP = document.querySelector("#contenedor-disenosP");
     const aside = document.querySelector("aside");
@@ -17,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
         disenosP = data;
         mostrarDisenosP(disenosP);
-        console.log(disenosP);
     })
     .catch(error => {
         console.error("Error al obtener los datos:", error);
@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
             div.innerHTML = `
             <div class="disenoP-atributos">
                 <p> ID disenoP:${disenoP.idDisenoP}</p>
+                <p> Estado: ${disenoP.estado}</p>
                 <p> Cedula del cliente: ${disenoP.cedula.cedula}</p>
                 <p> Nombre del cliente: ${disenoP.cedula.nombre}</p>
-                <p> Correo del cliente: ${disenoP.cedula.correo}</p>
             </div>
             <div class="boton-info">
                 <button class="regresarBtn boton-detalles" id="${disenoP.idDisenoP}">Ver detalles</button>
@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = "../pages/detalleDisenoP.html";
             });
         })
+        addEventListener();
     }
 
     function addEventListener (){
@@ -68,41 +69,48 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 mostrarDisenosP(disenosP);
             }
-            botonBuscarID.addEventListener("click", function(){
-                const idBuscado = parseInt(inputFiltro.value);
-                if (!disenosP) {
-                    console.error('disenosP is undefined');
-                    return;
-                }
-                const disenoPFiltrados = disenosP.filter(disenoP => disenoP.idDisenoP === idBuscado);
-            
-                if (disenoPFiltrados && disenoPFiltrados.length > 0){
-                    mostrarDisenosP(disenoPFiltrados);
-                }else{
-                    containerDiseñosP.innerHTML = "No se encontro ningun diseño con ese ID";
-                }
-            });
-    
-            botonBuscarNombre.addEventListener("click", function(){
-                const nombreBuscado = inputFiltro.value.toLowerCase();
-                let disenosParaFiltrar;
-    
-                if (estadoActivo !== "todos") {
-                    disenosParaFiltrar = disenosP.filter(disenoP => disenoP.estado === estadoActivo);
-                } else {
-                    disenosParaFiltrar = disenosP;
-                }
-                const disenosFiltrados = disenosParaFiltrar.filter(disenoP => disenoP.cedula.nombre.toLowerCase() === nombreBuscado);
-    
-                if (disenosFiltrados.length > 0) {
-                    mostrarDisenosP(disenosFiltrados);
-                } else {
-                    containerDiseñosP.innerHTML = "No se encontro ningun diseño con ese nombre en el estado seleccionado.";
-                }
-            });
+
         }));
+
+        botonBuscarID.addEventListener("click", function(){
+            const idBuscado = parseInt(inputFiltro.value);
+            if (!inputFiltro.value) {
+                mostrarDisenosP(disenosP);
+                return;
+            }
+
+            const disenoPFiltrado = disenosP.find(disenoP => disenoP.idDisenoP === idBuscado);
+        
+            if (disenoPFiltrado){
+                mostrarDisenosP([disenoPFiltrado]);
+            }else{
+                containerDiseñosP.innerHTML = "No se encontro ningun diseño con ese ID";
+            }
+        });
+
+        botonBuscarNombre.addEventListener("click", function(){
+            if (!inputFiltro.value) {
+                mostrarDisenosP(disenosP);
+                return;
+            }
+
+            const nombreBuscado = inputFiltro.value.toLowerCase();
+            let disenosParaFiltrar;
+
+            if (estadoActivo !== "todos") {
+                disenosParaFiltrar = disenosP.filter(disenoP => disenoP.estado === estadoActivo);
+            } else {
+                disenosParaFiltrar = disenosP;
+            }
+            const disenosFiltrados = disenosParaFiltrar.filter(disenoP => disenoP.cedula.nombre.toLowerCase().includes(nombreBuscado));
+
+            if (disenosFiltrados.length > 0) {
+                mostrarDisenosP(disenosFiltrados);
+            } else {
+                containerDiseñosP.innerHTML = "No se encontro ningun diseño con ese nombre en el estado seleccionado.";
+            }
+        });
     }
-    addEventListener();
 });
 
 

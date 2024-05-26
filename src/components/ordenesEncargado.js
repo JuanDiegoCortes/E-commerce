@@ -2,6 +2,7 @@ window.onload = function() {
     sessionStorage.removeItem("ordenId");
 
     let ordenes = [];
+    let estadoActivo = "todos";
     
     let btnsDetalles = document.querySelectorAll(".btn-detalles");
     let btnsGestionar = document.querySelectorAll(".btn-gestionar");
@@ -22,6 +23,8 @@ window.onload = function() {
         });
 
     function mostrarOrdenes(ordenes) {
+        containerProductos = document.querySelector(".contenedor-productos");
+        containerProductos.innerHTML = "";
         containerOrdenes.innerHTML = "";
 
         const trHeader = document.createElement("tr");
@@ -52,7 +55,6 @@ window.onload = function() {
 
     function actualizarBotonesDetalles() {
         btnsDetalles = document.querySelectorAll(".btn-detalles");
-    
         btnsDetalles.forEach(boton => {
             boton.addEventListener("click", cargarProductosOrden);
         });
@@ -60,7 +62,6 @@ window.onload = function() {
     
     function actualizarBotonesGestionar() {
         btnsGestionar = document.querySelectorAll(".btn-gestionar");
-    
         btnsGestionar.forEach(boton => {
             boton.addEventListener("click", () => {
                 sessionStorage.setItem("ordenId", JSON.stringify(parseInt(boton.id)))
@@ -129,6 +130,11 @@ window.onload = function() {
         }));
 
         botonBuscarID.addEventListener('click', function() {
+            if (!(inputFiltro.value)) {
+                mostrarOrdenes(ordenes);
+                return;
+            }
+
             const idBuscado = parseInt(inputFiltro.value);
             const ordenFiltrada = ordenes.find(orden => orden.idOrden === idBuscado);
         
@@ -149,7 +155,7 @@ window.onload = function() {
                 ordenesParaFiltrar = ordenes;
             }
         
-            const ordenesFiltradas = ordenesParaFiltrar.filter(orden => orden.cedula.nombre.toLowerCase() === nombreBuscado);
+            const ordenesFiltradas = ordenesParaFiltrar.filter(orden => orden.cedula.nombre.toLowerCase().includes(nombreBuscado));
         
             if (ordenesFiltradas.length > 0) {
                 mostrarOrdenes(ordenesFiltradas);
