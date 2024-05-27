@@ -71,4 +71,13 @@ public class OrdenServiceImp implements IOrdenService{
         this.ordenRepository.save(ordenRef.get());
         return(disenadorAsginado);
     }
+
+    @Override
+    public String actualizarImagenEvidenciaPagoyEstado(int idOrden,Estado estado,String image_Evidencia ){
+        Optional<OrdenModel> ordenRef = this.ordenRepository.findById(idOrden);
+        ordenRef.get().setEstado(estado);
+        ordenRef.get().setImage_Evidencia(image_Evidencia);
+        this.ordenRepository.save(ordenRef.get());
+        return "La imagen evidencia y el estado de la orden con id" + ordenRef.get().getIdOrden() + " fue actualizado con exito.";
+    }
 }

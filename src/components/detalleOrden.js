@@ -27,8 +27,20 @@ function crearTablaEnvio(orden) {
         <th>Fecha</th>
         <th>Método de Pago</th>
         <th>Referencias</th>
+        <th>Agregar evidencia de pago </th>
+
     `;
     table.appendChild(trHeader);
+
+    let inputEvidencia = `<td>${orden.image_Evidencia}</td>`
+    if (orden.image_Evidencia == null) {
+        inputEvidencia = `
+        <td>
+            <input type="text" id="input-evidencia">
+            <button id="${orden.idOrden}" class="botonEnviar">Subir</button>
+        </td>
+        `;
+    }
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
@@ -42,11 +54,26 @@ function crearTablaEnvio(orden) {
         <td>${orden.fecha}</td>
         <td>${orden.metodoPago}</td>
         <td>${orden.idEnvio.referencias ? orden.idEnvio.referencias : "No hay referencias"}</td>
+        ${inputEvidencia}
+
     `;
+
     table.appendChild(tr);
 
     contenedorEnvio.appendChild(table);
+    asignarImagenBoton();
 }
+function asignarImagenBoton(){
+    const botonAsignar = document.querySelectorAll(".botonEnviar");
+    botonAsignar.forEach(boton => {
+        boton.addEventListener("click", function(e) {
+            const idOrden = e.target.id;
+            const imagenAsignada = document.getElementById("input-evidencia").value;
+            asignarEvidenciaPago(idOrden, imagenAsignada);
+        });
+    });
+}
+
 
 function fetchData(idOrden){
     const url = `http://localhost:8081/Apiweb/v1/ordenProd/visualizarProductos/${idOrden}`
@@ -96,4 +123,39 @@ function mostrarProductos(data){
     });
 
     contenedorProductos.appendChild(table);
+}
+
+function asignarEvidenciaPago(idOrden, imagenAsignada){
+    const estado = "pagada";
+    const urlImagen = `http://localhost:8081/Apiweb/v1/orden/actualizarImagenEvidenciaPagoyEstado/${idOrden}/${estado}`;
+    fetch(urlImagen, {
+        method: 'PUT',
+        body: imagenAsignada,
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }).then(response => response)
+    .then(() => {
+
+        let ordenSeleccionada = JSON.parse(sessionStorage.getItem("ordenSeleccionada"));
+        ordenSeleccionada.image_Evidencia = imagenAsignada;
+        sessionStorage.setItem("ordenSeleccionada", JSON.stringify(ordenSeleccionada));
+        
+        Toastify({
+            text: "Evidencia asignada correctamente",
+            duration: 1000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+                background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                borderRadius: "2rem",
+            }
+        }).showToast();
+        setTimeout(() => {
+            location.reload();
+        }, 1000);
+    })
+    .catch(error => console.error(error));
 }

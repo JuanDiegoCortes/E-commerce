@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     //Variables
     let ordenes = [];
-    let cedula = /* usuario.cedula.cedula;  */582347196
+    let cedula = usuario.cedula.cedula; 
 
     //Select DOM elements
     const contenedorOrdenes = document.querySelector("#contenedor-orden");

@@ -209,4 +209,10 @@ public class OrdenController {
         }
     }
 
+    @PutMapping("/actualizarImagenEvidenciaPagoyEstado/{idOrden}/{estado}")
+    public ResponseEntity<String> actualizarImagenEvidenciaPagoyEstado(@PathVariable Integer idOrden , @PathVariable Estado estado, @RequestBody String image_Evidencia){
+        return new ResponseEntity<String>(ordenService.actualizarImagenEvidenciaPagoyEstado(idOrden,estado, image_Evidencia), HttpStatus.OK);
+    }
+
+
 }
