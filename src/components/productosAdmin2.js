@@ -16,7 +16,6 @@ window.onload = function() {
           .then(response => response.json())
           .then(data => {
             productos = data;
-            console.log(productos);
             mostrarProductos(productos);
           });
       }
@@ -53,7 +52,7 @@ window.onload = function() {
             <td>${producto.idProducto.personalizable}</td>  
             <td>${producto.idProducto.genero}</td>
             <td>${producto.idProducto.idCategoria.nombre}</td>
-            <td><button class="btn-editar" id="${producto.idProducto}">Editar</button></td>
+            <td><button class="btn-editar" id="${producto.idProducto.idProducto}">Editar</button></td>
             `;
 
             containerProductos.appendChild(tr);
@@ -66,8 +65,13 @@ window.onload = function() {
     
         btnsEditar.forEach(boton => {
             boton.addEventListener("click", () => {
-                sessionStorage.setItem("productoId", JSON.stringify(parseInt(boton.id)))
-                window.location.href = "editarProducto.html";
+                let productoEditar = productos.find(producto => producto.idProducto.idProducto === parseInt(boton.id));
+                if (productoEditar) {
+                    sessionStorage.setItem("productoEditar", JSON.stringify(productoEditar))
+                    window.location.href = "./editarProducto.html";
+                } else {
+                    console.error('Producto no encontrado');
+                }
             });
         });
     }

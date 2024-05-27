@@ -67,10 +67,10 @@ public class CategoriaController {
         String nombreActualizar = detallesCategoria.getNombre();
         String nombreActualizar2 = detallesCategoria.getDescripcion();
 
-        if (nombreActualizar != null && !nombreActualizar.isEmpty()) {
+        if (nombreActualizar != null && !nombreActualizar.isEmpty() && nombreActualizar != "") {
             categoria.setNombre(nombreActualizar);
         }
-        if (nombreActualizar2 != null && !nombreActualizar2.isEmpty()) {
+        if (nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar2 != "") {
             categoria.setDescripcion(nombreActualizar2);
         }
 
