@@ -9,6 +9,9 @@ window.onload = function() {
     const botonBuscarNombre = document.querySelector(".button-search-nombre")
     const containerCategorias = document.querySelector(".contenedor-categorias");
 
+    const btnCrear = document.querySelector(".btnCrear")
+    btnCrear.addEventListener("click", crearCategoria);
+
     function fetchData() {
         const url = "http://localhost:8081/Apiweb/v1/categoria/";
         return fetch(url)
@@ -81,6 +84,41 @@ window.onload = function() {
             }
         });
     }
+
+    let idSubCategoria = null;
+
+    document.querySelectorAll(".boton-subcategoria").forEach(boton => {
+        boton.addEventListener("click", function() {
+            idSubCategoria = this.id;
+        });
+    });
+
+    function crearCategoria() {
+        const idCategoria = document.querySelector("#id").value;
+        const nombre = document.querySelector("#nombre").value;
+        const descripcion = document.querySelector("#descripcion").value;
+
+        const nuevaCategoria = {
+            idCategoria: idCategoria,
+            nombre: nombre,
+            descripcion: descripcion,
+            subIdCategoria: {idCategoria:idSubCategoria}
+        }
+
+        const url = "http://localhost:8081/Apiweb/v1/categoria/";
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(nuevaCategoria)
+        })
+        .then(response => response.text().then(text => console.log(text)))
+        .then(data => {
+            fetchData();
+        });
+    }
+
     fetchData();
     addEventListeners();
 }

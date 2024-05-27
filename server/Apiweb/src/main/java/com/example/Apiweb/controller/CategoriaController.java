@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.example.Apiweb.domain.CategoriaDTO;
 import com.example.Apiweb.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,48 +22,26 @@ public class CategoriaController {
     private ICategoriaService categoriaService;
 
     @PostMapping("/")
-    public ResponseEntity<String> crearCategoria(@RequestBody CategoriaDTO categoriaDTO) {
-        //Verificar si la categoria ya existe
-        boolean bandera = true;
-        Optional<CategoriaModel> verificacion = categoriaService.obtenerCategoriaPorId(categoriaDTO.getIdCategoria());
+    public ResponseEntity<String> crearCategoria(@RequestBody CategoriaModel categoria) {
+
+        Optional<CategoriaModel> verificacion = categoriaService.obtenerCategoriaPorId(categoria.getIdCategoria());
         if (verificacion.isPresent()){
             String mensaje = "Esta categoria ya existe.";
             return new ResponseEntity<String>(mensaje, HttpStatus.BAD_REQUEST);
         }
-
-        CategoriaModel subCategoria = categoriaService.obtenerCategoriaPorId(categoriaDTO.getIdCategoria())
-                .orElseThrow(()-> new RecursoNoEncontradoException("La categoria no existe."));
+        System.out.println(categoria.getSubIdCategoria().getIdCategoria());
+        CategoriaModel subCategoria = categoriaService.obtenerCategoriaPorId(categoria.getSubIdCategoria().getIdCategoria())
+                .orElseThrow(()-> new RecursoNoEncontradoException("La SubCategoria no existe."));
 
         //Crear instancia de un categoriaModel
-        CategoriaModel categoria = new CategoriaModel();
-        categoria.setDescripcion(categoriaDTO.getDescripcion());
-        categoria.setNombre(categoriaDTO.getNombre());
-        categoria.setSubIdCategoria(subCategoria);
+        CategoriaModel categoriaN = new CategoriaModel();
+        categoriaN.setIdCategoria(categoria.getIdCategoria());
+        categoriaN.setDescripcion(categoria.getDescripcion());
+        categoriaN.setNombre(categoria.getNombre());
+        categoriaN.setSubIdCategoria(subCategoria);
+        categoriaService.crearCategoria(categoriaN);
 
-        //Capturar lasa subCategorias y verificar que existan
-        if (categoriaDTO.getIdCategoria() != null) {
-            List<Map<String, Integer>> listarCategorias = categoriaDTO.getSubCategorias();
-            for (Map<String, Integer> Categorias : listarCategorias) {
-                Integer idCategoria = Categorias.get("idCategoria");
-                CategoriaModel Categoria = this.categoriaService.obtenerCategoriaPorId(idCategoria)
-                        .orElseThrow(() -> new RecursoNoEncontradoException("No esta la categoria con id: " + idCategoria));
-                if (Categoria == null) {
-                    bandera = false;
-                    throw new RecursoNoEncontradoException("No se encontró la categoria con ID: " + idCategoria);
-                }
-            }
-            if (bandera) {
-                System.out.println("Bandera: "+ bandera);
-                categoriaService.crearCategoria(categoria);
-                return new ResponseEntity<String>(categoriaService.crearCategoria(categoria), HttpStatus.OK);
-            } else{
-                String mensaje = "Verifica que los datos ingresados sean correctos.";
-                return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST); //Envia esto cuando no existen las categorias
-            }
-        }else{
-            String mensaje = "Verifica que hayas ingresado las categorias de la categoria.";
-            return new ResponseEntity<>(mensaje, HttpStatus.BAD_REQUEST);
-        }
+        return new ResponseEntity<String>("Categoria creada con exito.", HttpStatus.CREATED);
     }
 
     @GetMapping("/")
@@ -90,16 +67,18 @@ public class CategoriaController {
         String nombreActualizar = detallesCategoria.getNombre();
         String nombreActualizar2 = detallesCategoria.getDescripcion();
 
-        //Verificamos que estos campos actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && !nombreActualizar.isEmpty() && nombreActualizar2 != null && !nombreActualizar2.isEmpty()){
-            //asignamos los valores que vamos actualizar de el ingrediente
+        if (nombreActualizar != null && !nombreActualizar.isEmpty()) {
             categoria.setNombre(nombreActualizar);
-            categoria.setDescripcion(nombreActualizar2);
-            //guardamos los cambios
-            return new ResponseEntity<String>(categoriaService.actualizarCategoriaPorId(categoria),HttpStatus.OK);
         }
-        else{
-            throw new CamposInvalidosException("Error! El nombre y la descripcion de la categoria no pueden estar vacios");
+        if (nombreActualizar2 != null && !nombreActualizar2.isEmpty()) {
+            categoria.setDescripcion(nombreActualizar2);
+        }
+
+        if (nombreActualizar == "" && nombreActualizar2 == "") {
+            return new ResponseEntity<>("Error!. No hay datos para actualizar.", HttpStatus.BAD_REQUEST);
+        } else {
+            this.categoriaService.actualizarCategoriaPorId(categoria);
+            return new ResponseEntity<>("Categoria actualizada con exito.", HttpStatus.OK);
         }
     }
 }
