@@ -187,7 +187,7 @@ input[type="submit"]:hover {
 }
 
 #botonPago:hover {
-    background-color:var(--clr-main-light); /* Cambiar el color de fondo al pasar el mouse sobre el botón */
+    background-color:var(--clr-orangered); /* Cambiar el color de fondo al pasar el mouse sobre el botón */
 }
 
 /*Contenedor de ciudades*/
@@ -215,3 +215,4 @@ input[type="submit"]:hover {
     color: var(--clr-main-light);
     border-color: var(--clr-main-light);
 }
+

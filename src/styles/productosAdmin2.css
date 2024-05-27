@@ -47,8 +47,8 @@ h1 {
 
 .regresar {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
 }
 
 .regresarBtn {
@@ -64,7 +64,7 @@ h1 {
 }
 
 .regresarBtn:hover {
-    background-color: var(--clr-orangered);
+    background-color: var(--clr-red);
 }
 
 .input-search {
@@ -129,7 +129,7 @@ h1 {
 }
 
 .btn-editar:hover {
-    background-color: var(--clr-orangered);
+    background-color: var(--clr-red);
 }
 
 .producto-img {

@@ -1,3 +1,11 @@
+:root {
+    --clr-main: #000;
+    --clr-main-light: #ff6600;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -6,7 +14,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: linear-gradient(15deg, #f73808, #007bff);
+    background: linear-gradient(15deg, var(--clr-main-light), var(--clr-main));
 }
 
 .container {
@@ -15,7 +23,7 @@ body {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 30px;
-    background: #11CAF2;
+    background: var(--clr-gray);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 

@@ -52,7 +52,7 @@ table img {
 .regresarBtn, .btn-a-disenoP {
     margin: 1rem;
     background-color: #ff6600; /* Color anaranjado */
-    color: black; /* Texto en negro para resaltar */
+    color: white; /* Texto en negro para resaltar */
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -62,5 +62,5 @@ table img {
 }
 
 .regresarBtn:hover, .btn-a-disenoP:hover {
-    background-color: #ff9000; /* Anaranjado más claro al pasar el ratón */
+    background-color: var(--clr-red); 
 }

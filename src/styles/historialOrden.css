@@ -27,7 +27,7 @@ body {
 
 .regresarBtn {
     background-color: #ff6600; /* Color anaranjado */
-    color: black; /* Texto en negro para resaltar */
+    color: white; /* Texto en negro para resaltar */
     border: none;
     padding: 10px 20px;
     border-radius: 5px;

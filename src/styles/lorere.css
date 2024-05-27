@@ -198,6 +198,6 @@ input:hover {
 }
 
 .regresarBtn:hover {
-    background-color: orangered;
+    background-color: var(--clr-red);
 }
 

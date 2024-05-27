@@ -57,7 +57,7 @@ h1 {
 }
 
 .regresarBtn:hover {
-    background-color: var(--clr-orangered);
+    background-color: var(--clr-red);
 }
 
 .d-flex {

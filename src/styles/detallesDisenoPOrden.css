@@ -13,13 +13,13 @@
 }
 
 body {
-    background: linear-gradient(20deg, var(--clr-main-light), var(--clr-main));
+    background: linear-gradient(15deg, var(--clr-main-light), var(--clr-main));
     padding: 2rem;
 }
 
 .regresarBtn {
     background-color: #ff6600;
-    color: black;
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -30,7 +30,7 @@ body {
 }
 
 .regresarBtn:hover {
-    background-color: #ff9000;
+    background-color: var(--clr-red);
 }
 
 .contenedor-informacion {
@@ -73,4 +73,19 @@ table img {
 
 .espacio-comentarios {
     padding: 1rem;
+}
+
+.mt-3{
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.mt-3:hover {
+    background-color: var(--clr-red);
 }
