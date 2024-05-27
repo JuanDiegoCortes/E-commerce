@@ -21,6 +21,7 @@ window.onload = function() {
                 <th>Cédula del Usuario</th>
                 <th>Estado de la orden</th>
                 <th>Evidencia de pago</th>
+                <th>Diseñador asignado</th>
                 <th>Método de pago</th>
                 <th>Precio total</th>
                 <th>Editar estado</th>
@@ -32,6 +33,16 @@ window.onload = function() {
             } else {
                 validacionPago = orden.image_evidencia;
             }
+
+            let inputDisenador =  `<td>${orden.disenadorAsignado}</td>`
+            if (orden.disenadorAsignado == null) {
+                inputDisenador = `
+                <td>
+                    <input type="text" id="input-${orden.idOrdenProd}" placeholder="Ingrese el nombre del diseñador">
+                    <button id="${orden.idOrdenProd}" class="botonEnviar">Asignar</button>
+                </td>
+                `;
+            }
         
             const tr = document.createElement("tr");
             tr.innerHTML = `
@@ -39,6 +50,7 @@ window.onload = function() {
             <td>${orden.cedula.cedula}</td>
             <td>${orden.estado}</td> 
             <td>${validacionPago}</td>
+            ${inputDisenador}
             <td>${orden.metodoPago}</td>
             <td>${orden.precioTotal}</td>
             <td>
@@ -74,7 +86,6 @@ window.onload = function() {
         .then(data => {
             ordenProd = data;
             mostrarProductosOrden(ordenProd);
-            console.log(ordenProd);
         })
     }
 
@@ -91,7 +102,6 @@ window.onload = function() {
             <th>Estado</th>
             <th>Personalizable</th>
             <th>Cantidad</th>
-            <th>Diseñador Asignado</th>
         `;
         table.appendChild(trHeader);
     
@@ -104,15 +114,7 @@ window.onload = function() {
             <td>${producto.idProducto.estado}</td>
             <td>${producto.idProducto.personalizable}</td>
             <td>${producto.cantidad}</td>
-            <td><input type="text" id="input-${producto.idOrdenProd}" class="inputDisenador" name="disenadorAsignado"> <button class = "botonEnviar" id= "${producto.idOrdenProd}"type="button" name="asignarButton">Asignar</button></td>
             `;
-    
-            if ((producto.image_Personalizacion == null || producto.texto_Personalizacion == null) && producto.idProducto.personalizable.toLowerCase() === "no") {
-                const inputDisenador = tr.querySelector(".inputDisenador");
-                const botonEnviar = tr.querySelector(".botonEnviar");
-                inputDisenador.style.display = "none";
-                botonEnviar.style.display = "none";
-            }
             table.appendChild(tr);
         });
         
@@ -138,7 +140,6 @@ window.onload = function() {
                 const inputId = 'input-' + idOrdenProd; 
                 const disenadorAsignado = document.getElementById(inputId).value;
 
-                console.log(ordenId, disenadorAsignado);
                 asignarDisenador(ordenId, disenadorAsignado);
             });
         });
@@ -172,15 +173,13 @@ window.onload = function() {
     }
 
     function asignarDisenador(ordenId, disenadorAsignado){
-        console.log(ordenId);
         const url = `http://localhost:8081/Apiweb/v1/orden/asignarDisenador/${ordenId}/${disenadorAsignado}`;
         fetch(url, {
             method: 'PUT',
         })
-        .then(response => response)
-        .then(() => {
+        .then(response => response.text().then(text => {
             Toastify({
-                text: "Diseñador asignado correctamente",
+                text: text,
                 duration: 1000,
                 close: true,
                 gravity: "top",
@@ -194,7 +193,7 @@ window.onload = function() {
             setTimeout(() => {
                 location.reload();
             }, 2000);
-        })
+        }))
         .catch(error => console.error(error));
     }
 }

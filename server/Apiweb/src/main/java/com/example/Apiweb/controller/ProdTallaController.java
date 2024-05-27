@@ -78,7 +78,8 @@ public class ProdTallaController {
             producto.setPersonalizable(prodTalla.getIdProducto().getPersonalizable());
         }
         if (prodTalla.getIdProducto().getIdCategoria() != null) {
-            CategoriaModel categoria = this.categoriaService.obtenerCategoriaPorId(producto.getIdCategoria().getIdCategoria())
+            System.out.println(prodTalla.getIdProducto().getIdCategoria().getIdCategoria());
+            CategoriaModel categoria = this.categoriaService.obtenerCategoriaPorId(prodTalla.getIdProducto().getIdCategoria().getIdCategoria())
                     .orElseThrow(() -> new RecursoNoEncontradoException("Error!. No se encontró la categoria con el id " + producto.getIdCategoria().getIdCategoria()));
             producto.setIdCategoria(categoria);
         }

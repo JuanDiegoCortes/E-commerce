@@ -59,7 +59,7 @@ window.onload = function() {
                 precio: precio,
                 estado: estadoSeleccionado,
                 personalizable: personalizableSeleccionado,
-                categoria: categoriaSeleccionada
+                idCategoria: {idCategoria: categoriaSeleccionada}
             }
         };
 

@@ -102,19 +102,28 @@ public class ProductoController {
         String nombreActualizar5= detallesProducto.getImage_Url();
 
         //Verificamos que estos campos a actualizar no sean nulos o vacios y controlamos la excepcion
-        if (nombreActualizar !=null && !nombreActualizar.isEmpty() && nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar3 != null && nombreActualizar4 != null && nombreActualizar5 !=null && !nombreActualizar5.isEmpty()){
             //asignamos los valores que vamos actualizar del envio
+        if (nombreActualizar != null && !nombreActualizar.isEmpty() && nombreActualizar != "") {
             producto.setNombre(nombreActualizar);
-            producto.setDescripcion(nombreActualizar2);
-            producto.setPrecio(nombreActualizar3);
-            producto.setEstado(nombreActualizar4);
-            producto.setImage_Url(nombreActualizar5);
-
-            //guardamos los cambios
-            return new ResponseEntity<String>(productoService.actualizarProductoPorId(producto),HttpStatus.OK);
         }
-        else{
-            throw new CamposInvalidosException("Error! El nombre, la descripción, el precio, el estado y la Imagen URL del producto no pueden estar vacios");
+        if (nombreActualizar2 != null && !nombreActualizar2.isEmpty() && nombreActualizar2 != "") {
+            producto.setDescripcion(nombreActualizar2);
+        }
+        if (nombreActualizar3 != null) {
+            producto.setPrecio(nombreActualizar3);
+        }
+        if (nombreActualizar4 != null) {
+            producto.setEstado(nombreActualizar4);
+        }
+        if (nombreActualizar5 != null && !nombreActualizar5.isEmpty() && nombreActualizar5 != "") {
+            producto.setImage_Url(nombreActualizar5);
+        }
+
+        if (nombreActualizar == "" && nombreActualizar2 == "" && nombreActualizar3 == null && nombreActualizar4 == null && nombreActualizar5 == "") {
+            return new ResponseEntity<>("Error!. No hay datos para actualizar.", HttpStatus.BAD_REQUEST);
+        } else {
+            this.productoService.actualizarProductoPorId(producto);
+            return new ResponseEntity<>("Producto actualizado con exito.", HttpStatus.OK);
         }
     }
 

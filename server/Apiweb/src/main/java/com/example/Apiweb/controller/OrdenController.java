@@ -33,6 +33,8 @@ public class OrdenController {
     private IOrdenProdService ordenProdService;
     @Autowired
     private IProdTallaService prodTallaService;
+    @Autowired
+    private IRolUsuarioService rolUsuarioService;
 
     @PostMapping("/")
     public ResponseEntity<String> crearOrden(@RequestBody OrdenDTO ordenDTO) {
@@ -196,8 +198,15 @@ public class OrdenController {
     }
 
     @PutMapping("/asignarDisenador/{idOrden}/{disenadorAsignado}")
-    public ResponseEntity<Integer> asignarDisenador(@PathVariable Integer idOrden, @PathVariable Integer disenadorAsignado) {
-        return new ResponseEntity<Integer>(ordenService.asignarDisenador(idOrden, disenadorAsignado), HttpStatus.OK);
+    public ResponseEntity<String> asignarDisenador(@PathVariable Integer idOrden, @PathVariable Integer disenadorAsignado) {
+        RolUsuarioModel usuario = rolUsuarioService.mostrarRolUsuarioPorCedula(disenadorAsignado)
+                .orElseThrow(() -> new RecursoNoEncontradoException("El usuario no existe."));
+        if (usuario.getIdRol().getIdRol() != 4) {
+            return new ResponseEntity<>("Este usuario no es un diseñador.", HttpStatus.BAD_REQUEST);
+        }  else {
+            ordenService.asignarDisenador(idOrden, disenadorAsignado);
+            return new ResponseEntity<>("Diseñador asignado correctamente.", HttpStatus.OK);
+        }
     }
 
 }

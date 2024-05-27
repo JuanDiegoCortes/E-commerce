@@ -95,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 },
                 Tallas
             };
-            console.log(productoData);
             enviarDatos(productoData);
         }
     }
@@ -127,7 +126,20 @@ document.addEventListener("DOMContentLoaded", function() {
                     }).showToast();
                 });
             } else {
-                alert('Error al enviar los datos.');
+                return response.text().then(text => {
+                    Toastify({
+                        text: text,
+                        duration: 2000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        stopOnFocus: true,
+                        style: {
+                            background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                            borderRadius: "2rem",
+                        }
+                    }).showToast();
+                });
             }
         })
         .catch(error => {
