@@ -319,9 +319,7 @@ function actualizarTotal() {
 
 botonComprar.addEventListener("click", () =>  {
     const infoUsuario = localStorage.getItem("usuario");
-    let usuario = JSON.parse(infoUsuario);
-    cedulaUsuario = usuario.cedula.cedula
-    if (usuario === null) {
+    if (infoUsuario === null) {
         Toastify({
             text: "Por favor inicie sesión para comprar",
             duration: 3000,
@@ -340,6 +338,8 @@ botonComprar.addEventListener("click", () =>  {
             window.location.href = "../pages/login.html";
           }, 3100);
     } else {
+        let usuario = JSON.parse(infoUsuario);
+        cedulaUsuario = usuario.cedula.cedula
         if (productosEnCarrito.some(producto => producto.idTalla === undefined || producto.idTalla === 0)) {
             Toastify({
                 text: "Por favor seleccione una talla para todos los productos.",
